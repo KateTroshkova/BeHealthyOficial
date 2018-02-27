@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+        <group android:id="@+id/g_main">
+                <item
+                    android:id="@+id/main"
+                    android:icon="@mipmap/person"
+                    android:title="@string/main" />
+        </group>
+
+        <group android:id="@+id/g_search">
+                <item
+                    android:id="@+id/search"
+                    android:icon="@mipmap/search"
+                    android:title="@string/search" />
+        </group>
+
+        <group android:id="@+id/g_heart">
+                <item
+                    android:id="@+id/heart"
+                    android:icon="@mipmap/heart"
+                    android:title="@string/heart" />
+        </group>
+
+        <group android:id="@+id/g_eye">
+                <item
+                    android:id="@+id/eye"
+                    android:icon="@mipmap/eye"
+                    android:title="@string/eye" />
+        </group>
+
+        <group android:id="@+id/g_saved">
+                <item
+                    android:id="@+id/saved"
+                    android:icon="@mipmap/star"
+                    android:title="@string/save" />
+        </group>
+
+        <group android:id="@+id/g_alarm">
+                <item
+                    android:id="@+id/alarm"
+                    android:icon="@mipmap/alarm"
+                    android:title="@string/alarm" />
+        </group>
+
+        <group android:id="@+id/g_settings">
+                <item
+                    android:id="@+id/settings"
+                    android:icon="@mipmap/settings"
+                    android:title="@string/settings" />
+        </group>
+
+        <group android:id="@+id/g_share">
+                <item
+                    android:id="@+id/share"
+                    android:icon="@mipmap/share"
+                    android:title="@string/share" />
+        </group>
+</menu>

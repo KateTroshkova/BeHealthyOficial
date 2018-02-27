@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+            android:id="@+id/time_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/colorBlack"
+            android:textSize="42sp"/>
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/more"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:id="@+id/submenu"
+        android:visibility="invisible">
+
+        <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+            android:id="@+id/ringtone_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"/>
+
+        <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeEditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorBlack"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/repeat" />
+
+        <LinearLayout
+            android:id="@+id/daysLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.be_healthy_license_2014141300.be_healthy.view.DayOfWeekView
+                android:id="@+id/mon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="@string/mon" />
+
+            <com.be_healthy_license_2014141300.be_healthy.view.DayOfWeekView
+                android:id="@+id/tue"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="@string/tue" />
+
+            <com.be_healthy_license_2014141300.be_healthy.view.DayOfWeekView
+                android:id="@+id/wen"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="@string/wen" />
+
+            <com.be_healthy_license_2014141300.be_healthy.view.DayOfWeekView
+                android:id="@+id/th"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="@string/th" />
+
+            <com.be_healthy_license_2014141300.be_healthy.view.DayOfWeekView
+                android:id="@+id/fr"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="@string/fr" />
+
+            <com.be_healthy_license_2014141300.be_healthy.view.DayOfWeekView
+                android:id="@+id/sat"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="@string/sat" />
+
+            <com.be_healthy_license_2014141300.be_healthy.view.DayOfWeekView
+                android:id="@+id/sun"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="@string/sun" />
+
+        </LinearLayout>
+
+        <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/delete"/>
+
+    </LinearLayout>
+
+</LinearLayout>

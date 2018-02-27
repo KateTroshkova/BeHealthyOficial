@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        android:id="@+id/language_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:text="@string/language"
+        android:gravity="center"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/russian_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/russian"/>
+        <RadioButton
+            android:id="@+id/english_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/english"/>
+    </RadioGroup>
+
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        android:id="@+id/size_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:text="@string/text_size"
+        android:gravity="center"/>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/age"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"/>
+
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeEditText
+        android:id="@+id/age_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:inputType="number" />
+
+</LinearLayout>
+
