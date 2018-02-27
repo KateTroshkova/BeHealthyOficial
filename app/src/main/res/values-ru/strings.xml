@@ -25,18 +25,6 @@
     <string name="language">Язык</string>
     <string name="text_size">Размер шрифта</string>
     <string name="age">Возраст</string>
-    <string name="russian">Русский</string>
-    <string name="english">Английский</string>
-
-    <string-array name="languages">
-        <item>Русский</item>
-        <item>Английский</item>
-    </string-array>
-
-    <string-array name="keys">
-        <item>ru</item>
-        <item>en</item>
-    </string-array>
 
     <string name="shared_info">Ссылка скопирована в буфер обмена</string>
     <string name="no_flash_error">Ваше устройство не поддерживает данную функцию</string>

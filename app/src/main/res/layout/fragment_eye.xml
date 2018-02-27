@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         app:srcCompat="@mipmap/run" />
 
     <android.support.design.widget.FloatingActionButton
