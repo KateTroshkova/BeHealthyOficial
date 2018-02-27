@@ -33,6 +33,8 @@
     <string name="error_age">Enter your age in Settings</string>
     <string name="error_negative_age">Incorrect age</string>
 
+    <string name="start_searching">Search diseases</string>
+
     <string name="result_info">Your pulse: </string>
     <string name="too_high">Too high</string>
     <string name="too_low">Too low</string>

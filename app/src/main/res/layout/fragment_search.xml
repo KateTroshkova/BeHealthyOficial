@@ -18,13 +18,15 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/appBarLayout" />
 
-    <android.support.design.widget.FloatingActionButton
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/start_searching"
+        android:layout_margin="@dimen/fab_margin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@mipmap/search" />
+        android:textColor="@color/colorBlack"
+        app:backgroundTint="@color/colorAccent"/>
 
 </RelativeLayout>

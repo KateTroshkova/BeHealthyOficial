@@ -33,6 +33,8 @@
     <string name="error_age">Укажите свой возраст в настройках</string>
     <string name="error_negative_age">Неверно указан возраст</string>
 
+    <string name="start_searching">Начать поиск заболеваний</string>
+
     <string name="result_info">Ваш пульс: </string>
     <string name="too_high">Слишком высокий</string>
     <string name="too_low">Слишком низкий</string>
