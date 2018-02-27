@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Fragment
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Typeface
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.ActivityCompat
@@ -24,6 +25,7 @@ import com.be_healthy_license_2014141300.be_healthy.ShareManager
 import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
 import com.be_healthy_license_2014141300.be_healthy.fragment.TreatmentFragment
+import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
 
 class DiseaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -58,9 +60,14 @@ class DiseaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         val description=findViewById(R.id.description) as TextView
         description.text=disease?.description
 
-        val symptoms_list=findViewById(R.id.symptoms_list) as ListView
-        val adapter= ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, disease?.symptoms)
-        symptoms_list.adapter=adapter
+        var symptoms=""
+        for(symptom in disease?.symptoms!!){
+            symptoms+=symptom+","
+        }
+        symptoms=symptoms.removeSuffix(",")
+        var symptomsText=findViewById(R.id.symptoms_list) as CustomSizeTextView
+        symptomsText.text=symptoms
+        symptomsText.setTypeface(symptomsText.typeface, Typeface.ITALIC)
 
         treatment=TreatmentFragment(disease?.treatment)
         magic= TreatmentFragment(disease?.magic)
