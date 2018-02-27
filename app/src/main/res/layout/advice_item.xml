@@ -35,7 +35,7 @@
         android:id="@+id/view_foreground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="@drawable/separeted_background"
         android:padding="@dimen/slide_margin_right">
 
         <ImageView
