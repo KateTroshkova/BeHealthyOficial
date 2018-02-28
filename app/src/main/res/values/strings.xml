@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">be_healthy</string>
+    <string name="app_name">BeHealthy</string>
 
     <string name="param_state">com.be_healthy_license_2014141300.be_healthy.CURRENT_STATE</string>
     <string name="param_language">com.be_healthy_license_2014141300.be_healthy.LANGUAGE</string>
