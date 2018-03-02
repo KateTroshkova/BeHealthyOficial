@@ -9,6 +9,7 @@ import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -34,7 +35,7 @@ public class HeartFragment extends Fragment implements SurfaceHolder.Callback, V
     private Camera mCamera;
     private HeartView heartView;
     private TextView infoText;
-    private FloatingActionButton startButton;
+    private AppCompatButton startButton;
 
     private String heartLine="";
 
@@ -60,7 +61,7 @@ public class HeartFragment extends Fragment implements SurfaceHolder.Callback, V
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
         surfaceHolder.addCallback(this);
         surfaceHolder.setType(surfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-        startButton=(FloatingActionButton)view.findViewById(R.id.fab);
+        startButton=(AppCompatButton)view.findViewById(R.id.fab);
         startButton.setOnClickListener(this);
         infoText=(TextView)view.findViewById(R.id.info);
         heartView=(HeartView)view.findViewById(R.id.heart_view);
