@@ -50,7 +50,9 @@ class DiseaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_disease)
-        setSupportActionBar(findViewById(R.id.toolbar) as Toolbar)
+        val toolBar=findViewById(R.id.toolbar) as Toolbar
+        toolBar.title=""
+        setSupportActionBar(toolBar)
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
