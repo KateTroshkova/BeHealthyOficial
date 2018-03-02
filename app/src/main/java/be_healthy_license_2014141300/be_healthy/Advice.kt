@@ -35,14 +35,9 @@ class Advice():Parcelable {
         parcel?.writeString(advice)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    override fun describeContents(): Int=0
 
-    override fun equals(other: Any?): Boolean {
-        if (other !is Advice){
-            return false
-        }
-        return other.advice==advice
-    }
+    override fun equals(other: Any?): Boolean =
+            if (other !is Advice) false
+            else other.advice==advice
 }

@@ -28,7 +28,5 @@ data class HeartBeat(var date:String, var line:String, var result:Int): Parcelab
         dest?.writeInt(result)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    override fun describeContents(): Int=0
 }
