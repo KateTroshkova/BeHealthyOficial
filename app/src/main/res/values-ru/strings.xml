@@ -11,8 +11,8 @@
     <string name="delete">Удалить</string>
 
     <string name="symptoms">Симптомы</string>
-    <string name="treatment">Лечение</string>
-    <string name="magic">Народные средства</string>
+    <string name="treatment">Лечение медпрепаратами</string>
+    <string name="magic">Лечение народными средствами</string>
 
     <string name="symptom_hint">Введите симптом</string>
     <string name="spinner_hint">Выберите симптом</string>

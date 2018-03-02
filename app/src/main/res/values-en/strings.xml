@@ -11,8 +11,8 @@
     <string name="delete">Delete</string>
 
     <string name="symptoms">Symptoms</string>
-    <string name="treatment">Treatment</string>
-    <string name="magic">Ethnoscience</string>
+    <string name="treatment">Medication treatment</string>
+    <string name="magic">Treatment with folk remedies</string>
 
     <string name="symptom_hint">Enter a symptom</string>
     <string name="spinner_hint">Choose a symptom</string>
