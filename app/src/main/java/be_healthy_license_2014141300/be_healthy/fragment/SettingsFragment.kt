@@ -12,7 +12,8 @@ import com.be_healthy_license_2014141300.be_healthy.R
 
 class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChangeListener{
 
-    private var default:Int=0
+    //private var defaultLanguage:Int=0
+    private var defaultSize=12
     private lateinit var sizeText: TextView
     private lateinit var ageInfoText:TextView
     private lateinit var ageText: EditText
@@ -24,7 +25,7 @@ class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChan
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         content = inflater!!.inflate(R.layout.fragment_settings, container, false)
-        activity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        activity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
         rusButton=content.findViewById(R.id.russian_button) as RadioButton
         engButton=content.findViewById(R.id.english_button) as RadioButton
         rusButton.setOnClickListener(this)
@@ -36,11 +37,11 @@ class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChan
 
         val seekbar=content.findViewById(R.id.seekBar) as SeekBar
         seekbar.setOnSeekBarChangeListener(this)
-        seekbar.max=40
+        seekbar.max=30
 
         val preferences=activity.getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
         val languageToLoad = preferences.getString(resources.getString(R.string.param_language), "ru")
-        val sizeToLoad=(preferences.getFloat(activity.resources.getString(R.string.param_size), 1f)*12).toInt()
+        val sizeToLoad=(preferences.getFloat(activity.resources.getString(R.string.param_size), 1f)*defaultSize).toInt()
         val age=preferences.getInt(activity.resources.getString(R.string.param_age), 0)
         sizeText.text=activity.resources.getString(R.string.text_size)+" "+sizeToLoad
         sizeText.textSize= sizeToLoad.toFloat()
@@ -49,9 +50,9 @@ class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChan
         ageText.setText(age.toString())
         rusButton.textSize=sizeToLoad.toFloat()
         engButton.textSize=sizeToLoad.toFloat()
-        seekbar.progress= sizeToLoad
-        default=activity.resources.getStringArray(R.array.keys).indexOf(languageToLoad)
-        when (default){
+        seekbar.progress= sizeToLoad-defaultSize
+        val defaultLanguage=activity.resources.getStringArray(R.array.keys).indexOf(languageToLoad)
+        when (defaultLanguage){
             0->{
                 rusButton.isChecked=true
             }
@@ -62,9 +63,9 @@ class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChan
         ageText.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH ||
                     actionId == EditorInfo.IME_ACTION_DONE ||
-                    event.action === KeyEvent.ACTION_DOWN && event.keyCode === KeyEvent.KEYCODE_ENTER) {
+                    event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
                 val age=ageText.text.toString().toInt()
-                if (age>0 && age is Int) {
+                if (age>0) {
                     supportAge(age)
                 }
                 else{
@@ -88,7 +89,7 @@ class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChan
     private fun supportTextSize(size:Int){
         val preferences=activity.getSharedPreferences(activity.resources.getString(R.string.preferences), Context.MODE_PRIVATE)
         val editor=preferences.edit()
-        editor.putFloat(activity.resources.getString(R.string.param_size), (size/12f))
+        editor.putFloat(activity.resources.getString(R.string.param_size), (size/defaultSize.toFloat()))
         editor.apply()
     }
 
@@ -106,11 +107,7 @@ class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChan
     }
 
     override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-        var size=p0?.progress
-        if (size!! <12){
-            size=12
-            p0?.progress=12
-        }
+        val size=p0?.progress!!+defaultSize
         sizeText.text = activity.resources.getString(R.string.text_size) + " " + size
         sizeText.textSize= size.toFloat()
         ageText.textSize =size.toFloat()
@@ -124,8 +121,8 @@ class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChan
     }
 
     override fun onStopTrackingTouch(p0: SeekBar?) {
-        supportTextSize(p0?.progress!!)
-        (activity.application as CustomApplication).size_coef=p0.progress/12f
+        supportTextSize(p0?.progress!!+defaultSize)
+        (activity.application as CustomApplication).size_coef=(p0.progress+defaultSize)/defaultSize.toFloat()
     }
 
     private fun hideKeyboard(view:View){
