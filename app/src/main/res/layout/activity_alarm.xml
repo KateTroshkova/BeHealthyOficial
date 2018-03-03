@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/alarm"
         android:gravity="center"
+        android:id="@+id/alarmclock"
         android:textColor="@color/colorBlack"
         android:textSize="30sp"/>
 
@@ -18,26 +19,34 @@
         android:id="@+id/time_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/alarmclock"
         android:gravity="center"
         android:textColor="@color/colorBlack"
         android:textSize="42sp"/>
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/description"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@+id/time_text"
+        android:gravity="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:gravity="center"
+        android:id="@+id/images"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/sleep_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
             app:srcCompat="@mipmap/sleep" />
 
@@ -45,6 +54,7 @@
             android:id="@+id/alarm_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
             app:srcCompat="@mipmap/big_alarm" />
 
@@ -52,13 +62,15 @@
             android:id="@+id/cancel_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
             app:srcCompat="@mipmap/off" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/images"
         android:orientation="horizontal">
         <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
             android:layout_width="match_parent"
@@ -66,6 +78,8 @@
             android:text="@string/sleep"
             android:layout_weight="1"
             android:gravity="left"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:textColor="@color/colorBlack"/>
 
         <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
@@ -73,9 +87,11 @@
             android:layout_height="wrap_content"
             android:text="@string/switch_off"
             android:gravity="right"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
             android:layout_weight="1"
             android:textColor="@color/colorBlack"/>
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
 

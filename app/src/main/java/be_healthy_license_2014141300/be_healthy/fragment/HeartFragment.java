@@ -10,13 +10,16 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.AppCompatButton;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.be_healthy_license_2014141300.be_healthy.CustomApplication;
 import com.be_healthy_license_2014141300.be_healthy.HeartBeat;
 import com.be_healthy_license_2014141300.be_healthy.R;
 import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation;
@@ -65,6 +68,7 @@ public class HeartFragment extends Fragment implements SurfaceHolder.Callback, V
         startButton.setOnClickListener(this);
         infoText=(TextView)view.findViewById(R.id.info);
         heartView=(HeartView)view.findViewById(R.id.heart_view);
+        startButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, startButton.getTextSize()*((CustomApplication)getActivity().getApplication()).getSize()*0.6f);
         return view;
     }
 

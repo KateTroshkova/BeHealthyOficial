@@ -17,10 +17,7 @@ import android.support.v7.widget.Toolbar
 import android.util.TypedValue
 import android.view.MenuItem
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.ShareManager
@@ -81,6 +78,9 @@ class DiseaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         treatment=TreatmentFragment(disease?.treatment)
         magic= TreatmentFragment(disease?.magic)
+
+        val button=findViewById(R.id.fab) as Button
+        button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(application as CustomApplication).size_coef*0.6f)
 
         val fragmentTranslation=fragmentManager.beginTransaction()
         fragmentTranslation.hide(treatment)

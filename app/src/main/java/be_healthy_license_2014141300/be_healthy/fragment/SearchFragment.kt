@@ -11,9 +11,11 @@ import android.support.v4.content.LocalBroadcastManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.activity.OptionActivity
 import com.be_healthy_license_2014141300.be_healthy.adapter.SimpleListAdapter
@@ -77,7 +79,9 @@ class SearchFragment : Fragment(), AdapterView.OnItemSelectedListener,
         text.addTextChangedListener(watcher)
         content.viewTreeObserver.addOnGlobalLayoutListener(this)
 
-        (content.findViewById(R.id.search)).setOnClickListener(this)
+        val button=content.findViewById(R.id.search) as Button
+        button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(activity.application as CustomApplication).size_coef*0.6f)
+        button.setOnClickListener(this)
 
         return content
     }

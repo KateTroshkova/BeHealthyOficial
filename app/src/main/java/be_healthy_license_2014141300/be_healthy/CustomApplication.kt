@@ -8,6 +8,10 @@ class CustomApplication: Application() {
 
     var size_coef=1f
 
+    fun getSize():Float{
+        return size_coef
+    }
+
     override fun onCreate() {
         super.onCreate()
         val settings=getSharedPreferences(applicationContext.resources.getString(R.string.preferences), Context.MODE_PRIVATE)

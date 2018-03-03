@@ -8,11 +8,15 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.support.v4.content.LocalBroadcastManager
+import android.support.v7.widget.AppCompatButton
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ListView
 import com.be_healthy_license_2014141300.be_healthy.AlarmClock
+import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.adapter.AlarmClockAdapter
 import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
@@ -81,7 +85,9 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
         LocalBroadcastManager.getInstance(activity).registerReceiver(deleteReceiver, IntentFilter(activity.resources.getString(R.string.action_alarm_delete)))
         LocalBroadcastManager.getInstance(activity).registerReceiver(updateReceiver, IntentFilter(activity.resources.getString(R.string.action_alarm_update)))
         DB_Operation(activity).readAlarm()
-        (view.findViewById(R.id.fab)).setOnClickListener(this)
+        val button=view.findViewById(R.id.fab) as Button
+        button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(activity.application as CustomApplication).size_coef*0.6f)
+        button.setOnClickListener(this)
         list=view.findViewById(R.id.list) as ListView
         return view
     }

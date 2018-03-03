@@ -20,7 +20,7 @@
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/search"
-        android:layout_width="wrap_content"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:text="@string/start_searching"
         android:layout_margin="@dimen/fab_margin"
