@@ -25,10 +25,17 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/another_info"
+        android:textColor="@color/colorBlack"/>
+
     <ImageButton
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/light_background"
         android:src="@mipmap/more"/>
 
     <LinearLayout

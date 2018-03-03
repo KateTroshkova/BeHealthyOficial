@@ -21,6 +21,10 @@
 
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="add_alarm">Add alarm</string>
+    <string name="switch_off">Switch off</string>
+    <string name="sleep">Sleep</string>
+    <string name="ringtone">Ringtone: </string>
 
     <string name="language">Language</string>
     <string name="text_size">Text size</string>

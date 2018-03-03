@@ -21,6 +21,10 @@
 
     <string name="ok">Ок</string>
     <string name="cancel">Отмена</string>
+    <string name="add_alarm">Добавить будильник</string>
+    <string name="switch_off">Выключить</string>
+    <string name="sleep">Отложить</string>
+    <string name="ringtone">Рингтон: </string>
 
     <string name="language">Язык</string>
     <string name="text_size">Размер шрифта</string>

@@ -46,8 +46,10 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
         val button=view.findViewById(R.id.button) as ImageButton
         val ringtone=view.findViewById(R.id.ringtone_text) as TextView
         val description=view.findViewById(R.id.description) as EditText
+        val anotherInfo=view.findViewById(R.id.another_info) as TextView
         description.setText(data[position].description)
-        ringtone.text=data[position].ringtoneName
+        ringtone.text=context.resources.getString(R.string.ringtone)+data[position].ringtoneName
+        anotherInfo.text=data[position].description
 
         if (data[position].id in open){
             val param = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
@@ -254,6 +256,7 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
                     intent.putExtra(context.resources.getString(R.string.param_alarm), data[position])
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
                     hideKeyboard(view)
+                    anotherInfo.text=data[position].description
                     if (data[position].alarm==1){
                         if (data[position].repeat==1){
                             data[position].setRepeatingAlarm(context)
