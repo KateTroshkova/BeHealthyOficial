@@ -23,6 +23,7 @@ import com.be_healthy_license_2014141300.be_healthy.slide_helper.ListHelper
 import com.be_healthy_license_2014141300.be_healthy.adapter.SavedDiseaseAdapter
 import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.slide_helper.SavedListHelper
+import java.lang.NullPointerException
 
 class SavedFragment : Fragment(), ListHelper.OnSwipeListener {
 
@@ -33,11 +34,16 @@ class SavedFragment : Fragment(), ListHelper.OnSwipeListener {
 
     private var receiver=object: BroadcastReceiver(){
         override fun onReceive(context: Context?, intent: Intent?) {
-            data=intent?.getStringArrayListExtra(activity.resources.getString(R.string.param_saved_list))
-            if (data!=null && !data?.isEmpty()!!) {
-                adapter = SavedDiseaseAdapter(activity, data)
-                recyclerView.adapter = adapter
-                image.visibility = View.INVISIBLE
+            try {
+                data = intent?.getStringArrayListExtra(activity.resources.getString(R.string.param_saved_list))
+                if (data != null && !data?.isEmpty()!!) {
+                    adapter = SavedDiseaseAdapter(activity, data)
+                    recyclerView.adapter = adapter
+                    image.visibility = View.INVISIBLE
+                }
+            }
+            catch(e:NullPointerException){
+
             }
         }
     }
