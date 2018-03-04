@@ -90,12 +90,12 @@ class AlarmActivity : AppCompatActivity(), View.OnTouchListener, MediaPlayer.OnP
             image.y = p1.y -dy
         }
         if (p1?.action == MotionEvent.ACTION_UP) {
-            if (image.x > repeat.x-image.width && image.x < repeat.x+image.width && image.y > repeat.y-image.width && image.y < repeat.y+image.width) {
+            if (image.x > repeat.x-3*image.width && image.x < repeat.x+3*image.width && image.y > repeat.y-3*image.width && image.y < repeat.y+3*image.width) {
                 updateAlarm()
                 finish()
             }
             else {
-                if (image.x > cancel.x - image.width && image.x < cancel.x + image.width && image.y > cancel.y - image.width && image.y < cancel.y + image.width) {
+                if (image.x > cancel.x - 3*image.width && image.x < cancel.x + 3*image.width && image.y > cancel.y - 3*image.width && image.y < cancel.y + 3*image.width) {
                     cancelAlarm()
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
