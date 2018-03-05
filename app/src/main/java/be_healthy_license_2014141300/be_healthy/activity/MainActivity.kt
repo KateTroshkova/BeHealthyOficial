@@ -1,10 +1,12 @@
 package com.be_healthy_license_2014141300.be_healthy.activity
 
 import android.Manifest
+import android.app.Activity
 import android.app.Fragment
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -15,13 +17,18 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.widget.Toast
+import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
 import be_healthy_license_2014141300.be_healthy.fragment.HeartFragment
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.ShareManager
 import com.be_healthy_license_2014141300.be_healthy.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 import java.util.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -64,6 +71,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         else {
             setFragment(fragments[MAIN])
             setBackground(MAIN)
+        }
+        val preferences=getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
+        if (!preferences.getBoolean(resources.getString(R.string.param_first_time), false)){
+            UserTermsTask(this).execute()
+            val editor=preferences.edit()
+            editor.putBoolean(resources.getString(R.string.param_first_time), true)
+            editor.apply()
         }
     }
 
@@ -197,6 +211,41 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             config.setLocale(locale)
         }
         resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+    }
+
+    private class UserTermsTask(var activity:Activity): AsyncTask<Void, Void, String>() {
+
+        override fun doInBackground(vararg p0: Void?): String {
+            var termsOfUse="";
+            var reader:BufferedReader? = null
+            try {
+                reader = BufferedReader(InputStreamReader(activity.assets.open("data.txt"), "UTF-8"))
+                var line= reader.readLine()
+                while (line!= null) {
+                    termsOfUse+=line
+                    line= reader.readLine()
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            } finally {
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (e:IOException) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+            return termsOfUse
+        }
+
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+            if (result!=null) {
+                val dialog = UserTermsDialog(result.replace("#", "\n\n"))
+                dialog.show(activity.fragmentManager, "userterms")
+            }
+        }
     }
 }
 

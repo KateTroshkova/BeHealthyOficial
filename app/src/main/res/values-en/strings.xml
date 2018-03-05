@@ -9,6 +9,7 @@
     <string name="share">Share</string>
     <string name="settings">Settings</string>
     <string name="delete">Delete</string>
+    <string name="accept">Accept</string>
 
     <string name="symptoms">Symptoms</string>
     <string name="treatment">Medication treatment</string>
