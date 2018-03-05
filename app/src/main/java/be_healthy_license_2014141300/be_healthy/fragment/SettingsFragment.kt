@@ -1,14 +1,21 @@
 package com.be_healthy_license_2014141300.be_healthy.fragment
 
+import android.app.Activity
 import android.app.Fragment
 import android.content.Context
+import android.os.AsyncTask
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
+import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 
 class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChangeListener{
 
@@ -75,6 +82,8 @@ class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChan
             }
             false
         })
+        (content.findViewById(R.id.fab)).setOnClickListener { DB_Operation(activity).clearHistory() }
+        (content.findViewById(R.id.userterms)).setOnClickListener {UserTermsTask(activity).execute()}
         return content
     }
 
@@ -128,5 +137,40 @@ class SettingsFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChan
     private fun hideKeyboard(view:View){
         val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private class UserTermsTask(var activity: Activity): AsyncTask<Void, Void, String>() {
+
+        override fun doInBackground(vararg p0: Void?): String {
+            var termsOfUse="";
+            var reader: BufferedReader? = null
+            try {
+                reader = BufferedReader(InputStreamReader(activity.assets.open("data.txt"), "UTF-8"))
+                var line= reader.readLine()
+                while (line!= null) {
+                    termsOfUse+=line
+                    line= reader.readLine()
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            } finally {
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+            return termsOfUse
+        }
+
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+            if (result!=null) {
+                val dialog = UserTermsDialog(result.replace("#", "\n\n"))
+                dialog.show(activity.fragmentManager, "userterms")
+            }
+        }
     }
 }

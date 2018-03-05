@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -56,6 +57,22 @@
         android:textColor="@color/colorBlack"
         android:textColorHint="@color/colorBlack"
         android:inputType="number" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/fab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_history"
+        android:textColor="@color/colorBlack"
+        app:backgroundTint="@color/colorAccent"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/userterms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user_terms"
+        android:textColor="@color/colorBlack"
+        app:backgroundTint="@color/colorAccent"/>
 
 </LinearLayout>
 

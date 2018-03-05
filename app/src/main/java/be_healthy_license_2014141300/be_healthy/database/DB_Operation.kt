@@ -62,6 +62,10 @@ class DB_Operation(var context: Context) {
         DeleteAlarmTask(alarm).execute()
     }
 
+    fun clearHistory(){
+        ClearHistoryTask().execute()
+    }
+
     private inner class ReadSymptomsTask:AsyncTask<Void, Void, Void>(){
         override fun doInBackground(vararg p0: Void?): Void? {
             val result= arrayListOf<String>()
@@ -282,6 +286,15 @@ class DB_Operation(var context: Context) {
         }
     }
 
+    private inner class ClearHistoryTask:AsyncTask<Void, Void, Void>(){
+        override fun doInBackground(vararg p0: Void?): Void? {
+            val helper=Heartrate_DB_Helper(context)
+            val db=helper.writableDatabase
+            db.delete(helper.TABLE_NAME, null, null)
+            return null
+        }
+    }
+
     private fun getDefaultRingtone():String{
         val ringtoneMgr = RingtoneManager(context)
         ringtoneMgr.setType(RingtoneManager.TYPE_ALARM)
@@ -290,5 +303,4 @@ class DB_Operation(var context: Context) {
         alarmsCursor.close()
         return result
     }
-
 }
