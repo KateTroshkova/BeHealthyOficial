@@ -31,7 +31,7 @@
     <string name="text_size">Размер шрифта</string>
     <string name="age">Возраст</string>
     <string name="clear_history">Удалить историю измерения пульса</string>
-    <string name="user_terms">Пользовательское соглашение</string>
+    <string name="user_terms">Пользовательское \n соглашение</string>
 
     <string name="shared_info">Ссылка скопирована в буфер обмена</string>
     <string name="no_flash_error">Ваше устройство не поддерживает данную функцию</string>

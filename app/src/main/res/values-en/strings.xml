@@ -31,7 +31,7 @@
     <string name="text_size">Text size</string>
     <string name="age">Age</string>
     <string name="clear_history">Clear pulse measure history</string>
-    <string name="user_terms">User terms</string>
+    <string name="user_terms">User \n terms</string>
 
     <string name="shared_info">Link copied to clipboard</string>
     <string name="no_flash_error">Your device does not support this feature</string>
