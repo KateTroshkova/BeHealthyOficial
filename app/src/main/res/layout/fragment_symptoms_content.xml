@@ -4,33 +4,12 @@
     android:orientation="vertical"
     android:background="@color/colorWhite">
 
-    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeEditText
-        android:id="@+id/symptom_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:hint="@string/symptom_hint"
-        android:inputType="textPersonName" />
-    <Spinner
-        android:id="@+id/all_symptoms_spinner"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <ListView
-        android:id="@+id/all_symptoms_list"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
     <ListView
         android:id="@+id/list_for_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
 </LinearLayout>

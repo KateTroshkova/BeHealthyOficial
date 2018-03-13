@@ -54,6 +54,8 @@
     <string name="law">\u00A9 2017 All rights reserved. Copyright infringement is punishable by law.</string>
     <string name="warning">All treatment is advisory in nature.</string>
 
+    <string name="s_instruction">Click + to add a symptom of the disease</string>
+
     <string name="sun">SU</string>
     <string name="mon">MO</string>
     <string name="tue">TU</string>

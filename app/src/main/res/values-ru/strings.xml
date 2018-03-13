@@ -54,6 +54,8 @@
     <string name="law">\u00A9 2017 Все права защищены. Нарушение авторских прав преследуется по закону.</string>
     <string name="warning">Все лечение имеет рекомендательный характер.</string>
 
+    <string name="s_instruction">Нажмите +, чтобы добавить симптом заболевания</string>
+
     <string name="sun">ВС</string>
     <string name="mon">ПН</string>
     <string name="tue">ВТ</string>
