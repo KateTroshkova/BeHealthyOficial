@@ -60,6 +60,7 @@ class OptionActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             intent.putExtra(resources.getString(R.string.param_disease), adapter.getItem(position) as Disease)
             startActivity(intent)
         }
+        (findViewById(R.id.back_button)).setOnClickListener { this@OptionActivity.onBackPressed() }
     }
 
     override fun onBackPressed() {

@@ -26,6 +26,7 @@ import com.be_healthy_license_2014141300.be_healthy.disease.Disease
 import com.be_healthy_license_2014141300.be_healthy.fragment.TreatmentFragment
 import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.advice_item.view.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class DiseaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -81,6 +82,8 @@ class DiseaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         val button=findViewById(R.id.fab) as Button
         button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(application as CustomApplication).size_coef*0.6f)
+
+        (findViewById(R.id.back_button)).setOnClickListener { this@DiseaseActivity.onBackPressed() }
 
         val fragmentTranslation=fragmentManager.beginTransaction()
         fragmentTranslation.hide(treatment)

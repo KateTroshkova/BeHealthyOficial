@@ -20,9 +20,11 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <ImageButton
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/back_button"
+                android:src="@mipmap/back"/>
 
             <TextView
                 android:layout_height="wrap_content"
