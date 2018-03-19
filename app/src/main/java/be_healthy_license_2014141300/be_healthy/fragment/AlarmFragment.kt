@@ -8,7 +8,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.support.v4.content.LocalBroadcastManager
-import android.support.v7.widget.AppCompatButton
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -19,12 +18,12 @@ import com.be_healthy_license_2014141300.be_healthy.AlarmClock
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.adapter.AlarmClockAdapter
-import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.dialog.ClockDialog
 
 class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmClockListener {
 
-    private var alarms= mutableListOf<AlarmClock>()
+    private var alarms= arrayListOf<AlarmClock>()
     private lateinit var list: ListView
     private lateinit var adapter: AlarmClockAdapter
     private lateinit var existActivity:Activity
@@ -53,7 +52,7 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
     private var deleteReceiver=object: BroadcastReceiver() {
 
         override fun onReceive(p0: Context?, p1: Intent?) {
-            alarms.removeAt(p1?.getIntExtra(p0?.resources?.getString(R.string.param_id), -1)!!)
+            alarms= p1?.getParcelableArrayListExtra(existActivity.resources.getString(R.string.param_id))!!
             adapter.notifyDataSetChanged()
         }
     }
@@ -61,7 +60,7 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
     private var updateReceiver=object: BroadcastReceiver(){
         override fun onReceive(p0: Context?, p1: Intent?) {
             val newAlarm=p1?.getParcelableExtra<AlarmClock>(p0?.resources?.getString(R.string.param_alarm))
-            for(i in 0.. alarms.size-1){
+            for(i in 0 until alarms.size){
                 if (alarms[i].id==newAlarm?.id){
                     alarms.removeAt(i)
                     alarms.add(i, newAlarm)
@@ -93,7 +92,9 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
     }
 
     override fun onClick(p0: View?) {
-        ClockDialog(existActivity, this, -1, null).show(existActivity.fragmentManager, "clock")
+        val dialog =ClockDialog()
+        dialog.setListener(this)
+        dialog.show(existActivity.fragmentManager, "clock")
     }
 }
 

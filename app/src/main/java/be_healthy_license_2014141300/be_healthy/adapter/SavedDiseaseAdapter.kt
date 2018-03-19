@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
 
 class SavedDiseaseAdapter(var context: Activity, data:MutableList<String>?): RecyclerView.Adapter<SavedDiseaseAdapter.MyViewHolder>() {

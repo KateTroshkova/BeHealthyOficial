@@ -10,7 +10,7 @@ import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 class CustomSizeTextView(context: Context?, attrs: AttributeSet?) : TextView(context, attrs) {
 
     init{
-        var size_coef=1f
+        var size_coef: Float
         try {
             size_coef = ((context as Activity).application as CustomApplication).size_coef
         }

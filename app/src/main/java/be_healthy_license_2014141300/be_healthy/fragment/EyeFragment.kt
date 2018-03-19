@@ -42,7 +42,7 @@ class EyeFragment : Fragment(), View.OnClickListener {
 
     private lateinit var existActivity: Activity
 
-    var receiver=object: BroadcastReceiver() {
+    private var receiver=object: BroadcastReceiver() {
         override fun onReceive(p0: Context?, p1: Intent?) {
             handler.sendEmptyMessage(ACTION_HIDE_PATH)
             info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[5]
@@ -50,7 +50,7 @@ class EyeFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    var callback= Handler.Callback { p0 ->
+    private var callback= Handler.Callback { p0 ->
         when(p0?.what){
             ACTION_SHOW_CIRCLE->{
                 circle.visibility = View.VISIBLE

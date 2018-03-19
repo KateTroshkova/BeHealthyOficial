@@ -15,17 +15,21 @@ class AlarmClock(var hour:Int=0,
                  var minute:Int=0,
                  var alarm:Int=1,
                  var repeat:Int=0,
-                 var sun:Int=0,
-                 var mon:Int=0,
-                 var tue:Int=0,
-                 var wen:Int=0,
-                 var th:Int=0,
-                 var fr:Int=0,
-                 var sat:Int=0,
+                 sun:Int=0,
+                 mon:Int=0,
+                 tue:Int=0,
+                 wen:Int=0,
+                 th:Int=0,
+                 fr:Int=0,
+                 sat:Int=0,
                  var id:Int=0,
                  var ringtone:String?="",
                  var ringtoneName:String?="",
                  var description:String?=" "):Parcelable {
+
+    var week = arrayOf(sun, mon, tue, wen, th, fr, sat)
+        get()=field
+    private val dayOfWeekNames= arrayOf("'sun'", "'mon'", "'tue'", "'wen'", "'th'", "'fr'", "'sat'")
 
     protected constructor(dest: android.os.Parcel) : this(
             dest.readInt(),
@@ -61,13 +65,9 @@ class AlarmClock(var hour:Int=0,
         p0?.writeInt(minute)
         p0?.writeInt(alarm)
         p0?.writeInt(repeat)
-        p0?.writeInt(sun)
-        p0?.writeInt(mon)
-        p0?.writeInt(tue)
-        p0?.writeInt(wen)
-        p0?.writeInt(th)
-        p0?.writeInt(fr)
-        p0?.writeInt(sat)
+        for( day in week){
+            p0?.writeInt(day)
+        }
         p0?.writeInt(id)
         p0?.writeString(ringtone)
         p0?.writeString(ringtoneName)
@@ -78,21 +78,21 @@ class AlarmClock(var hour:Int=0,
         return 0
     }
 
-    override fun toString(): String {
-        return hour.toString()+"#"+
-                minute.toString()+"#"+
-                alarm.toString()+"#"+
-                repeat.toString()+"#"+
-                sun.toString()+"#"+
-                mon.toString()+"#"+
-                tue.toString()+"#"+
-                wen.toString()+"#"+
-                th.toString()+"#"+
-                fr.toString()+"#"+sat.toString()+"#"+
-                id.toString()+"#"+
-                ringtone+"#"+
-                ringtoneName+"#"+description
-    }
+    override fun toString(): String =
+            hour.toString()+"#"+
+                    minute.toString()+"#"+
+                    alarm.toString()+"#"+
+                    repeat.toString()+"#"+
+                    week[0].toString()+"#"+
+                    week[1].toString()+"#"+
+                    week[2].toString()+"#"+
+                    week[3].toString()+"#"+
+                    week[4].toString()+"#"+
+                    week[5].toString()+"#"+
+                    week[6].toString()+"#"+
+                    id.toString()+"#"+
+                    ringtone+"#"+
+                    ringtoneName+"#"+description
 
     fun decodeFromString(alarm:String):AlarmClock{
         val data=alarm.split("#")
@@ -101,10 +101,37 @@ class AlarmClock(var hour:Int=0,
                 data[11].toInt(), data[12], data[13], data[14])
     }
 
+    fun stopAlarm(activity:Activity):Boolean{
+        if (repeat==0) {
+            cancelAlarm(activity)
+            alarm=0
+            return true
+        }
+        return false
+    }
+
+    fun updateAlarm(activity:Activity){
+        cancelAlarm(activity)
+        minute += 5
+        if (minute>=60){
+            minute -= 60
+            hour += 1
+        }
+        if (hour>=24){
+            hour -= 24
+        }
+        if (repeat==1){
+            setRepeatingAlarm(activity)
+        }
+        else {
+            setAlarm(activity)
+        }
+    }
+
     fun setAlarm(activity: Activity){
         val am = activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(activity, AlarmActivity::class.java)
-        intent.action = this.toString();
+        intent.action = this.toString()
         val pi = PendingIntent.getActivity(activity, id, intent, 0)
         am.set(AlarmManager.RTC_WAKEUP, getTime(1, true), pi)
     }
@@ -118,40 +145,12 @@ class AlarmClock(var hour:Int=0,
             am.cancel(pi)
         }
         else{
-            if (sun==1) {
-                intent.data = Uri.parse("id=" + id + "repeat='sun'")
-                val pi = PendingIntent.getActivity(activity, id, intent, 0)
-                am.cancel(pi)
-            }
-            if (mon==1){
-                intent.data = Uri.parse("id=" + id + "repeat='mon'")
-                val pi = PendingIntent.getActivity(activity, id, intent, 0)
-                am.cancel(pi)
-            }
-            if (tue==1){
-                intent.data = Uri.parse("id=" + id + "repeat='tue'")
-                val pi = PendingIntent.getActivity(activity, id, intent, 0)
-                am.cancel(pi)
-            }
-            if (wen==1){
-                intent.data = Uri.parse("id=" + id + "repeat='wen'")
-                val pi = PendingIntent.getActivity(activity, id, intent, 0)
-                am.cancel(pi)
-            }
-            if (th==1){
-                intent.data = Uri.parse("id=" + id + "repeat='th'")
-                val pi = PendingIntent.getActivity(activity, id, intent, 0)
-                am.cancel(pi)
-            }
-            if (fr==1){
-                intent.data = Uri.parse("id=" + id + "repeat='fr'")
-                val pi = PendingIntent.getActivity(activity, id, intent, 0)
-                am.cancel(pi)
-            }
-            if (sat==1){
-                intent.data = Uri.parse("id=" + id + "repeat='sat'")
-                val pi = PendingIntent.getActivity(activity, id, intent, 0)
-                am.cancel(pi)
+            for(day in week){
+                if (day==1){
+                    intent.data=Uri.parse("id="+id+"repeat="+dayOfWeekNames[week.indexOf(day)])
+                    val pi=PendingIntent.getActivity(activity, id, intent, 0)
+                    am.cancel(pi)
+                }
             }
         }
     }
@@ -159,47 +158,13 @@ class AlarmClock(var hour:Int=0,
     fun setRepeatingAlarm(activity:Activity){
         val intent = Intent(activity, AlarmActivity::class.java)
         intent.action = this.toString()
-        if (sun==1) {
-            intent.data = Uri.parse("id=" + id + "repeat='sun'")
-            val pi = PendingIntent.getActivity(activity, id, intent, 0)
-            (activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
-                    AlarmManager.RTC_WAKEUP, getNearestSunday(), AlarmManager.INTERVAL_DAY*7, pi)
-        }
-        if (mon==1){
-            intent.data = Uri.parse("id=" + id + "repeat='mon'")
-            val pi = PendingIntent.getActivity(activity, id, intent, 0)
-            (activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
-                    AlarmManager.RTC_WAKEUP, getNearestMonday(), AlarmManager.INTERVAL_DAY*7, pi)
-        }
-        if (tue==1){
-            intent.data = Uri.parse("id=" + id + "repeat='tue'")
-            val pi = PendingIntent.getActivity(activity, id, intent, 0)
-            (activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
-                    AlarmManager.RTC_WAKEUP, getNearestTuesday(), AlarmManager.INTERVAL_DAY*7, pi)
-        }
-        if (wen==1){
-            intent.data = Uri.parse("id=" + id + "repeat='wen'")
-            val pi = PendingIntent.getActivity(activity, id, intent, 0)
-            (activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
-                    AlarmManager.RTC_WAKEUP, getNearestWednesday(), AlarmManager.INTERVAL_DAY*7, pi)
-        }
-        if (th==1){
-            intent.data = Uri.parse("id=" + id + "repeat='th'")
-            val pi = PendingIntent.getActivity(activity, id, intent, 0)
-            (activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
-                    AlarmManager.RTC_WAKEUP, getNearestThursday(), AlarmManager.INTERVAL_DAY*7, pi)
-        }
-        if (fr==1){
-            intent.data = Uri.parse("id=" + id + "repeat='fr'")
-            val pi = PendingIntent.getActivity(activity, id, intent, 0)
-            (activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
-                    AlarmManager.RTC_WAKEUP, getNearestFriday(), AlarmManager.INTERVAL_DAY*7, pi)
-        }
-        if (sat==1){
-            intent.data = Uri.parse("id=" + id + "repeat='sat'")
-            val pi = PendingIntent.getActivity(activity, id, intent, 0)
-            (activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
-                    AlarmManager.RTC_WAKEUP, getNearestSaturday(), AlarmManager.INTERVAL_DAY*7, pi)
+        for(day in week){
+            if (day==1){
+                intent.data=Uri.parse("id="+id+"repeat="+dayOfWeekNames[week.indexOf(day)])
+                val pi = PendingIntent.getActivity(activity, id, intent, 0)
+                (activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
+                        AlarmManager.RTC_WAKEUP, getNearestDay(week.indexOf(day)), AlarmManager.INTERVAL_DAY*7, pi)
+            }
         }
     }
 
@@ -220,202 +185,20 @@ class AlarmClock(var hour:Int=0,
         return time
     }
 
-    private fun getNearestSunday():Long{
-        val cal = Calendar.getInstance()
-        val day=cal.get(Calendar.DAY_OF_WEEK)
-        when (day){
-            Calendar.SUNDAY->{
-                return getTime(7, true)
-            }
-            Calendar.MONDAY->{
-                return getTime(6, false)
-            }
-            Calendar.TUESDAY->{
-                return getTime(5, false)
-            }
-            Calendar.WEDNESDAY->{
-                return getTime(4, false)
-            }
-            Calendar.THURSDAY->{
-                return getTime(3, false)
-            }
-            Calendar.FRIDAY->{
-                return getTime(2, false)
-            }
-            Calendar.SATURDAY->{
-                return getTime(1, false)
-            }
+    private fun getNearestDay(index:Int):Long{
+        val cal=Calendar.getInstance()
+        val day=index+1
+        var delay=0
+        while(cal.get(Calendar.DAY_OF_WEEK)!=day){
+            cal.add(Calendar.DAY_OF_WEEK, 1)
+            delay++
         }
-        return -1
-    }
-
-    private fun getNearestMonday():Long{
-        val cal = Calendar.getInstance()
-        val day=cal.get(Calendar.DAY_OF_WEEK)
-        when (day){
-            Calendar.SUNDAY->{
-                return getTime(1, false)
-            }
-            Calendar.MONDAY->{
-                return getTime(7, true)
-            }
-            Calendar.TUESDAY->{
-                return getTime(6, false)
-            }
-            Calendar.WEDNESDAY->{
-                return getTime(5, false)
-            }
-            Calendar.THURSDAY->{
-                return getTime(4, false)
-            }
-            Calendar.FRIDAY->{
-                return getTime(3, false)
-            }
-            Calendar.SATURDAY->{
-                return getTime(2, false)
-            }
+        if (delay==0) {
+            delay = 7
+            return getTime(delay, true)
         }
-        return -1
-    }
-    private fun getNearestTuesday():Long{
-        val cal = Calendar.getInstance()
-        val day=cal.get(Calendar.DAY_OF_WEEK)
-        when (day){
-            Calendar.SUNDAY->{
-                return getTime(2, false)
-            }
-            Calendar.MONDAY->{
-                return getTime(1, false)
-            }
-            Calendar.TUESDAY->{
-                return getTime(7, true)
-            }
-            Calendar.WEDNESDAY->{
-                return getTime(6, false)
-            }
-            Calendar.THURSDAY->{
-                return getTime(5, false)
-            }
-            Calendar.FRIDAY->{
-                return getTime(4, false)
-            }
-            Calendar.SATURDAY->{
-                return getTime(3, false)
-            }
+        else{
+            return getTime(delay, false)
         }
-        return -1
     }
-    private fun getNearestWednesday():Long{
-        val cal = Calendar.getInstance()
-        val day=cal.get(Calendar.DAY_OF_WEEK)
-        when (day){
-            Calendar.SUNDAY->{
-                return getTime(3, false)
-            }
-            Calendar.MONDAY->{
-                return getTime(2, false)
-            }
-            Calendar.TUESDAY->{
-                return getTime(1, false)
-            }
-            Calendar.WEDNESDAY->{
-                return getTime(7, true)
-            }
-            Calendar.THURSDAY->{
-                return getTime(6, false)
-            }
-            Calendar.FRIDAY->{
-                return getTime(5, false)
-            }
-            Calendar.SATURDAY->{
-                return getTime(4, false)
-            }
-        }
-        return -1
-    }
-    private fun getNearestThursday():Long{
-        val cal = Calendar.getInstance()
-        val day=cal.get(Calendar.DAY_OF_WEEK)
-        when (day){
-            Calendar.SUNDAY->{
-                return getTime(4, false)
-            }
-            Calendar.MONDAY->{
-                return getTime(3, false)
-            }
-            Calendar.TUESDAY->{
-                return getTime(2, false)
-            }
-            Calendar.WEDNESDAY->{
-                return getTime(1, false)
-            }
-            Calendar.THURSDAY->{
-                return getTime(7, true)
-            }
-            Calendar.FRIDAY->{
-                return getTime(6, false)
-            }
-            Calendar.SATURDAY->{
-                return getTime(5, false)
-            }
-        }
-        return -1
-    }
-    private fun getNearestFriday():Long{
-        val cal = Calendar.getInstance()
-        val day=cal.get(Calendar.DAY_OF_WEEK)
-        when (day){
-            Calendar.SUNDAY->{
-                return getTime(5, false)
-            }
-            Calendar.MONDAY->{
-                return getTime(4, false)
-            }
-            Calendar.TUESDAY->{
-                return getTime(3, false)
-            }
-            Calendar.WEDNESDAY->{
-                return getTime(2, false)
-            }
-            Calendar.THURSDAY->{
-                return getTime(1, false)
-            }
-            Calendar.FRIDAY->{
-                return getTime(7, true)
-            }
-            Calendar.SATURDAY->{
-                return getTime(6, false)
-            }
-        }
-        return -1
-    }
-    private fun getNearestSaturday():Long{
-        val cal = Calendar.getInstance()
-        val day=cal.get(Calendar.DAY_OF_WEEK)
-        when (day){
-            Calendar.SUNDAY->{
-                return getTime(6, false)
-            }
-            Calendar.MONDAY->{
-                return getTime(5, false)
-            }
-            Calendar.TUESDAY->{
-                return getTime(4, false)
-            }
-            Calendar.WEDNESDAY->{
-                return getTime(3, false)
-            }
-            Calendar.THURSDAY->{
-                return getTime(2, false)
-            }
-            Calendar.FRIDAY->{
-                return getTime(1, false)
-            }
-            Calendar.SATURDAY->{
-                return getTime(7, true)
-            }
-        }
-        return -1
-    }
-
 }

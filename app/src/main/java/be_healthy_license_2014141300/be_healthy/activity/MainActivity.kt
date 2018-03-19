@@ -9,42 +9,26 @@ import android.content.res.Configuration
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.design.widget.NavigationView
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.widget.Toast
+import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
 import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
 import be_healthy_license_2014141300.be_healthy.fragment.HeartFragment
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.ShareManager
 import com.be_healthy_license_2014141300.be_healthy.fragment.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.util.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    private val CAMERA_PERMISSION=0
-    private val WAKE_PERMISSION=1
+class MainActivity : NavigationActivity() {
 
     private lateinit var navigationView: NavigationView
-
-    private val MAIN=0
-    private val SEARCH=1
-    private val HEART=2
-    private val EYE=3
-    private val SAVE=4
-    private val ALARM=5
-    private val SETTINGS=6
 
     private var currentState=0
 
@@ -55,12 +39,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         supportLanguage()
         setContentView(R.layout.activity_main)
-        val toolBar=findViewById(R.id.toolbar) as Toolbar
-        toolBar.title=""
-        setSupportActionBar(toolbar)
-        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
+        setUpToolBar()
         navigationView = findViewById(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
         if(intent.hasExtra(resources.getString(R.string.param_state))){
@@ -96,15 +75,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    override fun onBackPressed() {
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
-    }
-
     override fun onNavigationItemSelected(item: android.view.MenuItem): Boolean {
         when (item.itemId) {
             R.id.main -> {
@@ -128,7 +98,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 setBackground(SAVE)
             }
             R.id.alarm -> {
-                checkWakeLockPermission()
                 setFragment(fragments[ALARM])
                 setBackground(ALARM)
             }
@@ -149,18 +118,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun checkCameraPermission(){
+    override fun checkCameraPermission(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION)
         }
         else{
             setFragment(fragments[HEART])
-        }
-    }
-
-    private fun checkWakeLockPermission(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WAKE_LOCK), WAKE_PERMISSION)
         }
     }
 
@@ -170,9 +133,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     setFragment(fragments[HEART])
                 }
-            }
-            WAKE_PERMISSION->{
-
             }
             else->{
                 Toast.makeText(this, resources.getString(R.string.error_info), Toast.LENGTH_SHORT).show()
@@ -216,7 +176,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private class UserTermsTask(var activity:Activity): AsyncTask<Void, Void, String>() {
 
         override fun doInBackground(vararg p0: Void?): String {
-            var termsOfUse="";
+            var termsOfUse=""
             var reader:BufferedReader? = null
             try {
                 reader = BufferedReader(InputStreamReader(activity.assets.open("data.txt"), "UTF-8"))
@@ -230,7 +190,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             } finally {
                 if (reader != null) {
                     try {
-                        reader.close();
+                        reader.close()
                     } catch (e:IOException) {
                         e.printStackTrace()
                     }
@@ -242,7 +202,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
             if (result!=null) {
-                val dialog = UserTermsDialog(result.replace("#", "\n\n"))
+                val dialog = UserTermsDialog()
+                dialog.setData(result.replace("#", "\n\n"))
                 dialog.show(activity.fragmentManager, "userterms")
             }
         }

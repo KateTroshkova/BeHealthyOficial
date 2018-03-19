@@ -14,12 +14,13 @@ import android.widget.ListView
 import com.be_healthy_license_2014141300.be_healthy.HeartBeat
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.adapter.HistoryAdapter
-import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 
 class HistoryFragment : Fragment() {
 
     private var data= mutableListOf<HeartBeat>()
     private var content: View?=null
+
     private val receiver=object: BroadcastReceiver(){
         override fun onReceive(p0: Context?, intent: Intent?) {
             if (activity !=null && intent?.hasExtra(resources.getString(R.string.param_heartbeat))!!) {

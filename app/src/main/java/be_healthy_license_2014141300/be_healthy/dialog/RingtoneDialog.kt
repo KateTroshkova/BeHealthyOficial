@@ -14,15 +14,16 @@ import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.AlarmClock
 import java.io.IOException
 
-class RingtoneDialog(var alarm:AlarmClock): DialogFragment(), MediaPlayer.OnPreparedListener {
+class RingtoneDialog: DialogFragment(), MediaPlayer.OnPreparedListener {
 
     private var uris=mutableListOf<Uri>()
     private var names=mutableListOf<String>()
     private var player: MediaPlayer?=null
+    var alarm:AlarmClock?=null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog? {
         readRingtone()
@@ -34,22 +35,22 @@ class RingtoneDialog(var alarm:AlarmClock): DialogFragment(), MediaPlayer.OnPrep
         listView.choiceMode = ListView.CHOICE_MODE_SINGLE
         val adapter= ArrayAdapter(activity, android.R.layout.simple_list_item_single_choice, names)
         listView.adapter=adapter
-        listView.setItemChecked(names.indexOf(alarm.ringtoneName), true)
+        listView.setItemChecked(names.indexOf(alarm?.ringtoneName), true)
         dialog.setPositiveButton(activity.resources.getString(R.string.ok)) { _, _ ->
-            alarm.cancelAlarm(activity)
-            alarm.ringtone= uris[listView.checkedItemPosition].toString()
-            alarm.ringtoneName=names[listView.checkedItemPosition]
+            alarm?.cancelAlarm(activity)
+            alarm?.ringtone= uris[listView.checkedItemPosition].toString()
+            alarm?.ringtoneName=names[listView.checkedItemPosition]
             val intent= Intent(activity.resources.getString(R.string.action_alarm_update))
             intent.putExtra(activity.resources.getString(R.string.param_alarm), alarm)
             LocalBroadcastManager.getInstance(activity).sendBroadcast(intent)
-            DB_Operation(activity).updateAlarm(alarm)
+            DB_Operation(activity).updateAlarm(alarm!!)
             stopPreview()
-            if (alarm.alarm==1){
-                if (alarm.repeat==1){
-                    alarm.setRepeatingAlarm(activity)
+            if (alarm?.alarm==1){
+                if (alarm?.repeat==1){
+                    alarm?.setRepeatingAlarm(activity)
                 }
                 else{
-                    alarm.setAlarm(activity)
+                    alarm?.setAlarm(activity)
                 }
             }
         }

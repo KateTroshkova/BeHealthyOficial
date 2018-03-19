@@ -21,7 +21,7 @@ import com.be_healthy_license_2014141300.be_healthy.listener.RecyclerTouchListen
 import com.be_healthy_license_2014141300.be_healthy.activity.DiseaseActivity
 import com.be_healthy_license_2014141300.be_healthy.slide_helper.ListHelper
 import com.be_healthy_license_2014141300.be_healthy.adapter.SavedDiseaseAdapter
-import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.slide_helper.SavedListHelper
 import java.lang.NullPointerException
 

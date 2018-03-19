@@ -111,687 +111,334 @@
     <string name="hives">hives</string>
     <string name="nail_fungus">nail fungus</string>
 
-    <string name="angina_description">inflammation of the tonsils</string>
-    <string name="ard_description">all possible diseases of the respiratory tract - viral, viral-microbial and purely microbial, and also caused by intracellular parasites</string>
-    <string name="arrhythmia_description">the violation of cardiac conduction, as well as the frequency and regularity of the heart contractions, resulting in a violation of the normal operation of the heart and subjectively unpleasant symptoms</string>
-    <string name="arvi_description">the most extensive group of infections transmitted by airborne droplets and causing respiratory manifestations of varying severity. at least several times in the life of each person is sick orvi</string>
-    <string name="asthma_description">infectious-allergic lesions of the bronchi with the formation of periodic attacks of dyspnea</string>
-    <string name="caries_description">tooth decay, which begins with the dissolution of the mineral substances that make up the tooth, and the subsequent formation of a hole.</string>
-    <string name="cataract_description">partial or complete clouding of the lens</string>
-    <string name="dry_eye_description">complex disease that occurs as a result of reduced quality and/or quantity of tear fluid that forms on the surface of the eye tear film, performs a variety of important functions, including nutritional, protective and optical</string>
-    <string name="flu_description">The influenza virus belongs to the group of SARS is similar to them in the distribution, seasonality and movements, but has more pronounced clinical manifestations, course and outcomes.</string>
-    <string name="frontite_description">inflammation of mucous membranes in the frontal sinuses</string>
-    <string name="myocarditis_description">inflammation of the heart muscle, accompanied by violation of its functions</string>
-    <string name="hypertension_description">a condition in which blood pressure exceeds 140 mm Hg.St.</string>
-    <string name="tonsillitis_description">inflammation of the tonsils</string>
-    <string name="pharyngitis_description">inflammatory process of the pharyngeal mucosa</string>
-    <string name="myopia_description">impaired vision, which is poorly seen in the distance and well - at close range</string>
-    <string name="measles_description">highly infectious disease. If a person has been ill with measles, then he develops a permanent immunity.</string>
-    <string name="otosclerosis_description">bilateral focal process in the bony labyrinth of the ear, accompanied by fixation of the ossicles (OK they are mobile) or lesions of the nervous apparatus of the inner ear</string>
-    <string name="otitis_description">group of inflammatory diseases of the ear</string>
-    <string name="sprain_description">the main causes of sprain: acute traumatic injury, excessive load for a long time - overexertion.</string>
-    <string name="sleep_description">subjective feeling of insufficiency of sleep</string>
-    <string name="obesity_description">excess body fat deposition</string>
-    <string name="flatfoot_description">pathological flattening of the foot, which leads to a violation of its damping function, to painful changes in the spine and the skeleton as a whole</string>
-    <string name="brain_description">slight reversible impairment of brain function due to traumatic effects</string>
-    <string name="intoxication_description">a collective term, which means an acute digestive disorder</string>
-    <string name="allergy_description">increased sensitivity to any substance</string>
-    <string name="stomatitis_description">inflammatory phenomena in the mucous membranes of the mouth</string>
-    <string name="gastritis_description">acute inflammation of the gastric mucosa</string>
-    <string name="herpes_description">one of the most common human viral infections</string>
-    <string name="cholecystitis_description">inflammation of the gallbladder</string>
-    <string name="laryngitis_description">inflammation in the larynx</string>
-    <string name="osteoarthritis_description">damage to all components of the joint, primarily cartilage, as well as near-cartilage bone, ligaments, capsules, periarticular muscles.</string>
-    <string name="atherosclerosis_description">a disease that affects the blood vessels (arteries) of the heart, brain and other internal organs</string>
-    <string name="bronchitis_description">inflammatory disease of the respiratory system, characterized by a predominant lesion of the bronchi</string>
-    <string name="scurvy_description">vitamin C deficiency</string>
-    <string name="strabismus_description">with strabismus, the eyes have an incorrect setting and deviate away from the normal viewing angle, without focusing on one point</string>
-    <string name="hives_description">disease manifested by a rash, the main element of which is the blister, i.e. a clearly limited area of ​​skin swelling</string>
-    <string name="nail_fungus_description">infection with the fungus of the nail plates of the hands and feet. Nail fungus is often the result of an untreated fungus of the skin of the feet or brushes</string>
+    <string name="angina_description"></string>
+    <string name="ard_description"></string>
+    <string name="arrhythmia_description"></string>
+    <string name="arvi_description"></string>
+    <string name="asthma_description"></string>
+    <string name="caries_description"></string>
+    <string name="cataract_description"></string>
+    <string name="dry_eye_description"></string>
+    <string name="flu_description"></string>
+    <string name="frontite_description"></string>
+    <string name="myocarditis_description"></string>
+    <string name="hypertension_description"></string>
+    <string name="tonsillitis_description"></string>
+    <string name="pharyngitis_description"></string>
+    <string name="myopia_description"></string>
+    <string name="measles_description"></string>
+    <string name="otosclerosis_description"></string>
+    <string name="otitis_description"></string>
+    <string name="sprain_description"></string>
+    <string name="sleep_description"></string>
+    <string name="obesity_description"></string>
+    <string name="flatfoot_description"></string>
+    <string name="brain_description"></string>
+    <string name="intoxication_description"></string>
+    <string name="allergy_description"></string>
+    <string name="stomatitis_description"></string>
+    <string name="gastritis_description"></string>
+    <string name="herpes_description"></string>
+    <string name="cholecystitis_description"></string>
+    <string name="laryngitis_description"></string>
+    <string name="osteoarthritis_description"></string>
+    <string name="atherosclerosis_description"></string>
+    <string name="bronchitis_description"></string>
+    <string name="scurvy_description"></string>
+    <string name="strabismus_description"></string>
+    <string name="hives_description"></string>
+    <string name="nail_fungus_description"></string>
 
-
-    <string name="tickle_in_the_throat">tickle in the throat</string>
-    <string name="dryness_in_the_throat">dryness in the throat</string>
-    <string name="sore_throat">sore throat</string>
-    <string name="ear_pain">ear pain</string>
-    <string name="common_ailment">common ailment</string>
-    <string name="headache">headache</string>
-    <string name="joint_pain">joint pain</string>
-    <string name="muscle_pain">muscle_pain</string>
-    <string name="fever">fever</string>
-    <string name="chills">chills</string>
-    <string name="tenderness_of_lymph_nodes">tenderness on lymph nodes</string>
-    <string name="nausea">nausea</string>
-    <string name="diarrhea">diarrhea</string>
-    <string name="enlargement_of_palatine_tonsils">enlargement of palatine tonsils</string>
-    <string name="plaque_on_the_tonsils">plaque on the tonsils</string>
-    <string name="runny_nose">runny nose</string>
-    <string name="cough">cough</string>
-    <string name="redness_in_the_throat">redness in the throat</string>
-    <string name="hoarseness">hoarseness</string>
-    <string name="loss_of_appetite">loss of appetite</string>
-    <string name="enlarged_lymph_nodes">enlarged lymph nodes</string>
-    <string name="rash">rash</string>
-    <string name="impaired_cardiac_function">impaired cardiac function</string>
-    <string name="palpitation">palpitation</string>
-    <string name="heartbeat">heartbeat</string>
-    <string name="chest_pain">chest pain</string>
-    <string name="dizziness">dizziness</string>
-    <string name="asphyxia">asphyxia</string>
-    <string name="faint">faint</string>
-    <string name="nasal_congestion">nasal_congestion</string>
-    <string name="sneezing">sneezing</string>
-    <string name="itching_in_the_nose">inching in the nose</string>
-    <string name="pain_when_swallowing">pain when swallowing</string>
-    <string name="drowsiness">drowsiness</string>
-    <string name="redness_of_the_eyes">redness of the eyes</string>
-    <string name="burning">burning</string>
-    <string name="lacrimation">lacrimation</string>
-    <string name="dyspnea">dyspnea</string>
-    <string name="rapid_breathing">rapid_breathing</string>
-    <string name="wheezing_when_breathing">wheezing_when_breathing</string>
-    <string name="allergy">allergy</string>
-    <string name="dental_plaque">dental plaque</string>
-    <string name="pain_while_taking_cold_foods">pain while taking cold food</string>
-    <string name="pain_while_taking_acidic_food">pain while taking acidic food</string>
-    <string name="pain_while_taking_sweet_food">pain while taking sweet food</string>
-    <string name="double_vision">double vision</string>
-    <string name="spots_before_eyes">spots before eyes</string>
-    <string name="blurred_vision">blurred vision</string>
-    <string name="colouring_of_objects_in_yellowish_color">colouring of objects in yellow color</string>
-    <string name="difficulty_reading">difficulty reading</string>
-    <string name="difficulties_when_manipulating_small_objects">difficulties when manipulating small objects</string>
-    <string name="photophobia">photophobia</string>
-    <string name="violation_of_the_twilight_vision">violation of the twilight vision</string>
-    <string name="weakened_the_perception_of_colors">weakened the perception of colors</string>
-    <string name="vision_impairment">vision_impairment</string>
-    <string name="clouding_of_the_pupil">clouding of the pupil</string>
-    <string name="foreign_body_sensation_in_the_eye">foreign body sensation in the eye</string>
-    <string name="dryness_of_eyes">dryness of eyes</string>
-    <string name="pain_in_the_eyes">pain_in_the_eyes</string>
-    <string name="burning_eyes">burning eyes</string>
-    <string name="reduction_of_the_tear_meniscus">reduction of the tear meniscus</string>
-    <string name="blockage_of_the_tear_film">blockage of the tear film</string>
-    <string name="stuffy_ears">stuffy ears</string>
-    <string name="nosebleeds">nosebleeds</string>
-    <string name="disturbance_of_consciousness">disturbance of consciousness</string>
-    <string name="cramps">cramps</string>
-    <string name="difficulty_breathing_through_the_nose">difficulty breathing through the nose</string>
-    <string name="swelling_of_tissues_in_the_corner_of_the_eye">swelling of tissues in the corner of the eye</string>
-    <string name="swelling_of_the_mucous_membranes_of_the_nose">swelling of the mucous membranes of the nose</string>
-    <string name="redness_of_the_mucous_membranes_of_the_nose">redness of the mucous membranes of the nose</string>
-    <string name="heart_pain">heart pain</string>
-    <string name="bad_breath">bad breath</string>
-    <string name="expectoration_of_purulent_tubes">expectoration of purulent tubes</string>
-    <string name="increased_fatigue">increased fatigue</string>
-    <string name="redness_of_the_posterior_pharyngeal_wall">redness of the posterior pharyngeal wall</string>
-    <string name="blurriness_of_contours_of_objects">blurriness of contours of objects</string>
-    <string name="good_near_vision">good near vision</string>
-    <string name="softly_pronounced_exophthalmia">softly pronounced exophthalmia</string>
-    <string name="flash_before_eyes">flash before eyes</string>
-    <string name="rapid_eye_fatigue">rapid eye fatigue</string>
-    <string name="constant_eye_strain">constant eye strain</string>
-    <string name="constant_desire_to_rub_eyes">constant desire to rub eyes</string>
-    <string name="inflammation_of_the_mucous_membranes_of_the_eyes">inflammation of the mucous membranes of the eyes</string>
-    <string name="hearing_loss">hearing loss</string>
-    <string name="improved_hearing_in_a_noisy_environment">improved hearing in a noisy environment</string>
-    <string name="poor_perception_of_speech_when_swallowing_and_chewing">poor perception of speech when swallowing and chewing</string>
-    <string name="noise_in_ears">noise in ears</string>
-    <string name="tingling_in_the_ears">tingling in the ears</string>
-    <string name="forgetfulness">forgetfulness</string>
-    <string name="redness_of_the_ear">redness of the ear</string>
-    <string name="swelling_of_the_ear">swelling of the ear</string>
-    <string name="pain_when_opening_mouth">pain when opening mouth</string>
-    <string name="swelling_of_the_joints">swelling of the joints</string>
-    <string name="pain_in_the_moving_parts_of_the_limbs">pain in the moving parts of the limbs</string>
-    <string name="inflammation_of_ligaments">inflammation of ligaments</string>
-    <string name="feeling_of_insufficiency_of_sleep">feeling of insufficiency of sleep</string>
-    <string name="inability_to_fall_asleep_at_the_usual_time">inability to fall asleep at the usual time</string>
-    <string name="anxiety">anxiety</string>
-    <string name="disturbing_sleep">disturbing sleep</string>
-    <string name="frequent_awakenings">frequent awakenings</string>
-    <string name="no_recovery_after_waking_up">no recovery after waking up</string>
-    <string name="fatigue">fatigue</string>
-    <string name="weight_gain">weight gain</string>
-    <string name="high_blood_pressure">high blood pressure</string>
-    <string name="foot_fatigue">foot fatigue</string>
-    <string name="pain_in_the_foot">pain in the foot</string>
-    <string name="pain_in_the_legs">pain in the legs</string>
-    <string name="heaviness_in_the_legs">heaviness in the legs</string>
-    <string name="cramps_in_the_ankles">cramps in the ankles</string>
-    <string name="changing_the_size_of_the_foot">changing the size of the foot</string>
-    <string name="inconvenience_in_walking">inconvenience in walking</string>
-    <string name="puffiness_of_the_foot">puffiness of the foot</string>
-    <string name="sweating">sweating</string>
-    <string name="stomach_ache">stomach-ache</string>
-    <string name="bloating">bloating</string>
-    <string name="pressure_reduction">pressure reduction</string>
-    <string name="formation_of_sores_in_the_mouth">formation of sores in the mouth</string>
-    <string name="burp">burp</string>
-    <string name="unpleasant_taste_in_the_mouth">unpleasant taste in the mouth</string>
-    <string name="vomiting">vomiting</string>
-    <string name="itch">itch</string>
-    <string name="pain_in_the_right_hypochondrium">pain in the right hypochondrium</string>
-    <string name="voice_lost">voice lost</string>
-    <string name="deformation_of_joints">deformation of joints</string>
-    <string name="difficulty_in_swallowing">difficulty in swallowing</string>
-    <string name="limp">limp</string>
-    <string name="abnormality_of_the_legs">abnormality of the legs</string>
-    <string name="pallor">pallor</string>
-    <string name="numbness_of_the_legs">numbness of the legs</string>
-    <string name="convulsions">convulsions</string>
-    <string name="bleeding_gums">bleeding gums</string>
-    <string name="chewing_pain">chewing pain</string>
-    <string name="redness_of_the_skin">redness of the skin</string>
-    <string name="itching">itching</string>
-    <string name="blisters">blisters</string>
-    <string name="swelling_of_the_skin">swelling of the skin</string>
-    <string name="thickening_on_the_foot">thickening on the foot</string>
-    <string name="thickening_of_the_nail">thickening of the nail</string>
-    <string name="brittleness_of_the_nail">brittleness of the nail</string>
+    <string name="tickle_in_the_throat">першение в горле</string>
+    <string name="dryness_in_the_throat">сухость в горле</string>
+    <string name="sore_throat">боль в горле</string>
+    <string name="ear_pain">боль в ушах</string>
+    <string name="common_ailment">общее недомогание</string>
+    <string name="headache">головная боль</string>
+    <string name="joint_pain">боль в суставах</string>
+    <string name="muscle_pain">боль в мышцах</string>
+    <string name="fever">повышенная температура</string>
+    <string name="chills">озноб</string>
+    <string name="tenderness_of_lymph_nodes">болезненность лимфоузлов</string>
+    <string name="nausea">тошнота</string>
+    <string name="diarrhea">понос</string>
+    <string name="enlargement_of_palatine_tonsils">увеличение небных минадлин</string>
+    <string name="plaque_on_the_tonsils">налет на миндалинах</string>
+    <string name="runny_nose">насморк</string>
+    <string name="cough">кашель</string>
+    <string name="redness_in_the_throat">покраснение горла</string>
+    <string name="hoarseness">охриплость</string>
+    <string name="enlarged_lymph_nodes">увеличенные лимфоузлы</string>
+    <string name="rash">сыпь</string>
+    <string name="impaired_cardiac_function">нарушенная работа сердца</string>
+    <string name="palpitation">сильное сердцебиение</string>
+    <string name="heartbeat">замирание сердца</string>
+    <string name="chest_pain">загрудные боли</string>
+    <string name="dizziness">головокружение</string>
+    <string name="asphyxia">удушье</string>
+    <string name="faint">обморок</string>
+    <string name="nasal_congestion">заложенность носа</string>
+    <string name="sneezing">чихание</string>
+    <string name="itching_in_the_nose">зуд в носу</string>
+    <string name="pain_when_swallowing">боль при глотании</string>
+    <string name="drowsiness">сонливость</string>
+    <string name="redness_of_the_eyes">покраснение глаз</string>
+    <string name="burning">жжение</string>
+    <string name="lacrimation">слезотечение</string>
+    <string name="dyspnea">одышка</string>
+    <string name="rapid_breathing">учащенное дыхание</string>
+    <string name="wheezing_when_breathing">хрипы при дыхании</string>
+    <string name="dental_plaque">зубной налет</string>
+    <string name="pain_while_taking_cold_foods">боль при приеме холодной пищи</string>
+    <string name="pain_while_taking_acidic_food">боль при приеме кислой пищи</string>
+    <string name="pain_while_taking_sweet_food">боль при приеме сладкой пищи</string>
+    <string name="double_vision">двоение перед глазами</string>
+    <string name="spots_before_eyes">мушки перед глазами</string>
+    <string name="blurred_vision">помутнение зрения</string>
+    <string name="colouring_of_objects_in_yellowish_color">окрашивание предметов в желтоватый цвет</string>
+    <string name="difficulty_reading">трудности при чтении</string>
+    <string name="difficulties_when_manipulating_small_objects">трудности при работе с мелкими предметами</string>
+    <string name="photophobia">светобоязнь</string>
+    <string name="violation_of_the_twilight_vision">нарушение сумеречного зрения</string>
+    <string name="weakened_the_perception_of_colors">ослабленное восприятие цветов</string>
+    <string name="vision_impairment">ухудшение зрения</string>
+    <string name="clouding_of_the_pupil">помутнение зрачка</string>
+    <string name="foreign_body_sensation_in_the_eye">ощущение инородного тела в глазу</string>
+    <string name="dryness_of_eyes">ощущение сухости глаза</string>
+    <string name="pain_in_the_eyes">рези в глазах</string>
+    <string name="burning_eyes">жжение в глазах</string>
+    <string name="reduction_of_the_tear_meniscus">уменьшение слезных менисков</string>
+    <string name="blockage_of_the_tear_film">засорение слезной пленки</string>
+    <string name="stuffy_ears">заложенность ушей</string>
+    <string name="nosebleeds">носовые кровотечения</string>
+    <string name="disturbance_of_consciousness">нарушение сознания</string>
+    <string name="cramps">судороги</string>
+    <string name="difficulty_breathing_through_the_nose">затрудненное дыхание носом</string>
+    <string name="swelling_of_tissues_in_the_corner_of_the_eye">отечность тканей в углу глаза</string>
+    <string name="swelling_of_the_mucous_membranes_of_the_nose">отечность слизистых носа</string>
+    <string name="redness_of_the_mucous_membranes_of_the_nose">покраснение слизистых носа</string>
+    <string name="heart_pain">боли в сердце</string>
+    <string name="bad_breath">неприятный запах изо рта</string>
+    <string name="expectoration_of_purulent_tubes">откашливание гнойных пробок</string>
+    <string name="increased_fatigue">повышенная утомляемость</string>
+    <string name="redness_of_the_posterior_pharyngeal_wall">покраснение задней стенки горла</string>
+    <string name="blurriness_of_contours_of_objects">размытые контуры предметов</string>
+    <string name="good_near_vision">хорошее зрение вблизи</string>
+    <string name="softly_pronounced_exophthalmia">несильное пучеглазие</string>
+    <string name="flash_before_eyes">вспышки перед глазами</string>
+    <string name="rapid_eye_fatigue">быстрое утомление глаз</string>
+    <string name="constant_eye_strain">постоянное напряжение глаз</string>
+    <string name="constant_desire_to_rub_eyes">постоянное желание потереть глаза</string>
+    <string name="inflammation_of_the_mucous_membranes_of_the_eyes">воспаление слизистых оболочек глаз</string>
+    <string name="hearing_loss">снижение слуха</string>
+    <string name="improved_hearing_in_a_noisy_environment">улучшение слуха в шумной обстановке</string>
+    <string name="poor_perception_of_speech_when_swallowing_and_chewing">плохое восприятие речи при глотании и жевании</string>
+    <string name="noise_in_ears">шум в ушах</string>
+    <string name="tingling_in_the_ears">покалывание в ушах</string>
+    <string name="forgetfulness">забывчивость</string>
+    <string name="redness_of_the_ear">покраснение уха</string>
+    <string name="swelling_of_the_ear">отек уха</string>
+    <string name="pain_when_opening_mouth">боль при открывании рта</string>
+    <string name="swelling_of_the_joints">отек суставов</string>
+    <string name="pain_in_the_moving_parts_of_the_limbs">боль в подвижных частях конечностей</string>
+    <string name="inflammation_of_ligaments">воспаление связок</string>
+    <string name="feeling_of_insufficiency_of_sleep">ощущение недостаточности сна</string>
+    <string name="inability_to_fall_asleep_at_the_usual_time">невозможность заснуть в обычное время</string>
+    <string name="anxiety">тревожность</string>
+    <string name="disturbing_sleep">тревожный сон</string>
+    <string name="frequent_awakenings">частые пробуждения</string>
+    <string name="no_recovery_after_waking_up">отсутствие восстановления сил после пробуждения</string>
+    <string name="fatigue">усталость</string>
+    <string name="weight_gain">увеличение массы тела</string>
+    <string name="high_blood_pressure">повышенное артериальное давление</string>
+    <string name="foot_fatigue">утомление ног</string>
+    <string name="pain_in_the_foot">боли в стопе</string>
+    <string name="pain_in_the_legs">боль в ногах</string>
+    <string name="heaviness_in_the_legs">тяжесть в ногах</string>
+    <string name="cramps_in_the_ankles">судороги в лодыжках</string>
+    <string name="changing_the_size_of_the_foot">изменение размеров ноги</string>
+    <string name="inconvenience_in_walking">неудобство при ходьбе</string>
+    <string name="puffiness_of_the_foot">отечность стопы</string>
+    <string name="sweating">потливость</string>
+    <string name="loss_of_appetite">потеря аппетита</string>
+    <string name="stomach_ache">боль в животе</string>
+    <string name="bloating">вздутие живота</string>
+    <string name="pressure_reduction">снижение давления</string>
+    <string name="formation_of_sores_in_the_mouth">образование язвочек во рту</string>
+    <string name="burp">отрыжка</string>
+    <string name="unpleasant_taste_in_the_mouth">неприятный привкус во рту</string>
+    <string name="vomiting">рвота</string>
+    <string name="pain_in_the_right_hypochondrium">боль в правом подреберье</string>
+    <string name="voice_lost">пропадает голос</string>
+    <string name="deformation_of_joints">деформация суставов</string>
+    <string name="difficulty_in_swallowing">затруднения при глотании</string>
+    <string name="limp">хромота</string>
+    <string name="abnormality_of_the_legs">нарушение чувствительности ног</string>
+    <string name="pallor">бледность</string>
+    <string name="numbness_of_the_legs">онемение ног</string>
+    <string name="convulsions">судороги</string>
+    <string name="bleeding_gums">кровоточивость десен</string>
+    <string name="chewing_pain">боль при жевании</string>
+    <string name="redness_of_the_skin">покраснение кожи</string>
+    <string name="itching">зуд</string>
+    <string name="blisters">волдыри</string>
+    <string name="swelling_of_the_skin">отечность кожи</string>
+    <string name="thickening_on_the_foot">утолщения на стопе</string>
+    <string name="thickening_of_the_nail">утолщение ногтя</string>
+    <string name="brittleness_of_the_nail">хрупкость ногтя</string>
 
     <string-array name="angina_treatment">
-        <item>антибиотики пенициллинового ряда, цефалоспорины I поколения</item>
-        <item>жаропонижающие средства (парацетамол) — при подъеме температуры выше 38 градусов</item>
-        <item>фузафунжин</item>
-        <item>амбазон</item>
-        <item>грамицидин</item>
     </string-array>
     <string-array name="ard_treatment">
-        <item>обильное питье</item>
-        <item>постельный режим</item>
-        <item>жаропонижающие (нурофен, парацетамол)</item>
-        <item>противовоспалительные спреи, пастилки, таблетки (тантум-верде, стрепсилс)</item>
-        <item>противокашлевые, отхаркивающие (синекод, АЦЦ, аскорил)</item>
-        <item>средства от насморка (салин, акалор, пиносол)</item>
-        <item>витамин С, поливитамины</item>
     </string-array>
     <string-array name="arrhythmia_treatment">
-        <item>прокаинамид</item>
-        <item>тримекаин</item>
-        <item>пропафенон</item>
-        <item>конкор</item>
-        <item>карведилол</item>
-        <item>амиодарон</item>
-        <item>верапамил</item>
-        <item>кардиостимуляторы</item>
     </string-array>
     <string-array name="arvi_treatment">
-        <item>изоляция от других людей</item>
-        <item>постельный режим</item>
-        <item>обильное потребление жидкости</item>
-        <item>питание по аппетиту</item>
-        <item>проветривание и увлажнение воздуха</item>
-        <item>жаропонижающие при температуре выше 38,5</item>
-        <item>препараты от насморка – отривин, санорин, пиносол</item>
-        <item>антисептические и противовоспалительные средства для зева (тантум-верде,  гексорал, каметон)</item>
-        <item>противокашлевые (синекод, коделак)</item>
-        <item>отхаркивающие (туссин, сироп подорожника)</item>
-        <item>разжижающие мокроту средства (аскорил, ацц)</item>
-        <item>витамин С в повышенных дозировках, поливитамины</item>
     </string-array>
     <string-array name="asthma_treatment">
-        <item>Вентолин</item>
-        <item>Сальбутамол</item>
-        <item>Беродуал</item>
-        <item>Будесонид</item>
-        <item>Мометазон</item>
-        <item>Форадил</item>
-        <item>Формотерол</item>
-        <item>исключение аллегренов, дыма</item>
-        <item>отдых на свежем воздухе</item>
     </string-array>
     <string-array name="caries_treatment">
-        <item>обработка зуба при помощи бора</item>
-        <item>вставка пломбы</item>
-        <item>При острых формах кариеса - диета, богатая белками и минеральными солями; витамины А, С, D</item>
-        <item>фториды в виде растворов, паст или гелей</item>
     </string-array>
     <string-array name="cataract_treatment">
-        <item>тауфон</item>
-        <item>офтан-катахром</item>
-        <item>квинакс</item>
-        <item>хирургическое вмешательство</item>
     </string-array>
     <string-array name="dry_eye_treatment">
-        <item>капли «Слеза натуральная»</item>
-        <item>корнерегель</item>
-        <item>лакривит</item>
-        <item>офтагель</item>
-        <item>солкосерил</item>
     </string-array>
     <string-array name="flu_treatment">
-        <item>изоляция от других людей</item>
-        <item>постельный режим</item>
-        <item>обильное потребление жидкости</item>
-        <item>питание по аппетиту</item>
-        <item>проветривание и увлажнение воздуха</item>
-        <item>жаропонижающие при температуре выше 38,5</item>
-        <item>препараты от насморка – отривин, санорин, пиносол</item>
-        <item>витамин С в повышенных дозировках, поливитамины</item>
-        <item>ремантадин</item>
-        <item>озельтамивир</item>
-        <item>амантадин</item>
-        <item>занамивир</item>
-        <item>В тяжелых случаях показан противогриппозный иммуноглобулин</item>
     </string-array>
     <string-array name="frontite_treatment">
-        <item>галазолин</item>
-        <item>ксилен</item>
-        <item>назол</item>
-        <item>каметон</item>
-        <item>супрастин</item>
-        <item>АЦЦ</item>
-        <item>синупрет</item>
-        <item>физиолечение (синяя лампа, соллюкс или УВЧ)</item>
-        <item>постельный режим, легкое питание</item>
     </string-array>
     <string-array name="myocarditis_treatment">
-        <item>ограничение физической активности</item>
-        <item>госпитализация</item>
-        <item>постельный режим</item>
-        <item>азатиоприн</item>
-        <item>циклоспорин</item>
     </string-array>
     <string-array name="hypertension_treatment">
-        <item>ограничение потребления поваренной соли</item>
-        <item>нормализация веса при его избытке</item>
-        <item>умеренные физические нагрузки 3–5 раз в неделю</item>
-        <item>отказ от курения</item>
-        <item>эналаприл</item>
-        <item>периндоприл</item>
-        <item>лозартан</item>
-        <item>эпросартан</item>
-        <item>метопролол</item>
-        <item>фелодипин</item>
-        <item>верапамил</item>
-        <item>Лориста Н</item>
-        <item>Эксфорж</item>
     </string-array>
     <string-array name="tonsillitis_treatment">
-        <item>амоксиклав</item>
-        <item>аугментин</item>
-        <item>биопарокс</item>
-        <item>гексорал</item>
-        <item>стопангин</item>
-        <item>смазывание миндалин антисептическими растворами</item>
-        <item>промывание лакун миндалин и удаление гнойных пробок</item>
     </string-array>
     <string-array name="pharyngitis_treatment">
-        <item>цетрин</item>
-        <item>диазолин</item>
-        <item>фенистил</item>
-        <item>хлоргексидин</item>
-        <item>фурацилин</item>
-        <item>гексорал</item>
-        <item>септолете</item>
-        <item>ингаляция хлорофиллиптом, сосновыми почками, эвкалиптом</item>
-        <item>обильное питье</item>
-        <item>исключение горячей и холодной пищи</item>
-        <item>исключение острой, раздражающей пищи</item>
-        <item>регулярные проветривания помещения</item>
-        <item>ежедневная влажная уборка и увлажнение вдыхаемого воздуха</item>
     </string-array>
     <string-array name="myopia_treatment">
-        <item>Циклические физические упражнения (бег, плавание, ходьба на лыжах) умеренной интенсивности</item>
-        <item>специальные упражнения для тренировки ресничной мышцы</item>
-        <item>подбор очков</item>
     </string-array>
     <string-array name="measles_treatment">
-        <item>при наличии температуры более 38,5 - парацетамол, ибупрофен, ибуклин</item>
-        <item>циклоферон</item>
-        <item>кагоцел</item>
-        <item>ингавирин</item>
-        <item>ринонорм</item>
-        <item>вибрацил</item>
-        <item>тизин</item>
-        <item>мирамистин</item>
-        <item>ингалипт</item>
-        <item>полоскания ромашкой, шалфеем, календулой</item>
     </string-array>
     <string-array name="otosclerosis_treatment">
-        <item>ношение слуховых аппаратов</item>
-        <item>1 % раствор фторида натрия внутрь</item>
-        <item>эргокальциферол</item>
-        <item>сульфат магния 5% раствор путем электрофореза</item>
-        <item>операция - в неактивной стадии</item>
     </string-array>
     <string-array name="otitis_treatment">
-        <item>в слуховой проход вставляются турунды, пропитанные 70% спиртом, согревающие компрессы, витамины и физиопроцедуры</item>
-        <item>цефтриаксон, амоксиклав, клиндамицин; и нестероидные противовоспалительные препараты для купирования болей и уменьшения воспаления (диклофенак, индометацин)</item>
-        <item>капли с противовоспалительным и обезболивающим эффектами (софрадекс, отипакс, камфорное масло)</item>
-        <item>массаж барабанной перепонки</item>
     </string-array>
     <string-array name="sprain_treatment">
-        <item>Защита от нагрузки</item>
-        <item>Отдых</item>
-        <item>Лед</item>
-        <item>Давящая повязка</item>
-        <item>Локальная терапия с использованием мазей и гелей, содержащих нестероидные противовоспалительные препараты (например, эфкамон)</item>
-        <item>После заживления-физиотерапия и лечебная физкультура</item>
     </string-array>
     <string-array name="sleep_treatment">
-        <item>Устранение причинных факторов, влияющих на сон: боли, приёма лекарственных средств, вызывающих расстройства сна, депрессии.</item>
-        <item>Каждый день просыпаться в одно и то же время</item>
-        <item>Отказаться от кофеина, никотина, алкоголя</item>
-        <item>Не рекомендуют спать днём</item>
-        <item>Необходимо использовать постепенно усложняемую программу физических упражнений по утрам для поддержания хорошего самочувствия</item>
-        <item>Следует избегать возбуждения перед сном; заменить просмотр телепередач лёгким чтением или прослушиванием радиопрограмм</item>
-        <item>По вечерам полезно использовать методики релаксации или медитации</item>
-        <item>Создание комфортных условий для сна</item>
     </string-array>
     <string-array name="obesity_treatment">
-        <item>ешьте не меньше, чем вы ели, но обратите внимание на свою еду</item>
-        <item>ешьте за сервированным столом, маленькими порциями</item>
-        <item>cведите к минимуму потребление жира</item>
-        <item>употребляйте в пищу свежие овощи, фрукты, хлеб грубого помола</item>
-        <item>физические упражнения</item>
     </string-array>
     <string-array name="flatfoot_treatment">
-        <item>коррекция веса</item>
-        <item>подбор правильной обуви</item>
-        <item>уменьшение нагрузок на ноги</item>
-        <item>хождение максимальное количество времени босиком по гальке или песку, массажным коврикам</item>
-        <item>массаж, лечебная физкультура</item>
     </string-array>
     <string-array name="brain_treatment">
-        <item>обезболивающие, успокаивающие и снотворные препараты для симптоматического лечения</item>
-        <item>покой и здоровый сон</item>
     </string-array>
     <string-array name="intoxication_treatment">
-        <item>промывание желудка растворами соды или слабо-розовой марганцовки до тех пор, пока вода не станет чистой, без примеси пищи</item>
-        <item>энтеросгель</item>
-        <item>активированный уголь</item>
-        <item>оралит</item>
-        <item>регидрон</item>
-        <item>временный отках от пищи</item>
     </string-array>
     <string-array name="allergy_treatment">
-        <item>Диета:ограничить потребление хлопьев, макарон, сладкого, чипсов, газированных напитков, цитрусовых, алкоголя, маринадов, консервированных продуктов и клубники</item>
-        <item>устранение аллергена</item>
-        <item>лечение сопутствующих заболеваний</item>
     </string-array>
     <string-array name="stomatitis_treatment">
-        <item>полоскания корой дуба, липовым цветом, отваром ромашки, зверобоя, календулы, раствором фурациллина или мирамистина</item>
-        <item>смазать язвочки маслом шиповника или облепихи, соком алоэ</item>
     </string-array>
     <string-array name="gastritis_treatment">
-        <item>В первые сутки рекомендуется лечебное голодание, в дальнейшем переход на щадящее питание</item>
-        <item>Промывание желудка</item>
-        <item>Полисорб, Смекта, Неосмектин, Энтеросгель</item>
-        <item>Регидрон</item>
-        <item>Омепразол, Ранитидин, Фамотидин</item>
-        <item>Маалокс, Гастал, Фосфалюгель</item>
-        <item>Метоклопрамид, Церукал</item>
     </string-array>
     <string-array name="herpes_treatment">
-        <item>ацикловир</item>
-        <item>валацикловир</item>
-        <item>фамцикловир</item>
-        <item>алпизарин</item>
-        <item>Алломедин</item>
-        <item>Герпевир</item>
     </string-array>
     <string-array name="cholecystitis_treatment">
-        <item>спазмолитин</item>
-        <item>согревающие компрессы</item>
-        <item>витамины А, В, С</item>
-        <item>ампиокс</item>
-        <item>амоксициллин</item>
-        <item>амоксиклав</item>
-        <item>5% сульфат магния</item>
-        <item>обогащение пищи отрубевым хлебом, творогом, белком яйца, овсяной кашей, треской, дрожжевыми напитками</item>
-        <item>отказаться от жирной, жареной, копченой пищи, приправ и мучного</item>
     </string-array>
     <string-array name="laryngitis_treatment">
-        <item>ингаляции с нафтизином и минеральной водой, паровые ингаляции, ингаляции с амброксолом</item>
-        <item>дексаметазон, дексазон</item>
-        <item>арбидол, виферон, циклоферон, кагоцел</item>
-        <item>эреспал, фенспирид, абмробене, гербион</item>
-        <item>отказ от курения</item>
     </string-array>
     <string-array name="osteoarthritis_treatment">
-        <item>Хондроитина сульфат 500 мг 2–3 р./сут., курс 3—6 месяцев.</item>
-        <item>Глюкозамин по 1500 мг 1 раз в день курс 6 недель, перерывы между курсами 2 месяца.</item>
-        <item>Алфлутоп по 1 мл в/м ежедневно, на курс 20 инъекций</item>
-        <item>ибупрофен, диклофенак, кетопрофен</item>
-        <item>диклофенак</item>
-        <item>уменьшение нагрузки на суставы</item>
-        <item>использовать стулья с прямой спинкой и кровать с жестким деревянным основанием</item>
-        <item>корсет, трость</item>
-        <item>лечебная физкультура</item>
     </string-array>
     <string-array name="atherosclerosis_treatment">
-        <item>отказ от курения</item>
-        <item>умеренные физические нагрузки</item>
-        <item>нормализация массы тела</item>
-        <item>ограничение приема алкоголя</item>
-        <item>симвастатин</item>
-        <item>аторвастатин</item>
-        <item>розувастатин</item>
-        <item>витамины А, С, Е</item>
     </string-array>
     <string-array name="bronchitis_treatment">
-        <item>регулярное проветривание помещения</item>
-        <item>обильное питье</item>
-        <item>При температуре выше 38,5ºС – парацетамол</item>
-        <item>Лазолван</item>
-        <item>Амброгексал</item>
-        <item>Гербион</item>
-        <item>Аскорил</item>
     </string-array>
     <string-array name="scurvy_treatment">
-        <item>Включить в рацион свежие овощи, фрукты, ягоды, соки и салаты, богатые витамином С</item>
-        <item>Аскорбиновая кислота в любом виде</item>
-        <item>Полосканий некрепким раствором марганцовки</item>
-        <item>Лечебная гимнастика</item>
     </string-array>
     <string-array name="hives_treatment">
-        <item>тавегил</item>
-        <item>супрастин</item>
-        <item>лоратадин 10 мг 1 раз в сутки</item>
-        <item>цетиризин 10 мг 1 раз в сутки</item>
     </string-array>
     <string-array name="nail_treatment">
-        <item>аморолфин</item>
-        <item>циклопирокс</item>
-        <item>тербинафин</item>
-        <item>итраконазол</item>
-        <item>кетоконазол</item>
-        <item>гризеофульвин</item>
     </string-array>
 
     <string-array name="angina_magic">
-        <item>В 1 стакане теплой кипяченой воды растворить 1 маленькую ложку пищевой соды, полоскать этим раствором горло несколько раз в день, повторяя процедуру через каждые 2–3 часа.</item>
-        <item>2 чайные ложки имбиря залить 250 мл воды и оставить кипеть на слабом огне 20 минут, отвар можно пить или применять для ингаляций. Когда чай остынет, добавить в него 1 ложку мёда и лимонный сок.</item>
-        <item>10 г коры дуба, 2 г цветков календулы, 5 г травы душицы, 3 г цветков липы, 1 ст. л. сбора на 200 мл кипятка, настаивать 2 часа, процедить, полоскать горло 3— 4 раза в сутки.</item>
-    </string-array>
+        </string-array>
     <string-array name="ard_magic">
-        <item>Измельчить зубчик чеснока, добавить 5 капель лукового сока и перемешать с 3 ст.л.меда, принимать по 1 ч.л. до 5 раз в день, запивая стаканом теплой воды</item>
-        <item>Чай с лимоном и медом</item>
-        <item>Добавить в рацион малину(в любом виде)</item>
-    </string-array>
+        </string-array>
     <string-array name="arrhythmia_magic">
-        <item>2 ч. ложки цветков календулы залить 2 стаканами кипятка, настоять в теплом месте 2 часа, процедить, пить по 0,5 стакана настоя 4 раза в день.</item>
-        <item>Приготовить сбор: плоды фенхеля, корень валерианы, листья мяты перечной, цветки ромашки аптечной, плоды тмина, всего взять по 1 ст. ложке и залить 500 мл кипящей воды, настоять 3 часа в закрытой посуде, процедить, принимать 1 раз в день, вечером, по 1 стакану.</item>
-        <item>Измельчить 200 г. коры рябины, залить 500 мл воды, кипятить на слабом огне в течение 2 часов, процедить, пить по 50 мл перед едой 3–4 раза в день.</item>
+
     </string-array>
     <string-array name="arvi_magic">
-        <item>Ивовая кора: 20 грамм перетёртого сырья залить 200 миллилитрами крутого кипятка, настоять полчаса, пить по большой ложке несколько раз в течение суток.</item>
-        <item>Принимать внутрь с 1 чайной ложкой меда, 3 капли одного из эфирных масел: лаванды, лимона, сосны, или мяты, 3 раза в день за полчаса до еды в течение 7–10 дней</item>
-        <item>На одни стакан кипятка положить одну ст. ложку малины, настаивать 20 мин, пить по одному стакану дважды в день.</item>
-    </string-array>
+        </string-array>
     <string-array name="asthma_magic">
-        <item>Дыхательная гимнастика:Основной метод дыхания во время выполнения упражнений – дыхание в спину, расправляющее легкие и насыщающее их кислородом. Благодаря этому органы дыхания очищаются от аллергенов, пыли, инородных частиц.Вдохи осуществляются носом, сильными движениями с усилием. Выдох при этом происходит самопроизвольно. Одновременно с дыхательной гимнастикой выполнять физические упражнения. Гимнастика предусматривает переход на брюшной тип дыхания при помощи диафрагмы.</item>
-        <item>Залить 2 ч.л. измельченной душицы 200 мл кипятка, настоять в течение получаса, принимать настой по трети стакана за полчаса до еды 3 раза в сутки.</item>
-    </string-array>
+        </string-array>
     <string-array name="caries_magic">
-        <item>В стакане кипятка разбавить одну столовую ложку шалфея, полученную смесь настаивать в течении часа, полоскать рот, а также держать на пораженном кариесом зубе ватку, смоченную этим раствором.</item>
-        <item>Положить на больной зуб и держать на нем в течении получаса горошину прополиса, сверху положить ватный тампон</item>
-        <item>Обмакнуть в пихтовое масло ватный тампон, положить его на верхнюю часть зуба и держать в течение нескольких минут, переместить тампон на переднюю часть зуба, затем на внутреннюю.</item>
-    </string-array>
+        </string-array>
     <string-array name="cataract_magic">
-        <item>Положитть в мешочки по 3 чайных ложки семян укропа, кинуть их в металлическую кружку с кипятком и прокипятить пару минут, когда компрессы станут теплыми и терпимыми для кожи, приложитть к глазам, сверху накрыть теплой тканью и держать так в течение 15 минут.</item>
-        <item>Смешать свежевыжатый сок алоэ (2 части), каланхоэ (1 часть) и живородка (1 часть), закапывать 2 капли сбора в каждый глаз 3–4 раза в день</item>
-        <item>Взять одинаковое количество листьев мать-и-мачехи, лопуха и буквицы, 4 столовые ложки этой смеси залить полулитром кипятка, поместить в то место, куда не проникает свет, оставить на 2 часа, три раза в день делать примочки на глаза.</item>
-    </string-array>
+        </string-array>
     <string-array name="dry_eye_magic">
-        <item>Прикладывать к глазам ломтики огурца</item>
-        <item>Закапывать касторовое масло и масло лаванды</item>
-    </string-array>
+        </string-array>
     <string-array name="flu_magic">
-        <item>Имбирно-медовый чай: четверть стакана мелко натертого на терке имбиря и стакан меда сварить на медленном огне, добавить одну чайную ложку смеси на стакан воды и пить, как чай.</item>
-        <item>Смешать по одной столовой ложке цветов липы и плодов калины, влить в смесь два стакана горячей воды, дать отвару настояться в течение часа, принимать каждый вечер в виде горячего чая на ночь.</item>
-        <item>Цветы ромашки, липы, цедру лимона, кору ивы, измельченный шиповник смешать поровну, залить кипящей водой , дать настояться 10 минут. Принимать по трети стакана 3–4 раза в день.</item>
-        <item>Пять грамм мелиссы смешать с таким же количеством тысячелистника, листьев мяты, травы зверобоя, залить смесь стаканом холодной воды, нагреть на медленном огне и прокипятить осторожно 5–10 минут, принимать горячим несколько раз в день по 50 мл.</item>
-    </string-array>
+        </string-array>
     <string-array name="frontite_magic">
-        <item>Вскипятить воду в кастрюле с лавровыми листами (5–10 штук), уменьшить огонь, чтобы содержимое кастрюли слегка кипело, наклонить голову над кастрюлей и накрыться полотенцем, дышать носом на протяжении пяти минут.</item>
-        <item>Глиняные маски: процедуру проделывать каждый день, длительность – два часа. Курс лечения - три недели.</item>
-        <item>Промывание носа с растворами хлорофиллипта, мирамистина, фурациллина: в одну ноздрю залить антисептический раствор, из второй откачивать его мягким катетером</item>
-    </string-array>
+        </string-array>
     <string-array name="myocarditis_magic">
-        <item>3–4 кустика лесной земляники вместе с корнем заварить в чайнике и пить как чай с сахаром. Курс — 1 месяц</item>
-        <item>Залить 1 стаканом кипятка 1 столовую ложку измельченного корня шиповника и кипятить на малом огне 5 минут, пить отвар полугорячим как чай по 3 стакана в день в течение 2 недель</item>
-        <item>Горсть цветков шиповника залить 0,5 л кипятка, настаивать 30– 60 минут, процедить, принимать по 1 столовой ложке 3 раза в день за 30 минут до еды в течение 1 месяца</item>
-    </string-array>
+        </string-array>
     <string-array name="hypertension_magic">
-        <item>Дополнить рацион семенами льна</item>
-        <item>Употреблять свекольные, морковные, огуречные соки</item>
-        <item>"Настойка сосновых шишек: растительное сырье, собранное в летний период, промыть под проточной водой, засыпать в банку объемом 1 литр, залить водкой, оставить в темном месте. Время настаивания – 2–3 недели при комнатной температуре. Перед применением процедить через марлю.</item>
-    </string-array>
+         </string-array>
     <string-array name="tonsillitis_magic">
-        <item>Полоскание горла: половина чайной ложки соли и соды на стакан очень тёплой воды, растворить, добавить 5 капель йода и полоскать 2–3 раза в день.</item>
-        <item>Травы для чая: мята, ромашка аптечная, родиола розовая, ветки, листья и ягоды малины, листья и плоды смородины, ветки и ягоды ежевики, цветы клевера, девясил, алтей лекарственный, шиповник.</item>
-        <item>Растолочь солодку, заварить в кипятке, добавить имбирь, поварить 2 минуты, и в горячем виде принимать на ночь.</item>
-    </string-array>
+        </string-array>
     <string-array name="pharyngitis_magic">
-        <item>Мелко порезанный зубчик чеснока перемешать с гречишным медом, в течение 20 минут прогреть смесь на маленьком огне до получения однородной консистенции, сироп развести водой, процедить, охладить, принимать по 1 ст. л. с периодичностью раз в час.</item>
-        <item>Измельчить прополис, опустить полученную крошку в стакан воды для отделения примесей, которые должны всплыть на поверхность. Осевший на дно прополис отделить от воды и залить спиртом 96% крепости (на 15 мг прополиса 50 мл спирта). Прополис настаивать в течение 7 дней, регулярно встряхивая, процедить через бумажный фильтр. Смешать настойку с персиковым и глицериновым маслом в пропорции 1:2. Смазывать слизистую оболочку носа и рта, очищенную от слизи, полученной смесью в течение 2 недель.</item>
-    </string-array>
+        </string-array>
     <string-array name="myopia_magic">
-        <item>употребляйте в пищу чернику, морковь, морскую рыбу и молочные продукты, богатые кальцием</item>
-    </string-array>
+        </string-array>
     <string-array name="measles_magic">
-        <item>Настой из ягод калины: 1 ст. ложку сухих ягод калины обыкновенной залить в термосе 1 стаканом кипятком, настоять 4—5 часов, процедить, употреблять по 2 ст. л. 3—4 раза в день до еды.</item>
-        <item>2 ст ложки липового цвета залить 500 мл горячей воды, настоять два часа в термосе, процедить, принимать в теплом виде ежедневно по несколько раз в день.</item>
-        <item>Настой из корня алтея: 1 ч. ложку измельченного корня алтея лекарственного залить стаканом кипятка, настоять 10–15 минут, принимать настой, разбавляя водой.</item>
-    </string-array>
+        </string-array>
     <string-array name="otosclerosis_magic">
-        <item>Массаж: Легкими движениями ладоней пройтись по ушным раковинам и задней поверхности шеи.Неспешно потереть область вокруг самой шеи, мочки ушей, аккуратно растереть доступные части ушной раковины до явного ощущения тепла. Имитировать вкручивания штопора в ушные проходы, выполняя его пальцами рук. Выполнить пальцами оттягивания ушных раковин в разные стороны. Медленно огладить уши ладонями.</item>
-        <item>Отвар ежевики: 200 гр поломанных веток с листьями на литр воды, уварить объем жидкости вдвое, капать по 3–4 капли в каждое ухо несколько раз в день.</item>
-        <item>Спиртовой настой листьев мелиссы: взять в соотношении 1:6, настоять несколько суток в темном месте и закладывать в уши кусочки ваты, пропитанные этой настойкой на ночь</item>
-    </string-array>
+        </string-array>
     <string-array name="otitis_magic">
-        <item>Пропитать зеленкой ватную палочку, осторожно прокрутить ее в пораженном отитом проходе и вытащить.</item>
-        <item>Смешать борный спирт и димексид в пропорции 1:1 и смочить в этом растворе ватные турунды, отжать вату, поместить в слуховой проход. Турунды устанавливают в ухо на один час, повторяя процедуру трижды в день. Курс лечения длится на протяжении недели.</item>
-        <item>Залить 200 мл воды 5 лавровых листов, вскипятить, настаивать отвар в термосе в течение 2 часов, закапывать по 3 капли отвара в больное ухо по 3–4 раза в сутки.</item>
     </string-array>
-
     <string-array name="eye_training_instruction">
-        <item>Сядьте в удобное положение, снимите очки и расположите экран немного дальше, чем при чтении</item>
+        <item>Сядьте в удобное положение,снимите очки и расположите экран немного дальше,чем при чтении</item>
         <item>Моргайте как можно чаще</item>
-        <item>Переводите взгляд с точки на экране на любой отдаленный предмет(дерево, машина и т.п.). Постарайтесь сфокусировать взгляд. Затем снова посмотрите на точку.</item>
-        <item>Держите телефон в вытянутой руке на уровне глаз. Медленно приближайте телефон, стараясь сфокусировать взгляд на красной точке. Затем так же медленно верните теоефон в исходное положение.</item>
+        <item>Переводите взгляд с точки на экране на любой отдаленный предмет(дерево,машинаит.п.).Постарайтесь сфокусировать взгляд. Затем снова посмотрите на точку.</item>
+        <item>Держите телефон в вытянутой руке на уровне глаз. Медленно приближайте телефон, стараясь сфокусировать взгляд на красной точке. Затем так же медленно верните телоефон в исходное положение.</item>
         <item>Следите взглядом за точкой</item>
-        <item>Потрите руки друг о друга, чтобы ощутимо их нагреть. Прикройте глаза руками так, чтобы центры ладоней находились на уровне зрачков. Не стоит сильно прижимать ладони к лицу, лучше всего, если ресницы будут слегка задевать ладони. Пальцы можно перекрестить на лбу или расположить рядом — делайте так, как Вам удобно. Выжно, чтобы отсутствовали «щелочки», пропускающие свет. Закройте глаза. Упражнение считается выполненным, когда пройдет напряжение глаз и Вы полностью расслабитесь.</item>
+        <item>Потрите руки друг о друга,чтобы ощутимо их нагреть. Прикройте глаза руками так,чтобы центры ладоней находились на уровне зрачков. Не стоит сильно прижимать ладони к лицу, лучше всего,если ресницы будут слегка задевать ладони. Пальцы можно перекрестить на лбу или расположить рядом — делайте так,как Вам удобно. Важно, чтобы отсутствовали «щелочки», пропускающие свет.Закройтеглаза.Упражнение считается выполненным, когда пройдет напряжение глаз и Вы полностью расслабитесь.</item>
     </string-array>
-
     <string-array name="sprain_magic">
-        <item>Смешать сырой картофель со свежей капустой и тертым с сахаром луком, вмешать в глину и сделать компресс на ночь</item>
-        <item>Пропитать марлю, сложенную в несколько слоев, или махровое полотенце прохладным настоем чеснока, отжать на марлю сок 1 лимона и приложить к больному суставу. Держать компресс, пока он не нагреется до температуры тела. Затем повторить процедуру со свежим холодным настоем, пока не наступит облегчение</item>
-        <item>Прокипятить на слабом огне в животном жире чеснок, растертый в кашицу, и свежие измельченные листья эвкалипта, процедить эту массу и втирать в кожу для устранения воспаления</item>
-    </string-array>
-
+        </string-array>
     <string-array name="sleep_magic">
-        <item>Настой из листьев мелиссы (20 г), корней валерианы и травы пустырника (по 30 г ) готовят два часа, заваривая в 300 мл кипятка. После приготовления цедят и выпивают в три приема за один день. Лекарство поможет при неврозах, окажет успокаивающее действие и устранит бессонницу.</item>
-        <item>заваривать чабрец, цветки календулы и траву пустырника, соединенные в равных пропорциях. На стакан кипятка добавляют 10 г сбора (1 чайная ложка) и кипятят в течение десяти минут. Затем оставляют на час, после чего смешивают с мёдом и выпивают непосредственно перед сном.</item>
-        <item><![CDATA[Смешайте траву душицы (10 г) с корнем валерианы (5 г ), залейте &#8531; стакана кипятка и прокипятите на медленном огне в течение десяти минут. Затем оставьте на час настояться и выпейте весь настой перед сном.]]></item>
-    </string-array>
-
+        </string-array>
     <string-array name="obesity_magic">
-        <item> Чай № 1. В него входит трава одуванчика — 1 часть, лист золотого уса — 1 шт, лист берёзы — 2 части. Все листья хорошо измельчить и столовую ложку сбора залить кипятком в объёме 1 литра. Чай должен настояться 2 часа, затем его можно употреблять. Его нужно пить два раза на день, по пол стакана. курс лечения составляет 10 дней. Затем идёт месяц перерыва, и курс лечения повторяется снова.</item>
-        <item>Чай № 2. Для этого чая нужно взять 2 части — цветков красного клевера, 1 часть — травы спорыша, 1 часть — семян укропа и один лист золотого уса. Столовую ложку этого сбора заливают 1 литром кипятка и настаивают в течении часа. Этот чай необходимо пить в течении всего дня маленькими глоточками в течении двух недель. Через три месяца курс лечения можно повторить.</item>
-    </string-array>
-
+         </string-array>
     <string-array name="flatfoot_magic">
-        <item>раствор йода (3 %) и сок лимона соединяют в пропорции 1:1, добавляют две измельченных таблетки аспирина и смешивают. Сверху кашицу необходимо накрыть пленкой и замотать шерстяным платком. Делать такие компрессы можно лишь три дня подряд, после чего следует делать недельный перерыв.</item>
-        <item>контрастные ванночки: наполнить один тазик горячей водой, а второй – холодной. Сначала следует распарить ноги в течение двух-трех минут, а затем охладить их в холодной воде не более 15 секунд. Такие ванночки делают в течение 10 дней, после чего нужен месячный перерыв.</item>
-        <item>растворите в горячей воде морскую или столовую соль (по 1 столовой ложке на 1 литр воды) и подержите ноги в растворе в течение 15 минут. Затем необходимо тщательно вытереть ноги и смазать их питательным кремом, массируя стопу.</item>
-    </string-array>
+        </string-array>
     <string-array name="brain_magic">
-        <item>настой из тимьяна: 10 г травы залить 400 мл горячей воды, довести до 90–95°С, но не кипятить. Остудить, процедить и принимать по 100 мл перед едой.</item>
-        <item>Смешать 20 г высушенных цветков арники и 10 г измельченных листков мирта. Залить 200 мл кипятка и оставить в термосе на несколько часов. Процедить и принимать по 10 мл перед едой.</item>
-        <item>Смешать 30 г галеги, 20 г барвинка и живокоста, 10 г ромашки и мелиссы. Залить 20 г сбора 500 мл кипятка и оставить в емкости на несколько часов. Затем процедить и принимать по 100 мл перед едой.</item>
-    </string-array>
-
+        </string-array>
     <string-array name="intoxication_magic">
-        <item>1 чайную ложку молотого имбиря заливают стаканом кипятка, настаивают в течение 20 минут, принимают по 1 столовой ложке каждые полчаса</item>
-        <item>Залить столовую ложку укропа 300 мл кипятка, настоять. В теплый настой добавить мед и пить как чай.</item>
-        <item>2 ложки цветков одуванчика заливают 250 миллилитрами горячей воды и доводят до кипения. Отстаивают отвар и процеживают. Принимают снадобье по 1 ложке каждый час.</item>
-    </string-array>
-
+        </string-array>
     <string-array name="allergy_magic">
-        <item>Сухую траву тысячелистника нужно заварить кипятком. Настаивать отвар полчаса, затем процедить и пить по 50 гр. четыре раза в сутки</item>
-        <item>Промыть цветки календулы и залить их кипятком. Настаивать 3 часа. Приём – ежедневно по  ложке три раза в сутки.</item>
-        <item>Ингаляции маслом чёрного тмина</item>
-    </string-array>
-
+        </string-array>
     <string-array name="stomatitis_magic">
-        <item>Полоскание раствором перекиси водорода(1 чайная ложка перекиси на стакан воды)</item>
-        <item>Полоскание соком алоэ</item>
-        <item>Примочки из чеснока</item>
-    </string-array>
-
+        </string-array>
     <string-array name="gastritis_magic">
-        <item>Выжмите стакан сока из капустных листьев на соковыжималке. Перед употреблением следует подогреть его. Если сок у вас вызывает тошноту, то пейте его спустя более четырех часов после отжатия. Принимать сок следует по полстакана 2 раза в день за час до еды</item>
-        <item>Утром, перед едой, выпейте один стакан свежевыжатого картофельного сока, затем желательно полежать полчаса. Через час после приёма сока можно поесть. Курс лечения – 10 дней</item>
-        <item>Употребляйте  пищу зеленые яблоки</item>
-    </string-array>
-
+         </string-array>
     <string-array name="herpes_magic">
-        <item>Возьмите измельченные цветки календулы 2 столовые ложки. Залейте их водкой 100 грамм и настаивайте массу две недели. Данным раствором протирайте пораженные места, а также принимайте внутрь по 20 капель, два раза в день.</item>
-        <item>возьмите высушенные листья ромашки 3 столовые ложки, залейте их кипящей водой и настаивайте час. Потом настойка пьется или прикладывается к воспаленным местам</item>
-        <item>возьмите березовые почки 25 грамм и залейте их спиртом 70% стакан. Отправьте емкость с содержимым в темное место, пусть настаивается две недели. Потом процедите жидкость и натирайте пораженную кожу</item>
-    </string-array>
+        </string-array>
     <string-array name="cholecystitis_magic">
-        <item><![CDATA[2 чайные ложки травы тысячелистника заварить 200 мл кипятка, настаивать 1 час, процедить. Настой пить по &#188; стакана 4 раза в деньдо еды.]]></item>
-        <item>Смешать составляющие в указанных пропорциях: мята перечная, трава полыни, корень валерианы – по 2 столовых ложки, трава зверобоя – 3 столовые ложки. На 0,5 л кипятка взять 2 столовые ложки измельченной смеси. Залить и настаивать до охлаждения. Пить по 100 мл настоя 2–3 раза в день за 30 минут до еды.</item>
-        <item>Травяная полынь, корень одуванчика, тысячелистник, корень валерианы и корень цикория смешиваются в равных количествах. Столовую ложку смеси заливают 200 мл кипящей воды, настаивают, процеживают. Выпейте натощак и на ночь.</item>
-    </string-array>
+        </string-array>
     <string-array name="laryngitis_magic">
-        <item>Добавить в стакан морковного сока 1с.л. меда. Принимать по 1с.л. несколько раз в день.</item>
-        <item>Отварить 100г моркови в 0.5л молока, процедить. Принимать внутрь по стакану три раза в день, полоскать горло.</item>
-        <item><![CDATA[1с.л. луковой шелухи, травы зверобоя, листьев подорожника заварить 1л кипятка, настоять, процедить. Принимать по &#188; стакана за полчаса до еды 7–10 дней.]]></item>
-    </string-array>
+        </string-array>
     <string-array name="osteoarthritis_magic">
-        <item>несколько капель масла розмарина, перечной мяты и лаванды добавляют в вазелин и тщательно перемешивают, затем смесь наносят на пораженный участок и укутывают место теплой тканью </item>
-        <item>чистые высушенные листья полыни измельчают в порошок, заливают оливковым или подсолнечным маслом и держат на водяной бане в течение 60 минут. Затем средство настаивают 48 часов и процеживают. Втирать полученную мазь в область больного сустава на ночь после принятия ванны.</item>
-        <item>50 гр несоленого сливочного масла, цветки зверобоя, хмеля и донника (по 2 ст. ложки) перемешивают и прикладывают к суставу на 2 часа.</item>
-    </string-array>
+        </string-array>
     <string-array name="atherosclerosis_magic">
-        <item>Траву чистотела, душицы, пастушьей сумки смешать с с соцветиями гречихи и рябины, листьями сныти, березы и земляники, корой белой ивы и корневищами пырея. Приготовленный отвар следует принимать остывшим, по половине стакана три раза в день, желательно после принятия пищи.</item>
-        <item>Листья березы, земляники лесной, якорца, мать-и-мачехи и мелиссы, плоды каштана конского и боярышника, побеги почечного чая и лугового клевера – все взять в равных количествах. Нагревать на медленном огне 1 ст.л. смеси на 0,4 л горячей воды в течении 10 минут, оставить настаиваться на час. Принимать трижды в день по 100 мл после еды</item>
-        <item>Смешать плоды боярышника с соцветиями бессмертника, побегами лесной малины и листьями брусники. Чайную ложку сбора заварить стаканом кипятка и оставить на один час. Выпить настой в 4 приема за день.</item>
-    </string-array>
+        </string-array>
     <string-array name="bronchitis_magic">
-        <item><![CDATA[Мать-и-мачеха (листья, цветы) — 1 часть (1ст. ложка), ромашка аптечная (цветы) — 1 часть, медуница или легочница — 2 части, душица (трава) — &#189; части. Все смешать, измельчить, 2 ст. ложки залить кипятком — 300 мл, накрыть фарфоровой тарелкой и укутать на полчаса для получения настоя. Процедить, теплое питье принимать по 150 мл 5 раз в день.]]></item>
-        <item>Щепотку цветов крапивы заварить 4 стаканами кипятка. Чай пить в качестве отхаркивающего средства</item>
-        <item>Почки сосновые — 1 часть, подорожник (листья) — 1 часть, мать-и-мачеха (листья) — 1 часть, 4 чайные ложки смеси настоять 2 часа в стакане холодной воды. Кипятить 5 минут, процедить. Принимать 1 стакан в течение дня за 3 приема.</item>
-    </string-array>
+         </string-array>
     <string-array name="scurvy_magic">
-        <item>40 г шиповника тщательно промыть и высыпать в термос, залить 1 л кипятка, закрыть и оставить на ночь. Процеженный настой пить по 250 мл 1 р. в сутки.</item>
-        <item>40 г черной смородины залить 0.5 л кипятка, накрыть крышкой и подождать 1 час.</item>
-        <item>мелко нарезать хвою (40–60 г) и залить ее 250 мл кипятка, затем поставить на огонь и кипятить 30 минут. Отваром полоскать рот на протяжении дня.</item>
-    </string-array>
+        </string-array>
     <string-array name="hives_magic">
-        <item>1 столовая ложка крапивы двудомной заваривается 200 мл кипятка и пьется как чай</item>
-        <item><![CDATA[1 ст ложку травы тысячелистника обыкновенного заливают 1 стаканом кипятка и настаивают 45 минут. Принимают по &#8531; стакана 3 раза в день до еды]]></item>
-        <item>сухую траву зверобоя растереть до порошкообразного состояния и залить одним литром оливкового масла. Полученный состав настаивать в течение 12 дней в теплом месте, после чего процедить. Полученным маслом смазывать пораженную кожу</item>
-    </string-array>
+        </string-array>
     <string-array name="nail_magic">
-        <item>В тазик наливают теплую воду, добавляют 15–20 капель эфирного масла и держат в ней ступни на протяжении двадцати минут, поддерживая высокую температуру воды (45–50 градусов). Курс лечения составляет два месяца, делать ванночки нужно ежедневно. В процессе лечебной процедуры необходимо удалить пораженные участки ногтевой пластины, используя пилку, маникюрные щипцы или ножнички.</item>
-        <item>Наносить сок чистотела на пораженный ноготь дважды в день</item>
-        <item>Нагреть воду до 50 градусов и добавить в нее 200 мл уксуса. Распаривать ноги в течение 15–20 минут. Повторять трижды в неделю.</item>
     </string-array>
 </resources>

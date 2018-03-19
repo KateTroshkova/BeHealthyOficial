@@ -5,10 +5,9 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowManager
-import android.util.DisplayMetrics
-import com.be_healthy_license_2014141300.be_healthy.R
 
 class HeartView(context: Context, attribute: AttributeSet): View(context, attribute) {
 

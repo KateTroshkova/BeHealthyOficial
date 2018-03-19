@@ -8,21 +8,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.support.v4.content.LocalBroadcastManager
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.*
-import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import be_healthy_license_2014141300.be_healthy.dialog.SearchDialog
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.activity.OptionActivity
-import com.be_healthy_license_2014141300.be_healthy.adapter.SimpleListAdapter
-import com.be_healthy_license_2014141300.be_healthy.adapter.SpinnerAdapter
 import com.be_healthy_license_2014141300.be_healthy.adapter.SymptomsAdapter
-import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.disease.*
 import java.util.*
 
@@ -54,7 +48,7 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
     override fun onChooseDisease(value: String) {
         if (value !in symptomsForSearch) {
             symptomsForSearch.add(value)
-            DB_Operation(activity).saveSymptom(value)
+            DB_Operation(this.fuckingEXISTactivity!!).saveSymptom(value)
             symptomsAdapter.notifyDataSetChanged()
             instruction.text=""
         }
@@ -63,7 +57,6 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val content=inflater!!.inflate(R.layout.fragment_search, container, false)
 
-        //initData()
         diseases= mutableListOf(Angina(activity), ARD(activity), Arrhythmia(activity), ARVI(activity),
                 Asthma(activity), Caries(activity), Cataract(activity), DryEyeSyndrome(activity), Flu(activity),
                 Frontite(activity), Hypertension(activity), Measles(activity), Myocarditis(activity), Myopia(activity),

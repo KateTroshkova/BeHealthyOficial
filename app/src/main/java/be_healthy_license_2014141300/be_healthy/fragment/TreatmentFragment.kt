@@ -9,12 +9,12 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.be_healthy_license_2014141300.be_healthy.R
 
-class TreatmentFragment(): Fragment() {
+class TreatmentFragment: Fragment() {
 
     private var data= mutableListOf<String>()
 
-    constructor(data:MutableList<String>?):this(){
-        this.data= data!!
+    fun setData(data:MutableList<String>){
+        this.data=data
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

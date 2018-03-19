@@ -13,13 +13,13 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.EditText
+import be_healthy_license_2014141300.be_healthy.UpdateSender
 import com.be_healthy_license_2014141300.be_healthy.AlarmClock
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.dialog.ClockDialog
 import com.be_healthy_license_2014141300.be_healthy.dialog.RingtoneDialog
 import com.be_healthy_license_2014141300.be_healthy.view.DayOfWeekView
-
 
 class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>): BaseAdapter(), ClockDialog.OnNewAlarmClockListener{
 
@@ -33,14 +33,14 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
         time.text=formatTime(data[position].hour, data[position].minute)
         val switchView=view.findViewById(R.id.switch1) as Switch
         val checkBox=view.findViewById(R.id.checkBox) as CheckBox
-        val image=view.findViewById(R.id.imageView2) as ImageView
-        val sunday=view.findViewById(R.id.sun) as DayOfWeekView
-        val monday=view.findViewById(R.id.mon) as DayOfWeekView
-        val tuesday=view.findViewById(R.id.tue) as DayOfWeekView
-        val wednesday=view.findViewById(R.id.wen) as DayOfWeekView
-        val thursday=view.findViewById(R.id.th) as DayOfWeekView
-        val friday=view.findViewById(R.id.fr) as DayOfWeekView
-        val saturday=view.findViewById(R.id.sat) as DayOfWeekView
+        val deleteImage=view.findViewById(R.id.deleteImage) as ImageView
+        val week = arrayListOf(view.findViewById(R.id.sun) as DayOfWeekView,
+                view.findViewById(R.id.mon) as DayOfWeekView,
+                view.findViewById(R.id.tue) as DayOfWeekView,
+                view.findViewById(R.id.wen) as DayOfWeekView,
+                view.findViewById(R.id.th) as DayOfWeekView,
+                view.findViewById(R.id.fr) as DayOfWeekView,
+                view.findViewById(R.id.sat) as DayOfWeekView)
         val layout=view.findViewById(R.id.daysLayout) as LinearLayout
         val sublayout=view.findViewById(R.id.submenu) as LinearLayout
         val button=view.findViewById(R.id.button) as ImageButton
@@ -50,6 +50,9 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
         description.setText(data[position].description)
         ringtone.text=context.resources.getString(R.string.ringtone)+data[position].ringtoneName
         anotherInfo.text=data[position].description
+        switchView.isChecked =data[position].alarm==1
+        checkBox.isChecked =data[position].repeat==1
+        checkBox.isEnabled = switchView.isChecked
 
         if (data[position].id in open){
             val param = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
@@ -58,86 +61,21 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
             button.setImageResource(R.mipmap.less)
         }
 
-        sunday.setOnClickListener {
-            data[position].cancelAlarm(context)
-            if (sunday.isChecked){
-                data[position].sun=1
-            } else{
-                data[position].sun=0
+        for(day in week){
+            day.currentid=position
+            day.setOnClickListener {
+                data[position].cancelAlarm(context)
+                if (day.isChecked){
+                    data[position].week[week.indexOf(day)]=1
+                }
+                else{
+                    data[position].week[week.indexOf(day)]=0
+                }
+                dayClick(position, checkBox, layout)
             }
-            dayClick(position, checkBox, layout)
-        }
-        monday.currentid =position
-        monday.setOnClickListener {
-            data[position].cancelAlarm(context)
-            if (monday.isChecked){
-                data[position].mon=1
-            } else{
-                data[position].mon=0
-            }
-            dayClick(position, checkBox, layout)
-        }
-        tuesday.currentid =position
-        tuesday.setOnClickListener {
-            data[position].cancelAlarm(context)
-            if (tuesday.isChecked){
-                data[position].tue=1
-            } else{
-                data[position].tue=0
-            }
-            dayClick(position, checkBox, layout)
-        }
-        wednesday.currentid=position
-        wednesday.setOnClickListener {
-            data[position].cancelAlarm(context)
-            if (wednesday.isChecked){
-                data[position].wen=1
-            } else{
-                data[position].wen=0
-            }
-            dayClick(position, checkBox, layout)
-        }
-        thursday.currentid=position
-        thursday.setOnClickListener {
-            data[position].cancelAlarm(context)
-            if (thursday.isChecked){
-                data[position].th=1
-            } else{
-                data[position].th=0
-            }
-            dayClick(position, checkBox, layout)
-        }
-        friday.currentid=position
-        friday.setOnClickListener {
-            data[position].cancelAlarm(context)
-            if (friday.isChecked){
-                data[position].fr=1
-            } else{
-                data[position].fr=0
-            }
-            dayClick(position, checkBox, layout)
-        }
-        saturday.currentid=position
-        saturday.setOnClickListener {
-            data[position].cancelAlarm(context)
-            if (saturday.isChecked){
-                data[position].sat=1
-            } else{
-                data[position].sat=0
-            }
-            dayClick(position, checkBox, layout)
+            day.isChecked=data[position].week[week.indexOf(day)]==1
         }
 
-        switchView.isChecked =data[position].alarm==1
-        checkBox.isChecked =data[position].repeat==1
-        sunday.isChecked =data[position].sun==1
-        monday.isChecked =data[position].mon==1
-        tuesday.isChecked =data[position].tue==1
-        wednesday.isChecked =data[position].wen==1
-        thursday.isChecked =data[position].th==1
-        friday.isChecked =data[position].fr==1
-        saturday.isChecked =data[position].sat==1
-        checkBox.isEnabled = switchView.isChecked
         if (checkBox.isChecked){
             layout.visibility = View.VISIBLE
         }
@@ -156,20 +94,10 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
                 checkBox.isChecked=false
                 checkBox.isEnabled=false
                 data[position].repeat=0
-                sunday.isChecked=false
-                data[position].sun=0
-                monday.isChecked=false
-                data[position].mon=0
-                tuesday.isChecked=false
-                data[position].tue=0
-                wednesday.isChecked=false
-                data[position].wen=0
-                thursday.isChecked=false
-                data[position].th=0
-                friday.isChecked=false
-                data[position].fr=0
-                saturday.isChecked=false
-                data[position].sat=0
+                for(day in week){
+                    day.isChecked=false
+                    data[position].week[week.indexOf(day)]=0
+                }
                 layout.visibility= View.INVISIBLE
             }
             DB_Operation(context).updateAlarm(data[position])
@@ -179,49 +107,30 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
                 data[position].cancelAlarm(context)
                 data[position].repeat = 1
                 layout.visibility = View.VISIBLE
-                sunday.isChecked =true
-                data[position].sun=1
-                monday.isChecked =true
-                data[position].mon=1
-                tuesday.isChecked =true
-                data[position].tue=1
-                wednesday.isChecked =true
-                data[position].wen=1
-                thursday.isChecked =true
-                data[position].th=1
-                friday.isChecked =true
-                data[position].fr=1
-                saturday.isChecked =true
-                data[position].sat=1
+                for(day in week){
+                    day.isChecked=true
+                    data[position].week[week.indexOf(day)]=1
+                }
                 data[position].setRepeatingAlarm(context)
             } else{
                 data[position].cancelAlarm(context)
                 data[position].repeat=0
                 layout.visibility = View.INVISIBLE
-                sunday.isChecked =false
-                data[position].sun=0
-                monday.isChecked =false
-                data[position].mon=0
-                tuesday.isChecked =false
-                data[position].tue=0
-                wednesday.isChecked =false
-                data[position].wen=0
-                thursday.isChecked =false
-                data[position].th=0
-                friday.isChecked =false
-                data[position].fr=0
-                saturday.isChecked =false
-                data[position].sat=0
+                for(day in week){
+                    day.isChecked=false
+                    data[position].week[week.indexOf(day)]=0
+                }
                 data[position].setAlarm(context)
             }
             DB_Operation(context).updateAlarm(data[position])
         }
-        image.setOnClickListener {
+        deleteImage.setOnClickListener {
             data[position].cancelAlarm(context)
             open.remove(data[position].id)
             DB_Operation(context).deleteAlarm(data[position])
+            data.removeAt(position)
             val intent= Intent(context.resources.getString(R.string.action_alarm_delete))
-            intent.putExtra(context.resources.getString(R.string.param_id), position)
+            intent.putExtra(context.resources.getString(R.string.param_id), transtaleLists(data))
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
         }
 
@@ -240,14 +149,23 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
                 open.add(data[position].id)
             }
         }
-        time.setOnClickListener { ClockDialog(context, this@AlarmClockAdapter, position, data[position]).show(context.fragmentManager, "dialog") }
+        time.setOnClickListener {
+            val dialog = ClockDialog()
+            dialog.setListener(this@AlarmClockAdapter)
+            dialog.setAlarm(position, data[position])
+            dialog.show(context.fragmentManager, "dialog")
+        }
 
-        ringtone.setOnClickListener { RingtoneDialog(data[position]).show(context.fragmentManager, "dialog") }
+        ringtone.setOnClickListener {
+            val dialog = RingtoneDialog()
+            dialog.alarm=data[position]
+            dialog.show(context.fragmentManager, "dialog")
+        }
 
         description.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH ||
                     actionId == EditorInfo.IME_ACTION_DONE ||
-                    event != null && event.action === KeyEvent.ACTION_DOWN && event.keyCode === KeyEvent.KEYCODE_ENTER) {
+                    event != null && event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
                 if (event == null || !event.isShiftPressed) {
                     data[position].cancelAlarm(context)
                     data[position].description=description.text.toString().replace("#", "")
@@ -278,15 +196,11 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
         data[position].hour=hour
         data[position].minute=minute
         DB_Operation(context).updateAlarm(data[position])
-        val intent= Intent(context.resources.getString(R.string.action_alarm_update))
-        intent.putExtra(context.resources.getString(R.string.param_alarm), data[position])
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
-        if (data[position].alarm==1) {
-            if (data[position].repeat == 1) {
-                data[position].setRepeatingAlarm(context)
-            } else {
-                data[position].setAlarm(context)
-            }
+        UpdateSender(context).send(R.string.action_alarm_update, R.string.param_alarm, data[position])
+        if (data[position].repeat == 1) {
+            data[position].setRepeatingAlarm(context)
+        } else {
+            data[position].setAlarm(context)
         }
     }
 
@@ -302,15 +216,8 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
         return data.size
     }
 
-    private fun hasRepeat(position:Int):Boolean{
-        return data[position].sun==1 ||
-                data[position].mon==1 ||
-                data[position].tue==1 ||
-                data[position].wen==1 ||
-                data[position].th==1 ||
-                data[position].fr==1 ||
-                data[position].sat==1
-    }
+    private fun hasRepeat(position:Int):Boolean =
+            data[position].week.contains(1)
 
     private fun dayClick(position:Int, checkBox: CheckBox, layout: LinearLayout){
         data[position].setRepeatingAlarm(context)
@@ -340,5 +247,13 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
         }
         res+=minute.toString()
         return res
+    }
+
+    private fun transtaleLists(list:MutableList<AlarmClock>):ArrayList<AlarmClock>{
+        var result= arrayListOf<AlarmClock>()
+        for(item in list){
+            result.add(item)
+        }
+        return result
     }
 }

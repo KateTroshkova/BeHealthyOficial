@@ -2,7 +2,6 @@ package com.be_healthy_license_2014141300.be_healthy.disease
 
 import android.app.Activity
 import android.os.Parcelable
-import com.be_healthy_license_2014141300.be_healthy.R
 
 open class Disease(): Parcelable {
 
@@ -11,7 +10,6 @@ open class Disease(): Parcelable {
     var symptoms = mutableListOf<String>()
     var treatment = mutableListOf<String>()
     var magic = mutableListOf<String>()
-    var contraindications = mutableListOf<String>()
 
     protected constructor(dest: android.os.Parcel) : this() {
         name=dest.readString()
@@ -19,7 +17,6 @@ open class Disease(): Parcelable {
         symptoms=decodeList(dest.readString())
         treatment=decodeList(dest.readString())
         magic=decodeList(dest.readString())
-        contraindications=decodeList(dest.readString())
     }
 
     companion object {
@@ -40,7 +37,6 @@ open class Disease(): Parcelable {
         dest?.writeString(codeList(symptoms))
         dest?.writeString(codeList(treatment))
         dest?.writeString(codeList(magic))
-        dest?.writeString(codeList(contraindications))
     }
 
     override fun describeContents(): Int {

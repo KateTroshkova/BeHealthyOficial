@@ -118,7 +118,7 @@
         </LinearLayout>
 
         <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/deleteImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/delete"/>

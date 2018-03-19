@@ -1,4 +1,4 @@
-package com.be_healthy_license_2014141300.be_healthy.database
+package be_healthy_license_2014141300.be_healthy.database
 
 import android.content.ContentValues
 import android.content.Context
@@ -7,9 +7,14 @@ import android.media.RingtoneManager
 import android.os.AsyncTask
 import android.provider.BaseColumns
 import android.support.v4.content.LocalBroadcastManager
+import be_healthy_license_2014141300.be_healthy.UpdateSender
 import com.be_healthy_license_2014141300.be_healthy.AlarmClock
 import com.be_healthy_license_2014141300.be_healthy.HeartBeat
 import com.be_healthy_license_2014141300.be_healthy.R
+import com.be_healthy_license_2014141300.be_healthy.database.AlarmClockDB_Helper
+import com.be_healthy_license_2014141300.be_healthy.database.DiseaseDB_Helper
+import com.be_healthy_license_2014141300.be_healthy.database.Heartrate_DB_Helper
+import com.be_healthy_license_2014141300.be_healthy.database.SaveSymptomsDB_Helper
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
 
 class DB_Operation(var context: Context) {
@@ -68,24 +73,22 @@ class DB_Operation(var context: Context) {
 
     private inner class ReadSymptomsTask:AsyncTask<Void, Void, Void>(){
         override fun doInBackground(vararg p0: Void?): Void? {
-            val result= arrayListOf<String>()
-            val helper=SaveSymptomsDB_Helper(context)
+            val result = arrayListOf<String>()
+            val helper= SaveSymptomsDB_Helper(context)
             val db=helper.readableDatabase
             val cursor=db.query(helper.TABLE_NAME, null, null, null, null, null, null)
             while(cursor.moveToNext()){
                 result.add(cursor.getString(cursor.getColumnIndex(helper.COLUMN_NAME)))
             }
-            val intent= Intent(context.resources.getString(R.string.action_read_ready))
-            intent.putExtra(context.resources.getString(R.string.param_symptoms_for_search), result)
-            LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
             cursor.close()
+            UpdateSender(context).send(R.string.action_read_ready, R.string.param_symptoms_for_search, result)
             return null
         }
     }
 
     private inner class SaveSymptomTask(var name:String):AsyncTask<Void, Void, Void>(){
         override fun doInBackground(vararg p0: Void?): Void? {
-            val helper=SaveSymptomsDB_Helper(context)
+            val helper= SaveSymptomsDB_Helper(context)
             val db=helper.writableDatabase
             val value=ContentValues()
             value.put(helper.COLUMN_NAME, name)
@@ -96,7 +99,7 @@ class DB_Operation(var context: Context) {
 
     private inner class ClearSymptomsTask:AsyncTask<Void, Void, Void>(){
         override fun doInBackground(vararg p0: Void?): Void? {
-            val helper=SaveSymptomsDB_Helper(context)
+            val helper= SaveSymptomsDB_Helper(context)
             val db=helper.writableDatabase
             db.delete(helper.TABLE_NAME, null, null)
             return null
@@ -125,17 +128,15 @@ class DB_Operation(var context: Context) {
             while(cursor.moveToNext()){
                 result.add(cursor.getString(cursor.getColumnIndex(helper.COLUMN_NAME)))
             }
+            cursor.close()
             if (needSave){
                 if (name !=null && name!! !in result){
                     SaveDiseaseTask(name!!).execute()
                 }
             }
             else {
-                val intent = Intent(context.resources.getString(R.string.action_save))
-                intent.putStringArrayListExtra(context.resources.getString(R.string.param_saved_list), result)
-                LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
+                UpdateSender(context).send(R.string.action_save, R.string.param_saved_list, result)
             }
-            cursor.close()
             return null
         }
     }
@@ -195,13 +196,13 @@ class DB_Operation(var context: Context) {
             value.put(helper.COLUMN_MINUTE, data.minute)
             value.put(helper.COLUMN_ON, data.alarm)
             value.put(helper.COLUMN_REPEAT, data.repeat)
-            value.put(helper.COLUMN_SUN, data.sun)
-            value.put(helper.COLUMN_MON, data.mon)
-            value.put(helper.COLUMN_TUE, data.tue)
-            value.put(helper.COLUMN_WEN, data.wen)
-            value.put(helper.COLUMN_TH, data.th)
-            value.put(helper.COLUMN_FR, data.fr)
-            value.put(helper.COLUMN_SAT, data.sat)
+            value.put(helper.COLUMN_SUN, data.week[0])
+            value.put(helper.COLUMN_MON, data.week[1])
+            value.put(helper.COLUMN_TUE, data.week[2])
+            value.put(helper.COLUMN_WEN, data.week[3])
+            value.put(helper.COLUMN_TH, data.week[4])
+            value.put(helper.COLUMN_FR, data.week[5])
+            value.put(helper.COLUMN_SAT, data.week[6])
             if (data.ringtone?.isEmpty()!! || data.ringtoneName?.isEmpty()!!){
                 val ringtoneData=getDefaultRingtone().split("#")
                 data.ringtone=ringtoneData[0]
@@ -212,9 +213,7 @@ class DB_Operation(var context: Context) {
             value.put(helper.COLUMN_DESCRIPTION, data.description)
             val id=db.insert(helper.TABLE_NAME, null, value)
             data.id=id.toInt()
-            val intent= Intent(context.resources.getString(R.string.action_id_back))
-            intent.putExtra(context.resources.getString(R.string.param_id), data)
-            LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
+            UpdateSender(context).send(R.string.action_id_back, R.string.param_id, data)
             return null
         }
     }
@@ -264,20 +263,20 @@ class DB_Operation(var context: Context) {
 
     private inner class UpdateAlarm(var data:AlarmClock):AsyncTask<Void, Void, Void>(){
         override fun doInBackground(vararg p0: Void?): Void? {
-            val helper=AlarmClockDB_Helper(context)
+            val helper= AlarmClockDB_Helper(context)
             val db=helper.readableDatabase
             val value = ContentValues()
             value.put(helper.COLUMN_HOUR, data.hour)
             value.put(helper.COLUMN_MINUTE, data.minute)
             value.put(helper.COLUMN_ON, data.alarm)
             value.put(helper.COLUMN_REPEAT, data.repeat)
-            value.put(helper.COLUMN_SUN, data.sun)
-            value.put(helper.COLUMN_MON, data.mon)
-            value.put(helper.COLUMN_TUE, data.tue)
-            value.put(helper.COLUMN_WEN, data.wen)
-            value.put(helper.COLUMN_TH, data.th)
-            value.put(helper.COLUMN_FR, data.fr)
-            value.put(helper.COLUMN_SAT, data.sat)
+            value.put(helper.COLUMN_SUN, data.week[0])
+            value.put(helper.COLUMN_MON, data.week[1])
+            value.put(helper.COLUMN_TUE, data.week[2])
+            value.put(helper.COLUMN_WEN, data.week[3])
+            value.put(helper.COLUMN_TH, data.week[4])
+            value.put(helper.COLUMN_FR, data.week[5])
+            value.put(helper.COLUMN_SAT, data.week[6])
             value.put(helper.COLUMN_RINGTONE, data.ringtone)
             value.put(helper.COLUMN_RINGTONE_NAME, data.ringtoneName)
             value.put(helper.COLUMN_DESCRIPTION, data.description)
@@ -288,7 +287,7 @@ class DB_Operation(var context: Context) {
 
     private inner class ClearHistoryTask:AsyncTask<Void, Void, Void>(){
         override fun doInBackground(vararg p0: Void?): Void? {
-            val helper=Heartrate_DB_Helper(context)
+            val helper= Heartrate_DB_Helper(context)
             val db=helper.writableDatabase
             db.delete(helper.TABLE_NAME, null, null)
             return null

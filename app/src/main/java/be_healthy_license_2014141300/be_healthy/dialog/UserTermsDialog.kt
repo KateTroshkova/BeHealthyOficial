@@ -8,11 +8,11 @@ import android.view.LayoutInflater
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
 
-class UserTermsDialog():DialogFragment(){
+class UserTermsDialog:DialogFragment(){
 
     private var data=""
 
-    constructor(data:String):this(){
+    fun setData(data:String){
         this.data=data
     }
 

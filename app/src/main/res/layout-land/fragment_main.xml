@@ -13,31 +13,38 @@
         <ImageView
             android:id="@+id/app_logo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="100"
-            android:layout_gravity="center"/>
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:src="@drawable/ic_launcher_big"
+            android:layout_gravity="top"/>
 
-        <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
-            android:id="@+id/warning_text"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:layout_weight="1"
-            android:textColor="@color/colorBlack"
-            android:text="@string/warning" />
+            android:orientation="vertical"
+            android:layout_gravity="bottom">
+            <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+                android:id="@+id/warning_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center|bottom"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlack"
+                android:text="@string/warning" />
 
-        <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
-            android:id="@+id/law_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:textSize="8sp"
-            android:layout_weight="1"
-            android:textColor="@color/colorBlack"
-            android:text="@string/law" />
+            <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+                android:id="@+id/law_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center|bottom"
+                android:layout_weight="1"
+                android:textSize="8sp"
+                android:textColor="@color/colorBlack"
+                android:text="@string/law" />
+        </LinearLayout>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
