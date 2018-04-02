@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.ListView
+import be_healthy_license_2014141300.be_healthy.disease.Acne
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.adapter.SymptomsAdapter
 import com.be_healthy_license_2014141300.be_healthy.disease.*
@@ -68,7 +69,7 @@ class SearchDialog: DialogFragment(), AdapterView.OnItemClickListener{
                 BadSleep(activity), Obesity(activity), Flatfoot(activity), BrainConcussion(activity), Intoxication(activity),
                 Allergy(activity), Stomatitis(activity), Gastritis(activity), Herpes(activity), Cholecystitis(activity),
                 Laryngitis(activity), Osteoarthritis(activity), Atherosclerosis(activity), Bronchitis(activity), Scurvy(activity),
-                Hives(activity), NailFungus(activity))
+                Hives(activity), NailFungus(activity), Acne(activity))
         allSymptoms.clear()
         for(disease in diseases){
             disease.symptoms

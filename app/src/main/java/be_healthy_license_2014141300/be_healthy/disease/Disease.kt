@@ -2,6 +2,8 @@ package com.be_healthy_license_2014141300.be_healthy.disease
 
 import android.app.Activity
 import android.os.Parcelable
+import be_healthy_license_2014141300.be_healthy.disease.Acne
+import com.be_healthy_license_2014141300.be_healthy.R
 
 open class Disease(): Parcelable {
 
@@ -276,6 +278,9 @@ open class Disease(): Parcelable {
             }
             "ногтевой грибок"->{
                 return NailFungus(activity)
+            }
+            activity.resources.getString(R.string.acne)->{
+                return Acne(activity)
             }
         }
         return Disease()

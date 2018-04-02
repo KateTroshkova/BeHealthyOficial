@@ -17,6 +17,7 @@ import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.activity.OptionActivity
 import com.be_healthy_license_2014141300.be_healthy.adapter.SymptomsAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.disease.Acne
 import com.be_healthy_license_2014141300.be_healthy.disease.*
 import java.util.*
 
@@ -64,7 +65,7 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
                 BadSleep(activity), Obesity(activity), Flatfoot(activity), BrainConcussion(activity), Intoxication(activity),
                 Allergy(activity), Stomatitis(activity), Gastritis(activity), Herpes(activity), Cholecystitis(activity),
                 Laryngitis(activity), Osteoarthritis(activity), Atherosclerosis(activity), Bronchitis(activity), Scurvy(activity),
-                Hives(activity), NailFungus(activity))
+                Hives(activity), NailFungus(activity), Acne(activity))
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, IntentFilter(activity.resources.getString(R.string.action_read_ready)))
         DB_Operation(activity).readSymptoms()
         fuckingEXISTactivity=activity
