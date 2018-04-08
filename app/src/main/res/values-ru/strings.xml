@@ -10,6 +10,9 @@
     <string name="settings">Настройки</string>
     <string name="delete">Удалить</string>
     <string name="accept">Принять</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="deleted">История удалена</string>
 
     <string name="symptoms">Симптомы</string>
     <string name="treatment">Лечение медпрепаратами</string>
@@ -34,6 +37,7 @@
     <string name="clear_history">Удалить историю измерения пульса</string>
     <string name="user_terms">Пользовательское \n соглашение</string>
     <string name="web">Перейти \nна сайт</string>
+    <string name="sure_delete">Вы уверены, что хотите удалить историю измерения пульса?</string>
 
     <string name="shared_info">Ссылка скопирована в буфер обмена</string>
     <string name="no_flash_error">Ваше устройство не поддерживает данную функцию</string>
@@ -94,7 +98,7 @@
         <item>Старайтесь избегать стрессов.</item>
         <item>Хлеб из муки грубого помола полезнее белого.</item>
         <item>Горький шоколад стимулирует работу мозга.</item>
-        <item>Избыточный вес может привести к сердечно-сосудистым заболеваниям.</item>
+        <item>Избыточный вес может привести к серьезным проблемам с здоровьем.</item>
         <item>Не кипятите воду дважды.</item>
         <item>Чистите зубы после каждого приема пищи.</item>
     </string-array>

@@ -48,7 +48,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/slide_margin_right" />
 
-        <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        <TextView
             android:id="@+id/advice_text"
             android:layout_width="wrap_content"
             android:layout_height="80dp"

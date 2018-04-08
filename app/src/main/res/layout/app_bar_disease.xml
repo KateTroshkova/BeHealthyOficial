@@ -32,7 +32,8 @@
                 android:id="@+id/name"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorWhite"
+                android:textSize="17sp"/>
 
         </android.support.v7.widget.Toolbar>
 

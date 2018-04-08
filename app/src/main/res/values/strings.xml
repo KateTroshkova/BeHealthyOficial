@@ -13,6 +13,7 @@
     <string name="param_size">com.be_healthy_license_2014141300.be_healthy.TEXT_SIZE</string>
     <string name="param_age">com.be_healthy_license_2014141300.be_healthy.AGE</string>
     <string name="param_first_time">com.be_healthy_license_2014141300.be_healthy.FIRST</string>
+    <string name="param_from_saved">com.be_healthy_license_2014141300.be_healthy.FROM_SAVED</string>
     <string name="preferences">com.be_healthy_license_2014141300.be_healthy.PREFERENCES</string>
 
     <string name="action_read_ready">com.be_healthy_license_2014141300.be_healthy.READ_READY</string>

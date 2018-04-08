@@ -17,6 +17,7 @@ import java.io.IOException
 import java.io.InputStreamReader
 import android.content.Intent
 import android.net.Uri
+import be_healthy_license_2014141300.be_healthy.dialog.DeleteDialog
 
 
 class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
@@ -62,7 +63,7 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
             }
             false
         })
-        (content.findViewById(R.id.fab)).setOnClickListener { DB_Operation(activity).clearHistory() }
+        (content.findViewById(R.id.fab)).setOnClickListener { DeleteDialog().show(activity.fragmentManager, "") }
         (content.findViewById(R.id.userterms)).setOnClickListener {UserTermsTask().execute()}
         (content.findViewById(R.id.web).setOnClickListener {
             val url = "https://dshv12bh3.wixsite.com/behealthy"

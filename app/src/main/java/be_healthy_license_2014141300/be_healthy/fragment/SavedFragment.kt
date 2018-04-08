@@ -73,6 +73,7 @@ class SavedFragment : Fragment(), ListHelper.OnSwipeListener {
             override fun onClick(view: View, position: Int) {
                 val intent= Intent(activity, DiseaseActivity::class.java)
                 intent.putExtra(activity.resources.getString(R.string.param_disease), adapter.getItem(position))
+                intent.putExtra(activity.resources.getString(R.string.param_from_saved), true)
                 startActivity(intent)
             }
 

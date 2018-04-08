@@ -13,7 +13,7 @@ class SymptomsAdapter(var context: Context, var data:MutableList<String>): BaseA
     override fun getView(position: Int, view: View?, parents: ViewGroup?): View {
         val inflater= LayoutInflater.from(context)
         val view=inflater.inflate(R.layout.item_symptom, null)
-        (view.findViewById(R.id.name) as TextView).text=data[position]
+        (view.findViewById(R.id.name) as TextView).text="  "+data[position]+"  "
         return view
     }
 

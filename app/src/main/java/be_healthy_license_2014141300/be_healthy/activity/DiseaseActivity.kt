@@ -35,6 +35,11 @@ class DiseaseActivity : NavigationActivity() {
         if (intent.hasExtra(resources.getString(R.string.param_disease))) {
             disease = intent.getParcelableExtra<Disease>(resources.getString(R.string.param_disease)) as Disease
         }
+        if (intent.hasExtra(resources.getString(R.string.param_from_saved))) {
+            if (intent.getBooleanExtra(resources.getString(R.string.param_from_saved), false)) {
+                (findViewById(R.id.fab)).visibility=View.INVISIBLE
+            }
+        }
         val name=findViewById(R.id.name) as TextView
         name.text=disease?.name
         name.setTextSize(TypedValue.COMPLEX_UNIT_PX, name.textSize*(application as CustomApplication).size_coef)
