@@ -3,15 +3,17 @@ package be_healthy_license_2014141300.be_healthy.dialog
 import android.app.AlertDialog
 import android.app.Dialog
 import android.app.DialogFragment
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.ListView
-import be_healthy_license_2014141300.be_healthy.disease.Acne
+import be_healthy_license_2014141300.be_healthy.disease.*
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.adapter.SymptomsAdapter
 import com.be_healthy_license_2014141300.be_healthy.disease.*
@@ -69,7 +71,9 @@ class SearchDialog: DialogFragment(), AdapterView.OnItemClickListener{
                 BadSleep(activity), Obesity(activity), Flatfoot(activity), BrainConcussion(activity), Intoxication(activity),
                 Allergy(activity), Stomatitis(activity), Gastritis(activity), Herpes(activity), Cholecystitis(activity),
                 Laryngitis(activity), Osteoarthritis(activity), Atherosclerosis(activity), Bronchitis(activity), Scurvy(activity),
-                Hives(activity), NailFungus(activity), Acne(activity))
+                Hives(activity), NailFungus(activity), Acne(activity), Gumboil(activity), Osteochondrosis(activity), Migraine(activity),
+                Stenocardia(activity), Conjunctivitis(activity), Eczema(activity), Lichen(activity), Mononucleosis(activity), Streptococcus(activity),
+                Glaucoma(activity), Depression(activity))
         allSymptoms.clear()
         for(disease in diseases){
             disease.symptoms
@@ -85,7 +89,15 @@ class SearchDialog: DialogFragment(), AdapterView.OnItemClickListener{
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
         listener?.onChooseDisease(currentSymptoms[position])
+        if (p1 != null) {
+            hideKeyboard(p1)
+        }
         dismiss()
+    }
+
+    private fun hideKeyboard(view:View){
+        val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private var watcher = object: TextWatcher {

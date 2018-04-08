@@ -3,14 +3,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginRight="@dimen/activity_horizontal_margin"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:background="@drawable/background">
+    android:layout_marginLeft="@dimen/activity_horizontal_margin">
 
     <RelativeLayout
         android:id="@+id/view_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAccent">
+        android:background="@drawable/yellow_background">
 
         <ImageView
             android:id="@+id/delete_icon"
@@ -37,7 +36,7 @@
         android:id="@+id/view_foreground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/separeted_background"
+        android:background="@drawable/saved_background"
         android:padding="@dimen/slide_margin_right">
 
         <ImageView

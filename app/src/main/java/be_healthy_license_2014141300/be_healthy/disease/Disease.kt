@@ -2,7 +2,7 @@ package com.be_healthy_license_2014141300.be_healthy.disease
 
 import android.app.Activity
 import android.os.Parcelable
-import be_healthy_license_2014141300.be_healthy.disease.Acne
+import be_healthy_license_2014141300.be_healthy.disease.*
 import com.be_healthy_license_2014141300.be_healthy.R
 
 open class Disease(): Parcelable {
@@ -63,224 +63,149 @@ open class Disease(): Parcelable {
 
     fun findDiseaseByName(activity: Activity, name:String): Disease {
         when(name){
-            "ангина"->{
+            activity.resources.getString(R.string.angina)->{
                 return Angina(activity)
             }
-            "angina"->{
-                return Angina(activity)
-            }
-            "орз"->{
+            activity.resources.getString(R.string.ard)->{
                 return ARD(activity)
             }
-            "ard"->{
-                return ARD(activity)
-            }
-            "аритмия"->{
+            activity.resources.getString(R.string.arrhythmia)->{
                 return Arrhythmia(activity)
             }
-            "arrhythmia"->{
-                return Arrhythmia(activity)
-            }
-            "орви"->{
+            activity.resources.getString(R.string.arvi)->{
                 return ARVI(activity)
             }
-            "arvi"->{
-                return ARVI(activity)
-            }
-            "астма"->{
+            activity.resources.getString(R.string.asthma)->{
                 return Asthma(activity)
             }
-            "asthma"->{
-                return Asthma(activity)
-            }
-            "кариес"->{
+            activity.resources.getString(R.string.caries)->{
                 return Caries(activity)
             }
-            "caries"->{
-                return Caries(activity)
-            }
-            "катаракта"->{
+            activity.resources.getString(R.string.cataract)->{
                 return Cataract(activity)
             }
-            "cataract"->{
-                return Cataract(activity)
-            }
-            "синдром сухого глаза"->{
+            activity.resources.getString(R.string.dry_eye_syndrome)->{
                 return DryEyeSyndrome(activity)
             }
-            "dry eye syndrome"->{
-                return DryEyeSyndrome(activity)
-            }
-            "грипп"->{
+            activity.resources.getString(R.string.flu)->{
                 return Flu(activity)
             }
-            "flu"->{
-                return Flu(activity)
-            }
-            "фронтит"->{
+            activity.resources.getString(R.string.frontite)->{
                 return Frontite(activity)
             }
-            "frontite"->{
-                return Frontite(activity)
-            }
-            "гипертония"->{
+            activity.resources.getString(R.string.hypertension)->{
                 return Hypertension(activity)
             }
-            "hypertension"->{
-                return Hypertension(activity)
-            }
-            "корь"->{
+            activity.resources.getString(R.string.measles)->{
                 return Measles(activity)
             }
-            "measles"->{
-                return Measles(activity)
-            }
-            "миопия"->{
+            activity.resources.getString(R.string.myopia)->{
                 return Myopia(activity)
             }
-            "myopia"->{
-                return Myopia(activity)
-            }
-            "миокардит"->{
+            activity.resources.getString(R.string.myocarditis)->{
                 return Myocarditis(activity)
             }
-            "myocarditis"->{
-                return Myocarditis(activity)
-            }
-            "отит"->{
+            activity.resources.getString(R.string.otitis)->{
                 return Otitis(activity)
             }
-            "otitis"->{
-                return Otitis(activity)
-            }
-            "отосклероз"->{
+            activity.resources.getString(R.string.otosclerosis)->{
                 return Otosclerosis(activity)
             }
-            "otosclerosis"->{
-                return Otosclerosis(activity)
-            }
-            "фарингит"->{
+            activity.resources.getString(R.string.pharyngitis)->{
                 return Pharyngitis(activity)
             }
-            "pharyngitis"->{
-                return Pharyngitis(activity)
-            }
-            "тонзиллит"->{
+            activity.resources.getString(R.string.tonsillitis)->{
                 return Tonsillitis(activity)
             }
-            "tonsillitis"->{
-                return Tonsillitis(activity)
-            }
-            "растяжение связок"->{
+            activity.resources.getString(R.string.sprain)->{
                 return Sprain(activity)
             }
-            "sprain"->{
-                return Sprain(activity)
-            }
-            "нарушения сна"->{
+            activity.resources.getString(R.string.sleep_disorders)->{
                 return BadSleep(activity)
             }
-            "sleep disorders"->{
-                return BadSleep(activity)
-            }
-            "obesity"->{
+            activity.resources.getString(R.string.obesity)->{
                 return Obesity(activity)
             }
-            "ожирение"->{
-                return Obesity(activity)
-            }
-            "flatfoot"->{
+            activity.resources.getString(R.string.flatfoot)->{
                 return Flatfoot(activity)
             }
-            "плоскостопие"->{
-                return Flatfoot(activity)
-            }
-            "brain concussion"->{
+            activity.resources.getString(R.string.brain_concussion)->{
                 return BrainConcussion(activity)
             }
-            "сотрясение мозга"->{
-                return BrainConcussion(activity)
-            }
-            "отравление"->{
+            activity.resources.getString(R.string.intoxication)->{
                 return Intoxication(activity)
             }
-            "intoxication"->{
-                return Intoxication(activity)
-            }
-            "аллергия"->{
+            activity.resources.getString(R.string.allergy)->{
                 return Allergy(activity)
             }
-            "allergy"->{
-                return Allergy(activity)
-            }
-            "стоматит"->{
+            activity.resources.getString(R.string.stomatitis)->{
                 return Stomatitis(activity)
             }
-            "stomatitis"->{
-                return Stomatitis(activity)
-            }
-            "gastritis"->{
+            activity.resources.getString(R.string.gastritis)->{
                 return Gastritis(activity)
             }
-            "гастрит"->{
-                return Gastritis(activity)
-            }
-            "herpes"->{
+            activity.resources.getString(R.string.herpes)->{
                 return Herpes(activity)
             }
-            "герпес"->{
-                return Herpes(activity)
-            }
-            "cholecystitis"->{
+            activity.resources.getString(R.string.cholecystitis)->{
                 return Cholecystitis(activity)
             }
-            "холецистит"->{
-                return Cholecystitis(activity)
-            }
-            "laryngitis"->{
+            activity.resources.getString(R.string.laryngitis)->{
                 return Laryngitis(activity)
             }
-            "ларингит"->{
-                return Laryngitis(activity)
-            }
-            "osteoarthritis"->{
+            activity.resources.getString(R.string.osteoarthritis)->{
                 return Osteoarthritis(activity)
             }
-            "остеоартроз"->{
-                return Osteoarthritis(activity)
-            }
-            "atherosclerosis"->{
+            activity.resources.getString(R.string.atherosclerosis)->{
                 return Atherosclerosis(activity)
             }
-            "атеросклероз"->{
-                return Atherosclerosis(activity)
-            }
-            "bronchitis"->{
+            activity.resources.getString(R.string.bronchitis)->{
                 return Bronchitis(activity)
             }
-            "бронхит"->{
-                return Bronchitis(activity)
-            }
-            "scurvy"->{
+            activity.resources.getString(R.string.scurvy)->{
                 return Scurvy(activity)
             }
-            "цинга"->{
-                return Scurvy(activity)
-            }
-            "hives"->{
+            activity.resources.getString(R.string.hives)->{
                 return Hives(activity)
             }
-            "крапивница"->{
-                return Hives(activity)
-            }
-            "nail fungus"->{
-                return NailFungus(activity)
-            }
-            "ногтевой грибок"->{
+            activity.resources.getString(R.string.nail_fungus)->{
                 return NailFungus(activity)
             }
             activity.resources.getString(R.string.acne)->{
                 return Acne(activity)
+            }
+            activity.resources.getString(R.string.gumboil)->{
+                return Gumboil(activity)
+            }
+            activity.resources.getString(R.string.osteochondrosis)->{
+                return Osteochondrosis(activity)
+            }
+            activity.resources.getString(R.string.migraine)->{
+                return Migraine(activity)
+            }
+            activity.resources.getString(R.string.stenocardia)->{
+                return Stenocardia(activity)
+            }
+            activity.resources.getString(R.string.conjunctivitis)->{
+                return Conjunctivitis(activity)
+            }
+            activity.resources.getString(R.string.eczema)->{
+                return Eczema(activity)
+            }
+            activity.resources.getString(R.string.lichen)->{
+                return Lichen(activity)
+            }
+            activity.resources.getString(R.string.mononucleosis)->{
+                return Mononucleosis(activity)
+            }
+            activity.resources.getString(R.string.streptococcus)->{
+                return Streptococcus(activity)
+            }
+            activity.resources.getString(R.string.glaucoma)->{
+                return Glaucoma(activity)
+            }
+            activity.resources.getString(R.string.depression)->{
+                return Depression(activity)
             }
         }
         return Disease()

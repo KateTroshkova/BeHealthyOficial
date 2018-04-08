@@ -12,19 +12,10 @@
         android:gravity="center"/>
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
-        android:id="@+id/symptoms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/symptoms"
-        android:gravity="center"
-        android:textColor="@color/colorBlack"
-        android:background="@color/colorPrimary"/>
-
-    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/symptoms_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorGray"
+        android:textColor="@color/colorGrayDark"
         android:gravity="center"/>
 
     <LinearLayout

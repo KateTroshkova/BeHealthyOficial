@@ -14,6 +14,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
+import android.support.v7.widget.Toolbar
 import android.widget.Toast
 import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
 import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
@@ -37,7 +38,6 @@ class MainActivity : NavigationActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportLanguage()
         setContentView(R.layout.activity_main)
         setUpToolBar()
         navigationView = findViewById(R.id.nav_view) as NavigationView
@@ -87,7 +87,6 @@ class MainActivity : NavigationActivity() {
             }
             R.id.heart -> {
                 checkCameraPermission()
-                setBackground(HEART)
             }
             R.id.eye -> {
                 setFragment(fragments[EYE])
@@ -124,6 +123,9 @@ class MainActivity : NavigationActivity() {
         }
         else{
             setFragment(fragments[HEART])
+            setBackground(HEART)
+            val toolBar=findViewById(R.id.toolbar) as Toolbar
+            toolBar.title=fragmentNames[HEART]
         }
     }
 
@@ -132,6 +134,9 @@ class MainActivity : NavigationActivity() {
             CAMERA_PERMISSION -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     setFragment(fragments[HEART])
+                    setBackground(HEART)
+                    val toolBar=findViewById(R.id.toolbar) as Toolbar
+                    toolBar.title=fragmentNames[HEART]
                 }
             }
             else->{
@@ -148,6 +153,8 @@ class MainActivity : NavigationActivity() {
             }
             navigationView.menu.getItem(checked).isChecked = true
         }
+        val toolBar=findViewById(R.id.toolbar) as Toolbar
+        toolBar.title=fragmentNames[checked]
     }
 
     private fun setFragment(fragment: Fragment?){
@@ -156,21 +163,6 @@ class MainActivity : NavigationActivity() {
             fragmentTransaction.replace(R.id.content, fragment)
             fragmentTransaction.commit()
         }
-    }
-
-    private fun supportLanguage(){
-        val preferences=getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
-        val languageToLoad = preferences.getString(resources.getString(R.string.param_language), "ru")
-        val locale = Locale(languageToLoad)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            config.locale = locale
-        }
-        else {
-            config.setLocale(locale)
-        }
-        resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 
     private class UserTermsTask(var activity:Activity): AsyncTask<Void, Void, String>() {

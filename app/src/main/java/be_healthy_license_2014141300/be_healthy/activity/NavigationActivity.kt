@@ -29,6 +29,8 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
     protected val ALARM=5
     protected val SETTINGS=6
 
+    protected val fragmentNames= listOf<String>("Главная страница", "Поиск симптомов", "Измерить пульс", "Тренировка для глаз", "Сохраненные", "Будильник", "Настройки" )
+
     protected val CAMERA_PERMISSION=0
 
     override fun onBackPressed() {

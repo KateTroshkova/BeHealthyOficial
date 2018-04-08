@@ -17,7 +17,7 @@ import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.activity.OptionActivity
 import com.be_healthy_license_2014141300.be_healthy.adapter.SymptomsAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
-import be_healthy_license_2014141300.be_healthy.disease.Acne
+import be_healthy_license_2014141300.be_healthy.disease.*
 import com.be_healthy_license_2014141300.be_healthy.disease.*
 import java.util.*
 
@@ -28,6 +28,7 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
     private lateinit var symptomsAdapter: SymptomsAdapter
     private lateinit var chosenSymptomsList:ListView
     private lateinit var instruction:TextView
+    private lateinit var button:Button
 
     //активность без предупреждения обращается в null при смене ориентации
     //все адекватные контексты дают неадекватный результат
@@ -41,6 +42,11 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
                 chosenSymptomsList.adapter = symptomsAdapter
                 if (symptomsForSearch.size>0){
                     instruction.text=""
+                    button.isClickable=true
+                    if (fuckingEXISTactivity!=null) {
+                        button.setBackgroundColor(fuckingEXISTactivity!!.resources?.getColor(R.color.colorAccent)!!)
+                        button.visibility=View.VISIBLE
+                    }
                 }
             }
         }
@@ -52,6 +58,11 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
             DB_Operation(this.fuckingEXISTactivity!!).saveSymptom(value)
             symptomsAdapter.notifyDataSetChanged()
             instruction.text=""
+            button.isClickable=true
+            if (fuckingEXISTactivity!=null) {
+                button.setBackgroundColor(fuckingEXISTactivity!!.resources?.getColor(R.color.colorAccent)!!)
+                button.visibility=View.VISIBLE
+            }
         }
     }
 
@@ -65,7 +76,9 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
                 BadSleep(activity), Obesity(activity), Flatfoot(activity), BrainConcussion(activity), Intoxication(activity),
                 Allergy(activity), Stomatitis(activity), Gastritis(activity), Herpes(activity), Cholecystitis(activity),
                 Laryngitis(activity), Osteoarthritis(activity), Atherosclerosis(activity), Bronchitis(activity), Scurvy(activity),
-                Hives(activity), NailFungus(activity), Acne(activity))
+                Hives(activity), NailFungus(activity), Acne(activity), Gumboil(activity), Osteochondrosis(activity), Migraine(activity),
+                Stenocardia(activity), Conjunctivitis(activity), Eczema(activity), Lichen(activity), Mononucleosis(activity), Streptococcus(activity),
+                Glaucoma(activity), Depression(activity))
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, IntentFilter(activity.resources.getString(R.string.action_read_ready)))
         DB_Operation(activity).readSymptoms()
         fuckingEXISTactivity=activity
@@ -73,9 +86,12 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
         chosenSymptomsList=content.findViewById(R.id.list_for_search) as ListView
         instruction=content.findViewById(R.id.instruction) as TextView
 
-        val button=content.findViewById(R.id.search) as Button
+        button=content.findViewById(R.id.search) as Button
         button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(activity.application as CustomApplication).size_coef*0.6f)
         button.setOnClickListener(this)
+        button.isClickable=false
+        button.setBackgroundColor(activity.resources.getColor(R.color.colorGray))
+        button.visibility=View.INVISIBLE
 
         (content.findViewById(R.id.add_button)).setOnClickListener(this)
         return content
@@ -91,6 +107,9 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
                 startActivity(intent)
                 symptomsForSearch.clear()
                 symptomsAdapter.notifyDataSetChanged()
+                button.isClickable=false
+                button.setBackgroundColor(activity.resources.getColor(R.color.colorGray))
+                button.visibility=View.INVISIBLE
             }
             if (p0.id==R.id.add_button){
                 val dialog=SearchDialog()

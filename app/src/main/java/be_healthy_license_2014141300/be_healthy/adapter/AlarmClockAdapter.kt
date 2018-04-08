@@ -47,7 +47,9 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
         val ringtone=view.findViewById(R.id.ringtone_text) as TextView
         val description=view.findViewById(R.id.description) as EditText
         val anotherInfo=view.findViewById(R.id.another_info) as TextView
-        description.setText(data[position].description)
+        if (data[position].description!=" ") {
+            description.setText(data[position].description)
+        }
         ringtone.text=context.resources.getString(R.string.ringtone)+data[position].ringtoneName
         anotherInfo.text=data[position].description
         switchView.isChecked =data[position].alarm==1

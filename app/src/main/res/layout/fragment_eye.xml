@@ -35,14 +35,42 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
 
-    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
-        android:id="@+id/instruction"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/start"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+                android:id="@+id/instruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:gravity="center"
+                android:textColor="@color/colorBlack" />
+        </LinearLayout>
+    </ScrollView>
+
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        android:id="@+id/timer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:gravity="center"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/timer_background"
         android:textColor="@color/colorBlack"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/start" />
 
 </RelativeLayout>
 

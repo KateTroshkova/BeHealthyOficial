@@ -16,7 +16,7 @@ class Asthma(): Disease() {
                 res.getString(R.string.wheezing_when_breathing),
                 res.getString(R.string.common_ailment),
                 res.getString(R.string.palpitation),
-                res.getString(R.string.allergy),
+                res.getString(R.string.allergy_s),
                 res.getString(R.string.headache),
                 res.getString(R.string.dizziness))
         fillList(activity, treatment, R.array.asthma_treatment)

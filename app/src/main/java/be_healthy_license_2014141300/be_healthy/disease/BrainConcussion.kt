@@ -15,7 +15,7 @@ class BrainConcussion():Disease() {
                 res.getString(R.string.common_ailment),
                 res.getString(R.string.noise_in_ears),
                 res.getString(R.string.sweating),
-                res.getString(R.string.sleep_disorders))
+                res.getString(R.string.sleep_disorders_s))
         fillList(activity, treatment, R.array.brain_treatment)
         fillList(activity, magic, R.array.brain_magic)
     }

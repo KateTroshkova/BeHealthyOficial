@@ -44,6 +44,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorBlack"
-        app:backgroundTint="@color/colorAccent"/>
+        android:background="@color/colorAccent"/>
 
 </RelativeLayout>

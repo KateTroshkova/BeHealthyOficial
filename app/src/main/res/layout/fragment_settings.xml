@@ -6,29 +6,6 @@
     android:background="@color/colorWhite">
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
-        android:id="@+id/language_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorBlack"
-        android:text="@string/language"
-        android:gravity="center"/>
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:id="@+id/russian_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/russian"/>
-        <RadioButton
-            android:id="@+id/english_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/english"/>
-    </RadioGroup>
-
-    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/size_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,23 +43,36 @@
         android:textColor="@color/colorBlack"
         app:backgroundTint="@color/colorAccent"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_gravity="bottom">
 
         <android.support.v7.widget.AppCompatButton
+            android:id="@+id/web"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="@string/web"
+            android:textColor="@color/colorBlack"
+            app:backgroundTint="@color/colorAccent" />
+
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/userterms"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:layout_weight="1"
             android:text="@string/user_terms"
             android:textColor="@color/colorBlack"
             app:backgroundTint="@color/colorAccent" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 </LinearLayout>
