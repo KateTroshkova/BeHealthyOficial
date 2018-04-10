@@ -79,14 +79,14 @@ class AnimationPathView : View {
     private fun drawRightCircle(width:Float, height:Float){
         path.lineTo(50f, 50f)
         path.lineTo(width - 50f, 50f)
-        path.lineTo(width - 50f, height-50)
-        path.lineTo(50f, height-50)
+        path.lineTo(width - 50f, height-250)
+        path.lineTo(50f, height-250)
         path.lineTo(50f, height/2)
     }
 
     private fun drawLeftCircle(width:Float, height:Float){
-        path.lineTo(50f, height-50)
-        path.lineTo(width - 50f, height-50)
+        path.lineTo(50f, height-250)
+        path.lineTo(width - 50f, height-250)
         path.lineTo(width - 50f, 50f)
         path.lineTo(50f, 50f)
         path.lineTo(50f, height/2)
@@ -98,7 +98,7 @@ class AnimationPathView : View {
     }
 
     private fun drawVerticalLine(width:Float, height:Float){
-        path.lineTo(width/2, height-50)
+        path.lineTo(width/2, height-250)
         path.lineTo(width/2, 50f)
     }
 
@@ -109,22 +109,22 @@ class AnimationPathView : View {
     private fun horizontalInfinity(width:Float, height:Float){
         path.lineTo(width/2, height/2)
         path.lineTo(3*width/4, height/4)
-        path.lineTo(width, height/2)
+        path.lineTo(width-50, height/2)
         path.lineTo(3*width/4, 3*height/4)
         path.lineTo(width/2, height/2)
         path.lineTo(width/4, height/4)
-        path.lineTo(0f, height/2)
+        path.lineTo(50f, height/2)
         path.lineTo(width/4, 3*height/4)
     }
 
     private fun verticalInfinity(width:Float, height:Float){
         path.lineTo(width/2, height/2)
         path.lineTo(3*width/4, height/4)
-        path.lineTo(width/2, 0f)
+        path.lineTo(width/2, 50f)
         path.lineTo(width/4, height/4)
         path.lineTo(width/2, height/2)
         path.lineTo(3*width/4, 3*height/4)
-        path.lineTo(width/2, height)
+        path.lineTo(width/2, height-250)
         path.lineTo(width/4, 3*height/4)
     }
 

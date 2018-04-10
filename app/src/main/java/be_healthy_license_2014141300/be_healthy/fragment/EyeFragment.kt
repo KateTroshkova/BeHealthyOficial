@@ -31,64 +31,59 @@ class EyeFragment : Fragment(), View.OnClickListener {
     private lateinit var info: TextView
     private lateinit var timerText:TextView
 
-    private var time:Long=30000
-    private lateinit var timeInfo:Timer
+    private var time:Long=20000
+    private var timeInfo:Timer?=null
+    private var timer:Timer?=null
     private lateinit var handler: Handler
 
-    private val ACTION_SHOW_CIRCLE=0
-    private val ACTION_HIDE_CIRCLE=1
-    private val ACTION_SHOW_PATH=4
-    private val ACTION_HIDE_PATH=5
-    private val ACTION_INSTRUCTION_2=6
-    private val ACTION_INSTRUCTION_3=7
-    private val ACTION_INSTRUCTION_4=8
+    private val ACTION_INSTRUCTION_2=0
+    private val ACTION_INSTRUCTION_3=1
+    private val ACTION_INSTRUCTION_4=2
 
-    private val ACTION_UPDATE_TIME=9
+    private val ACTION_UPDATE_TIME=3
 
-    private var currentTime=30
+    private var currentTime=time/1000
 
     private lateinit var existActivity: Activity
 
     private var receiver=object: BroadcastReceiver() {
         override fun onReceive(p0: Context?, p1: Intent?) {
-            handler.sendEmptyMessage(ACTION_HIDE_PATH)
+            reset()
             info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[5]
             finishButton.visibility = View.VISIBLE
+            startButton.visibility=View.INVISIBLE
         }
     }
 
     private var callback= Handler.Callback { p0 ->
         when(p0?.what){
-            ACTION_SHOW_CIRCLE->{
-                circle.visibility = View.VISIBLE
-            }
-            ACTION_HIDE_CIRCLE->{
-                circle.visibility = View.INVISIBLE
-            }
-            ACTION_SHOW_PATH->{
-                timeInfo.cancel()
-                timerText.text=""
-                path.visibility = View.VISIBLE
-            }
-            ACTION_HIDE_PATH->{
-                path.visibility = View.INVISIBLE
-            }
             ACTION_INSTRUCTION_2->{
+                reset()
                 info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[2]
-                currentTime=30
+                circle.visibility = View.VISIBLE
+                timerText.visibility=View.VISIBLE
+                startButton.visibility=View.INVISIBLE
+                timeInfo = Timer()
+                timeInfo?.schedule(UpdateTimeTask(), 0, 1000)
             }
             ACTION_INSTRUCTION_3->{
+                reset()
                 info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[3]
-                currentTime=30
+                circle.visibility = View.VISIBLE
+                timerText.visibility=View.VISIBLE
+                startButton.visibility=View.INVISIBLE
+                timeInfo = Timer()
+                timeInfo?.schedule(UpdateTimeTask(), 0, 1000)
             }
             ACTION_INSTRUCTION_4->{
+                reset()
                 info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[4]
-                currentTime=30
+                path.visibility = View.VISIBLE
+                startButton.visibility=View.INVISIBLE
             }
             ACTION_UPDATE_TIME->{
                 if(currentTime>=0) {
                     timerText.text = currentTime.toString()
-                    //Log.e("LOG", currentTime.toString())
                     currentTime--
                 }
                 else{
@@ -105,24 +100,18 @@ class EyeFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_eye, container, false)
-
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, IntentFilter(activity.resources.getString(R.string.action_finish)))
-
         existActivity=activity
         startButton=view.findViewById(R.id.start) as FloatingActionButton
         startButton.setOnClickListener(this)
         finishButton=view.findViewById(R.id.finish) as FloatingActionButton
         finishButton.setOnClickListener(this)
-        finishButton.visibility = View.INVISIBLE
         circle=view.findViewById(R.id.circle) as Circle
-        circle.visibility = View.INVISIBLE
         path=view.findViewById(R.id.moveView) as AnimationPathView
-        path.visibility = View.INVISIBLE
         handler = Handler(callback)
         timerText=view.findViewById(R.id.timer) as CustomSizeTextView
-        timerText.visibility=View.INVISIBLE
         info=view.findViewById(R.id.instruction) as TextView
-        info.text=activity.resources.getStringArray(R.array.eye_training_instruction)[0]
+        reset()
         return view
     }
 
@@ -134,26 +123,54 @@ class EyeFragment : Fragment(), View.OnClickListener {
                 timerText.visibility=View.VISIBLE
             }
             R.id.finish->{
-                info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[0]
-                startButton.visibility = View.VISIBLE
-                finishButton.visibility = View.INVISIBLE
+                reset()
             }
         }
     }
 
+    private fun reset(){
+        try {
+            if (timeInfo != null) {
+                timeInfo!!.cancel()
+            }
+            timerText.text = ""
+            currentTime = time/1000
+            timerText.visibility = View.INVISIBLE
+            finishButton.visibility = View.INVISIBLE
+            circle.visibility = View.INVISIBLE
+            path.visibility = View.INVISIBLE
+            startButton.visibility = View.VISIBLE
+            try {
+                info.text = activity.resources.getStringArray(R.array.eye_training_instruction)[0]
+            }
+            catch(e:NullPointerException){
+                //activity died
+            }
+        }
+        catch(e:UninitializedPropertyAccessException){
+            //it's ok
+        }
+    }
+
+    fun stop(){
+        if (timer!=null){
+            timer!!.cancel()
+        }
+        reset()
+    }
+
     private fun start(){
         info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[1]
-        var timer = Timer()
-        timer.schedule(LookAtWindowTask(), time)
-        timer.schedule(FarCloseTask(), 2*time)
-        timer.schedule(MoveTask(), 3*time)
+        timer = Timer()
+        timer!!.schedule(LookAtWindowTask(), time)
+        timer!!.schedule(FarCloseTask(), 2*time)
+        timer!!.schedule(MoveTask(), 3*time)
         timeInfo = Timer()
-        timeInfo.schedule(UpdateTimeTask(), 0, 1000)
+        timeInfo?.schedule(UpdateTimeTask(), 0, 1000)
     }
 
     private inner class LookAtWindowTask: TimerTask(){
         override fun run() {
-            handler.sendEmptyMessage(ACTION_SHOW_CIRCLE)
             handler.sendEmptyMessage(ACTION_INSTRUCTION_2)
         }
     }
@@ -166,8 +183,6 @@ class EyeFragment : Fragment(), View.OnClickListener {
 
     private inner class MoveTask: TimerTask(){
         override fun run() {
-            handler.sendEmptyMessage(ACTION_HIDE_CIRCLE)
-            handler.sendEmptyMessage(ACTION_SHOW_PATH)
             handler.sendEmptyMessage(ACTION_INSTRUCTION_4)
         }
     }
