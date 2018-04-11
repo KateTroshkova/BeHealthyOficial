@@ -1,6 +1,7 @@
 package com.be_healthy_license_2014141300.be_healthy.fragment
 
 import android.app.Activity
+import android.app.DialogFragment
 import android.app.Fragment
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -26,13 +27,14 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
     private var alarms= arrayListOf<AlarmClock>()
     private lateinit var list: ListView
     private lateinit var adapter: AlarmClockAdapter
-    private lateinit var existActivity:Activity
+    private var existActivity:Activity?=null
+    private var dialog:ClockDialog?=null
 
     private var receiver=object: BroadcastReceiver() {
 
         override fun onReceive(p0: Context?, p1: Intent?) {
             alarms = p1?.getParcelableArrayListExtra<AlarmClock>(p0?.resources?.getString(R.string.param_alarm))!!
-            adapter = AlarmClockAdapter(existActivity, alarms)
+            adapter = AlarmClockAdapter(existActivity!!, alarms)
             list.adapter=adapter
         }
     }
@@ -42,18 +44,22 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
         override fun onReceive(p0: Context?, p1: Intent?) {
             val alarm=p1?.getParcelableExtra<AlarmClock>(p0?.resources?.getString(R.string.param_id))
             if (alarm != null) {
-                alarms.add(alarm)
-                alarm.setAlarm(existActivity)
+                if (alarm !in alarms) {
+                    alarms.add(alarm)
+                    alarm.setAlarm(existActivity!!)
+                }
             }
-            adapter.notifyDataSetChanged()
+            adapter = AlarmClockAdapter(existActivity!!, alarms)
+            list.adapter=adapter
         }
     }
 
     private var deleteReceiver=object: BroadcastReceiver() {
 
         override fun onReceive(p0: Context?, p1: Intent?) {
-            alarms= p1?.getParcelableArrayListExtra(existActivity.resources.getString(R.string.param_id))!!
-            adapter.notifyDataSetChanged()
+            alarms= p1?.getParcelableArrayListExtra(existActivity!!.resources.getString(R.string.param_id))!!
+            adapter = AlarmClockAdapter(existActivity!!, alarms)
+            list.adapter=adapter
         }
     }
 
@@ -66,13 +72,14 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
                     alarms.add(i, newAlarm)
                 }
             }
-            adapter.notifyDataSetChanged()
+            adapter = AlarmClockAdapter(existActivity!!, alarms)
+            list.adapter=adapter
         }
 
     }
 
     override fun OnNewAlarmClock(hour: Int, minute: Int, position:Int) {
-        DB_Operation(existActivity).saveAlarm(AlarmClock(hour, minute))
+        DB_Operation(existActivity!!).saveAlarm(AlarmClock(hour, minute))
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -92,9 +99,18 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
     }
 
     override fun onClick(p0: View?) {
-        val dialog =ClockDialog()
-        dialog.setListener(this)
-        dialog.show(existActivity.fragmentManager, "clock")
+        dialog = ClockDialog()
+        dialog!!.setListener(this)
+        dialog!!.show(existActivity!!.fragmentManager, "clock")
+    }
+
+    fun stop(){
+        if (existActivity!=null) {
+            LocalBroadcastManager.getInstance(existActivity).unregisterReceiver(receiver)
+            LocalBroadcastManager.getInstance(existActivity).unregisterReceiver(idReceiver)
+            LocalBroadcastManager.getInstance(existActivity).unregisterReceiver(deleteReceiver)
+            LocalBroadcastManager.getInstance(existActivity).unregisterReceiver(updateReceiver)
+        }
     }
 }
 

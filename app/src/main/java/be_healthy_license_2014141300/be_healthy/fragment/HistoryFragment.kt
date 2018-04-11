@@ -30,7 +30,6 @@ class HistoryFragment : Fragment() {
                 list.adapter=adapter
             }
         }
-
     }
 
     private val updateReceiver=object : BroadcastReceiver(){

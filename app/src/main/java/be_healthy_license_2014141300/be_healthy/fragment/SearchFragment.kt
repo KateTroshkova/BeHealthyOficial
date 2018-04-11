@@ -138,4 +138,10 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
         res=res.toList().sortedBy { (_, value) -> value }.toMap()
         return res.keys.toMutableList()
     }
+
+    fun stop(){
+        if (fuckingEXISTactivity!=null) {
+            LocalBroadcastManager.getInstance(fuckingEXISTactivity).unregisterReceiver(receiver)
+        }
+    }
 }

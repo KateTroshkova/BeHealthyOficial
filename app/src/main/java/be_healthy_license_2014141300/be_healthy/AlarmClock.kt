@@ -201,4 +201,9 @@ class AlarmClock(var hour:Int=0,
             return getTime(delay, false)
         }
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (other !is AlarmClock) return false
+        return this.toString()==other.toString()
+    }
 }

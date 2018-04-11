@@ -77,6 +77,8 @@ class MainActivity : NavigationActivity() {
 
     override fun onNavigationItemSelected(item: android.view.MenuItem): Boolean {
         (fragments[EYE] as EyeFragment).stop()
+        (fragments[ALARM] as AlarmFragment).stop()
+        (fragments[SEARCH] as SearchFragment).stop()
         when (item.itemId) {
             R.id.main -> {
                 setFragment(fragments[MAIN])
