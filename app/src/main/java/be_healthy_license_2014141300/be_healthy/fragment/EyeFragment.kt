@@ -62,6 +62,7 @@ class EyeFragment : Fragment(), View.OnClickListener {
                 info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[2]
                 circle.visibility = View.VISIBLE
                 timerText.visibility=View.VISIBLE
+                finishButton.visibility=View.VISIBLE
                 startButton.visibility=View.INVISIBLE
                 timeInfo = Timer()
                 timeInfo?.schedule(UpdateTimeTask(), 0, 1000)
@@ -71,6 +72,7 @@ class EyeFragment : Fragment(), View.OnClickListener {
                 info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[3]
                 circle.visibility = View.VISIBLE
                 timerText.visibility=View.VISIBLE
+                finishButton.visibility=View.VISIBLE
                 startButton.visibility=View.INVISIBLE
                 timeInfo = Timer()
                 timeInfo?.schedule(UpdateTimeTask(), 0, 1000)
@@ -79,6 +81,7 @@ class EyeFragment : Fragment(), View.OnClickListener {
                 reset()
                 info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[4]
                 path.visibility = View.VISIBLE
+                finishButton.visibility=View.VISIBLE
                 startButton.visibility=View.INVISIBLE
             }
             ACTION_UPDATE_TIME->{
@@ -121,6 +124,7 @@ class EyeFragment : Fragment(), View.OnClickListener {
                 start()
                 startButton.visibility = View.INVISIBLE
                 timerText.visibility=View.VISIBLE
+                finishButton.visibility=View.VISIBLE
             }
             R.id.finish->{
                 reset()

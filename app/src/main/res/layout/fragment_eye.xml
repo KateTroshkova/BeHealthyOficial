@@ -17,8 +17,9 @@
         android:id="@+id/finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/start"
+        android:layout_marginBottom="@dimen/activity_big_margin"
         app:srcCompat="@mipmap/finish" />
 
     <com.be_healthy_license_2014141300.be_healthy.view.Circle
