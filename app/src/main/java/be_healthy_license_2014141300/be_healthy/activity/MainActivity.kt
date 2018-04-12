@@ -63,6 +63,7 @@ class MainActivity : NavigationActivity() {
     override fun onSaveInstanceState(outState: Bundle){
         super.onSaveInstanceState(outState)
         outState.putInt(resources.getString(R.string.param_state), currentState)
+        (fragments[HEART] as HeartFragment).stop()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
@@ -79,6 +80,7 @@ class MainActivity : NavigationActivity() {
         (fragments[EYE] as EyeFragment).stop()
         (fragments[ALARM] as AlarmFragment).stop()
         (fragments[SEARCH] as SearchFragment).stop()
+        (fragments[HEART] as HeartFragment).stop()
         when (item.itemId) {
             R.id.main -> {
                 setFragment(fragments[MAIN])

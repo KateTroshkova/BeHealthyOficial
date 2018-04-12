@@ -8,6 +8,7 @@
     <string name="param_disease">com.be_healthy_license_2014141300.be_healthy.DISEASE</string>
     <string name="param_saved_list">com.be_healthy_license_2014141300.be_healthy.SAVED_LIST</string>
     <string name="param_heartbeat">com.be_healthy_license_2014141300.be_healthy.HEARTBEAT</string>
+    <string name="param_heartline">com.be_healthy_license_2014141300.be_healthy.HEART_LINE</string>
     <string name="param_id">com.be_healthy_license_2014141300.be_healthy.id</string>
     <string name="param_alarm">com.be_healthy_license_2014141300.be_healthy.ALARM</string>
     <string name="param_size">com.be_healthy_license_2014141300.be_healthy.TEXT_SIZE</string>
@@ -24,6 +25,7 @@
     <string name="action_alarm_ready">com.be_healthy_license_2014141300.be_healthy.ALARM_READY</string>
     <string name="action_update_history">com.be_healthy_license_2014141300.be_healthy.UPDATE_HISTORY</string>
     <string name="action_finish">com.be_healthy_license_2014141300.be_healthy.FINISH</string>
+    <string name="action_measure_done">com.be_healthy_license_2014141300.be_healthy.MEASURE_DONE</string>
 
     <string name="title_activity_option">OptionActivity</string>
 
@@ -45,5 +47,6 @@
         <item>ru</item>
         <item>en</item>
     </string-array>
+    <string name="title_activity_heart_rate_measure">HeartRateMeasureActivity</string>
 
 </resources>

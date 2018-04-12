@@ -8,7 +8,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".CustomApplication"
@@ -32,7 +32,11 @@
         <activity
             android:name=".activity.DiseaseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="activity.AlarmActivity"></activity>
+        <activity android:name="activity.AlarmActivity" />
+        <activity
+            android:name="be_healthy_license_2014141300.be_healthy.activity.HeartRateMeasureActivity"
+            android:label="@string/title_activity_heart_rate_measure"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
