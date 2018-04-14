@@ -176,7 +176,10 @@ class DB_Operation(var context: Context) {
                 val date=cursor.getString(cursor.getColumnIndex(helper.COLUMN_DATE))
                 val line=cursor.getString(cursor.getColumnIndex(helper.COLUMN_LINE))
                 val heartrate=cursor.getInt(cursor.getColumnIndex(helper.COLUMN_RESULT))
-                result.add(HeartBeat(date, line, heartrate))
+                val newinstance=HeartBeat(date, line, heartrate)
+                if (newinstance !in result) {
+                    result.add(newinstance)
+                }
             }
             val intent= Intent(context.resources.getString(R.string.action_read_ready))
             intent.putExtra(context.resources.getString(R.string.param_heartbeat), result)

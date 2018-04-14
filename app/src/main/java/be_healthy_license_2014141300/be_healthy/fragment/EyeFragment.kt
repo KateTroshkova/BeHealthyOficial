@@ -46,6 +46,17 @@ class EyeFragment : Fragment(), View.OnClickListener {
 
     private lateinit var existActivity: Activity
 
+    companion object {
+        private var fragment:EyeFragment?=null
+
+        fun getInstance(): EyeFragment {
+            if (fragment==null){
+                fragment=EyeFragment()
+            }
+            return fragment as EyeFragment
+        }
+    }
+
     private var receiver=object: BroadcastReceiver() {
         override fun onReceive(p0: Context?, p1: Intent?) {
             reset()

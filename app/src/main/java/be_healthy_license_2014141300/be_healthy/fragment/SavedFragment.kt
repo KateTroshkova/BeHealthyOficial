@@ -32,6 +32,17 @@ class SavedFragment : Fragment(), ListHelper.OnSwipeListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var image: ImageView
 
+    companion object {
+        private var fragment:SavedFragment?=null
+
+        fun getInstance(): SavedFragment {
+            if (fragment==null){
+                fragment=SavedFragment()
+            }
+            return fragment as SavedFragment
+        }
+    }
+
     private var receiver=object: BroadcastReceiver(){
         override fun onReceive(context: Context?, intent: Intent?) {
             try {

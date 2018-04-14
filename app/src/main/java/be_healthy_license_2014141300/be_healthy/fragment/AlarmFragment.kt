@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ListView
+import be_healthy_license_2014141300.be_healthy.BlankFragment
 import com.be_healthy_license_2014141300.be_healthy.AlarmClock
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
@@ -29,6 +30,17 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
     private lateinit var adapter: AlarmClockAdapter
     private var existActivity:Activity?=null
     private var dialog:ClockDialog?=null
+
+    companion object {
+        private var fragment:AlarmFragment?=null
+
+        fun getInstance(): AlarmFragment {
+            if (fragment==null){
+                fragment=AlarmFragment()
+            }
+            return fragment as AlarmFragment
+        }
+    }
 
     private var receiver=object: BroadcastReceiver() {
 
@@ -105,12 +117,7 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
     }
 
     fun stop(){
-        if (existActivity!=null) {
-            LocalBroadcastManager.getInstance(existActivity).unregisterReceiver(receiver)
-            LocalBroadcastManager.getInstance(existActivity).unregisterReceiver(idReceiver)
-            LocalBroadcastManager.getInstance(existActivity).unregisterReceiver(deleteReceiver)
-            LocalBroadcastManager.getInstance(existActivity).unregisterReceiver(updateReceiver)
-        }
+        dialog?.dismiss()
     }
 }
 

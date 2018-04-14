@@ -22,6 +22,17 @@ class MainFragment : Fragment(), ListHelper.OnSwipeListener {
     private var data = mutableListOf<Advice>()
     private lateinit var adapter: AdviceAdapter
 
+    companion object {
+        private var fragment:MainFragment?=null
+
+        fun getInstance(): MainFragment {
+            if (fragment==null){
+                fragment=MainFragment()
+            }
+            return fragment as MainFragment
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val content = inflater!!.inflate(R.layout.fragment_main, container, false)
         createAdviceList()

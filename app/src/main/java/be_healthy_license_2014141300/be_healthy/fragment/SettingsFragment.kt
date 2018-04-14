@@ -28,6 +28,17 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
     private lateinit var ageText: EditText
     private lateinit var content:View
 
+    companion object {
+        private var fragment:SettingsFragment?=null
+
+        fun getInstance(): SettingsFragment {
+            if (fragment==null){
+                fragment=SettingsFragment()
+            }
+            return fragment as SettingsFragment
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         content = inflater!!.inflate(R.layout.fragment_settings, container, false)

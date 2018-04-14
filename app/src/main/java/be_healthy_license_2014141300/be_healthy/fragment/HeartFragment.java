@@ -42,6 +42,15 @@ public class HeartFragment extends Fragment implements View.OnClickListener {
     private int age=-1;
     private Activity existActivity;
 
+    private static HeartFragment fragment;
+
+    public static HeartFragment getInstance(){
+        if (fragment==null){
+            fragment=new HeartFragment();
+        }
+        return fragment;
+    }
+
     private BroadcastReceiver receiver=new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -161,11 +170,5 @@ public class HeartFragment extends Fragment implements View.OnClickListener {
         String date = df.format(Calendar.getInstance().getTime());
         new DB_Operation(existActivity).saveResult(new HeartBeat(date, heartLine, beats));
         LocalBroadcastManager.getInstance(existActivity).sendBroadcast(new Intent(existActivity.getResources().getString(R.string.action_update_history)));
-    }
-
-    public void stop(){
-        if (existActivity!=null && receiver!=null) {
-            LocalBroadcastManager.getInstance(existActivity).unregisterReceiver(receiver);
-        }
     }
 }

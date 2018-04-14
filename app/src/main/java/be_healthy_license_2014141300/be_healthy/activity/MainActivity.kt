@@ -33,8 +33,8 @@ class MainActivity : NavigationActivity() {
 
     private var currentState=0
 
-    private val fragments = hashMapOf(MAIN to MainFragment(), SEARCH to SearchFragment(), HEART to HeartFragment(),
-            EYE to EyeFragment(), SAVE to SavedFragment(), ALARM to AlarmFragment(), SETTINGS to SettingsFragment())
+    private var fragments = hashMapOf(MAIN to MainFragment.getInstance(), SEARCH to SearchFragment.getInstance(), HEART to HeartFragment.getInstance(),
+            EYE to EyeFragment.getInstance(), SAVE to SavedFragment.getInstance(), ALARM to AlarmFragment.getInstance(), SETTINGS to SettingsFragment.getInstance())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +44,7 @@ class MainActivity : NavigationActivity() {
         navigationView.setNavigationItemSelectedListener(this)
         if(intent.hasExtra(resources.getString(R.string.param_state))){
             currentState=intent.getIntExtra(resources.getString(R.string.param_state), 0)
+            fragments[SEARCH]=SearchFragment()
             setFragment(fragments[currentState])
             setBackground(currentState)
         }
@@ -60,10 +61,15 @@ class MainActivity : NavigationActivity() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        (fragments[EYE] as EyeFragment).stop()
+        (fragments[ALARM] as AlarmFragment).stop()
+    }
+
     override fun onSaveInstanceState(outState: Bundle){
         super.onSaveInstanceState(outState)
         outState.putInt(resources.getString(R.string.param_state), currentState)
-        (fragments[HEART] as HeartFragment).stop()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
@@ -78,9 +84,6 @@ class MainActivity : NavigationActivity() {
 
     override fun onNavigationItemSelected(item: android.view.MenuItem): Boolean {
         (fragments[EYE] as EyeFragment).stop()
-        (fragments[ALARM] as AlarmFragment).stop()
-        (fragments[SEARCH] as SearchFragment).stop()
-        (fragments[HEART] as HeartFragment).stop()
         when (item.itemId) {
             R.id.main -> {
                 setFragment(fragments[MAIN])

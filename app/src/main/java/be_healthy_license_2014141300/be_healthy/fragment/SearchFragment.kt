@@ -34,6 +34,17 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
     //все адекватные контексты дают неадекватный результат
     var fuckingEXISTactivity:Activity?=null
 
+    companion object {
+        private var fragment:SearchFragment?=null
+
+        fun getInstance(): SearchFragment {
+            if (fragment==null){
+                fragment=SearchFragment()
+            }
+            return fragment as SearchFragment
+        }
+    }
+
     private val receiver=object:BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.hasExtra(context?.resources?.getString(R.string.param_symptoms_for_search))!!) {
@@ -68,6 +79,7 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val content=inflater!!.inflate(R.layout.fragment_search, container, false)
+        fragment=this
 
         diseases= mutableListOf(Angina(activity), ARD(activity), Arrhythmia(activity), ARVI(activity),
                 Asthma(activity), Caries(activity), Cataract(activity), DryEyeSyndrome(activity), Flu(activity),
@@ -139,9 +151,9 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
         return res.keys.toMutableList()
     }
 
-    fun stop(){
+    /**fun stop(){
         if (fuckingEXISTactivity!=null) {
             LocalBroadcastManager.getInstance(fuckingEXISTactivity).unregisterReceiver(receiver)
         }
-    }
+    }*/
 }
