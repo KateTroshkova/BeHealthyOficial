@@ -66,12 +66,6 @@
             android:text="@string/start"
             app:backgroundTint="@color/colorAccent"/>
 
-        <com.be_healthy_license_2014141300.be_healthy.view.HeartView
-            android:layout_height="100dp"
-            android:layout_width="match_parent"
-            android:id="@+id/heart_view"
-            android:background="@color/colorGray"/>
-
     </LinearLayout>
 
 </RelativeLayout>

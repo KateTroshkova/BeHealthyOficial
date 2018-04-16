@@ -71,7 +71,7 @@
         android:background="@drawable/timer_background"
         android:textColor="@color/colorBlack"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/start" />
+        android:layout_above="@+id/finish"/>
 
 </RelativeLayout>
 
