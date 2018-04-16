@@ -18,7 +18,6 @@ import com.be_healthy_license_2014141300.be_healthy.R
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import java.io.IOException
 
-@SuppressLint("Registered")
 class AlarmActivity : AppCompatActivity(), View.OnTouchListener, MediaPlayer.OnPreparedListener {
 
     private lateinit var image: ImageView
@@ -34,7 +33,6 @@ class AlarmActivity : AppCompatActivity(), View.OnTouchListener, MediaPlayer.OnP
 
     private var player: MediaPlayer?=null
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm)
@@ -87,7 +85,6 @@ class AlarmActivity : AppCompatActivity(), View.OnTouchListener, MediaPlayer.OnP
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(view: View?, event: MotionEvent?): Boolean {
         if (event?.action == MotionEvent.ACTION_DOWN) {
             val x = event.x

@@ -133,8 +133,7 @@ class AlarmClock(var hour:Int=0,
         val intent = Intent(activity, AlarmActivity::class.java)
         intent.action = this.toString()
         val pi = PendingIntent.getActivity(activity, id, intent, 0)
-        am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pi);
-        //am.set(AlarmManager.RTC_WAKEUP, getTime(1, true), pi)
+        am.set(AlarmManager.RTC_WAKEUP, getTime(1, true), pi)
     }
 
     fun cancelAlarm(activity:Activity){

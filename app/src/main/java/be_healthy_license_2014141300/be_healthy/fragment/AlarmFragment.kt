@@ -1,8 +1,6 @@
 package com.be_healthy_license_2014141300.be_healthy.fragment
 
-import android.app.Activity
-import android.app.DialogFragment
-import android.app.Fragment
+import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -21,6 +19,7 @@ import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.adapter.AlarmClockAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import com.be_healthy_license_2014141300.be_healthy.activity.AlarmActivity
 import com.be_healthy_license_2014141300.be_healthy.dialog.ClockDialog
 
 class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmClockListener {

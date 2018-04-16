@@ -32,7 +32,7 @@
         <activity
             android:name=".activity.DiseaseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="activity.AlarmActivity" />
+        <activity android:name=".activity.AlarmActivity" />
         <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.HeartRateMeasureActivity"
             android:label="@string/title_activity_heart_rate_measure"
