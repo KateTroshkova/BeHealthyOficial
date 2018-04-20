@@ -158,12 +158,12 @@ class AlarmClock(var hour:Int=0,
     fun setRepeatingAlarm(activity:Activity){
         val intent = Intent(activity, AlarmActivity::class.java)
         intent.action = this.toString()
-        for(day in week){
-            if (day==1){
-                intent.data=Uri.parse("id="+id+"repeat="+dayOfWeekNames[week.indexOf(day)])
+        for(i in 0..6){
+            if (week[i]==1){
+                intent.data=Uri.parse("id="+id+"repeat="+dayOfWeekNames[i])
                 val pi = PendingIntent.getActivity(activity, id, intent, 0)
                 (activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
-                        AlarmManager.RTC_WAKEUP, getNearestDay(week.indexOf(day)), AlarmManager.INTERVAL_DAY*7, pi)
+                        AlarmManager.RTC_WAKEUP, getNearestDay(i), AlarmManager.INTERVAL_DAY*7, pi)
             }
         }
     }
