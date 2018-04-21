@@ -40,7 +40,7 @@
                 android:gravity="center"
                 android:textColor="@color/colorBlack"
                 android:layout_gravity="center"
-                android:text="@string/instruction"/>
+                android:text="@string/instruction2"/>
         </LinearLayout>
 
         <com.be_healthy_license_2014141300.be_healthy.view.HeartView

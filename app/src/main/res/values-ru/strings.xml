@@ -54,7 +54,8 @@
     <string name="too_low">Слишком низкий</string>
     <string name="norm">Все в порядке</string>
 
-    <string name="instruction">Приложите палец к камере телефона и нажмите "старт"</string>
+    <string name="instruction">Приложите палец к камере телефона и нажмите "старт".</string>
+    <string name="instruction2">Плотно прижмите палец к камере. Старайтесь держать телефон ровно. Измерение займет несколько секунд.</string>
     <string name="start">Старт</string>
 
     <string name="law">\u00A9 2017 Все права защищены. Нарушение авторских прав преследуется по закону.</string>

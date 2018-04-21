@@ -18,7 +18,7 @@ import com.be_healthy_license_2014141300.be_healthy.R
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import java.io.IOException
 
-class AlarmActivity : AppCompatActivity(), View.OnTouchListener, MediaPlayer.OnPreparedListener {
+class AlarmActivity : AppCompatActivity(), MediaPlayer.OnPreparedListener {
 
     private lateinit var image: ImageView
     private lateinit var repeat: ImageView
@@ -39,10 +39,10 @@ class AlarmActivity : AppCompatActivity(), View.OnTouchListener, MediaPlayer.OnP
 
         alarm=AlarmClock().decodeFromString(intent.action)
 
-        repeat = findViewById(R.id.sleep_image) as ImageView
-        cancel = findViewById(R.id.cancel_image) as ImageView
-        image = findViewById(R.id.alarm_image) as ImageView
-        image.setOnTouchListener(this)
+       // repeat = findViewById(R.id.sleep_image) as ImageView
+       // cancel = findViewById(R.id.cancel_image) as ImageView
+       // image = findViewById(R.id.alarm_image) as ImageView
+       // image.setOnTouchListener(this)
         (findViewById(R.id.time_text) as TextView).text=formatTime(alarm.hour, alarm.minute)
         (findViewById(R.id.description) as TextView).text=alarm.description
         startAlarm(Uri.parse(alarm.ringtone))
@@ -85,7 +85,7 @@ class AlarmActivity : AppCompatActivity(), View.OnTouchListener, MediaPlayer.OnP
         }
     }
 
-    override fun onTouch(view: View?, event: MotionEvent?): Boolean {
+    /**override fun onTouch(view: View?, event: MotionEvent?): Boolean {
         if (event?.action == MotionEvent.ACTION_DOWN) {
             val x = event.x
             val y = event.y
@@ -116,21 +116,23 @@ class AlarmActivity : AppCompatActivity(), View.OnTouchListener, MediaPlayer.OnP
             }
         }
         return true
-    }
+    }*/
 
-    private fun cancelAlarm(){
+    fun cancelAlarm(view:View){
         if (alarm.stopAlarm(this)){
             DB_Operation(this).updateAlarm(alarm)
             UpdateSender(this).send(R.string.action_alarm_update, R.string.param_alarm, alarm)
         }
         release()
+        finish()
     }
 
-    private fun updateAlarm(){
+    fun updateAlarm(view:View){
         alarm.updateAlarm(this)
         DB_Operation(this).updateAlarm(alarm)
         UpdateSender(this).send(R.string.action_alarm_update, R.string.param_alarm, alarm)
         release()
+        finish()
     }
 
     private fun formatTime(hour:Int, minute:Int):String{
@@ -146,9 +148,9 @@ class AlarmActivity : AppCompatActivity(), View.OnTouchListener, MediaPlayer.OnP
         return res
     }
 
-    private fun closeEnough(image:ImageView, goal:ImageView) =
+    /**private fun closeEnough(image:ImageView, goal:ImageView) =
             image.x > goal.x - 3 * image.width &&
                     image.x < goal.x + 3*image.width &&
                     image.y > goal.y - 3*image.width &&
-                    image.y < goal.y + 3*image.width
+                    image.y < goal.y + 3*image.width*/
 }
