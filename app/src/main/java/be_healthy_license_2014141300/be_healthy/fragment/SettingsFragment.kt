@@ -17,6 +17,7 @@ import java.io.IOException
 import java.io.InputStreamReader
 import android.content.Intent
 import android.net.Uri
+import android.support.v7.widget.AppCompatButton
 import be_healthy_license_2014141300.be_healthy.dialog.DeleteDialog
 
 
@@ -27,6 +28,9 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
     private lateinit var ageInfoText:TextView
     private lateinit var ageText: EditText
     private lateinit var content:View
+    private lateinit var removeHistoryButton:AppCompatButton
+    private lateinit var userTermsButton:AppCompatButton
+    private lateinit var webButton:AppCompatButton
 
     companion object {
         private var fragment:SettingsFragment?=null
@@ -46,6 +50,9 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
         sizeText=content.findViewById(R.id.size_text) as TextView
         ageText=content.findViewById(R.id.age_edit_text) as EditText
         ageInfoText=content.findViewById(R.id.textView) as TextView
+        removeHistoryButton=content.findViewById(R.id.fab) as AppCompatButton
+        webButton=content.findViewById(R.id.web) as AppCompatButton
+        userTermsButton=content.findViewById(R.id.userterms) as AppCompatButton
 
         val seekbar=content.findViewById(R.id.seekBar) as SeekBar
         seekbar.setOnSeekBarChangeListener(this)
@@ -74,14 +81,17 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
             }
             false
         })
-        (content.findViewById(R.id.fab)).setOnClickListener { DeleteDialog().show(activity.fragmentManager, "") }
-        (content.findViewById(R.id.userterms)).setOnClickListener {UserTermsTask().execute()}
-        (content.findViewById(R.id.web).setOnClickListener {
+        removeHistoryButton.setOnClickListener { DeleteDialog().show(activity.fragmentManager, "") }
+        userTermsButton.setOnClickListener {UserTermsTask().execute()}
+        webButton.setOnClickListener {
             val url = "https://dshv12bh3.wixsite.com/behealthy"
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(url)
             startActivity(intent)
-        })
+        }
+        removeHistoryButton.textSize=sizeToLoad.toFloat()
+        userTermsButton.textSize=sizeToLoad.toFloat()
+        webButton.textSize=sizeToLoad.toFloat()
         return content
     }
 
@@ -106,6 +116,9 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
         sizeText.textSize= size.toFloat()
         ageText.textSize =size.toFloat()
         ageInfoText.textSize=size.toFloat()
+        removeHistoryButton.textSize=size.toFloat()
+        webButton.textSize=size.toFloat()
+        userTermsButton.textSize=size.toFloat()
     }
 
     override fun onStartTrackingTouch(p0: SeekBar?) {

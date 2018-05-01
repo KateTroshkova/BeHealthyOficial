@@ -59,7 +59,8 @@
             android:gravity="center"
             android:onClick="updateAlarm"
             android:text="@string/sleep"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:id="@+id/sleepButton"/>
 
         <android.support.v7.widget.AppCompatButton
             android:layout_width="match_parent"
@@ -72,7 +73,8 @@
             android:gravity="center"
             android:onClick="cancelAlarm"
             android:text="@string/switch_off"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:id="@+id/cancelButton"/>
     </LinearLayout>
 
     <LinearLayout

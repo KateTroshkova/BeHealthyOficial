@@ -7,7 +7,9 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.Toolbar
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
@@ -17,6 +19,7 @@ import be_healthy_license_2014141300.be_healthy.UpdateSender
 import com.be_healthy_license_2014141300.be_healthy.AlarmClock
 import com.be_healthy_license_2014141300.be_healthy.R
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.IOException
 
@@ -40,16 +43,12 @@ class AlarmActivity : AppCompatActivity(), MediaPlayer.OnPreparedListener {
         setContentView(R.layout.activity_alarm)
 
         alarm=AlarmClock().decodeFromString(intent.action)
-
-       // repeat = findViewById(R.id.sleep_image) as ImageView
-       // cancel = findViewById(R.id.cancel_image) as ImageView
-       // image = findViewById(R.id.alarm_image) as ImageView
-       // image.setOnTouchListener(this)
-//        val toolBar=findViewById(R.id.toolbar) as Toolbar
-//        toolBar.title="Будильник"
-//        setSupportActionBar(toolbar)
         (findViewById(R.id.time_text) as TextView).text=formatTime(alarm.hour, alarm.minute)
         (findViewById(R.id.description) as TextView).text=alarm.description
+        var sleepButton=findViewById(R.id.sleepButton) as AppCompatButton
+        sleepButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, sleepButton.textSize*(application as CustomApplication).size_coef*0.6f)
+        var cancelButton=findViewById(R.id.cancelButton) as AppCompatButton
+        cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, cancelButton.textSize*(application as CustomApplication).size_coef*0.6f)
         startAlarm(Uri.parse(alarm.ringtone))
         wakeUp()
     }
@@ -90,39 +89,6 @@ class AlarmActivity : AppCompatActivity(), MediaPlayer.OnPreparedListener {
         }
     }
 
-    /**override fun onTouch(view: View?, event: MotionEvent?): Boolean {
-        if (event?.action == MotionEvent.ACTION_DOWN) {
-            val x = event.x
-            val y = event.y
-            dx = x - image.x
-            dy = y - image.y
-            oldX=image.x
-            oldY=image.y
-        }
-        if (event?.action == MotionEvent.ACTION_MOVE) {
-            image.x = event.x -dx
-            image.y = event.y -dy
-        }
-        if (event?.action == MotionEvent.ACTION_UP) {
-            if (closeEnough(image, repeat)) {
-                updateAlarm()
-                finish()
-            }
-            else {
-                if (closeEnough(image, cancel)) {
-                    cancelAlarm()
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }
-                else{
-                    image.x=oldX
-                    image.y=oldY
-                }
-            }
-        }
-        return true
-    }*/
-
     fun cancelAlarm(view:View){
         if (alarm.stopAlarm(this)){
             DB_Operation(this).updateAlarm(alarm)
@@ -152,10 +118,4 @@ class AlarmActivity : AppCompatActivity(), MediaPlayer.OnPreparedListener {
         res+=minute.toString()
         return res
     }
-
-    /**private fun closeEnough(image:ImageView, goal:ImageView) =
-            image.x > goal.x - 3 * image.width &&
-                    image.x < goal.x + 3*image.width &&
-                    image.y > goal.y - 3*image.width &&
-                    image.y < goal.y + 3*image.width*/
 }

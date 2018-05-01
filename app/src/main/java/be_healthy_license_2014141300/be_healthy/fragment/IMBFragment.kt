@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.be_healthy_license_2014141300.be_healthy.R
 import android.graphics.drawable.GradientDrawable
+import android.support.v7.widget.AppCompatButton
+import android.util.TypedValue
 import android.widget.*
 import be_healthy_license_2014141300.be_healthy.view.IMBView
+import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 
 
 class IMBFragment:Fragment() {
@@ -36,7 +39,9 @@ class IMBFragment:Fragment() {
          heightText=view.findViewById(R.id.editText5) as EditText
          infoText=view.findViewById(R.id.textView7) as TextView
          imb=view.findViewById(R.id.imageView) as IMBView
-         (view.findViewById(R.id.start)).setOnClickListener {
+         var button=view.findViewById(R.id.start) as AppCompatButton
+         button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(activity.application as CustomApplication).size_coef*0.6f)
+         button.setOnClickListener {
              if (!ageText.text.isEmpty() && !weightText.text.isEmpty() && !heightText.text.isEmpty()){
                  age=ageText.text.toString().toInt()
                  weight=weightText.text.toString().toInt()
