@@ -49,7 +49,7 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
 
         val seekbar=content.findViewById(R.id.seekBar) as SeekBar
         seekbar.setOnSeekBarChangeListener(this)
-        seekbar.max=30
+        seekbar.max=20
 
         val preferences=activity.getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
         val sizeToLoad=(preferences.getFloat(activity.resources.getString(R.string.param_size), 1f)*defaultSize).toInt()

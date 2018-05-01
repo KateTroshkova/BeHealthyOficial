@@ -19,6 +19,7 @@ import android.widget.Toast
 import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
 import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
 import be_healthy_license_2014141300.be_healthy.fragment.HeartFragment
+import be_healthy_license_2014141300.be_healthy.fragment.IMBFragment
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.ShareManager
 import com.be_healthy_license_2014141300.be_healthy.fragment.*
@@ -34,7 +35,7 @@ class MainActivity : NavigationActivity() {
     private var currentState=0
 
     private var fragments = hashMapOf(MAIN to MainFragment.getInstance(), SEARCH to SearchFragment.getInstance(), HEART to HeartFragment.getInstance(),
-            EYE to EyeFragment.getInstance(), SAVE to SavedFragment.getInstance(), ALARM to AlarmFragment.getInstance(), SETTINGS to SettingsFragment.getInstance())
+            EYE to EyeFragment.getInstance(), IMB to IMBFragment(), SAVE to SavedFragment.getInstance(), ALARM to AlarmFragment.getInstance(), SETTINGS to SettingsFragment.getInstance())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,6 +100,10 @@ class MainActivity : NavigationActivity() {
             R.id.eye -> {
                 setFragment(fragments[EYE])
                 setBackground(EYE)
+            }
+            R.id.imb -> {
+                setFragment(fragments[IMB])
+                setBackground(IMB)
             }
             R.id.saved -> {
                 setFragment(fragments[SAVE])

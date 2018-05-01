@@ -30,6 +30,13 @@
                     android:title="@string/eye" />
         </group>
 
+        <group android:id="@+id/g_imb">
+                <item
+                    android:id="@+id/imb"
+                    android:icon="@mipmap/imb"
+                    android:title="@string/imb" />
+        </group>
+
         <group android:id="@+id/g_saved">
                 <item
                     android:id="@+id/saved"

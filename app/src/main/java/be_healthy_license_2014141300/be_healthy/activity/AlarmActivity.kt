@@ -7,6 +7,7 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
@@ -16,6 +17,7 @@ import be_healthy_license_2014141300.be_healthy.UpdateSender
 import com.be_healthy_license_2014141300.be_healthy.AlarmClock
 import com.be_healthy_license_2014141300.be_healthy.R
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.IOException
 
 class AlarmActivity : AppCompatActivity(), MediaPlayer.OnPreparedListener {
@@ -43,6 +45,9 @@ class AlarmActivity : AppCompatActivity(), MediaPlayer.OnPreparedListener {
        // cancel = findViewById(R.id.cancel_image) as ImageView
        // image = findViewById(R.id.alarm_image) as ImageView
        // image.setOnTouchListener(this)
+//        val toolBar=findViewById(R.id.toolbar) as Toolbar
+//        toolBar.title="Будильник"
+//        setSupportActionBar(toolbar)
         (findViewById(R.id.time_text) as TextView).text=formatTime(alarm.hour, alarm.minute)
         (findViewById(R.id.description) as TextView).text=alarm.description
         startAlarm(Uri.parse(alarm.ringtone))

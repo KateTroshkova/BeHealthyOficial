@@ -76,9 +76,9 @@ class MainFragment : Fragment(), ListHelper.OnSwipeListener {
     private fun createAdviceList(){
         data.clear()
         data.add(getUniqueData())
-        if (activity.resources.configuration.orientation== Configuration.ORIENTATION_LANDSCAPE) {
+       // if (activity.resources.configuration.orientation== Configuration.ORIENTATION_LANDSCAPE) {
             data.add(getUniqueData())
             data.add(getUniqueData())
-        }
+       // }
     }
 }

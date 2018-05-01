@@ -33,39 +33,66 @@
         android:layout_below="@+id/time_text"
         android:gravity="center" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/big_alarm"
+        android:layout_below="@+id/description"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="center"
+        android:id="@+id/buttons"
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sleep"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:onClick="updateAlarm"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:textColor="@color/colorBlack"/>
+            android:gravity="center"
+            android:onClick="updateAlarm"
+            android:text="@string/sleep"
+            android:textColor="@color/colorBlack" />
 
         <android.support.v7.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/switch_off"
-            android:gravity="center"
-            android:onClick="cancelAlarm"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:textColor="@color/colorBlack"/>
+            android:gravity="center"
+            android:onClick="cancelAlarm"
+            android:text="@string/switch_off"
+            android:textColor="@color/colorBlack" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_below="@+id/buttons"
+        android:layout_marginTop="@dimen/activity_vertical_margin">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/sleep"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/off"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
 
 </RelativeLayout>
 

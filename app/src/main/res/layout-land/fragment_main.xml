@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="bottom">
-            <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+           <!-- <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
                 android:id="@+id/warning_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:textSize="12sp"
                 android:textColor="@color/colorBlack"
-                android:text="@string/warning" />
+                android:text="@string/warning" />-->
 
             <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
                 android:id="@+id/law_text"
@@ -40,7 +40,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:gravity="center|bottom"
-                android:layout_weight="1"
                 android:textSize="8sp"
                 android:textColor="@color/colorBlack"
                 android:text="@string/law" />

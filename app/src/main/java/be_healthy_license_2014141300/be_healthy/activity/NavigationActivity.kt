@@ -25,11 +25,12 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
     protected val SEARCH=1
     protected val HEART=2
     protected val EYE=3
-    protected val SAVE=4
-    protected val ALARM=5
-    protected val SETTINGS=6
+    protected var IMB=4
+    protected val SAVE=5
+    protected val ALARM=6
+    protected val SETTINGS=7
 
-    protected val fragmentNames= listOf<String>("Главная страница", "Поиск симптомов", "Измерение пульса", "Тренировка для глаз", "Сохраненные", "Будильник", "Настройки" )
+    protected val fragmentNames= listOf<String>("Главная страница", "Поиск симптомов", "Измерение пульса", "Тренировка для глаз", "Расчет ИМТ", "Сохраненные", "Будильник", "Настройки" )
 
     protected val CAMERA_PERMISSION=0
 
@@ -60,6 +61,11 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
             R.id.eye -> {
                 val intent= Intent(this, MainActivity::class.java)
                 intent.putExtra(resources.getString(R.string.param_state), EYE)
+                startActivity(intent)
+            }
+            R.id.imb -> {
+                val intent= Intent(this, MainActivity::class.java)
+                intent.putExtra(resources.getString(R.string.param_state), IMB)
                 startActivity(intent)
             }
             R.id.saved -> {

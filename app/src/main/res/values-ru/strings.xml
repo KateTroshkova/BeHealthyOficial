@@ -8,11 +8,15 @@
     <string name="alarm">Будильник</string>
     <string name="share">Поделиться</string>
     <string name="settings">Настройки</string>
+    <string name="imb">Рассчитать ИМТ</string>
     <string name="delete">Удалить</string>
     <string name="accept">Принять</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="deleted">История удалена</string>
+    <string name="measure">  Рассчитать  </string>
+    <string name="weight">Вес(кг)</string>
+    <string name="height">Рост(см)</string>
 
     <string name="symptoms">Симптомы</string>
     <string name="treatment">Лечение медпрепаратами</string>
@@ -41,6 +45,7 @@
 
     <string name="shared_info">Ссылка скопирована в буфер обмена</string>
     <string name="no_flash_error">Ваше устройство не поддерживает данную функцию</string>
+    <string name="empty_fields_error">Заполните все поля</string>
     <string name="saved_info">Сохранено</string>
     <string name="error_info">Произошла ошибка</string>
     <string name="error_age">Укажите свой возраст в настройках</string>
@@ -70,6 +75,83 @@
     <string name="th">ЧТ</string>
     <string name="fr">ПТ</string>
     <string name="sat">СБ</string>
+
+    <string-array name="fatty_diagnosis">
+        <item>Анорексия</item>
+        <item>Дефицит массы тела</item>
+        <item>Норма</item>
+        <item>Избыток веса</item>
+        <item>Ожирение I степени</item>
+        <item>Ожирение II степени</item>
+        <item>Ожирение III степени</item>
+        <item>Ожирение IV степени</item>
+    </string-array>
+
+    <string-array name="risk_info">
+        <item>высокий</item>
+        <item>отсутствует</item>
+        <item>отсутствует</item>
+        <item>повышенный</item>
+        <item>повышенный</item>
+        <item>высокий</item>
+        <item>очень высокий</item>
+        <item>чрезвычайно высокий</item>
+    </string-array>
+
+    <string-array name="fat_advice">
+        <item>Рекомендуется повышение веса.</item>
+        <item>Всё в порядке, придерживайтесь правил здорового образа жизни и питания.</item>
+        <item>Всё в порядке, придерживайтесь правил здорового образа жизни и питания.</item>
+        <item>Рекомендуется снижение массы тела. В большинстве случаев для этого достаточно ограничить употребление высококалорийной пищи и больше двигаться.</item>
+        <item>Рекомендуется снижение массы тела. В большинстве случаев для этого достаточно ограничить употребление высококалорийной пищи и больше двигаться.</item>
+        <item>Настоятельно рекомендуется снижение массы тела.</item>
+        <item>Настоятельно рекомендуется снижение массы тела.</item>
+        <item>Необходимо немедленное снижение массы тела.</item>
+    </string-array>
+    
+    <string-array name="young_min_range">
+        <item>0</item>
+        <item>17.6</item>
+        <item>18.6</item>
+        <item>23</item>
+        <item>27.5</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+    </string-array>
+
+    <string-array name="young_max_range">
+        <item>17.5</item>
+        <item>18.5</item>
+        <item>22.9</item>
+        <item>27.4</item>
+        <item>29.9</item>
+        <item>34.9</item>
+        <item>39.9</item>
+        <item>100000</item>
+    </string-array>
+
+    <string-array name="old_min_range">
+        <item>0</item>
+        <item>17.6</item>
+        <item>18.6</item>
+        <item>26</item>
+        <item>28</item>
+        <item>31</item>
+        <item>36</item>
+        <item>41</item>
+    </string-array>
+
+    <string-array name="old_max_range">
+        <item>17.5</item>
+        <item>18.5</item>
+        <item>25.9</item>
+        <item>27.9</item>
+        <item>30.9</item>
+        <item>35.9</item>
+        <item>40.9</item>
+        <item>100000</item>
+    </string-array>
 
     <string-array name="advice_list">
         <item>Ешьте больше овощей и фруктов.</item>
