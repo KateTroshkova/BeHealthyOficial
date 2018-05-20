@@ -23,19 +23,20 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
 
     protected val MAIN=0
     protected val SEARCH=1
-    protected val HEART=2
-    protected val EYE=3
-    protected var IMB=4
-    protected val SAVE=5
-    protected val ALARM=6
-    protected val SETTINGS=7
+    //protected val HEART=2
+    protected val EYE=2
+    protected var IMB=3
+    protected val SAVE=4
+    protected val ALARM=5
+    protected val SETTINGS=6
 
-    protected val fragmentNames= listOf<String>("Главная страница", "Поиск симптомов", "Измерение пульса", "Тренировка для глаз", "Расчет ИМТ", "Сохраненные", "Будильник", "Настройки" )
+    protected val fragmentNames= listOf<String>("Главная страница", "Поиск симптомов",/** "Измерение пульса", */
+            "Тренировка для глаз", "Расчет ИМТ", "Сохраненные", "Будильник", "Настройки" )
 
     protected val CAMERA_PERMISSION=0
 
     override fun onBackPressed() {
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
@@ -55,9 +56,9 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
                 intent.putExtra(resources.getString(R.string.param_state), SEARCH)
                 startActivity(intent)
             }
-            R.id.heart -> {
+            /**R.id.heart -> {
                 checkCameraPermission()
-            }
+            }*/
             R.id.eye -> {
                 val intent= Intent(this, MainActivity::class.java)
                 intent.putExtra(resources.getString(R.string.param_state), EYE)
@@ -94,7 +95,7 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
         return true
     }
 
-    protected open fun checkCameraPermission(){
+    /**protected open fun checkCameraPermission(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION)
         }
@@ -118,10 +119,10 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
                 Toast.makeText(this, resources.getString(R.string.error_info), Toast.LENGTH_SHORT).show()
             }
         }
-    }
+    }*/
 
     protected fun setUpToolBar(){
-        val toolBar=findViewById(R.id.toolbar) as Toolbar
+        val toolBar=findViewById<Toolbar>(R.id.toolbar)
         toolBar.title=""
         setSupportActionBar(toolbar)
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)

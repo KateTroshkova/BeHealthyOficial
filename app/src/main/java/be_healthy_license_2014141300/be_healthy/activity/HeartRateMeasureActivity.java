@@ -156,7 +156,7 @@ public class HeartRateMeasureActivity extends AppCompatActivity implements Surfa
             long endTime = System.currentTimeMillis();
             double totalTimeInSecs = (endTime - startTime) / 1000d;
             if (totalTimeInSecs >= 10) {
-                beats/=3;
+                beats/=2.5;
                 double bps = (beats / totalTimeInSecs);
                 int dpm = (int) (bps * 60d);
                 if (dpm < 30 || dpm > 180) {

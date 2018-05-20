@@ -16,12 +16,12 @@
                     android:title="@string/search" />
         </group>
 
-        <group android:id="@+id/g_heart">
+       <!-- <group android:id="@+id/g_heart">
                 <item
                     android:id="@+id/heart"
                     android:icon="@mipmap/heart"
                     android:title="@string/heart" />
-        </group>
+        </group>-->
 
         <group android:id="@+id/g_eye">
                 <item

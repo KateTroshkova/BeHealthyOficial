@@ -8,6 +8,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.support.v4.content.LocalBroadcastManager
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.util.TypedValue
 import android.view.*
 import android.widget.*
@@ -18,15 +23,21 @@ import com.be_healthy_license_2014141300.be_healthy.activity.OptionActivity
 import com.be_healthy_license_2014141300.be_healthy.adapter.SymptomsAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import be_healthy_license_2014141300.be_healthy.disease.*
+import be_healthy_license_2014141300.be_healthy.slide_helper.SymptomsListHelper
+import com.be_healthy_license_2014141300.be_healthy.adapter.AdviceAdapter
 import com.be_healthy_license_2014141300.be_healthy.disease.*
+import com.be_healthy_license_2014141300.be_healthy.slide_helper.AdviceListHelper
+import com.be_healthy_license_2014141300.be_healthy.slide_helper.ListHelper
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import java.util.*
 
-class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDiseaseListener{
+class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDiseaseListener, ListHelper.OnSwipeListener{
 
     private lateinit var diseases:MutableList<Disease>
     private var symptomsForSearch = mutableListOf<String>()
     private lateinit var symptomsAdapter: SymptomsAdapter
-    private lateinit var chosenSymptomsList:ListView
+    private lateinit var chosenSymptomsList:RecyclerView
     private lateinit var instruction:TextView
     private lateinit var button:Button
 
@@ -49,7 +60,7 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.hasExtra(context?.resources?.getString(R.string.param_symptoms_for_search))!!) {
                 symptomsForSearch = intent.getStringArrayListExtra(context?.resources?.getString(R.string.param_symptoms_for_search))
-                symptomsAdapter = SymptomsAdapter(fuckingEXISTactivity!!, symptomsForSearch)
+                symptomsAdapter = SymptomsAdapter(symptomsForSearch)
                 chosenSymptomsList.adapter = symptomsAdapter
                 if (symptomsForSearch.size>0){
                     instruction.text=""
@@ -95,17 +106,28 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
         DB_Operation(activity).readSymptoms()
         fuckingEXISTactivity=activity
 
-        chosenSymptomsList=content.findViewById(R.id.list_for_search) as ListView
-        instruction=content.findViewById(R.id.instruction) as TextView
+        chosenSymptomsList=content.findViewById<RecyclerView>(R.id.list_for_search)
+        val mLayoutManager = LinearLayoutManager(activity)
+        chosenSymptomsList.layoutManager = mLayoutManager
+        chosenSymptomsList.itemAnimator = DefaultItemAnimator()
+        chosenSymptomsList.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
+        //adapter = AdviceAdapter(data)
+        //recyclerView.adapter = adapter
+        val itemTouchHelperCallback = SymptomsListHelper(0, ItemTouchHelper.LEFT, this)
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(chosenSymptomsList)
+        instruction=content.findViewById<TextView>(R.id.instruction)
 
-        button=content.findViewById(R.id.search) as Button
+        button=content.findViewById<Button>(R.id.search)
         button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(activity.application as CustomApplication).size_coef*0.6f)
         button.setOnClickListener(this)
         button.isClickable=false
         button.setBackgroundColor(activity.resources.getColor(R.color.colorGray))
         button.visibility=View.INVISIBLE
 
-        (content.findViewById(R.id.add_button)).setOnClickListener(this)
+        (content.findViewById<View>(R.id.add_button)).setOnClickListener(this)
+        var mAdView = content.findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
         return content
     }
 
@@ -128,6 +150,18 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
                 dialog.setListener(this)
                 dialog.show(activity.fragmentManager, "")
             }
+        }
+    }
+
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int) {
+        DB_Operation(activity).deleteSymptom(symptomsForSearch[position])
+        symptomsForSearch.removeAt(position)
+        symptomsAdapter.notifyDataSetChanged()
+        if (symptomsForSearch.isEmpty()){
+            instruction.text=activity.resources.getString(R.string.s_instruction)
+            button.isClickable=false
+            button.setBackgroundColor(activity.resources.getColor(R.color.colorGray))
+            button.visibility=View.INVISIBLE
         }
     }
 

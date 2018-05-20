@@ -35,13 +35,24 @@
         android:textColorHint="@color/colorBlack"
         android:inputType="number" />
 
-    <android.support.v7.widget.AppCompatButton
+    <!--<android.support.v7.widget.AppCompatButton
         android:id="@+id/fab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/clear_history"
         android:textColor="@color/colorBlack"
-        app:backgroundTint="@color/colorAccent"/>
+        app:backgroundTint="@color/colorAccent"/>-->
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_marginTop="@dimen/activity_double_vertical_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-5054095397379666/4285443809">
+    </com.google.android.gms.ads.AdView>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -25,9 +25,9 @@ class HistoryFragment : Fragment() {
         override fun onReceive(p0: Context?, intent: Intent?) {
             if (activity !=null && intent?.hasExtra(resources.getString(R.string.param_heartbeat))!!) {
                 data = intent.getParcelableArrayListExtra<HeartBeat>(resources.getString(R.string.param_heartbeat))
-                val list=content?.findViewById(R.id.history_list) as ListView
+                val list=content?.findViewById<ListView>(R.id.history_list)
                 val adapter= HistoryAdapter(activity, data)
-                list.adapter=adapter
+                list?.adapter=adapter
             }
         }
     }

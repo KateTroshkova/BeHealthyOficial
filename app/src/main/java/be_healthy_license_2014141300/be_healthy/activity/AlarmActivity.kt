@@ -43,11 +43,11 @@ class AlarmActivity : AppCompatActivity(), MediaPlayer.OnPreparedListener {
         setContentView(R.layout.activity_alarm)
 
         alarm=AlarmClock().decodeFromString(intent.action)
-        (findViewById(R.id.time_text) as TextView).text=formatTime(alarm.hour, alarm.minute)
-        (findViewById(R.id.description) as TextView).text=alarm.description
-        var sleepButton=findViewById(R.id.sleepButton) as AppCompatButton
+        (findViewById<TextView>(R.id.time_text) as TextView).text=formatTime(alarm.hour, alarm.minute)
+        (findViewById<TextView>(R.id.description) as TextView).text=alarm.description
+        var sleepButton=findViewById<AppCompatButton>(R.id.sleepButton)
         sleepButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, sleepButton.textSize*(application as CustomApplication).size_coef*0.6f)
-        var cancelButton=findViewById(R.id.cancelButton) as AppCompatButton
+        var cancelButton=findViewById<AppCompatButton>(R.id.cancelButton) as AppCompatButton
         cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, cancelButton.textSize*(application as CustomApplication).size_coef*0.6f)
         startAlarm(Uri.parse(alarm.ringtone))
         wakeUp()

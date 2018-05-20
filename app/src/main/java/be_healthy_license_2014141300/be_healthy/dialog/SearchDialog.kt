@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.ListView
+import be_healthy_license_2014141300.be_healthy.adapter.StaticSymptomsAdapter
 import be_healthy_license_2014141300.be_healthy.disease.*
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.adapter.SymptomsAdapter
@@ -28,7 +29,7 @@ class SearchDialog: DialogFragment(), AdapterView.OnItemClickListener{
     private var diseases = mutableListOf<Disease>()
     private var allSymptoms = mutableListOf<String>()
     private var currentSymptoms = mutableListOf<String>()
-    private lateinit var adapter: SymptomsAdapter
+    private lateinit var adapter: StaticSymptomsAdapter
     private lateinit var userRequestText: EditText
 
     interface OnChooseDiseaseListener{
@@ -52,14 +53,14 @@ class SearchDialog: DialogFragment(), AdapterView.OnItemClickListener{
     }
 
     private fun initHintEditText(view:View){
-        userRequestText=view.findViewById(R.id.symptom_text) as EditText
+        userRequestText=view.findViewById<EditText>(R.id.symptom_text)
         userRequestText.addTextChangedListener(watcher)
     }
 
     private fun initOptionsList(view:View){
-        val list=view.findViewById(R.id.all_symptoms_list) as ListView
+        val list=view.findViewById<ListView>(R.id.all_symptoms_list)
         list.onItemClickListener=this
-        adapter=SymptomsAdapter(activity, currentSymptoms)
+        adapter= StaticSymptomsAdapter(activity, currentSymptoms)
         list.adapter=adapter
     }
 

@@ -145,9 +145,9 @@ class AlarmClock(var hour:Int=0,
             am.cancel(pi)
         }
         else{
-            for(day in week){
-                if (day==1){
-                    intent.data=Uri.parse("id="+id+"repeat="+dayOfWeekNames[week.indexOf(day)])
+            for(i in 0..6){
+                if (week[i]==1){
+                    intent.data=Uri.parse("id="+id+"repeat="+dayOfWeekNames[i])
                     val pi=PendingIntent.getActivity(activity, id, intent, 0)
                     am.cancel(pi)
                 }

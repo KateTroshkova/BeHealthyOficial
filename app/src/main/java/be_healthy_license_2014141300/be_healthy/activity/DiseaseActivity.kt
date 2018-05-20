@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.util.TypedValue
+import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -17,18 +18,22 @@ import com.be_healthy_license_2014141300.be_healthy.disease.Disease
 import com.be_healthy_license_2014141300.be_healthy.fragment.TreatmentFragment
 import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
 import org.intellij.lang.annotations.MagicConstant
+import android.view.MenuInflater
+import android.view.MenuItem
+
 
 class DiseaseActivity : NavigationActivity() {
 
     private lateinit var treatment: Fragment
     private lateinit var magic: Fragment
     @JvmField var disease: Disease?=null
+    private var needMenu=true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_disease)
         setUpToolBar()
-        val navigationView = findViewById(R.id.nav_view) as NavigationView
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
         navigationView.setCheckedItem(SEARCH)
         navigationView.menu.getItem(SEARCH).isChecked = true
@@ -37,14 +42,15 @@ class DiseaseActivity : NavigationActivity() {
         }
         if (intent.hasExtra(resources.getString(R.string.param_from_saved))) {
             if (intent.getBooleanExtra(resources.getString(R.string.param_from_saved), false)) {
-                (findViewById(R.id.fab)).visibility=View.INVISIBLE
+                //(findViewById(R.id.fab)).visibility=View.INVISIBLE
+                needMenu=false
             }
         }
-        val name=findViewById(R.id.name) as TextView
+        val name=findViewById<TextView>(R.id.name)
         name.text=disease?.name
         name.setTextSize(TypedValue.COMPLEX_UNIT_PX, name.textSize*(application as CustomApplication).size_coef)
 
-        val description=findViewById(R.id.description) as TextView
+        val description=findViewById<TextView>(R.id.description)
         description.text=disease?.description
 
         var symptoms=""
@@ -52,7 +58,7 @@ class DiseaseActivity : NavigationActivity() {
             symptoms+=symptom+","
         }
         symptoms=symptoms.removeSuffix(",")
-        val symptomsText=findViewById(R.id.symptoms_list) as CustomSizeTextView
+        val symptomsText=findViewById<CustomSizeTextView>(R.id.symptoms_list)
         symptomsText.text=symptoms
         symptomsText.setTypeface(symptomsText.typeface, Typeface.ITALIC)
 
@@ -61,10 +67,10 @@ class DiseaseActivity : NavigationActivity() {
         (treatment as TreatmentFragment).setData(disease?.treatment!!)
         (magic as TreatmentFragment).setData(disease?.magic!!)
 
-        val button=findViewById(R.id.fab) as Button
-        button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(application as CustomApplication).size_coef*0.6f)
+        //val button=findViewById(R.id.fab) as Button
+        //button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(application as CustomApplication).size_coef*0.6f)
 
-        (findViewById(R.id.back_button)).setOnClickListener { this@DiseaseActivity.onBackPressed() }
+        (findViewById<View>(R.id.back_button)).setOnClickListener { this@DiseaseActivity.onBackPressed() }
 
         val fragmentTranslation=fragmentManager.beginTransaction()
         fragmentTranslation.hide(treatment)
@@ -80,13 +86,13 @@ class DiseaseActivity : NavigationActivity() {
         show(R.id.magic, R.id.m_frame, magic)
     }
 
-    fun save(view: View){
-        DB_Operation(this).saveDisease(disease!!)
-        Toast.makeText(this, resources.getString(R.string.saved_info), Toast.LENGTH_SHORT).show()
-    }
+  //  fun save(view: View){
+  //      DB_Operation(this).saveDisease(disease!!)
+  //      Toast.makeText(this, resources.getString(R.string.saved_info), Toast.LENGTH_SHORT).show()
+  //  }
 
     private fun show(textId:Int, backgroundId:Int, fragment:Fragment){
-        val text=findViewById(textId) as TextView
+        val text=findViewById<TextView>(textId)
         val fragmentTranslation=fragmentManager.beginTransaction()
         fragmentTranslation.replace(backgroundId, fragment)
         fragmentTranslation.show(fragment)
@@ -96,5 +102,24 @@ class DiseaseActivity : NavigationActivity() {
             text.setBackgroundResource(R.drawable.light_background)
         }
         fragmentTranslation.commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        if (needMenu) {
+            val inflater = menuInflater
+            inflater.inflate(R.menu.disease_menu, menu)
+        }
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            R.id.save->{
+                DB_Operation(this).saveDisease(disease!!)
+                Toast.makeText(this, resources.getString(R.string.saved_info), Toast.LENGTH_SHORT).show()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 }

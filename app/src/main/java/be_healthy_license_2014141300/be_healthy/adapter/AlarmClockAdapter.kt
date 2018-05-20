@@ -26,27 +26,27 @@ class AlarmClockAdapter(var context: Activity, var data:MutableList<AlarmClock>)
     private val open= mutableListOf<Int>()
 
     override fun getView(position: Int, p1: View?, p2: ViewGroup?): View {
-        val inflater= LayoutInflater.from(context)
+        val inflater= LayoutInflater.from(context as Context?)
         val view=inflater.inflate(R.layout.alarm_clock_item, null)
 
-        val time=view.findViewById(R.id.time_text) as TextView
+        val time=view.findViewById<TextView>(R.id.time_text)
         time.text=formatTime(data[position].hour, data[position].minute)
-        val switchView=view.findViewById(R.id.switch1) as Switch
-        val checkBox=view.findViewById(R.id.checkBox) as CheckBox
-        val deleteImage=view.findViewById(R.id.deleteImage) as ImageView
-        val week = arrayListOf(view.findViewById(R.id.sun) as DayOfWeekView,
-                view.findViewById(R.id.mon) as DayOfWeekView,
-                view.findViewById(R.id.tue) as DayOfWeekView,
-                view.findViewById(R.id.wen) as DayOfWeekView,
-                view.findViewById(R.id.th) as DayOfWeekView,
-                view.findViewById(R.id.fr) as DayOfWeekView,
-                view.findViewById(R.id.sat) as DayOfWeekView)
-        val layout=view.findViewById(R.id.daysLayout) as LinearLayout
-        val sublayout=view.findViewById(R.id.submenu) as LinearLayout
-        val button=view.findViewById(R.id.button) as ImageButton
-        val ringtone=view.findViewById(R.id.ringtone_text) as TextView
-        val description=view.findViewById(R.id.description) as EditText
-        val anotherInfo=view.findViewById(R.id.another_info) as TextView
+        val switchView=view.findViewById<Switch>(R.id.switch1)
+        val checkBox=view.findViewById<CheckBox>(R.id.checkBox)
+        val deleteImage=view.findViewById<ImageView>(R.id.deleteImage)
+        val week = arrayListOf(view.findViewById<DayOfWeekView>(R.id.sun),
+                view.findViewById<DayOfWeekView>(R.id.mon),
+                view.findViewById<DayOfWeekView>(R.id.tue),
+                view.findViewById<DayOfWeekView>(R.id.wen),
+                view.findViewById<DayOfWeekView>(R.id.th),
+                view.findViewById<DayOfWeekView>(R.id.fr),
+                view.findViewById<DayOfWeekView>(R.id.sat))
+        val layout=view.findViewById<LinearLayout>(R.id.daysLayout)
+        val sublayout=view.findViewById<LinearLayout>(R.id.submenu)
+        val button=view.findViewById<ImageButton>(R.id.button)
+        val ringtone=view.findViewById<TextView>(R.id.ringtone_text)
+        val description=view.findViewById<EditText>(R.id.description)
+        val anotherInfo=view.findViewById<TextView>(R.id.another_info)
         if (data[position].description!=" ") {
             description.setText(data[position].description)
         }

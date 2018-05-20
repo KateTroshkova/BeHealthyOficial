@@ -9,6 +9,11 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
 
     <application
         android:name=".CustomApplication"
@@ -32,12 +37,16 @@
         <activity
             android:name=".activity.DiseaseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.AlarmActivity"
-            android:label=""/>
+        <activity
+            android:name=".activity.AlarmActivity"
+            android:label="" />
         <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.HeartRateMeasureActivity"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="be_healthy_license_2014141300.be_healthy.activity.EducationActivity"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -31,7 +31,7 @@ class RingtoneDialog: DialogFragment(), MediaPlayer.OnPreparedListener {
         val view=inflater.inflate(R.layout.ringtone_dialog_item, null)
         val dialog= AlertDialog.Builder(activity)
         dialog.setView(view)
-        val listView=view.findViewById(R.id.listView) as ListView
+        val listView=view.findViewById<ListView>(R.id.listView)
         listView.choiceMode = ListView.CHOICE_MODE_SINGLE
         val adapter= ArrayAdapter(activity, android.R.layout.simple_list_item_single_choice, names)
         listView.adapter=adapter

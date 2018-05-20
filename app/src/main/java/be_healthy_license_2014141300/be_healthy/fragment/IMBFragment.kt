@@ -10,10 +10,15 @@ import android.view.ViewGroup
 import com.be_healthy_license_2014141300.be_healthy.R
 import android.graphics.drawable.GradientDrawable
 import android.support.v7.widget.AppCompatButton
+import android.util.Log
 import android.util.TypedValue
 import android.widget.*
 import be_healthy_license_2014141300.be_healthy.view.IMBView
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 
 
 class IMBFragment:Fragment() {
@@ -34,12 +39,12 @@ class IMBFragment:Fragment() {
      override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                                savedInstanceState: Bundle?): View? {
          var view=inflater!!.inflate(R.layout.fragment_imb, container, false)
-         ageText=view.findViewById(R.id.editText3) as EditText
-         weightText=view.findViewById(R.id.editText4) as EditText
-         heightText=view.findViewById(R.id.editText5) as EditText
-         infoText=view.findViewById(R.id.textView7) as TextView
-         imb=view.findViewById(R.id.imageView) as IMBView
-         var button=view.findViewById(R.id.start) as AppCompatButton
+         ageText=view.findViewById(R.id.editText3)
+         weightText=view.findViewById<EditText>(R.id.editText4)
+         heightText=view.findViewById<EditText>(R.id.editText5)
+         infoText=view.findViewById<EditText>(R.id.textView7)
+         imb=view.findViewById<IMBView>(R.id.imageView)
+         var button=view.findViewById<AppCompatButton>(R.id.start)
          button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(activity.application as CustomApplication).size_coef*0.6f)
          button.setOnClickListener {
              if (!ageText.text.isEmpty() && !weightText.text.isEmpty() && !heightText.text.isEmpty()){
@@ -71,6 +76,9 @@ class IMBFragment:Fragment() {
                  Toast.makeText(activity, resources.getString(R.string.empty_fields_error), Toast.LENGTH_SHORT).show()
              }
          }
+         var mAdView = view.findViewById<AdView>(R.id.adView)
+         val adRequest = AdRequest.Builder().build()
+         mAdView.loadAd(adRequest)
          return view
      }
 

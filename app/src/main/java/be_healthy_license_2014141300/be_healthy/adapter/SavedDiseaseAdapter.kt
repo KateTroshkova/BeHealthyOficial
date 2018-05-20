@@ -23,9 +23,9 @@ class SavedDiseaseAdapter(var context: Activity, data:MutableList<String>?): Rec
     }
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var name: TextView = view.findViewById(R.id.name) as TextView
-        var description: TextView =view.findViewById(R.id.description) as TextView
-        var viewForeground: RelativeLayout = view.findViewById(R.id.view_foreground) as RelativeLayout
+        var name: TextView = view.findViewById(R.id.name)
+        var description: TextView =view.findViewById(R.id.description)
+        var viewForeground: RelativeLayout = view.findViewById(R.id.view_foreground)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

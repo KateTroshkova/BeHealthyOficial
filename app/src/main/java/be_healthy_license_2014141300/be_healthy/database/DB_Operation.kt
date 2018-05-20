@@ -71,6 +71,10 @@ class DB_Operation(var context: Context) {
         ClearHistoryTask().execute()
     }
 
+    fun deleteSymptom(name:String){
+        DeleteSymptom(name).execute()
+    }
+
     private inner class ReadSymptomsTask:AsyncTask<Void, Void, Void>(){
         override fun doInBackground(vararg p0: Void?): Void? {
             val result = arrayListOf<String>()
@@ -102,6 +106,16 @@ class DB_Operation(var context: Context) {
             val helper= SaveSymptomsDB_Helper(context)
             val db=helper.writableDatabase
             db.delete(helper.TABLE_NAME, null, null)
+            return null
+        }
+    }
+
+    private inner class DeleteSymptom(var name:String): AsyncTask<Void, Void, Void>(){
+
+        override fun doInBackground(vararg p0: Void?): Void? {
+            val helper = SaveSymptomsDB_Helper(context)
+            val db=helper.writableDatabase
+            db.delete(helper.TABLE_NAME, helper.COLUMN_NAME+" = '"+name+"';", null)
             return null
         }
     }

@@ -19,6 +19,8 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v7.widget.AppCompatButton
 import be_healthy_license_2014141300.be_healthy.dialog.DeleteDialog
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 
 
 class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
@@ -28,7 +30,7 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
     private lateinit var ageInfoText:TextView
     private lateinit var ageText: EditText
     private lateinit var content:View
-    private lateinit var removeHistoryButton:AppCompatButton
+    //private lateinit var removeHistoryButton:AppCompatButton
     private lateinit var userTermsButton:AppCompatButton
     private lateinit var webButton:AppCompatButton
 
@@ -47,14 +49,14 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
                               savedInstanceState: Bundle?): View? {
         content = inflater!!.inflate(R.layout.fragment_settings, container, false)
         activity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-        sizeText=content.findViewById(R.id.size_text) as TextView
-        ageText=content.findViewById(R.id.age_edit_text) as EditText
-        ageInfoText=content.findViewById(R.id.textView) as TextView
-        removeHistoryButton=content.findViewById(R.id.fab) as AppCompatButton
-        webButton=content.findViewById(R.id.web) as AppCompatButton
-        userTermsButton=content.findViewById(R.id.userterms) as AppCompatButton
+        sizeText=content.findViewById<TextView>(R.id.size_text)
+        ageText=content.findViewById<EditText>(R.id.age_edit_text)
+        ageInfoText=content.findViewById<TextView>(R.id.textView)
+        //removeHistoryButton=content.findViewById(R.id.fab) as AppCompatButton
+        webButton=content.findViewById<AppCompatButton>(R.id.web)
+        userTermsButton=content.findViewById<AppCompatButton>(R.id.userterms)
 
-        val seekbar=content.findViewById(R.id.seekBar) as SeekBar
+        val seekbar=content.findViewById<SeekBar>(R.id.seekBar)
         seekbar.setOnSeekBarChangeListener(this)
         seekbar.max=20
 
@@ -81,7 +83,7 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
             }
             false
         })
-        removeHistoryButton.setOnClickListener { DeleteDialog().show(activity.fragmentManager, "") }
+        //removeHistoryButton.setOnClickListener { DeleteDialog().show(activity.fragmentManager, "") }
         userTermsButton.setOnClickListener {UserTermsTask().execute()}
         webButton.setOnClickListener {
             val url = "https://dshv12bh3.wixsite.com/behealthy"
@@ -89,9 +91,12 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
             intent.data = Uri.parse(url)
             startActivity(intent)
         }
-        removeHistoryButton.textSize=sizeToLoad.toFloat()
+        //removeHistoryButton.textSize=sizeToLoad.toFloat()
         userTermsButton.textSize=sizeToLoad.toFloat()
         webButton.textSize=sizeToLoad.toFloat()
+        var mAdView = content.findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
         return content
     }
 
@@ -116,7 +121,7 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
         sizeText.textSize= size.toFloat()
         ageText.textSize =size.toFloat()
         ageInfoText.textSize=size.toFloat()
-        removeHistoryButton.textSize=size.toFloat()
+        //removeHistoryButton.textSize=size.toFloat()
         webButton.textSize=size.toFloat()
         userTermsButton.textSize=size.toFloat()
     }

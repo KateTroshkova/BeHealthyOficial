@@ -3,6 +3,7 @@ package be_healthy_license_2014141300.be_healthy.dialog
 import android.app.AlertDialog
 import android.app.Dialog
 import android.app.DialogFragment
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.be_healthy_license_2014141300.be_healthy.R
@@ -16,13 +17,21 @@ class UserTermsDialog:DialogFragment(){
         this.data=data
     }
 
+    interface OnInstructionListener{
+        fun onShowInstruction()
+    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog=AlertDialog.Builder(activity)
         val inflater=LayoutInflater.from(activity)
         val view=inflater.inflate(R.layout.user_terms_item, null)
-        (view.findViewById(R.id.userterms) as CustomSizeTextView).text=data
+        (view.findViewById<CustomSizeTextView>(R.id.userterms)).text=data
         dialog.setView(view)
-        dialog.setPositiveButton(activity.resources.getString(R.string.accept), null)
+        dialog.setPositiveButton(activity.resources.getString(R.string.accept), object : DialogInterface.OnClickListener{
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                (activity as OnInstructionListener).onShowInstruction()
+            }
+        })
         return dialog.create()
     }
 }

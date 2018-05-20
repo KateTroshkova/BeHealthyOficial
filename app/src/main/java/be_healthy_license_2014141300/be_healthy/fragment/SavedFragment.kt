@@ -23,6 +23,8 @@ import com.be_healthy_license_2014141300.be_healthy.slide_helper.ListHelper
 import com.be_healthy_license_2014141300.be_healthy.adapter.SavedDiseaseAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.slide_helper.SavedListHelper
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import java.lang.NullPointerException
 
 class SavedFragment : Fragment(), ListHelper.OnSwipeListener {
@@ -72,7 +74,7 @@ class SavedFragment : Fragment(), ListHelper.OnSwipeListener {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         DB_Operation(activity).readDisease()
         val view = inflater!!.inflate(R.layout.fragment_saved, container, false)
-        recyclerView = view?.findViewById(R.id.disease_list) as RecyclerView
+        recyclerView = view?.findViewById<RecyclerView>(R.id.disease_list)!!
         val mLayoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = mLayoutManager
         recyclerView.itemAnimator = DefaultItemAnimator()
@@ -95,9 +97,16 @@ class SavedFragment : Fragment(), ListHelper.OnSwipeListener {
         val itemTouchHelperCallback = SavedListHelper(0, ItemTouchHelper.LEFT, this)
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView)
 
-        image=view.findViewById(R.id.empty_icon) as ImageView
+        image=view.findViewById<ImageView>(R.id.empty_icon)
+        var mAdView = view.findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
         return view
+    }
+
+    fun stop(){
+        data?.clear()
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int) {

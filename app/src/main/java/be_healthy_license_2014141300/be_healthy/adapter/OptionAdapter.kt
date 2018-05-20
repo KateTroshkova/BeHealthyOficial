@@ -15,13 +15,13 @@ class OptionAdapter(var context: Context, var data:MutableList<Disease>): BaseAd
     override fun getView(position: Int, view: View?, parents: ViewGroup?): View {
         val inflater= LayoutInflater.from(context)
         val view=inflater.inflate(R.layout.option_item, null)
-        (view.findViewById(R.id.name) as TextView).text=data[position].name
+        (view.findViewById<TextView>(R.id.name)).text=data[position].name
         var symptoms=""
         for(symptom in data[position].symptoms){
             symptoms+=symptom+","
         }
         symptoms=symptoms.removeSuffix(",")
-        val subtext=view.findViewById(R.id.description) as TextView
+        val subtext=view.findViewById<TextView>(R.id.description)
         subtext.text=symptoms
         subtext.setTypeface(subtext.typeface, Typeface.ITALIC)
         return view

@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.app.Fragment
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.AsyncTask
@@ -16,6 +17,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.Toolbar
 import android.widget.Toast
+import be_healthy_license_2014141300.be_healthy.activity.EducationActivity
 import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
 import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
 import be_healthy_license_2014141300.be_healthy.fragment.HeartFragment
@@ -23,25 +25,34 @@ import be_healthy_license_2014141300.be_healthy.fragment.IMBFragment
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.ShareManager
 import com.be_healthy_license_2014141300.be_healthy.fragment.*
+import com.google.android.gms.ads.MobileAds
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.util.*
 
-class MainActivity : NavigationActivity() {
+class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener{
 
     private lateinit var navigationView: NavigationView
 
     private var currentState=0
+    private var needInstruction=false
 
-    private var fragments = hashMapOf(MAIN to MainFragment.getInstance(), SEARCH to SearchFragment.getInstance(), HEART to HeartFragment.getInstance(),
-            EYE to EyeFragment.getInstance(), IMB to IMBFragment(), SAVE to SavedFragment.getInstance(), ALARM to AlarmFragment.getInstance(), SETTINGS to SettingsFragment.getInstance())
+    private var fragments = hashMapOf(MAIN to MainFragment.getInstance(),
+            SEARCH to SearchFragment.getInstance(),
+            /**HEART to HeartFragment.getInstance(),*/
+            EYE to EyeFragment.getInstance(),
+            IMB to IMBFragment(),
+            SAVE to SavedFragment.getInstance(),
+            ALARM to AlarmFragment.getInstance(),
+            SETTINGS to SettingsFragment.getInstance())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        MobileAds.initialize(this, "ca-app-pub-5054095397379666~4357348574")
         setUpToolBar()
-        navigationView = findViewById(R.id.nav_view) as NavigationView
+        navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
         if(intent.hasExtra(resources.getString(R.string.param_state))){
             currentState=intent.getIntExtra(resources.getString(R.string.param_state), 0)
@@ -66,6 +77,7 @@ class MainActivity : NavigationActivity() {
         super.onPause()
         (fragments[EYE] as EyeFragment).stop()
         (fragments[ALARM] as AlarmFragment).stop()
+        (fragments[SAVE] as SavedFragment).stop()
     }
 
     override fun onSaveInstanceState(outState: Bundle){
@@ -85,6 +97,7 @@ class MainActivity : NavigationActivity() {
 
     override fun onNavigationItemSelected(item: android.view.MenuItem): Boolean {
         (fragments[EYE] as EyeFragment).stop()
+        (fragments[SAVE] as SavedFragment).stop()
         when (item.itemId) {
             R.id.main -> {
                 setFragment(fragments[MAIN])
@@ -94,9 +107,9 @@ class MainActivity : NavigationActivity() {
                 setFragment(fragments[SEARCH])
                 setBackground(SEARCH)
             }
-            R.id.heart -> {
+          /**  R.id.heart -> {
                 checkCameraPermission()
-            }
+            }*/
             R.id.eye -> {
                 setFragment(fragments[EYE])
                 setBackground(EYE)
@@ -125,12 +138,12 @@ class MainActivity : NavigationActivity() {
                 Toast.makeText(this, resources.getString(R.string.error_info), Toast.LENGTH_SHORT).show()
             }
         }
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
 
-    override fun checkCameraPermission(){
+    /**override fun checkCameraPermission(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION)
         }
@@ -156,6 +169,13 @@ class MainActivity : NavigationActivity() {
                 Toast.makeText(this, resources.getString(R.string.error_info), Toast.LENGTH_SHORT).show()
             }
         }
+    }*/
+
+    override fun onShowInstruction() {
+        if (needInstruction){
+            startActivity(Intent(this, EducationActivity::class.java))
+            needInstruction=false
+        }
     }
 
     private fun setBackground(checked:Int){
@@ -166,7 +186,7 @@ class MainActivity : NavigationActivity() {
             }
             navigationView.menu.getItem(checked).isChecked = true
         }
-        val toolBar=findViewById(R.id.toolbar) as Toolbar
+        val toolBar=findViewById<Toolbar>(R.id.toolbar)
         toolBar.title=fragmentNames[checked]
     }
 
@@ -178,7 +198,7 @@ class MainActivity : NavigationActivity() {
         }
     }
 
-    private class UserTermsTask(var activity:Activity): AsyncTask<Void, Void, String>() {
+    private inner class UserTermsTask(var activity:Activity): AsyncTask<Void, Void, String>() {
 
         override fun doInBackground(vararg p0: Void?): String {
             var termsOfUse=""
@@ -210,6 +230,7 @@ class MainActivity : NavigationActivity() {
                 val dialog = UserTermsDialog()
                 dialog.setData(result.replace("#", "\n\n"))
                 dialog.show(activity.fragmentManager, "userterms")
+                needInstruction=true
             }
         }
     }

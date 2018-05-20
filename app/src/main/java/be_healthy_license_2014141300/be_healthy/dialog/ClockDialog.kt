@@ -32,7 +32,7 @@ class ClockDialog: DialogFragment(){
         val dialog= AlertDialog.Builder(activity)
         val inflater= LayoutInflater.from(activity)
         val view=inflater.inflate(R.layout.dialog_item, null)
-        val timePicker=view.findViewById(R.id.timePicker) as TimePicker
+        val timePicker=view.findViewById<TimePicker>(R.id.timePicker)
         timePicker.setIs24HourView(true)
         if (alarm!=null){
             timePicker.currentHour=alarm!!.hour

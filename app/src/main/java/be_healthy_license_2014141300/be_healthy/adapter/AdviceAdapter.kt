@@ -12,8 +12,8 @@ import com.be_healthy_license_2014141300.be_healthy.R
 class AdviceAdapter(var data:MutableList<Advice>?): RecyclerView.Adapter<AdviceAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var name: TextView = view.findViewById(R.id.advice_text) as TextView
-        var viewForeground: RelativeLayout = view.findViewById(R.id.view_foreground) as RelativeLayout
+        var name: TextView = view.findViewById<TextView>(R.id.advice_text)
+        var viewForeground: RelativeLayout = view.findViewById<RelativeLayout>(R.id.view_foreground)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

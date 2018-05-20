@@ -116,15 +116,15 @@ class EyeFragment : Fragment(), View.OnClickListener {
         val view = inflater!!.inflate(R.layout.fragment_eye, container, false)
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, IntentFilter(activity.resources.getString(R.string.action_finish)))
         existActivity=activity
-        startButton=view.findViewById(R.id.start) as FloatingActionButton
+        startButton=view.findViewById<FloatingActionButton>(R.id.start)
         startButton.setOnClickListener(this)
-        finishButton=view.findViewById(R.id.finish) as FloatingActionButton
+        finishButton=view.findViewById<FloatingActionButton>(R.id.finish)
         finishButton.setOnClickListener(this)
-        circle=view.findViewById(R.id.circle) as Circle
-        path=view.findViewById(R.id.moveView) as AnimationPathView
+        circle=view.findViewById<Circle>(R.id.circle)
+        path=view.findViewById<AnimationPathView>(R.id.moveView)
         handler = Handler(callback)
-        timerText=view.findViewById(R.id.timer) as CustomSizeTextView
-        info=view.findViewById(R.id.instruction) as TextView
+        timerText=view.findViewById<CustomSizeTextView>(R.id.timer)
+        info=view.findViewById<TextView>(R.id.instruction)
         reset()
         return view
     }

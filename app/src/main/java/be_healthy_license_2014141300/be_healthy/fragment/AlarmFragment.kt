@@ -21,6 +21,8 @@ import com.be_healthy_license_2014141300.be_healthy.adapter.AlarmClockAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.activity.AlarmActivity
 import com.be_healthy_license_2014141300.be_healthy.dialog.ClockDialog
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 
 class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmClockListener {
 
@@ -102,10 +104,13 @@ class AlarmFragment : Fragment(), View.OnClickListener, ClockDialog.OnNewAlarmCl
         LocalBroadcastManager.getInstance(activity).registerReceiver(deleteReceiver, IntentFilter(activity.resources.getString(R.string.action_alarm_delete)))
         LocalBroadcastManager.getInstance(activity).registerReceiver(updateReceiver, IntentFilter(activity.resources.getString(R.string.action_alarm_update)))
         DB_Operation(activity).readAlarm()
-        val button=view.findViewById(R.id.fab) as Button
+        val button=view.findViewById<Button>(R.id.fab) as Button
         button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(activity.application as CustomApplication).size_coef*0.6f)
         button.setOnClickListener(this)
-        list=view.findViewById(R.id.list) as ListView
+        list=view.findViewById<ListView>(R.id.list)
+        var mAdView = view.findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
         return view
     }
 

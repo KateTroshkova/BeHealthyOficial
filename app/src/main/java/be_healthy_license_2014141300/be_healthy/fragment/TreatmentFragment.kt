@@ -19,7 +19,7 @@ class TreatmentFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_treatment, container, false)
-        val list=view.findViewById(R.id.treatment_list) as ListView
+        val list=view.findViewById<ListView>(R.id.treatment_list)
         val adapter= ArrayAdapter<String>(activity, R.layout.simple_separated_item, data)
         list.adapter=adapter
         return view

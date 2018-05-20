@@ -36,13 +36,13 @@ class MainFragment : Fragment(), ListHelper.OnSwipeListener {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val content = inflater!!.inflate(R.layout.fragment_main, container, false)
         createAdviceList()
-        val recyclerView = content?.findViewById(R.id.advice_list) as RecyclerView
+        val recyclerView = content?.findViewById<RecyclerView>(R.id.advice_list)
         val mLayoutManager = LinearLayoutManager(activity)
-        recyclerView.layoutManager = mLayoutManager
-        recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
+        recyclerView?.layoutManager = mLayoutManager
+        recyclerView?.itemAnimator = DefaultItemAnimator()
+        recyclerView?.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
         adapter = AdviceAdapter(data)
-        recyclerView.adapter = adapter
+        recyclerView?.adapter = adapter
         val itemTouchHelperCallback = AdviceListHelper(0, ItemTouchHelper.LEFT, this)
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView)
         return content
