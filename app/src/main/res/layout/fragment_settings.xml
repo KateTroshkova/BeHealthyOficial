@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+   <!-- <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         android:ems="10"
         android:textColor="@color/colorBlack"
         android:textColorHint="@color/colorBlack"
-        android:inputType="number" />
+        android:inputType="number" />-->
 
     <!--<android.support.v7.widget.AppCompatButton
         android:id="@+id/fab"

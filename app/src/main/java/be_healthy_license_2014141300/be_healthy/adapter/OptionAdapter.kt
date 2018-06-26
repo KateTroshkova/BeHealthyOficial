@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
@@ -15,7 +16,11 @@ class OptionAdapter(var context: Context, var data:MutableList<Disease>): BaseAd
     override fun getView(position: Int, view: View?, parents: ViewGroup?): View {
         val inflater= LayoutInflater.from(context)
         val view=inflater.inflate(R.layout.option_item, null)
-        (view.findViewById<TextView>(R.id.name)).text=data[position].name
+        var name=view.findViewById<TextView>(R.id.name)
+        name.text=data[position].name
+        if (position<5){
+            name.setTextColor(context.resources.getColor(R.color.colorAccent))
+        }
         var symptoms=""
         for(symptom in data[position].symptoms){
             symptoms+=symptom+","

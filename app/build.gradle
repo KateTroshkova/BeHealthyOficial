@@ -12,14 +12,20 @@ android {
             storeFile file('C:/keys/be_healthy_key.jks')
             storePassword 'provod089076'
         }
+        config1 {
+            keyAlias 'be_healthy'
+            keyPassword 'provod089076'
+            storeFile file('C:/keys/be_healthy_key.jks')
+            storePassword 'provod089076'
+        }
     }
     compileSdkVersion 26
     defaultConfig {
         applicationId "be_healthy_license_2014141300.be_healthy"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "5.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -28,6 +34,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             debuggable false
             signingConfig signingConfigs.config
+            jniDebuggable false
+            renderscriptDebuggable false
         }
     }
 }

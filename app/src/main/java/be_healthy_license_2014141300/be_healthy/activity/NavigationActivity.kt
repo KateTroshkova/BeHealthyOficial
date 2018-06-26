@@ -30,7 +30,7 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
     protected val ALARM=5
     protected val SETTINGS=6
 
-    protected val fragmentNames= listOf<String>("Главная страница", "Поиск симптомов",/** "Измерение пульса", */
+    protected val fragmentNames= listOf<String>("Главная страница", "Поиск по симптомам",/** "Измерение пульса", */
             "Тренировка для глаз", "Расчет ИМТ", "Сохраненные", "Будильник", "Настройки" )
 
     protected val CAMERA_PERMISSION=0

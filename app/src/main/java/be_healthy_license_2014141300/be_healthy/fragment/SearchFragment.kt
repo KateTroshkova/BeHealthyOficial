@@ -24,6 +24,7 @@ import com.be_healthy_license_2014141300.be_healthy.adapter.SymptomsAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import be_healthy_license_2014141300.be_healthy.disease.*
 import be_healthy_license_2014141300.be_healthy.slide_helper.SymptomsListHelper
+import com.be_healthy_license_2014141300.be_healthy.activity.MainActivity
 import com.be_healthy_license_2014141300.be_healthy.adapter.AdviceAdapter
 import com.be_healthy_license_2014141300.be_healthy.disease.*
 import com.be_healthy_license_2014141300.be_healthy.slide_helper.AdviceListHelper
@@ -100,7 +101,7 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
                 Allergy(activity), Stomatitis(activity), Gastritis(activity), Herpes(activity), Cholecystitis(activity),
                 Laryngitis(activity), Osteoarthritis(activity), Atherosclerosis(activity), Bronchitis(activity), Scurvy(activity),
                 Hives(activity), NailFungus(activity), Acne(activity), Gumboil(activity), Osteochondrosis(activity), Migraine(activity),
-                Stenocardia(activity), Conjunctivitis(activity), Eczema(activity), Lichen(activity), Mononucleosis(activity), Streptococcus(activity),
+                Stenocardia(activity), Conjunctivitis(activity), Eczema(activity), Lichen(activity), Mononucleosis(activity),
                 Glaucoma(activity), Depression(activity))
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, IntentFilter(activity.resources.getString(R.string.action_read_ready)))
         DB_Operation(activity).readSymptoms()
@@ -144,6 +145,9 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
                 button.isClickable=false
                 button.setBackgroundColor(activity.resources.getColor(R.color.colorGray))
                 button.visibility=View.INVISIBLE
+               // if ((activity as MainActivity).mInterstitialAd.isLoaded()) {
+               //     (activity as MainActivity).mInterstitialAd.show()
+                //}
             }
             if (p0.id==R.id.add_button){
                 val dialog=SearchDialog()
@@ -168,7 +172,9 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
     private fun prepareList(data:MutableList<Disease>):ArrayList<Disease>{
         val result = arrayListOf<Disease>()
         for(key in data){
-            result.add(0, key)
+            //if(result.size<5) {
+                result.add(0, key)
+           // }
         }
         return result
     }

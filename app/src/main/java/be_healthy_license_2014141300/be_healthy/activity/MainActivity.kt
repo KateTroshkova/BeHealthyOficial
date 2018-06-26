@@ -25,6 +25,9 @@ import be_healthy_license_2014141300.be_healthy.fragment.IMBFragment
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.ShareManager
 import com.be_healthy_license_2014141300.be_healthy.fragment.*
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
 import java.io.BufferedReader
 import java.io.IOException
@@ -37,6 +40,8 @@ class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener
 
     private var currentState=0
     private var needInstruction=false
+
+   // lateinit var mInterstitialAd: InterstitialAd
 
     private var fragments = hashMapOf(MAIN to MainFragment.getInstance(),
             SEARCH to SearchFragment.getInstance(),
@@ -51,6 +56,14 @@ class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         MobileAds.initialize(this, "ca-app-pub-5054095397379666~4357348574")
+        //mInterstitialAd = InterstitialAd(this)
+        //mInterstitialAd.adUnitId = "ca-app-pub-5054095397379666/2589096014"
+        //mInterstitialAd.loadAd(AdRequest.Builder().build())
+        //mInterstitialAd.adListener = object : AdListener() {
+        //    override fun onAdClosed() {
+        //        mInterstitialAd.loadAd(AdRequest.Builder().build())
+        //    }
+        //}
         setUpToolBar()
         navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)

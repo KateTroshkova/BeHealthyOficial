@@ -27,8 +27,8 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
 
     private var defaultSize=12
     private lateinit var sizeText: TextView
-    private lateinit var ageInfoText:TextView
-    private lateinit var ageText: EditText
+    //private lateinit var ageInfoText:TextView
+    //private lateinit var ageText: EditText
     private lateinit var content:View
     //private lateinit var removeHistoryButton:AppCompatButton
     private lateinit var userTermsButton:AppCompatButton
@@ -49,9 +49,9 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
                               savedInstanceState: Bundle?): View? {
         content = inflater!!.inflate(R.layout.fragment_settings, container, false)
         activity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-        sizeText=content.findViewById<TextView>(R.id.size_text)
-        ageText=content.findViewById<EditText>(R.id.age_edit_text)
-        ageInfoText=content.findViewById<TextView>(R.id.textView)
+        sizeText=content.findViewById(R.id.size_text)
+        //ageText=content.findViewById<EditText>(R.id.age_edit_text)
+        //ageInfoText=content.findViewById<TextView>(R.id.textView)
         //removeHistoryButton=content.findViewById(R.id.fab) as AppCompatButton
         webButton=content.findViewById<AppCompatButton>(R.id.web)
         userTermsButton=content.findViewById<AppCompatButton>(R.id.userterms)
@@ -65,10 +65,10 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
         val age=preferences.getInt(activity.resources.getString(R.string.param_age), 0)
         sizeText.text=activity.resources.getString(R.string.text_size)+" "+sizeToLoad
         sizeText.textSize= sizeToLoad.toFloat()
-        ageText.textSize=sizeToLoad.toFloat()
-        ageText.setText(age.toString())
+        //ageText.textSize=sizeToLoad.toFloat()
+        //ageText.setText(age.toString())
         seekbar.progress= sizeToLoad-defaultSize
-        ageText.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, event ->
+        /**ageText.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH ||
                     actionId == EditorInfo.IME_ACTION_DONE ||
                     event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
@@ -82,7 +82,7 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
                 return@OnEditorActionListener true
             }
             false
-        })
+        })*/
         //removeHistoryButton.setOnClickListener { DeleteDialog().show(activity.fragmentManager, "") }
         userTermsButton.setOnClickListener {UserTermsTask().execute()}
         webButton.setOnClickListener {
@@ -107,20 +107,20 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
         editor.apply()
     }
 
-    private fun supportAge(age:Int){
+    /**private fun supportAge(age:Int){
         hideKeyboard(content)
         val preferences=activity.getSharedPreferences(activity.resources.getString(R.string.preferences), Context.MODE_PRIVATE)
         val editor=preferences.edit()
         editor.putInt(activity.resources.getString(R.string.param_age), age)
         editor.apply()
-    }
+    }*/
 
     override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
         val size=p0?.progress!!+defaultSize
         sizeText.text = activity.resources.getString(R.string.text_size) + " " + size
         sizeText.textSize= size.toFloat()
-        ageText.textSize =size.toFloat()
-        ageInfoText.textSize=size.toFloat()
+        //ageText.textSize =size.toFloat()
+        //ageInfoText.textSize=size.toFloat()
         //removeHistoryButton.textSize=size.toFloat()
         webButton.textSize=size.toFloat()
         userTermsButton.textSize=size.toFloat()
@@ -134,10 +134,10 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
         (activity.application as CustomApplication).size_coef=(p0.progress+defaultSize)/defaultSize.toFloat()
     }
 
-    private fun hideKeyboard(view:View){
+    /**private fun hideKeyboard(view:View){
         val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
-    }
+    }*/
 
     private inner class UserTermsTask: AsyncTask<Void, Void, String>() {
 

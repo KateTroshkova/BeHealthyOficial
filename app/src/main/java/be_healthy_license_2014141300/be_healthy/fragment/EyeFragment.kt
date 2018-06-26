@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import com.be_healthy_license_2014141300.be_healthy.R
+import com.be_healthy_license_2014141300.be_healthy.activity.MainActivity
 import com.be_healthy_license_2014141300.be_healthy.view.AnimationPathView
 import com.be_healthy_license_2014141300.be_healthy.view.Circle
 import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
@@ -139,6 +140,9 @@ class EyeFragment : Fragment(), View.OnClickListener {
             }
             R.id.finish->{
                 reset()
+                //if ((activity as MainActivity).mInterstitialAd.isLoaded()) {
+                //    (activity as MainActivity).mInterstitialAd.show()
+               // }
             }
         }
     }

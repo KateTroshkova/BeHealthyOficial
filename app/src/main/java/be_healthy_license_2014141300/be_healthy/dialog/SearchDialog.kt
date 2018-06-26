@@ -73,7 +73,7 @@ class SearchDialog: DialogFragment(), AdapterView.OnItemClickListener{
                 Allergy(activity), Stomatitis(activity), Gastritis(activity), Herpes(activity), Cholecystitis(activity),
                 Laryngitis(activity), Osteoarthritis(activity), Atherosclerosis(activity), Bronchitis(activity), Scurvy(activity),
                 Hives(activity), NailFungus(activity), Acne(activity), Gumboil(activity), Osteochondrosis(activity), Migraine(activity),
-                Stenocardia(activity), Conjunctivitis(activity), Eczema(activity), Lichen(activity), Mononucleosis(activity), Streptococcus(activity),
+                Stenocardia(activity), Conjunctivitis(activity), Eczema(activity), Lichen(activity), Mononucleosis(activity),
                 Glaucoma(activity), Depression(activity))
         allSymptoms.clear()
         for(disease in diseases){

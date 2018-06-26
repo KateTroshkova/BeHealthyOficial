@@ -15,6 +15,7 @@ import android.util.TypedValue
 import android.widget.*
 import be_healthy_license_2014141300.be_healthy.view.IMBView
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
+import com.be_healthy_license_2014141300.be_healthy.activity.MainActivity
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
@@ -71,6 +72,9 @@ class IMBFragment:Fragment() {
                          "Риск для здоровья: "+resources.getStringArray(R.array.risk_info)[index]+"\n"+
                          resources.getStringArray(R.array.fat_advice)[index]
                  imb.setSteps(result.toInt())
+                 //if ((activity as MainActivity).mInterstitialAd.isLoaded()) {
+                 //    (activity as MainActivity).mInterstitialAd.show()
+                // }
              }
              else{
                  Toast.makeText(activity, resources.getString(R.string.empty_fields_error), Toast.LENGTH_SHORT).show()
