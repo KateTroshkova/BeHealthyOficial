@@ -3,6 +3,7 @@ package com.be_healthy_license_2014141300.be_healthy.activity
 import android.app.Fragment
 import android.graphics.Typeface
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
 import android.util.TypedValue
 import android.view.Menu
@@ -33,9 +34,11 @@ class DiseaseActivity : NavigationActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_disease)
         setUpToolBar()
-        val navigationView = findViewById<NavigationView>(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
-        navigationView.setCheckedItem(SEARCH)
+        val navigationView = findViewById<BottomNavigationView>(R.id.nav_view)
+        navigationView.setOnNavigationItemSelectedListener(this)
+        navigationView.selectedItemId=SEARCH
+        //navigationView.setNavigationItemSelectedListener(this)
+        //navigationView.setCheckedItem(SEARCH)
         navigationView.menu.getItem(SEARCH).isChecked = true
         if (intent.hasExtra(resources.getString(R.string.param_disease))) {
             disease = intent.getParcelableExtra<Disease>(resources.getString(R.string.param_disease)) as Disease

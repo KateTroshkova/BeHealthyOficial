@@ -3,9 +3,11 @@ package com.be_healthy_license_2014141300.be_healthy.view
 import android.content.Context
 import android.content.Intent
 import android.graphics.*
+import android.support.design.widget.BottomNavigationView
 import android.support.v4.content.LocalBroadcastManager
 import android.util.AttributeSet
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.be_healthy_license_2014141300.be_healthy.R
@@ -24,6 +26,7 @@ class AnimationPathView : View {
     private var tan= FloatArray(2)
     private var currentX: Float = 0.toFloat()
     private var currentY: Float = 0.toFloat()
+    private var bottomBorder:Int=0
 
     constructor(context: Context) : super(context) {
         init()
@@ -38,6 +41,7 @@ class AnimationPathView : View {
     }
 
     private fun init() {
+        initBottomBorder()
         paint = Paint()
         paint.isAntiAlias = true
         paint.color = Color.parseColor("#388e3c")
@@ -76,17 +80,24 @@ class AnimationPathView : View {
         mMatrix = Matrix()
     }
 
+    private fun initBottomBorder(){
+        val resourceId = resources.getIdentifier("design_bottom_navigation_height", "dimen", context.getPackageName())
+        if (resourceId > 0) {
+            bottomBorder = 3*resources.getDimensionPixelSize(resourceId)
+        }
+    }
+
     private fun drawRightCircle(width:Float, height:Float){
         path.lineTo(50f, 50f)
         path.lineTo(width - 50f, 50f)
-        path.lineTo(width - 50f, height-250)
-        path.lineTo(50f, height-250)
+        path.lineTo(width - 50f, height-bottomBorder)
+        path.lineTo(50f, height-bottomBorder)
         path.lineTo(50f, height/2)
     }
 
     private fun drawLeftCircle(width:Float, height:Float){
-        path.lineTo(50f, height-250)
-        path.lineTo(width - 50f, height-250)
+        path.lineTo(50f, height-bottomBorder)
+        path.lineTo(width - 50f, height-bottomBorder)
         path.lineTo(width - 50f, 50f)
         path.lineTo(50f, 50f)
         path.lineTo(50f, height/2)
@@ -98,7 +109,7 @@ class AnimationPathView : View {
     }
 
     private fun drawVerticalLine(width:Float, height:Float){
-        path.lineTo(width/2, height-250)
+        path.lineTo(width/2, height-bottomBorder)
         path.lineTo(width/2, 50f)
     }
 
@@ -124,7 +135,7 @@ class AnimationPathView : View {
         path.lineTo(width/4, height/4)
         path.lineTo(width/2, height/2)
         path.lineTo(3*width/4, 3*height/4)
-        path.lineTo(width/2, height-250)
+        path.lineTo(width/2, height-bottomBorder)
         path.lineTo(width/4, 3*height/4)
     }
 

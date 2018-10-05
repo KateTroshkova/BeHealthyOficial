@@ -69,7 +69,7 @@ class IMBFragment:Fragment() {
                  }
                  result= (Math.round(result * 10.0) / 10.0).toFloat()
                  infoText.text="Индекс массы тела: "+result+"\n"+(resources.getStringArray(R.array.fatty_diagnosis)[index])+"\n"+
-                         "Риск для здоровья: "+resources.getStringArray(R.array.risk_info)[index]+"\n"+
+                         /**"Риск для здоровья: "+resources.getStringArray(R.array.risk_info)[index]+"\n"+*/
                          resources.getStringArray(R.array.fat_advice)[index]
                  imb.setSteps(result.toInt())
                  //if ((activity as MainActivity).mInterstitialAd.isLoaded()) {

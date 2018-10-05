@@ -19,7 +19,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,9 +40,10 @@
             android:name="be_healthy_license_2014141300.be_healthy.activity.HeartRateMeasureActivity"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="be_healthy_license_2014141300.be_healthy.activity.EducationActivity"
+        <activity
+            android:name="be_healthy_license_2014141300.be_healthy.activity.EducationActivity"
             android:label=""
-            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
     </application>
 
 </manifest>

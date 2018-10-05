@@ -3,6 +3,7 @@ package be_healthy_license_2014141300.be_healthy.activity
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -19,30 +20,19 @@ import com.be_healthy_license_2014141300.be_healthy.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+abstract class NavigationActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener /**NavigationView.OnNavigationItemSelectedListener*/ {
 
     protected val MAIN=0
     protected val SEARCH=1
-    //protected val HEART=2
-    protected val EYE=2
-    protected var IMB=3
-    protected val SAVE=4
+    protected var ADDITION=2
+    protected val EYE=3
+    protected var IMB=4
     protected val ALARM=5
-    protected val SETTINGS=6
+    protected val SAVE=6
+    protected val SETTINGS=7
 
     protected val fragmentNames= listOf<String>("Главная страница", "Поиск по симптомам",/** "Измерение пульса", */
-            "Тренировка для глаз", "Расчет ИМТ", "Сохраненные", "Будильник", "Настройки" )
-
-    protected val CAMERA_PERMISSION=0
-
-    override fun onBackPressed() {
-        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
-    }
+             "Дополнительно", "Тренировка для глаз", "Расчет ИМТ", "Будильник", "Сохраненные", "Настройки" )
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -56,37 +46,10 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
                 intent.putExtra(resources.getString(R.string.param_state), SEARCH)
                 startActivity(intent)
             }
-            /**R.id.heart -> {
-                checkCameraPermission()
-            }*/
-            R.id.eye -> {
+            R.id.menu -> {
                 val intent= Intent(this, MainActivity::class.java)
-                intent.putExtra(resources.getString(R.string.param_state), EYE)
+                intent.putExtra(resources.getString(R.string.param_state), ADDITION)
                 startActivity(intent)
-            }
-            R.id.imb -> {
-                val intent= Intent(this, MainActivity::class.java)
-                intent.putExtra(resources.getString(R.string.param_state), IMB)
-                startActivity(intent)
-            }
-            R.id.saved -> {
-                val intent= Intent(this, MainActivity::class.java)
-                intent.putExtra(resources.getString(R.string.param_state), SAVE)
-                startActivity(intent)
-            }
-            R.id.alarm -> {
-                val intent= Intent(this, MainActivity::class.java)
-                intent.putExtra(resources.getString(R.string.param_state), ALARM)
-                startActivity(intent)
-            }
-            R.id.settings->{
-                val intent= Intent(this, MainActivity::class.java)
-                intent.putExtra(resources.getString(R.string.param_state), SETTINGS)
-                startActivity(intent)
-            }
-            R.id.share -> {
-                ShareManager(this).saveUrl()
-                Toast.makeText(this, resources.getString(R.string.shared_info), Toast.LENGTH_SHORT).show()
             }
             else->{
                 Toast.makeText(this, resources.getString(R.string.error_info), Toast.LENGTH_SHORT).show()
@@ -95,38 +58,9 @@ abstract class NavigationActivity: AppCompatActivity(), NavigationView.OnNavigat
         return true
     }
 
-    /**protected open fun checkCameraPermission(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION)
-        }
-        else{
-            val intent= Intent(this, MainActivity::class.java)
-            intent.putExtra(resources.getString(R.string.param_state), HEART)
-            startActivity(intent)
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        when (requestCode) {
-            CAMERA_PERMISSION -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    val intent= Intent(this, MainActivity::class.java)
-                    intent.putExtra(resources.getString(R.string.param_state), HEART)
-                    startActivity(intent)
-                }
-            }
-            else->{
-                Toast.makeText(this, resources.getString(R.string.error_info), Toast.LENGTH_SHORT).show()
-            }
-        }
-    }*/
-
     protected fun setUpToolBar(){
         val toolBar=findViewById<Toolbar>(R.id.toolbar)
         toolBar.title=""
         setSupportActionBar(toolbar)
-        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
     }
 }

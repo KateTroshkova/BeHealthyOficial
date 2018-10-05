@@ -1,6 +1,7 @@
 package com.be_healthy_license_2014141300.be_healthy.activity
 
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
 import android.view.View
 import android.widget.AdapterView
@@ -18,9 +19,11 @@ class OptionActivity : NavigationActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_option)
         setUpToolBar()
-        val navigationView = findViewById<NavigationView>(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
-        navigationView.setCheckedItem(SEARCH)
+        val navigationView = findViewById<BottomNavigationView>(R.id.nav_view)
+        navigationView.setOnNavigationItemSelectedListener(this)
+        navigationView.selectedItemId=SEARCH
+        //navigationView.setNavigationItemSelectedListener(this)
+        //navigationView.setCheckedItem(SEARCH)
         navigationView.menu.getItem(SEARCH).isChecked = true
         if (intent.hasExtra(resources.getString(R.string.param_disease_list))) {
             options = intent.getParcelableArrayListExtra<Disease>(resources.getString(R.string.param_disease_list))

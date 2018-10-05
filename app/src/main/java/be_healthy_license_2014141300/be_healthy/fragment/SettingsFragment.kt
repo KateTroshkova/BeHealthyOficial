@@ -19,6 +19,7 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v7.widget.AppCompatButton
 import be_healthy_license_2014141300.be_healthy.dialog.DeleteDialog
+import com.be_healthy_license_2014141300.be_healthy.ShareManager
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 
@@ -50,9 +51,6 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
         content = inflater!!.inflate(R.layout.fragment_settings, container, false)
         activity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
         sizeText=content.findViewById(R.id.size_text)
-        //ageText=content.findViewById<EditText>(R.id.age_edit_text)
-        //ageInfoText=content.findViewById<TextView>(R.id.textView)
-        //removeHistoryButton=content.findViewById(R.id.fab) as AppCompatButton
         webButton=content.findViewById<AppCompatButton>(R.id.web)
         userTermsButton=content.findViewById<AppCompatButton>(R.id.userterms)
 
@@ -62,28 +60,9 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
 
         val preferences=activity.getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
         val sizeToLoad=(preferences.getFloat(activity.resources.getString(R.string.param_size), 1f)*defaultSize).toInt()
-        val age=preferences.getInt(activity.resources.getString(R.string.param_age), 0)
         sizeText.text=activity.resources.getString(R.string.text_size)+" "+sizeToLoad
         sizeText.textSize= sizeToLoad.toFloat()
-        //ageText.textSize=sizeToLoad.toFloat()
-        //ageText.setText(age.toString())
         seekbar.progress= sizeToLoad-defaultSize
-        /**ageText.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
-                    actionId == EditorInfo.IME_ACTION_DONE ||
-                    event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
-                val age=ageText.text.toString().toInt()
-                if (age>0) {
-                    supportAge(age)
-                }
-                else{
-                    Toast.makeText(activity, activity.resources.getString(R.string.error_negative_age), Toast.LENGTH_SHORT).show()
-                }
-                return@OnEditorActionListener true
-            }
-            false
-        })*/
-        //removeHistoryButton.setOnClickListener { DeleteDialog().show(activity.fragmentManager, "") }
         userTermsButton.setOnClickListener {UserTermsTask().execute()}
         webButton.setOnClickListener {
             val url = "https://dshv12bh3.wixsite.com/behealthy"
@@ -91,12 +70,18 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
             intent.data = Uri.parse(url)
             startActivity(intent)
         }
-        //removeHistoryButton.textSize=sizeToLoad.toFloat()
         userTermsButton.textSize=sizeToLoad.toFloat()
         webButton.textSize=sizeToLoad.toFloat()
         var mAdView = content.findViewById<AdView>(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
+
+        (content.findViewById<Button>(R.id.share).setOnClickListener(object:View.OnClickListener{
+            override fun onClick(p0: View?) {
+                ShareManager(activity).saveUrl()
+                Toast.makeText(activity, resources.getString(R.string.shared_info), Toast.LENGTH_SHORT).show()
+            }
+        }))
         return content
     }
 

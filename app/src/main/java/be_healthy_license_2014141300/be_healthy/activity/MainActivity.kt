@@ -7,9 +7,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -20,6 +22,7 @@ import android.widget.Toast
 import be_healthy_license_2014141300.be_healthy.activity.EducationActivity
 import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
 import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
+import be_healthy_license_2014141300.be_healthy.fragment.AdditionalSettingsFragment
 import be_healthy_license_2014141300.be_healthy.fragment.HeartFragment
 import be_healthy_license_2014141300.be_healthy.fragment.IMBFragment
 import com.be_healthy_license_2014141300.be_healthy.R
@@ -34,39 +37,34 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.util.*
 
-class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener{
+class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener, AdditionalSettingsFragment.OnFragmentInteractionListener{
+    override fun onFragmentInteraction(id:Int) {
+        setFragment(fragments[id])
+        val toolBar=findViewById<Toolbar>(R.id.toolbar)
+        toolBar.title=fragmentNames[id]
+    }
 
-    private lateinit var navigationView: NavigationView
+    private lateinit var navigationView: BottomNavigationView
 
     private var currentState=0
     private var needInstruction=false
 
-   // lateinit var mInterstitialAd: InterstitialAd
-
     private var fragments = hashMapOf(MAIN to MainFragment.getInstance(),
             SEARCH to SearchFragment.getInstance(),
-            /**HEART to HeartFragment.getInstance(),*/
             EYE to EyeFragment.getInstance(),
             IMB to IMBFragment(),
             SAVE to SavedFragment.getInstance(),
             ALARM to AlarmFragment.getInstance(),
-            SETTINGS to SettingsFragment.getInstance())
+            SETTINGS to SettingsFragment.getInstance(),
+            ADDITION to AdditionalSettingsFragment())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         MobileAds.initialize(this, "ca-app-pub-5054095397379666~4357348574")
-        //mInterstitialAd = InterstitialAd(this)
-        //mInterstitialAd.adUnitId = "ca-app-pub-5054095397379666/2589096014"
-        //mInterstitialAd.loadAd(AdRequest.Builder().build())
-        //mInterstitialAd.adListener = object : AdListener() {
-        //    override fun onAdClosed() {
-        //        mInterstitialAd.loadAd(AdRequest.Builder().build())
-        //    }
-        //}
         setUpToolBar()
-        navigationView = findViewById<NavigationView>(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
+        navigationView = findViewById<BottomNavigationView>(R.id.nav_view)
+        navigationView.setOnNavigationItemSelectedListener(this)
         if(intent.hasExtra(resources.getString(R.string.param_state))){
             currentState=intent.getIntExtra(resources.getString(R.string.param_state), 0)
             fragments[SEARCH]=SearchFragment()
@@ -120,69 +118,16 @@ class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener
                 setFragment(fragments[SEARCH])
                 setBackground(SEARCH)
             }
-          /**  R.id.heart -> {
-                checkCameraPermission()
-            }*/
-            R.id.eye -> {
-                setFragment(fragments[EYE])
-                setBackground(EYE)
-            }
-            R.id.imb -> {
-                setFragment(fragments[IMB])
-                setBackground(IMB)
-            }
-            R.id.saved -> {
-                setFragment(fragments[SAVE])
-                setBackground(SAVE)
-            }
-            R.id.alarm -> {
-                setFragment(fragments[ALARM])
-                setBackground(ALARM)
-            }
-            R.id.settings->{
-                setFragment(fragments[SETTINGS])
-                setBackground(SETTINGS)
-            }
-            R.id.share -> {
-                ShareManager(this).saveUrl()
-                Toast.makeText(this, resources.getString(R.string.shared_info), Toast.LENGTH_SHORT).show()
+            R.id.menu->{
+                setFragment(fragments[ADDITION])
+                setBackground(ADDITION)
             }
             else->{
                 Toast.makeText(this, resources.getString(R.string.error_info), Toast.LENGTH_SHORT).show()
             }
         }
-        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
-        drawer.closeDrawer(GravityCompat.START)
         return true
     }
-
-    /**override fun checkCameraPermission(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION)
-        }
-        else{
-            setFragment(fragments[HEART])
-            setBackground(HEART)
-            val toolBar=findViewById(R.id.toolbar) as Toolbar
-            toolBar.title=fragmentNames[HEART]
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        when (requestCode) {
-            CAMERA_PERMISSION -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    setFragment(fragments[HEART])
-                    setBackground(HEART)
-                    val toolBar=findViewById(R.id.toolbar) as Toolbar
-                    toolBar.title=fragmentNames[HEART]
-                }
-            }
-            else->{
-                Toast.makeText(this, resources.getString(R.string.error_info), Toast.LENGTH_SHORT).show()
-            }
-        }
-    }*/
 
     override fun onShowInstruction() {
         if (needInstruction){
@@ -194,7 +139,7 @@ class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener
     private fun setBackground(checked:Int){
         currentState=checked
         if (navigationView.menu!=null) {
-            for (i in (MAIN..SETTINGS)) {
+            for (i in (MAIN..ADDITION)) {
                 navigationView.menu.getItem(i).isChecked = false
             }
             navigationView.menu.getItem(checked).isChecked = true
