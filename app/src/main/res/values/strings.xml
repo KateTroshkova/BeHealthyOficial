@@ -52,8 +52,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="main">Главная страница</string>
-    <string name="search">Поиск по симптомам</string>
+    <string name="main">Главная</string>
+    <string name="search">Поиск</string>
     <string name="heart">Измерить пульс</string>
     <string name="eye">Тренировка для глаз</string>
     <string name="save">Сохраненные</string>
@@ -61,7 +61,7 @@
     <string name="share">Скопировать ссылку на приложение</string>
     <string name="settings">Настройки</string>
     <string name="imb">Рассчитать ИМТ</string>
-    <string name="addition">Дополнительно</string>
+    <string name="addition">Меню</string>
     <string name="delete">Удалить</string>
     <string name="accept">Принять</string>
     <string name="yes">Да</string>
