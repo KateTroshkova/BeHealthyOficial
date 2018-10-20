@@ -32,7 +32,7 @@
             android:gravity="center"
             android:onClick="showTreatment"
             android:textColor="@color/colorBlack"
-            android:background="@drawable/light_background"/>
+            android:background="@drawable/background_light"/>
 
         <FrameLayout
             android:id="@+id/t_frame"
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="@string/magic"
-            android:background="@drawable/light_background"
+            android:background="@drawable/background_light"
             android:onClick="showMagic"
             android:textColor="@color/colorBlack"
             android:gravity="center"/>

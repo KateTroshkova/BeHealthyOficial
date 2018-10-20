@@ -7,7 +7,7 @@
         android:id="@+id/view_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/yellow_background">
+        android:background="@drawable/background_accent">
 
         <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
             android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         android:id="@+id/view_foreground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/saved_background"
+        android:background="@drawable/item_background_standart"
         android:padding="@dimen/slide_margin_right">
 
         <LinearLayout

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_marginRight="@dimen/slide_margin_right"
     android:layout_marginLeft="@dimen/slide_margin_right"
-    android:background="@drawable/spinner_background"
+    android:background="@drawable/item_background_standart"
     android:layout_height="wrap_content"
     android:gravity="center">
 

@@ -99,10 +99,10 @@ class DiseaseActivity : NavigationActivity() {
         val fragmentTranslation=fragmentManager.beginTransaction()
         fragmentTranslation.replace(backgroundId, fragment)
         fragmentTranslation.show(fragment)
-        text.setBackgroundResource(R.drawable.dark_background)
+        text.setBackgroundResource(R.drawable.background_dark)
         if (!fragment.isHidden){
             fragmentTranslation.hide(fragment)
-            text.setBackgroundResource(R.drawable.light_background)
+            text.setBackgroundResource(R.drawable.background_light)
         }
         fragmentTranslation.commit()
     }

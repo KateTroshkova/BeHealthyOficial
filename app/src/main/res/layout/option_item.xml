@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/item_background_standart"
     android:id="@+id/background">
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
