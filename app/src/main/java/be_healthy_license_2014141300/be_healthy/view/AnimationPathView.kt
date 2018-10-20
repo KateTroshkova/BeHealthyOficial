@@ -67,12 +67,12 @@ class AnimationPathView : View {
             drawVerticalLine(metrics.widthPixels.toFloat(), metrics.heightPixels.toFloat())
             toCenter(metrics.widthPixels.toFloat(), metrics.heightPixels.toFloat())
         }
-        for(i in 0..2) {
+        /**for(i in 0..2) {
             horizontalInfinity(metrics.widthPixels.toFloat(), metrics.heightPixels.toFloat())
         }
         for(i in 0..2) {
             verticalInfinity(metrics.widthPixels.toFloat(), metrics.heightPixels.toFloat())
-        }
+        }*/
         val mCornerPathEffect = CornerPathEffect(200f)
         paint.pathEffect = mCornerPathEffect
         pathMeasure = PathMeasure(path, false)

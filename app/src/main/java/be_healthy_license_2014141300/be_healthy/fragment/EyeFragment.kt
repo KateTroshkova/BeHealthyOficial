@@ -1,216 +1,110 @@
 package com.be_healthy_license_2014141300.be_healthy.fragment
 
-import android.app.Activity
 import android.app.Fragment
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
-import android.support.v4.content.LocalBroadcastManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
+import be_healthy_license_2014141300.be_healthy.TrainHelper
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.activity.MainActivity
-import com.be_healthy_license_2014141300.be_healthy.view.AnimationPathView
-import com.be_healthy_license_2014141300.be_healthy.view.Circle
-import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
 import java.util.*
 
-class EyeFragment : Fragment(), View.OnClickListener {
+class EyeFragment : Fragment(){
 
-    private lateinit var circle: Circle
-    private lateinit var path: AnimationPathView
-    private lateinit var startButton: FloatingActionButton
-    private lateinit var finishButton: FloatingActionButton
-    private lateinit var info: TextView
-    private lateinit var timerText:TextView
+    private lateinit var trainHelper:TrainHelper
+    private var screenNo=0
+    private var exNo=0
 
     private var time:Long=20000
     private var timeInfo:Timer?=null
-    private var timer:Timer?=null
     private lateinit var handler: Handler
-
-    private val ACTION_INSTRUCTION_2=0
-    private val ACTION_INSTRUCTION_3=1
-    private val ACTION_INSTRUCTION_4=2
-
-    private val ACTION_UPDATE_TIME=3
-
     private var currentTime=time/1000
 
-    private lateinit var existActivity: Activity
+    private var progress=0
 
     companion object {
-        private var fragment:EyeFragment?=null
+        private var fragment=EyeFragment()
 
-        fun getInstance(): EyeFragment {
-            if (fragment==null){
-                fragment=EyeFragment()
-            }
-            return fragment as EyeFragment
-        }
-    }
-
-    private var receiver=object: BroadcastReceiver() {
-        override fun onReceive(p0: Context?, p1: Intent?) {
-            reset()
-            info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[5]
-            finishButton.visibility = View.VISIBLE
-            startButton.visibility=View.INVISIBLE
+        fun getInstance():EyeFragment{
+            return fragment
         }
     }
 
     private var callback= Handler.Callback { p0 ->
-        when(p0?.what){
-            ACTION_INSTRUCTION_2->{
-                reset()
-                info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[2]
-                circle.visibility = View.VISIBLE
-                timerText.visibility=View.VISIBLE
-                finishButton.visibility=View.VISIBLE
-                startButton.visibility=View.INVISIBLE
-                timeInfo = Timer()
-                timeInfo?.schedule(UpdateTimeTask(), 0, 1000)
-            }
-            ACTION_INSTRUCTION_3->{
-                reset()
-                info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[3]
-                circle.visibility = View.VISIBLE
-                timerText.visibility=View.VISIBLE
-                finishButton.visibility=View.VISIBLE
-                startButton.visibility=View.INVISIBLE
-                timeInfo = Timer()
-                timeInfo?.schedule(UpdateTimeTask(), 0, 1000)
-            }
-            ACTION_INSTRUCTION_4->{
-                reset()
-                info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[4]
-                path.visibility = View.VISIBLE
-                finishButton.visibility=View.VISIBLE
-                startButton.visibility=View.INVISIBLE
-            }
-            ACTION_UPDATE_TIME->{
-                if(currentTime>=0) {
-                    timerText.text = currentTime.toString()
-                    currentTime--
-                }
-                else{
-                    info.text=""
-                    timerText.visibility=View.INVISIBLE
-                }
-            }
-            else->{
-                Toast.makeText(existActivity, existActivity.resources.getString(R.string.error_info), Toast.LENGTH_SHORT).show()
-            }
+        if(currentTime>=0) {
+            trainHelper.updateTimer(currentTime)
+            currentTime--
         }
-        true
+        else{
+            reset()
+            trainHelper.hideScreen(screenNo)
+            screenNo++
+            trainHelper.showScreen(screenNo)
+            trainHelper.updateInstruction(screenNo)
+            currentTime=20
+        }
+    true
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_eye, container, false)
-        LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, IntentFilter(activity.resources.getString(R.string.action_finish)))
-        existActivity=activity
-        startButton=view.findViewById<FloatingActionButton>(R.id.start)
-        startButton.setOnClickListener(this)
-        finishButton=view.findViewById<FloatingActionButton>(R.id.finish)
-        finishButton.setOnClickListener(this)
-        circle=view.findViewById<Circle>(R.id.circle)
-        path=view.findViewById<AnimationPathView>(R.id.moveView)
+        trainHelper= TrainHelper(view)
+        trainHelper.showScreen(screenNo)
+        trainHelper.updateInstruction(screenNo)
         handler = Handler(callback)
-        timerText=view.findViewById<CustomSizeTextView>(R.id.timer)
-        info=view.findViewById<TextView>(R.id.instruction)
-        reset()
+        var startButton=view.findViewById<FloatingActionButton>(R.id.start)
+        var finishButton=view.findViewById<FloatingActionButton>(R.id.finish)
+        startButton.setOnClickListener {
+            screenNo++
+            exNo++
+            trainHelper.hideScreen(screenNo-1)
+            if (screenNo<10){
+                trainHelper.showScreen(screenNo)
+            }
+            trainHelper.updateInstruction(screenNo)
+            reset()
+            if (screenNo>1) {
+                timeInfo = Timer()
+                timeInfo?.schedule(UpdateTimeTask(), 0, 1000)
+                progress++
+                trainHelper.updateProgress(progress)
+            }
+        }
+        finishButton.setOnClickListener {
+            stop()
+        }
         return view
     }
 
-    override fun onClick(p0: View?) {
-        when (p0?.id){
-            R.id.start->{
-                start()
-                startButton.visibility = View.INVISIBLE
-                timerText.visibility=View.VISIBLE
-                finishButton.visibility=View.VISIBLE
-            }
-            R.id.finish->{
-                reset()
-                //if ((activity as MainActivity).mInterstitialAd.isLoaded()) {
-                //    (activity as MainActivity).mInterstitialAd.show()
-               // }
-            }
-        }
-    }
-
     private fun reset(){
-        try {
-            if (timeInfo != null) {
-                timeInfo!!.cancel()
-            }
-            timerText.text = ""
-            currentTime = time/1000
-            timerText.visibility = View.INVISIBLE
-            finishButton.visibility = View.INVISIBLE
-            circle.visibility = View.INVISIBLE
-            path.visibility = View.INVISIBLE
-            startButton.visibility = View.VISIBLE
-            try {
-                info.text = activity.resources.getStringArray(R.array.eye_training_instruction)[0]
-            }
-            catch(e:NullPointerException){
-                //activity died
-            }
-        }
-        catch(e:UninitializedPropertyAccessException){
-            //it's ok
+        if (timeInfo != null) {
+            timeInfo!!.cancel()
         }
     }
 
     fun stop(){
-        if (timer!=null){
-            timer!!.cancel()
+        try {
+            reset()
+            trainHelper.hideScreen(screenNo)
+            screenNo = 0
+            currentTime=20
+            progress=0
+            trainHelper.clearProgress()
+            trainHelper.updateTimer(currentTime)
+            trainHelper.showScreen(screenNo)
+            trainHelper.updateInstruction(screenNo)
         }
-        reset()
+        catch(e:UninitializedPropertyAccessException){
+         //it's ok
+        }
     }
 
-    private fun start(){
-        info.text =existActivity.resources.getStringArray(R.array.eye_training_instruction)[1]
-        timer = Timer()
-        timer!!.schedule(LookAtWindowTask(), time)
-        timer!!.schedule(FarCloseTask(), 2*time)
-        timer!!.schedule(MoveTask(), 3*time)
-        timeInfo = Timer()
-        timeInfo?.schedule(UpdateTimeTask(), 0, 1000)
-    }
-
-    private inner class LookAtWindowTask: TimerTask(){
+    private inner class UpdateTimeTask: TimerTask() {
         override fun run() {
-            handler.sendEmptyMessage(ACTION_INSTRUCTION_2)
+            handler.sendEmptyMessage(0)
         }
-    }
-
-    private inner class FarCloseTask: TimerTask(){
-        override fun run() {
-            handler.sendEmptyMessage(ACTION_INSTRUCTION_3)
-        }
-    }
-
-    private inner class MoveTask: TimerTask(){
-        override fun run() {
-            handler.sendEmptyMessage(ACTION_INSTRUCTION_4)
-        }
-    }
-
-    private inner class UpdateTimeTask:TimerTask(){
-        override fun run() {
-            handler.sendEmptyMessage(ACTION_UPDATE_TIME)
-        }
-
     }
 }
 
