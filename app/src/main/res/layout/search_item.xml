@@ -20,10 +20,7 @@
         android:id="@+id/all_symptoms_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/slide_margin_right"
-        android:layout_marginRight="@dimen/slide_margin_right"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_margin="@dimen/normal"
         android:layout_gravity="center"/>
 
 </LinearLayout>

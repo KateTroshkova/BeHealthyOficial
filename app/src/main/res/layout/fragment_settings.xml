@@ -7,11 +7,8 @@
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/size_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorBlack"
-        android:text="@string/text_size"
-        android:gravity="center"/>
+        style="@style/StandartText"
+        android:text="@string/text_size"/>
 
     <SeekBar
         android:id="@+id/seekBar"

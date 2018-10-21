@@ -21,14 +21,9 @@
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/instruction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/StandartText"
         android:text="@string/s_instruction"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"
-        android:textSize="14sp"
         android:layout_above="@+id/adView"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
     <com.google.android.gms.ads.AdView

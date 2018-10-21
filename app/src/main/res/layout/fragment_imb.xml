@@ -13,29 +13,20 @@
 
         <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/StandartText"
             android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/colorBlack"
             android:text="@string/age" />
 
         <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/StandartText"
             android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/colorBlack"
             android:text="@string/weight" />
 
         <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
             android:id="@+id/textView5"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/StandartText"
             android:layout_weight="1"
-            android:textColor="@color/colorBlack"
             android:text="@string/height" />
     </LinearLayout>
 
@@ -83,7 +74,7 @@
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/textView7"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:text="@string/fat_grid"

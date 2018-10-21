@@ -13,15 +13,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+                style="@style/StandartText"
                 android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:id="@+id/userterms"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:textColor="@color/colorBlack"
-                android:layout_gravity="center"/>
+                android:id="@+id/userterms"/>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

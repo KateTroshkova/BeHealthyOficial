@@ -1,41 +1,25 @@
 package com.be_healthy_license_2014141300.be_healthy.activity
 
-import android.Manifest
 import android.app.Activity
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.res.Configuration
-import android.net.Uri
 import android.os.AsyncTask
-import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.NavigationView
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.Toolbar
 import android.widget.Toast
 import be_healthy_license_2014141300.be_healthy.activity.EducationActivity
 import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
 import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
 import be_healthy_license_2014141300.be_healthy.fragment.AdditionalSettingsFragment
-import be_healthy_license_2014141300.be_healthy.fragment.HeartFragment
 import be_healthy_license_2014141300.be_healthy.fragment.IMBFragment
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.ShareManager
 import com.be_healthy_license_2014141300.be_healthy.fragment.*
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.util.*
 
 class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener, AdditionalSettingsFragment.OnFragmentInteractionListener{
     override fun onFragmentInteraction(id:Int) {

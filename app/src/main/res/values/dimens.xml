@@ -11,4 +11,6 @@
     <dimen name="slide_icon_margin">30dp</dimen>
 
     <dimen name="normal">16dp</dimen>
+    <dimen name="small">8dp</dimen>
+    <dimen name="tiny">4dp</dimen>
 </resources>

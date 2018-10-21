@@ -7,31 +7,22 @@
     android:background="@color/colorWhite">
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/StandartText"
         android:text="@string/alarm"
-        android:gravity="center"
         android:id="@+id/alarmclock"
-        android:textColor="@color/colorBlack"
         android:textSize="30sp"/>
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        style="@style/StandartText"
         android:id="@+id/time_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/alarmclock"
-        android:gravity="center"
-        android:textColor="@color/colorBlack"
         android:textSize="42sp"/>
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        style="@style/StandartText"
         android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:textColor="@color/colorBlack"
-        android:layout_below="@+id/time_text"
-        android:gravity="center" />
+        android:layout_below="@+id/time_text" />
 
     <ImageView
         android:layout_width="match_parent"

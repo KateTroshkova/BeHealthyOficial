@@ -37,10 +37,6 @@
             android:name=".activity.AlarmActivity"
             android:label="" />
         <activity
-            android:name="be_healthy_license_2014141300.be_healthy.activity.HeartRateMeasureActivity"
-            android:label=""
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.EducationActivity"
             android:label=""
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />

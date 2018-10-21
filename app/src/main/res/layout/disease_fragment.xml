@@ -6,17 +6,13 @@
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"/>
+        style="@style/StandartText"
+        android:layout_margin="@dimen/tiny"/>
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/symptoms_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorGrayDark"
-        android:gravity="center"/>
+        style="@style/StandartText"
+        android:layout_margin="@dimen/tiny" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,12 +22,11 @@
 
         <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
             android:id="@+id/treatment"
-            android:layout_width="match_parent"
+            style="@style/StandartText"
             android:layout_height="50dp"
             android:text="@string/treatment"
-            android:gravity="center"
             android:onClick="showTreatment"
-            android:textColor="@color/colorBlack"
+            android:layout_margin="@dimen/tiny"
             android:background="@drawable/background_light"/>
 
         <FrameLayout
@@ -43,13 +38,12 @@
 
         <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
             android:id="@+id/magic"
-            android:layout_width="match_parent"
+            style="@style/StandartText"
             android:layout_height="50dp"
+            android:layout_margin="@dimen/tiny"
             android:text="@string/magic"
             android:background="@drawable/background_light"
-            android:onClick="showMagic"
-            android:textColor="@color/colorBlack"
-            android:gravity="center"/>
+            android:onClick="showMagic"/>
 
         <FrameLayout
             android:id="@+id/m_frame"

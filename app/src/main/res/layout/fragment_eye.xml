@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_above="@+id/timer"/>
 
     <com.be_healthy_license_2014141300.be_healthy.view.AnimationPathView
         android:layout_width="wrap_content"
@@ -50,26 +50,17 @@
 
             <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
                 android:id="@+id/instruction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:gravity="center"
+                style="@style/StandartText"
                 android:textColor="@color/colorBlack" />
         </LinearLayout>
     </ScrollView>
 
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/timer"
+        style="@style/StandartText"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:gravity="center"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:background="@drawable/background_timer"
-        android:textColor="@color/colorBlack"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/finish"/>
 
