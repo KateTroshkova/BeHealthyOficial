@@ -20,13 +20,8 @@
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/share"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="@string/share"
-        android:layout_marginTop="@dimen/activity_double_vertical_margin"
-        android:textColor="@color/colorBlack"
-        app:backgroundTint="@color/colorAccent" />
+        style="@style/StandartButton"
+        android:text="@string/share" />
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -47,26 +42,17 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/web"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/StandartButton"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="@string/web"
-            android:textColor="@color/colorBlack"
-            app:backgroundTint="@color/colorAccent" />
+            android:text="@string/web" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/userterms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
+            style="@style/StandartButton"
             android:layout_gravity="bottom"
-            android:gravity="center"
             android:layout_weight="1"
-            android:text="@string/user_terms"
-            android:textColor="@color/colorBlack"
-            app:backgroundTint="@color/colorAccent" />
+            android:text="@string/user_terms"/>
 
     </LinearLayout>
 

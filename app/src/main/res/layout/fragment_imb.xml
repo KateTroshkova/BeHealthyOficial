@@ -70,18 +70,11 @@
     </LinearLayout>
 
     <android.support.v7.widget.AppCompatButton
+        style="@style/StandartButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:background="@color/colorAccent"
-        android:gravity="center"
         android:layout_gravity="center"
         android:id="@+id/start"
-        android:text="@string/measure"
-        android:textColor="@color/colorBlack" />
+        android:text="@string/measure" />
 
     <be_healthy_license_2014141300.be_healthy.view.IMBView
         android:id="@+id/imageView"
