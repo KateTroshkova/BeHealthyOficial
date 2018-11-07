@@ -75,7 +75,7 @@
     <string name="treatment">Лечение медпрепаратами</string>
     <string name="magic">Лечение народными средствами</string>
 
-    <string name="symptom_hint">Введите симптом</string>
+    <string name="symptom_hint">Поиск</string>
     <string name="spinner_hint">Выберите симптом</string>
     <string name="understand">Понятно</string>
 
