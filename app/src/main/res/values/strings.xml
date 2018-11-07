@@ -25,6 +25,7 @@
     <string name="action_alarm_ready">com.be_healthy_license_2014141300.be_healthy.ALARM_READY</string>
     <string name="action_update_history">com.be_healthy_license_2014141300.be_healthy.UPDATE_HISTORY</string>
     <string name="action_finish">com.be_healthy_license_2014141300.be_healthy.FINISH</string>
+    <string name="action_finish_part">com.be_healthy_license_2014141300.be_healthy.FINISH_PART</string>
     <string name="action_measure_done">com.be_healthy_license_2014141300.be_healthy.MEASURE_DONE</string>
 
     <string name="title_activity_option">OptionActivity</string>

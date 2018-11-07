@@ -63,6 +63,6 @@ class TrainHelper(var view:View){
 
     fun updateProgress(i:Int){
         val progress=view.findViewById<TextView>(R.id.progress)
-        progress.text=i.toString()+"/7"
+        progress.text=i.toString()+"/5"
     }
 }

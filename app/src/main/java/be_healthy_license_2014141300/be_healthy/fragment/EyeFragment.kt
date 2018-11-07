@@ -1,9 +1,14 @@
 package com.be_healthy_license_2014141300.be_healthy.fragment
 
 import android.app.Fragment
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
+import android.support.v4.content.LocalBroadcastManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +28,7 @@ class EyeFragment : Fragment(){
     private var currentTime=time/1000
 
     private var progress=0
+    private var isMovingPointFinish=false
 
     companion object {
         private var fragment=EyeFragment()
@@ -38,6 +44,23 @@ class EyeFragment : Fragment(){
             currentTime--
         }
         else{
+            if (screenNo==8 && !isMovingPointFinish){
+            }
+            else {
+                reset()
+                trainHelper.hideScreen(screenNo)
+                screenNo++
+                trainHelper.showScreen(screenNo)
+                trainHelper.updateInstruction(screenNo)
+                currentTime=20
+            }
+        }
+    true
+    }
+
+    private var movingPointReceiver = object: BroadcastReceiver() {
+        override fun onReceive(p0: Context?, p1: Intent?) {
+            isMovingPointFinish=true
             reset()
             trainHelper.hideScreen(screenNo)
             screenNo++
@@ -45,10 +68,15 @@ class EyeFragment : Fragment(){
             trainHelper.updateInstruction(screenNo)
             currentTime=20
         }
-    true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        LocalBroadcastManager.getInstance(activity).unregisterReceiver(movingPointReceiver)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        LocalBroadcastManager.getInstance(activity).registerReceiver(movingPointReceiver, IntentFilter(resources.getString(R.string.action_finish)))
         val view = inflater!!.inflate(R.layout.fragment_eye, container, false)
         trainHelper= TrainHelper(view)
         trainHelper.showScreen(screenNo)
