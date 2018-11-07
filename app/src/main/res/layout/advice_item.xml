@@ -11,21 +11,12 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_accent">
 
-        <ImageView
-            android:id="@+id/delete_icon"
-            android:src="@mipmap/brokenheart"
-            android:layout_width="@dimen/slide_icon_margin"
-            android:layout_height="@dimen/slide_icon_margin"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/slide_margin_right" />
-
         <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/slide_margin_right"
-            android:layout_toLeftOf="@id/delete_icon"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_alignParentRight="true"
             android:text="@string/delete"
             android:textColor="@color/colorBlack"
             android:textSize="13sp" />
@@ -39,23 +30,13 @@
         android:background="@drawable/item_background_standart"
         android:padding="@dimen/slide_margin_right">
 
-        <ImageView
-            android:id="@+id/icon"
-            android:src="@mipmap/refreshing"
-            android:layout_width="@dimen/slide_icon_margin"
-            android:layout_height="@dimen/slide_icon_margin"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/slide_margin_right" />
-
         <TextView
             android:id="@+id/advice_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="80dp"
             android:ellipsize="end"
             android:gravity="center"
             android:fontFamily="sans-serif-medium"
-            android:layout_toRightOf="@+id/icon"
             android:layout_toLeftOf="@+id/arrow1"
             android:textColor="@color/colorBlack"
             android:textSize="17sp" />
