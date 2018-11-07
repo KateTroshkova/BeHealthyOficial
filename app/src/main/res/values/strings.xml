@@ -71,6 +71,7 @@
     <string name="measure">  Рассчитать  </string>
     <string name="weight">Вес(кг)</string>
     <string name="height">Рост(см)</string>
+    <string name="imb_header">Индекс Массы Тела</string>
 
     <string name="symptoms">Симптомы</string>
     <string name="treatment">Лечение медпрепаратами</string>

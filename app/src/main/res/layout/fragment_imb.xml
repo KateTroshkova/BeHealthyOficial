@@ -67,6 +67,16 @@
         android:id="@+id/start"
         android:text="@string/measure" />
 
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/imb_header"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/tiny"
+        android:layout_marginBottom="@dimen/tiny"
+        android:textColor="@color/colorBlack"/>
+
     <be_healthy_license_2014141300.be_healthy.view.IMBView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -77,8 +87,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:text="@string/fat_grid"
-        android:layout_marginTop="@dimen/activity_vertical_margin" />
+        android:layout_marginTop="@dimen/tiny" />
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"

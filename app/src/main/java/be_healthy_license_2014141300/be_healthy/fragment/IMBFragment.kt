@@ -13,6 +13,7 @@ import android.support.v7.widget.AppCompatButton
 import android.util.Log
 import android.util.TypedValue
 import android.widget.*
+import be_healthy_license_2014141300.be_healthy.dialog.InfoDialog
 import be_healthy_license_2014141300.be_healthy.view.IMBView
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.activity.MainActivity
@@ -68,9 +69,11 @@ class IMBFragment:Fragment() {
                      }
                  }
                  result= (Math.round(result * 10.0) / 10.0).toFloat()
-                 infoText.text="Индекс массы тела: "+result+"\n"+(resources.getStringArray(R.array.fatty_diagnosis)[index])+"\n"+
+                 var dialog=InfoDialog()
+                 dialog.setData("Индекс массы тела: "+result+"\n"+(resources.getStringArray(R.array.fatty_diagnosis)[index])+"\n"+
                          /**"Риск для здоровья: "+resources.getStringArray(R.array.risk_info)[index]+"\n"+*/
-                         resources.getStringArray(R.array.fat_advice)[index]
+                         resources.getStringArray(R.array.fat_advice)[index])
+                 dialog.show(fragmentManager, "")
                  imb.setSteps(result.toInt())
                  //if ((activity as MainActivity).mInterstitialAd.isLoaded()) {
                  //    (activity as MainActivity).mInterstitialAd.show()
