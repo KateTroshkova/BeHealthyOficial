@@ -12,6 +12,8 @@
     <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
         android:id="@+id/symptoms_list"
         style="@style/StandartText"
+        android:textSize="12sp"
+        android:textColor="@color/colorGray"
         android:layout_margin="@dimen/tiny" />
 
     <LinearLayout

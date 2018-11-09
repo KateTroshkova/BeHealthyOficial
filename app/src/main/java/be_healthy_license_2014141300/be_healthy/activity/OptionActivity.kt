@@ -1,5 +1,6 @@
 package com.be_healthy_license_2014141300.be_healthy.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
@@ -7,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
 import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
+import be_healthy_license_2014141300.be_healthy.dialog.InfoDialog
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.adapter.OptionAdapter
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
@@ -37,5 +39,14 @@ class OptionActivity : NavigationActivity() {
             startActivity(intent)
         }
         (findViewById<View>(R.id.back_button)).setOnClickListener { this@OptionActivity.onBackPressed() }
+        val preferences=getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
+        if (!preferences.getBoolean(resources.getString(R.string.param_first_diagnos), false)){
+            var dialog=InfoDialog()
+            dialog.setData("Внимание!", resources.getString(R.string.symptoms_warning))
+            dialog.show(fragmentManager, "")
+            val editor=preferences.edit()
+            editor.putBoolean(resources.getString(R.string.param_first_diagnos), true)
+            editor.apply()
+        }
     }
 }

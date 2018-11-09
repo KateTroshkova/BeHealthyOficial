@@ -1,16 +1,18 @@
 package com.be_healthy_license_2014141300.be_healthy.activity
 
 import android.app.Fragment
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
+import android.support.v4.content.LocalBroadcastManager
 import android.util.TypedValue
 import android.view.Menu
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
@@ -21,22 +23,54 @@ import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
 import org.intellij.lang.annotations.MagicConstant
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.*
+import com.be_healthy_license_2014141300.be_healthy.adapter.SavedDiseaseAdapter
+import java.lang.NullPointerException
 
 
-class DiseaseActivity : NavigationActivity() {
+class DiseaseActivity : NavigationActivity(){
 
     private lateinit var treatment: Fragment
     private lateinit var magic: Fragment
     @JvmField var disease: Disease?=null
+    private lateinit var checkBox:CheckBox
     private var needMenu=true
+
+    private var receiver=object: BroadcastReceiver(){
+        override fun onReceive(context: Context?, intent: Intent?) {
+            try {
+                var data = intent?.getStringArrayListExtra(resources.getString(R.string.param_saved_list))
+                if (disease?.name in data!!){
+                    checkBox.isChecked=true
+                }
+            }
+            catch(e: NullPointerException){
+
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, IntentFilter(resources.getString(R.string.action_save)))
         setContentView(R.layout.activity_disease)
         setUpToolBar()
         val navigationView = findViewById<BottomNavigationView>(R.id.nav_view)
         navigationView.setOnNavigationItemSelectedListener(this)
         navigationView.selectedItemId=SEARCH
+
+        checkBox=findViewById<CheckBox>(R.id.checkBoxFavor)
+        checkBox.setOnCheckedChangeListener(object:CompoundButton.OnCheckedChangeListener{
+            override fun onCheckedChanged(p0: CompoundButton?, p1: Boolean) {
+                if (!p1){
+                    checkBox.isChecked=!p1
+                }
+                else{
+                    DB_Operation(this@DiseaseActivity).saveDisease(disease!!)
+                    Toast.makeText(this@DiseaseActivity, resources.getString(R.string.saved_info), Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
         //navigationView.setNavigationItemSelectedListener(this)
         //navigationView.setCheckedItem(SEARCH)
         navigationView.menu.getItem(SEARCH).isChecked = true
@@ -79,6 +113,7 @@ class DiseaseActivity : NavigationActivity() {
         fragmentTranslation.hide(treatment)
         fragmentTranslation.hide(magic)
         fragmentTranslation.commit()
+        DB_Operation(this).readDisease()
     }
 
     fun showTreatment(view: View){
@@ -105,24 +140,5 @@ class DiseaseActivity : NavigationActivity() {
             text.setBackgroundResource(R.drawable.background_light)
         }
         fragmentTranslation.commit()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        if (needMenu) {
-            val inflater = menuInflater
-            inflater.inflate(R.menu.disease_menu, menu)
-        }
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.getItemId()) {
-            R.id.save->{
-                DB_Operation(this).saveDisease(disease!!)
-                Toast.makeText(this, resources.getString(R.string.saved_info), Toast.LENGTH_SHORT).show()
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
     }
 }

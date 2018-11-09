@@ -12,8 +12,9 @@ import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
 class InfoDialog: DialogFragment(){
 
     private var data=""
+    private var header=""
 
-    fun setData(data:String){
+    fun setData(header:String, data:String){
         this.data=data
     }
 
@@ -22,6 +23,7 @@ class InfoDialog: DialogFragment(){
         val inflater= LayoutInflater.from(activity)
         val view=inflater.inflate(R.layout.user_terms_item, null)
         (view.findViewById<CustomSizeTextView>(R.id.userterms)).text=data
+        dialog.setTitle(header)
         dialog.setView(view)
         dialog.setPositiveButton(activity.resources.getString(R.string.ok), null)
         return dialog.create()

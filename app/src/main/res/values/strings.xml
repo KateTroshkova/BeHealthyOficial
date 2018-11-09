@@ -15,6 +15,7 @@
     <string name="param_age">com.be_healthy_license_2014141300.be_healthy.AGE</string>
     <string name="param_first_time">com.be_healthy_license_2014141300.be_healthy.FIRST</string>
     <string name="param_from_saved">com.be_healthy_license_2014141300.be_healthy.FROM_SAVED</string>
+    <string name="param_first_diagnos">com.be_healthy_license_2014141300.be_healthy.FIRST_DIAGNOS</string>
     <string name="preferences">com.be_healthy_license_2014141300.be_healthy.PREFERENCES</string>
 
     <string name="action_read_ready">com.be_healthy_license_2014141300.be_healthy.READ_READY</string>
@@ -72,6 +73,7 @@
     <string name="weight">Вес(кг)</string>
     <string name="height">Рост(см)</string>
     <string name="imb_header">Индекс Массы Тела</string>
+    <string name="symptoms_warning">Внимательно сверьте свои симптомы с симптомами возможных заболеваний. Скорее всего, ваше заболевание первое в списке, но существует множество болезней с похожими внешними проявлениями.</string>
 
     <string name="symptoms">Симптомы</string>
     <string name="treatment">Лечение медпрепаратами</string>
