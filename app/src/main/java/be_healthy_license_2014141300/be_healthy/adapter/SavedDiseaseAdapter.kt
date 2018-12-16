@@ -9,6 +9,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.be_healthy_license_2014141300.be_healthy.R
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.disease.StaticDiseaseData
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
 
 class SavedDiseaseAdapter(var context: Activity, data:MutableList<String>?): RecyclerView.Adapter<SavedDiseaseAdapter.MyViewHolder>() {
@@ -17,7 +18,7 @@ class SavedDiseaseAdapter(var context: Activity, data:MutableList<String>?): Rec
     init{
         if (data != null) {
             for(name in data){
-                this.data.add(Disease().findDiseaseByName(context, name))
+                this.data.add(StaticDiseaseData().getDisease(name)!!)
             }
         }
     }

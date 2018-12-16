@@ -65,16 +65,7 @@ class SearchDialog: DialogFragment(), AdapterView.OnItemClickListener{
     }
 
     private fun initData(){
-        diseases = mutableListOf(Angina(activity), ARD(activity), Arrhythmia(activity), ARVI(activity),
-                Asthma(activity), Caries(activity), Cataract(activity), DryEyeSyndrome(activity), Flu(activity),
-                Frontite(activity), Hypertension(activity), Measles(activity), Myocarditis(activity), Myopia(activity),
-                Otitis(activity), Otosclerosis(activity), Pharyngitis(activity), Tonsillitis(activity), Sprain(activity),
-                BadSleep(activity), Obesity(activity), Flatfoot(activity), BrainConcussion(activity), Intoxication(activity),
-                Allergy(activity), Stomatitis(activity), Gastritis(activity), Herpes(activity), Cholecystitis(activity),
-                Laryngitis(activity), Osteoarthritis(activity), Atherosclerosis(activity), Bronchitis(activity), Scurvy(activity),
-                Hives(activity), NailFungus(activity), Acne(activity), Gumboil(activity), Osteochondrosis(activity), Migraine(activity),
-                Stenocardia(activity), Conjunctivitis(activity), Eczema(activity), Lichen(activity), Mononucleosis(activity),
-                Glaucoma(activity), Depression(activity))
+        diseases = StaticDiseaseData.diseases
         allSymptoms.clear()
         for(disease in diseases){
             disease.symptoms
@@ -84,6 +75,8 @@ class SearchDialog: DialogFragment(), AdapterView.OnItemClickListener{
                         currentSymptoms.add(it)
                     }
         }
+        allSymptoms.remove("")
+        currentSymptoms.remove("")
         Collections.sort(allSymptoms)
         Collections.sort(currentSymptoms)
     }
@@ -114,7 +107,7 @@ class SearchDialog: DialogFragment(), AdapterView.OnItemClickListener{
 
         override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
             currentSymptoms.clear()
-            val subtext=userRequestText.text.toString()
+            val subtext=userRequestText.text.toString().toLowerCase()
             allSymptoms
                     .filter { subtext in it }
                     .forEach { currentSymptoms.add(it) }

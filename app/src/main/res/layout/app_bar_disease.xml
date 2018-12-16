@@ -46,6 +46,7 @@
                     android:layout_gravity="end"
                     android:gravity="end"
                     android:text=""
+                    android:layout_marginRight="@dimen/normal"
                     android:layout_weight="0"
                     android:id="@+id/checkBoxFavor"
                     android:button="@drawable/star"/>

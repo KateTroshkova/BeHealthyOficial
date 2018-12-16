@@ -10,6 +10,7 @@
     <dimen name="slide_margin_right">10dp</dimen>
     <dimen name="slide_icon_margin">30dp</dimen>
 
+    <dimen name="large">64dp</dimen>
     <dimen name="normal">16dp</dimen>
     <dimen name="small">8dp</dimen>
     <dimen name="tiny">4dp</dimen>

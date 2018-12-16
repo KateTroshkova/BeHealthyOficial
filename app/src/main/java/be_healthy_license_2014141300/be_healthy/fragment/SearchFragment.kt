@@ -24,14 +24,14 @@ import com.be_healthy_license_2014141300.be_healthy.adapter.SymptomsAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import be_healthy_license_2014141300.be_healthy.disease.*
 import be_healthy_license_2014141300.be_healthy.slide_helper.SymptomsListHelper
-import com.be_healthy_license_2014141300.be_healthy.activity.MainActivity
-import com.be_healthy_license_2014141300.be_healthy.adapter.AdviceAdapter
 import com.be_healthy_license_2014141300.be_healthy.disease.*
-import com.be_healthy_license_2014141300.be_healthy.slide_helper.AdviceListHelper
 import com.be_healthy_license_2014141300.be_healthy.slide_helper.ListHelper
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import java.util.*
+import com.kobakei.ratethisapp.RateThisApp
+import kotlin.concurrent.fixedRateTimer
+
 
 class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDiseaseListener, ListHelper.OnSwipeListener{
 
@@ -42,6 +42,7 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
     private lateinit var instruction:TextView
     private lateinit var button:Button
     private lateinit var adView:AdView
+    private lateinit var currentActivity:Activity
 
     //активность без предупреждения обращается в null при смене ориентации
     //все адекватные контексты дают неадекватный результат
@@ -94,17 +95,9 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val content=inflater!!.inflate(R.layout.fragment_search, container, false)
         fragment=this
+        currentActivity=activity
 
-        diseases= mutableListOf(Angina(activity), ARD(activity), Arrhythmia(activity), ARVI(activity),
-                Asthma(activity), Caries(activity), Cataract(activity), DryEyeSyndrome(activity), Flu(activity),
-                Frontite(activity), Hypertension(activity), Measles(activity), Myocarditis(activity), Myopia(activity),
-                Otitis(activity), Otosclerosis(activity), Pharyngitis(activity), Tonsillitis(activity), Sprain(activity),
-                BadSleep(activity), Obesity(activity), Flatfoot(activity), BrainConcussion(activity), Intoxication(activity),
-                Allergy(activity), Stomatitis(activity), Gastritis(activity), Herpes(activity), Cholecystitis(activity),
-                Laryngitis(activity), Osteoarthritis(activity), Atherosclerosis(activity), Bronchitis(activity), Scurvy(activity),
-                Hives(activity), NailFungus(activity), Acne(activity), Gumboil(activity), Osteochondrosis(activity), Migraine(activity),
-                Stenocardia(activity), Conjunctivitis(activity), Eczema(activity), Lichen(activity), Mononucleosis(activity),
-                Glaucoma(activity), Depression(activity))
+        diseases= StaticDiseaseData.diseases
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, IntentFilter(activity.resources.getString(R.string.action_read_ready)))
         DB_Operation(activity).readSymptoms()
         fuckingEXISTactivity=activity
@@ -131,6 +124,67 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
         adView = content.findViewById<AdView>(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
+
+        val preferences=activity.getSharedPreferences(getString(R.string.preferences), Context.MODE_PRIVATE)
+        var rate_time = preferences.getInt(getString(R.string.param_current_rate_time), 0)
+        if (rate_time<=0) {
+            val config = RateThisApp.Config(42, 3)
+            RateThisApp.init(config)
+            config.setYesButtonText(R.string.yes_rate)
+            config.setNoButtonText(R.string.no_rate)
+            config.setCancelButtonText(R.string.blah_rate)
+            val editor=preferences.edit()
+            editor.putInt(getString(R.string.param_current_rate_time), 0)
+            editor.apply()
+        }
+        RateThisApp.onCreate(currentActivity)
+        RateThisApp.showRateDialogIfNeeded(currentActivity)
+        RateThisApp.setCallback(object : RateThisApp.Callback {
+            override fun onYesClicked() {
+                RateThisApp.stopRateDialog(currentActivity)
+            }
+
+            override fun onNoClicked() {
+                val preferences=activity.getSharedPreferences(getString(R.string.preferences), Context.MODE_PRIVATE)
+                var rate_time = preferences.getInt(getString(R.string.param_current_rate_time), 0)
+                rate_time++
+                try {
+                    var nextRate = resources.getIntArray(R.array.rate_times_array)[rate_time]
+                    val config = RateThisApp.Config(42, nextRate)
+                    RateThisApp.init(config)
+                    RateThisApp.onCreate(currentActivity)
+                    RateThisApp.showRateDialogIfNeeded(currentActivity)
+                }
+                catch(e:ArrayIndexOutOfBoundsException){
+                    RateThisApp.stopRateDialog(currentActivity)
+                    return
+                }
+                val editor=preferences.edit()
+                editor.putInt(getString(R.string.param_current_rate_time), rate_time)
+                editor.apply()
+            }
+
+            override fun onCancelClicked() {
+                val preferences=activity.getSharedPreferences(getString(R.string.preferences), Context.MODE_PRIVATE)
+                var rate_time = preferences.getInt(getString(R.string.param_current_rate_time), 0)
+                rate_time++
+                try {
+                    var nextRate = resources.getIntArray(R.array.rate_times_array)[rate_time]
+                    val config = RateThisApp.Config(42, nextRate)
+                    RateThisApp.init(config)
+                    RateThisApp.onCreate(currentActivity)
+                    RateThisApp.showRateDialogIfNeeded(currentActivity)
+                }
+                catch(e:ArrayIndexOutOfBoundsException){
+                    RateThisApp.stopRateDialog(currentActivity)
+                    return
+                }
+                val editor=preferences.edit()
+                editor.putInt(getString(R.string.param_current_rate_time), rate_time)
+                editor.apply()
+            }
+        })
+
         return content
     }
 

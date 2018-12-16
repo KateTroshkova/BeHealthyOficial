@@ -16,6 +16,16 @@
         android:textColor="@color/colorGray"
         android:layout_margin="@dimen/tiny" />
 
+    <ScrollView
+        style="@style/StandartText">
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        android:id="@+id/warning"
+        style="@style/StandartText"
+        android:gravity="start"
+        android:layout_margin="@dimen/tiny" />
+
+    </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

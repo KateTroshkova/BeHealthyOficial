@@ -24,6 +24,7 @@ import org.intellij.lang.annotations.MagicConstant
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.*
+import be_healthy_license_2014141300.be_healthy.disease.CurableDisease
 import com.be_healthy_license_2014141300.be_healthy.adapter.SavedDiseaseAdapter
 import java.lang.NullPointerException
 
@@ -34,7 +35,7 @@ class DiseaseActivity : NavigationActivity(){
     private lateinit var magic: Fragment
     @JvmField var disease: Disease?=null
     private lateinit var checkBox:CheckBox
-    private var needMenu=true
+    //private var needMenu=true
 
     private var receiver=object: BroadcastReceiver(){
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -77,18 +78,21 @@ class DiseaseActivity : NavigationActivity(){
         if (intent.hasExtra(resources.getString(R.string.param_disease))) {
             disease = intent.getParcelableExtra<Disease>(resources.getString(R.string.param_disease)) as Disease
         }
-        if (intent.hasExtra(resources.getString(R.string.param_from_saved))) {
-            if (intent.getBooleanExtra(resources.getString(R.string.param_from_saved), false)) {
+        //if (intent.hasExtra(resources.getString(R.string.param_from_saved))) {
+            //if (intent.getBooleanExtra(resources.getString(R.string.param_from_saved), false)) {
                 //(findViewById(R.id.fab)).visibility=View.INVISIBLE
-                needMenu=false
-            }
-        }
+                //needMenu=false
+          //  }
+        //}
         val name=findViewById<TextView>(R.id.name)
         name.text=disease?.name
         name.setTextSize(TypedValue.COMPLEX_UNIT_PX, name.textSize*(application as CustomApplication).size_coef)
 
         val description=findViewById<TextView>(R.id.description)
         description.text=disease?.description
+
+        val warning=findViewById<TextView>(R.id.warning)
+        warning.text=disease?.warning
 
         var symptoms=""
         for(symptom in disease?.symptoms!!){
@@ -99,20 +103,25 @@ class DiseaseActivity : NavigationActivity(){
         symptomsText.text=symptoms
         symptomsText.setTypeface(symptomsText.typeface, Typeface.ITALIC)
 
-        treatment=TreatmentFragment()
-        magic=TreatmentFragment()
-        (treatment as TreatmentFragment).setData(disease?.treatment!!)
-        (magic as TreatmentFragment).setData(disease?.magic!!)
-
-        //val button=findViewById(R.id.fab) as Button
-        //button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(application as CustomApplication).size_coef*0.6f)
-
         (findViewById<View>(R.id.back_button)).setOnClickListener { this@DiseaseActivity.onBackPressed() }
 
-        val fragmentTranslation=fragmentManager.beginTransaction()
-        fragmentTranslation.hide(treatment)
-        fragmentTranslation.hide(magic)
-        fragmentTranslation.commit()
+        treatment = TreatmentFragment()
+        magic = TreatmentFragment()
+        if (disease?.warning?.isEmpty()!!) {
+            findViewById<CustomSizeTextView>(R.id.treatment).visibility=View.VISIBLE
+            findViewById<CustomSizeTextView>(R.id.magic).visibility=View.VISIBLE
+            (treatment as TreatmentFragment).setData(disease?.treatment!!)
+            (magic as TreatmentFragment).setData(disease?.magic!!)
+
+            val fragmentTranslation = fragmentManager.beginTransaction()
+            fragmentTranslation.hide(treatment)
+            fragmentTranslation.hide(magic)
+            fragmentTranslation.commit()
+        }
+        else{
+            findViewById<CustomSizeTextView>(R.id.treatment).visibility=View.INVISIBLE
+            findViewById<CustomSizeTextView>(R.id.magic).visibility=View.INVISIBLE
+        }
         DB_Operation(this).readDisease()
     }
 
@@ -123,11 +132,6 @@ class DiseaseActivity : NavigationActivity(){
     fun showMagic(view: View){
         show(R.id.magic, R.id.m_frame, magic)
     }
-
-  //  fun save(view: View){
-  //      DB_Operation(this).saveDisease(disease!!)
-  //      Toast.makeText(this, resources.getString(R.string.saved_info), Toast.LENGTH_SHORT).show()
-  //  }
 
     private fun show(textId:Int, backgroundId:Int, fragment:Fragment){
         val text=findViewById<TextView>(textId)

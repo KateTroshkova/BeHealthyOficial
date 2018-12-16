@@ -40,12 +40,12 @@ class AdditionalSettingsFragment : Fragment() {
                 mListener?.onFragmentInteraction(SETTINGS)
             }
         })
-        var alarmText=view.findViewById<TextView>(R.id.a_t)
-        alarmText.setOnClickListener(object:View.OnClickListener{
-            override fun onClick(p0: View?) {
-                mListener?.onFragmentInteraction(ALARM)
-            }
-        })
+       // var alarmText=view.findViewById<TextView>(R.id.a_t)
+       // alarmText.setOnClickListener(object:View.OnClickListener{
+        //    override fun onClick(p0: View?) {
+        //        mListener?.onFragmentInteraction(ALARM)
+        //    }
+        //})
         var eyeText=view.findViewById<TextView>(R.id.e_t)
         eyeText.setOnClickListener(object:View.OnClickListener{
             override fun onClick(p0: View?) {

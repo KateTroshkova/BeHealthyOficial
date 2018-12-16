@@ -1,7 +1,9 @@
 package com.be_healthy_license_2014141300.be_healthy.activity
 
 import android.app.Activity
+import android.app.AlarmManager
 import android.app.Fragment
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
@@ -11,9 +13,11 @@ import android.support.v7.widget.Toolbar
 import android.widget.Toast
 import be_healthy_license_2014141300.be_healthy.activity.EducationActivity
 import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
+import be_healthy_license_2014141300.be_healthy.database.XLSReader
 import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
 import be_healthy_license_2014141300.be_healthy.fragment.AdditionalSettingsFragment
 import be_healthy_license_2014141300.be_healthy.fragment.IMBFragment
+import be_healthy_license_2014141300.be_healthy.listener.NotificationReciever
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.fragment.*
 import com.google.android.gms.ads.MobileAds
@@ -28,6 +32,7 @@ class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener
         toolBar.title=fragmentNames[id]
     }
 
+    private val TIME:Long=777600000
     private lateinit var navigationView: BottomNavigationView
 
     private var currentState=0
@@ -65,6 +70,15 @@ class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener
             val editor=preferences.edit()
             editor.putBoolean(resources.getString(R.string.param_first_time), true)
             editor.apply()
+        }
+        if (!preferences.contains(resources.getString(R.string.preferences))) {
+            val editor=preferences.edit()
+            editor.putInt(resources.getString(R.string.preferences), 0)
+            editor.apply()
+            var intent = Intent(this, NotificationReciever::class.java)
+            var pIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+            var am = getSystemService(ALARM_SERVICE) as AlarmManager
+            am.set(AlarmManager.RTC, System.currentTimeMillis()+TIME, pIntent)
         }
     }
 
