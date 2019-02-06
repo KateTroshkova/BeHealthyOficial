@@ -1,10 +1,8 @@
 package com.be_healthy_license_2014141300.be_healthy.activity
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
@@ -13,13 +11,10 @@ import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
 import be_healthy_license_2014141300.be_healthy.activity.MenuActivity
-import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
 import be_healthy_license_2014141300.be_healthy.activity.SearchActivity
-import be_healthy_license_2014141300.be_healthy.dialog.InfoDialog
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.adapter.OptionAdapter
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
-import kotlinx.android.synthetic.main.app_bar_main.*
 
 class OptionActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener{
 

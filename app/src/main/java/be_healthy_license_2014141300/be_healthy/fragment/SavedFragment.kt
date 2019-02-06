@@ -7,27 +7,14 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.app.Fragment
 import android.support.v4.content.LocalBroadcastManager
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.*
-import android.widget.ArrayAdapter
 
-import android.widget.ImageView
 import android.widget.ListView
 import be_healthy_license_2014141300.be_healthy.adapter.SavedAdapter
-import com.be_healthy_license_2014141300.be_healthy.listener.ClickListener
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.listener.RecyclerTouchListener
 import com.be_healthy_license_2014141300.be_healthy.activity.DiseaseActivity
-import com.be_healthy_license_2014141300.be_healthy.slide_helper.ListHelper
-import com.be_healthy_license_2014141300.be_healthy.adapter.SavedDiseaseAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
 import be_healthy_license_2014141300.be_healthy.disease.StaticDiseaseData
-import com.be_healthy_license_2014141300.be_healthy.disease.Disease
-import com.be_healthy_license_2014141300.be_healthy.slide_helper.SavedListHelper
 import java.lang.NullPointerException
 
 class SavedFragment : Fragment(){

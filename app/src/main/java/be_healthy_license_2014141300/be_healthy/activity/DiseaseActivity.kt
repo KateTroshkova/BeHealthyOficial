@@ -8,39 +8,25 @@ import android.content.IntentFilter
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.NavigationView
 import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.TypedValue
-import android.view.Menu
 import android.view.View
-import be_healthy_license_2014141300.be_healthy.activity.NavigationActivity
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
-import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
-import com.be_healthy_license_2014141300.be_healthy.fragment.TreatmentFragment
-import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
-import org.intellij.lang.annotations.MagicConstant
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.*
-import be_healthy_license_2014141300.be_healthy.disease.CurableDisease
-import com.be_healthy_license_2014141300.be_healthy.adapter.SavedDiseaseAdapter
 import java.lang.NullPointerException
-import android.widget.RelativeLayout
-import android.view.ViewGroup.LayoutParams.FILL_PARENT
 import android.widget.LinearLayout
 import be_healthy_license_2014141300.be_healthy.InfoDialog
 import be_healthy_license_2014141300.be_healthy.activity.MenuActivity
 import be_healthy_license_2014141300.be_healthy.activity.SearchActivity
-import kotlinx.android.synthetic.main.app_bar_main.*
 
 class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener{
 
-    private lateinit var treatment: Fragment
-    private lateinit var magic: Fragment
+    //private lateinit var treatment: Fragment
+    //private lateinit var magic: Fragment
     @JvmField var disease: Disease?=null
     private lateinit var checkBox:CheckBox
 
@@ -105,18 +91,18 @@ class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIt
 
         (findViewById<View>(R.id.back_button)).setOnClickListener { this@DiseaseActivity.onBackPressed() }
 
-        treatment = TreatmentFragment()
-        magic = TreatmentFragment()
+        //treatment = TreatmentFragment()
+        //magic = TreatmentFragment()
         if (disease?.warning?.isEmpty()!!) {
             findViewById<LinearLayout>(R.id.long_layout).visibility=View.VISIBLE
             var warning=findViewById<ScrollView>(R.id.warningView)
             warning.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0)
-            (treatment as TreatmentFragment).setData(disease?.treatment!!)
-            (magic as TreatmentFragment).setData(disease?.magic!!)
+            //(treatment as TreatmentFragment).setData(disease?.treatment!!)
+            //(magic as TreatmentFragment).setData(disease?.magic!!)
 
             val fragmentTranslation = fragmentManager.beginTransaction()
-            fragmentTranslation.hide(treatment)
-            fragmentTranslation.hide(magic)
+            //fragmentTranslation.hide(treatment)
+            //fragmentTranslation.hide(magic)
             fragmentTranslation.commit()
         }
         else{
@@ -153,11 +139,11 @@ class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIt
     }
 
     fun showTreatment(view: View?){
-        show((view==null), R.id.treatment, R.id.t_frame, R.id.treatment_arrow, treatment)
+        //show((view==null), R.id.treatment, R.id.t_frame, R.id.treatment_arrow, treatment)
     }
 
     fun showMagic(view: View?){
-        show((view==null), R.id.magic, R.id.m_frame, R.id.magic_arrow, magic)
+        //show((view==null), R.id.magic, R.id.m_frame, R.id.magic_arrow, magic)
     }
 
     private fun show(firstTime:Boolean, textId:Int, backgroundId:Int, arrowId:Int, fragment:Fragment){

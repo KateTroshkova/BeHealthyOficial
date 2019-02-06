@@ -213,7 +213,7 @@
         android:id="@+id/advice_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="be_healthy_license_2014141300.be_healthy.AdviceFragment"/>
+        android:name="be_healthy_license_2014141300.be_healthy.fragment.AdviceFragment"/>
     </ScrollView>
 
 </LinearLayout>

@@ -10,17 +10,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".CustomApplication"
         android:allowBackup="true"
         android:icon="@drawable/empty_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activity.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+
         <activity
             android:name=".activity.OptionActivity"
             android:screenOrientation="portrait"
@@ -29,15 +24,6 @@
             android:name=".activity.DiseaseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activity.AlarmActivity"
-            android:screenOrientation="portrait"
-            android:label="" />
-        <activity
-            android:name="be_healthy_license_2014141300.be_healthy.activity.EducationActivity"
-            android:screenOrientation="portrait"
-            android:label=""
-            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.StartActivityJava"
             android:theme="@style/AppTheme.NoActionBar"

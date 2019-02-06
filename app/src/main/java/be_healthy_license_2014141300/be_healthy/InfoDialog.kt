@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
 
 class InfoDialog(var layout:Int): DialogFragment(){
 

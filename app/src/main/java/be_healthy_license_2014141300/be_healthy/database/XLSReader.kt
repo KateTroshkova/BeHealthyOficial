@@ -2,16 +2,13 @@ package be_healthy_license_2014141300.be_healthy.database
 
 import android.content.Context
 import android.os.AsyncTask
-import android.telecom.InCallService
 import android.util.Log
-import be_healthy_license_2014141300.be_healthy.disease.CurableDisease
 import be_healthy_license_2014141300.be_healthy.disease.IncurableDisease
 import be_healthy_license_2014141300.be_healthy.disease.StaticDiseaseData
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.InputStream
 import org.apache.poi.openxml4j.opc.OPCPackage

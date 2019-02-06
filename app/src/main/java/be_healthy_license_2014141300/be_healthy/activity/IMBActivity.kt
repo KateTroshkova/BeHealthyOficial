@@ -4,19 +4,12 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.AppCompatEditText
 import android.support.v7.widget.Toolbar
-import android.util.TypedValue
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import be_healthy_license_2014141300.be_healthy.dialog.IMBDialog
-import be_healthy_license_2014141300.be_healthy.dialog.InfoDialog
-import be_healthy_license_2014141300.be_healthy.view.IMBView
-import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 import com.be_healthy_license_2014141300.be_healthy.R
 import mehdi.sakout.fancybuttons.FancyButton
 

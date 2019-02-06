@@ -1,21 +1,16 @@
 package be_healthy_license_2014141300.be_healthy.fragment
 
 
-import android.graphics.Color
 import android.os.Bundle
 import android.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.be_healthy_license_2014141300.be_healthy.R
-import android.graphics.drawable.GradientDrawable
 import android.support.v7.widget.AppCompatButton
-import android.util.Log
 import android.util.TypedValue
 import android.widget.*
 import be_healthy_license_2014141300.be_healthy.dialog.InfoDialog
-import be_healthy_license_2014141300.be_healthy.view.IMBView
-import com.be_healthy_license_2014141300.be_healthy.CustomApplication
 
 
 class IMBFragment:Fragment() {
