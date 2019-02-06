@@ -26,8 +26,6 @@ import be_healthy_license_2014141300.be_healthy.disease.*
 import be_healthy_license_2014141300.be_healthy.slide_helper.SymptomsListHelper
 import com.be_healthy_license_2014141300.be_healthy.disease.*
 import com.be_healthy_license_2014141300.be_healthy.slide_helper.ListHelper
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
 import java.util.*
 import com.kobakei.ratethisapp.RateThisApp
 import kotlin.concurrent.fixedRateTimer
@@ -41,7 +39,6 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
     private lateinit var chosenSymptomsList:RecyclerView
     private lateinit var instruction:TextView
     private lateinit var button:Button
-    private lateinit var adView:AdView
     private lateinit var currentActivity:Activity
 
     //активность без предупреждения обращается в null при смене ориентации
@@ -79,7 +76,6 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
 
     override fun onChooseDisease(value: String) {
         if (value !in symptomsForSearch) {
-            adView.visibility=View.INVISIBLE
             symptomsForSearch.add(value)
             DB_Operation(this.fuckingEXISTactivity!!).saveSymptom(value)
             symptomsAdapter.notifyDataSetChanged()
@@ -121,9 +117,6 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
         button.visibility=View.INVISIBLE
 
         (content.findViewById<View>(R.id.add_button)).setOnClickListener(this)
-        adView = content.findViewById<AdView>(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
 
         val preferences=activity.getSharedPreferences(getString(R.string.preferences), Context.MODE_PRIVATE)
         var rate_time = preferences.getInt(getString(R.string.param_current_rate_time), 0)
@@ -218,7 +211,6 @@ class SearchFragment : Fragment(), View.OnClickListener, SearchDialog.OnChooseDi
         symptomsForSearch.removeAt(position)
         symptomsAdapter.notifyDataSetChanged()
         if (symptomsForSearch.isEmpty()){
-            adView.visibility=View.VISIBLE
             instruction.text=activity.resources.getString(R.string.s_instruction)
             button.isClickable=false
             button.setBackgroundColor(activity.resources.getColor(R.color.colorGray))

@@ -10,6 +10,7 @@
     android:background="@color/colorWhite">
 
     <ListView
+        android:layout_marginTop="@dimen/normal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/preview_list"/>

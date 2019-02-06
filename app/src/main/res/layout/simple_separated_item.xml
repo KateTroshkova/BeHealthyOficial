@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_marginRight="@dimen/slide_margin_right"
-    android:layout_marginLeft="@dimen/slide_margin_right"
-    android:background="@drawable/item_background_standart"
-    android:layout_height="wrap_content"
-    android:gravity="center">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="6dp">
+<TextView
+    style="@style/n_accent_text"
+    android:id="@+id/item"
+    android:background="@color/colorWhite"/>
 
-</com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView>
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView17"
+        style="@style/n_standart_text"
+        android:gravity="center"
+        android:text="Мы рады, что вы с нами! Предлагаем выбрать для себя наиболее подходящий тариф и до новых встреч в приложении!" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/normal"
+        android:orientation="horizontal">
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/tiny"
+            fancy:fb_borderWidth="2dp"
+            fancy:fb_defaultColor="@color/colorWhite"
+            fancy:fb_focusColor="@color/colorPrimaryDark"
+            fancy:fb_iconPosition="left"
+            fancy:fb_radius="15dp"
+            fancy:fb_text="35 рублей в месяц"
+            fancy:fb_textColor="@color/colorBlack"
+            fancy:fb_borderColor="@color/colorPrimary"/>
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:layout_gravity="center"
+            fancy:fb_borderWidth="2dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/tiny"
+            fancy:fb_defaultColor="@color/colorPrimary"
+            fancy:fb_focusColor="@color/colorPrimaryDark"
+            fancy:fb_iconPosition="left"
+            fancy:fb_radius="15dp"
+            fancy:fb_text="149 рублей навсегда"
+            fancy:fb_textColor="@color/colorWhite"
+            fancy:fb_borderColor="@color/colorPrimary"/>
+    </LinearLayout>
+</LinearLayout>

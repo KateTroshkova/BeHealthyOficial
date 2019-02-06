@@ -5,7 +5,12 @@ import android.os.Parcelable
 import be_healthy_license_2014141300.be_healthy.disease.*
 import com.be_healthy_license_2014141300.be_healthy.R
 
-open class Disease(): Parcelable {
+open class Disease(): Parcelable, Comparable<Disease> {
+    override fun compareTo(other: Disease): Int {
+        if (name>other.name) return -1
+        if (name<other.name) return 1
+        return 0
+    }
 
     var name:String = ""
     var description:String=""
@@ -21,6 +26,7 @@ open class Disease(): Parcelable {
         warning=dest.readString()
         treatment=decodeList(dest.readString())
         magic=decodeList(dest.readString())
+        symptoms.sort()
     }
 
     companion object {

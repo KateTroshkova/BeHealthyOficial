@@ -17,9 +17,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorWhite"
             app:popupTheme="@style/AppTheme.PopupOverlay">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -27,30 +27,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/back_button"
-                    android:layout_weight="1"
-                    android:src="@mipmap/back"/>
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/normal"
+                    android:layout_marginBottom="@dimen/normal"
+                    android:src="@mipmap/arrow_navigation"/>
 
                 <TextView
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:id="@+id/name"
                     android:gravity="center"
+                    android:layout_centerInParent="true"
                     android:layout_weight="10"
                     android:layout_gravity="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="17sp"/>
+                    android:textColor="@color/colorBlack"
+                    android:textSize="18sp"/>
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:gravity="end"
+                    android:layout_gravity="end|center"
+                    android:gravity="end|center"
+                    android:layout_marginRight="@dimen/small"
                     android:text=""
-                    android:layout_marginRight="@dimen/normal"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:layout_weight="0"
                     android:id="@+id/checkBoxFavor"
-                    android:button="@drawable/star"/>
-            </LinearLayout>
+                    android:button="@drawable/icon_on_off_star"/>
+            </RelativeLayout>
 
         </android.support.v7.widget.Toolbar>
 

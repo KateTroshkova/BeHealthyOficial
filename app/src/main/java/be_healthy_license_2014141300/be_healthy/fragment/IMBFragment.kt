@@ -16,18 +16,13 @@ import android.widget.*
 import be_healthy_license_2014141300.be_healthy.dialog.InfoDialog
 import be_healthy_license_2014141300.be_healthy.view.IMBView
 import com.be_healthy_license_2014141300.be_healthy.CustomApplication
-import com.be_healthy_license_2014141300.be_healthy.activity.MainActivity
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
 
 
 class IMBFragment:Fragment() {
 
-     private var age=0
-     private var weight=0
-     private var height=0
+    private var age=0
+    private var weight=0
+    private var height=0
 
     private var minArray=arrayOf<String>()
     private var maxArray=arrayOf<String>()
@@ -83,9 +78,6 @@ class IMBFragment:Fragment() {
                  Toast.makeText(activity, resources.getString(R.string.empty_fields_error), Toast.LENGTH_SHORT).show()
              }
          }
-         var mAdView = view.findViewById<AdView>(R.id.adView)
-         val adRequest = AdRequest.Builder().build()
-         mAdView.loadAd(adRequest)
          return view
      }
 

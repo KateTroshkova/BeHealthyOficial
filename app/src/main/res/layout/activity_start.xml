@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.StartActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_big"
-        android:layout_weight="2"/>
+        android:src="@drawable/ic_launcher"
+        android:layout_weight="2"
+        android:layout_margin="@dimen/large"/>
 
     <TextView
         android:id="@+id/textView"
@@ -31,5 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="0"
-        android:layout_marginBottom="@dimen/large"/>
+        android:layout_marginBottom="@dimen/large"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"/>
 </LinearLayout>

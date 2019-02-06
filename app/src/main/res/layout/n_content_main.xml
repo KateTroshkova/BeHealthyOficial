@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/normal"
+        android:layout_marginLeft="@dimen/tiny"
+        android:onClick="goToSearch">
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/search_menu"
+            android:layout_marginRight="@dimen/small"
+            android:onClick="goToSearch"/>
+        
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/search"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/small"
+            android:onClick="goToSearch"/>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="goToDiseaseSearch"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="@dimen/tiny">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/empty"
+            android:layout_marginRight="@dimen/small"
+            android:onClick="goToDiseaseSearch"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/disease_search"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/small"
+            android:onClick="goToDiseaseSearch"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="goToTrain"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/tiny">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/trenirovkaglaz_menu"
+            android:layout_marginRight="@dimen/small"
+            android:onClick="goToTrain"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/eye"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/small"
+
+            android:onClick="goToTrain"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="goToIMB"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/tiny">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/small"
+            android:src="@mipmap/rasschetimt_menu"
+            android:onClick="goToIMB"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/imb"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/small"
+            android:onClick="goToIMB"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/tiny"
+        android:onClick="openSave">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/sohranennie_menu"
+            android:layout_marginRight="@dimen/small"
+            android:layout_weight="0"
+            android:onClick="openSave"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/small"
+            android:text="@string/save"
+            android:onClick="openSave"/>
+
+        <CheckBox
+            android:id="@+id/save_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:layout_gravity="top"
+            android:button="@drawable/icon_on_off_arrow"
+            android:onClick="openSave"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <fragment
+        android:id="@+id/save_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="6dp"
+        android:name="com.be_healthy_license_2014141300.be_healthy.fragment.SavedFragment"/>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/tiny"
+        android:onClick="openAdvice">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/soveti_menu"
+            android:layout_marginRight="@dimen/small"
+            android:layout_weight="0"
+            android:onClick="openAdvice"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/advices"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/small"
+            android:onClick="openAdvice"
+            android:layout_weight="1"/>
+
+        <CheckBox
+            android:id="@+id/advice_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:onClick="openAdvice"
+            android:layout_gravity="center"
+            android:button="@drawable/icon_on_off_arrow"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <fragment
+        android:id="@+id/advice_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="be_healthy_license_2014141300.be_healthy.AdviceFragment"/>
+    </ScrollView>
+
+</LinearLayout>

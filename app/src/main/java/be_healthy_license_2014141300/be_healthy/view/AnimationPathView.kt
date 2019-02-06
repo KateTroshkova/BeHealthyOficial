@@ -3,16 +3,14 @@ package com.be_healthy_license_2014141300.be_healthy.view
 import android.content.Context
 import android.content.Intent
 import android.graphics.*
-import android.support.design.widget.BottomNavigationView
 import android.support.v4.content.LocalBroadcastManager
 import android.util.AttributeSet
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.be_healthy_license_2014141300.be_healthy.R
 
-class AnimationPathView : View {
+class AnimationPathView: View {
 
     private lateinit var paint: Paint
     private lateinit var path: Path
@@ -20,13 +18,23 @@ class AnimationPathView : View {
     private lateinit var mMatrix: Matrix
 
     private var length: Float = 0.toFloat()
-    private var step = 10f
+    private var step = 20f
     private var distance: Float = 0.toFloat()
     private var position = FloatArray(2)
     private var tan= FloatArray(2)
     private var currentX: Float = 0.toFloat()
     private var currentY: Float = 0.toFloat()
     private var bottomBorder:Int=0
+
+    private var listener:OnStepListener? = null
+
+    interface OnStepListener{
+        fun onStep(step: Float, max: Float)
+    }
+
+    fun setListener(listener:OnStepListener){
+        this.listener=listener
+    }
 
     constructor(context: Context) : super(context) {
         init()
@@ -149,6 +157,7 @@ class AnimationPathView : View {
             mMatrix.postTranslate(currentX, currentY)
             canvas.drawCircle(currentX, currentY, 42f, paint)
             distance += step
+            listener?.onStep(distance, length)
         } else {
             distance=0f
             val intent= Intent(context.resources.getString(R.string.action_finish))

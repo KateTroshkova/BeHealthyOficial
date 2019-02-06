@@ -20,9 +20,6 @@ import android.net.Uri
 import android.support.v7.widget.AppCompatButton
 import be_healthy_license_2014141300.be_healthy.dialog.DeleteDialog
 import com.be_healthy_license_2014141300.be_healthy.ShareManager
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-
 
 class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
 
@@ -72,9 +69,6 @@ class SettingsFragment : Fragment(), SeekBar.OnSeekBarChangeListener{
         }
         userTermsButton.textSize=sizeToLoad.toFloat()
         webButton.textSize=sizeToLoad.toFloat()
-        var mAdView = content.findViewById<AdView>(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
 
         (content.findViewById<Button>(R.id.share).setOnClickListener(object:View.OnClickListener{
             override fun onClick(p0: View?) {

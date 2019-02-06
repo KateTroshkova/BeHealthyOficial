@@ -20,12 +20,11 @@ import be_healthy_license_2014141300.be_healthy.fragment.IMBFragment
 import be_healthy_license_2014141300.be_healthy.listener.NotificationReciever
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.fragment.*
-import com.google.android.gms.ads.MobileAds
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener, AdditionalSettingsFragment.OnFragmentInteractionListener{
+class MainActivity : NavigationActivity(), AdditionalSettingsFragment.OnFragmentInteractionListener{
     override fun onFragmentInteraction(id:Int) {
         setFragment(fragments[id])
         val toolBar=findViewById<Toolbar>(R.id.toolbar)
@@ -42,7 +41,7 @@ class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener
             SEARCH to SearchFragment.getInstance(),
             EYE to EyeFragment.getInstance(),
             IMB to IMBFragment(),
-            SAVE to SavedFragment.getInstance(),
+            SAVE to SavedFragment(),
             ALARM to AlarmFragment.getInstance(),
             SETTINGS to SettingsFragment.getInstance(),
             ADDITION to AdditionalSettingsFragment())
@@ -50,7 +49,6 @@ class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        MobileAds.initialize(this, "ca-app-pub-5054095397379666~4357348574")
         setUpToolBar()
         navigationView = findViewById<BottomNavigationView>(R.id.nav_view)
         navigationView.setOnNavigationItemSelectedListener(this)
@@ -125,13 +123,6 @@ class MainActivity : NavigationActivity(), UserTermsDialog.OnInstructionListener
             }
         }
         return true
-    }
-
-    override fun onShowInstruction() {
-        if (needInstruction){
-            startActivity(Intent(this, EducationActivity::class.java))
-            needInstruction=false
-        }
     }
 
     private fun setBackground(checked:Int){

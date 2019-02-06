@@ -1,6 +1,32 @@
 <resources>
+    <string name="empty"></string>
+    <string name="search">Поиск варианта заболевания</string>
+    <string name="disease_search">Поиск лечения по заболеванию</string>
+    <string name="eye">Тренировка глаз</string>
+    <string name="imb">Расчет ИМТ</string>
+    <string name="save">Сохраненные</string>
+    <string name="advices">Советы по здоровью</string>
+    <string name="choose_symptom">Введите симптом</string>
+    <string name="choose_disease">Введите заболевание</string>
+    <string name="choose_symptom_header">Выберите симптомы</string>
+    <string name="choose_disease_header">Выберите диагноз</string>
+    <string name="search_header">Найти заболевание</string>
+    <string name="search_instruction_part1">Начните вводить симптомы, которые вы у себя наблюдаете.</string>
+    <string name="search_instruction_part2">Желательно отметить не менее 2-3 симптомов.</string>
+    <string name="save_instruction">Чтобы добавить заболевание в сохраненное, нажмите на иконку звездочки в правом верхнем углу.</string>
+    <string name="accept">ПРИНЯТЬ</string>
+    <string name="results">Результаты поиска</string>
+    <string name="symptoms">Симптомы</string>
+    <string name="start">Начать</string>
+    <string name="get_result">Рассчитать</string>
+
     <string name="app_name">BeHealthy</string>
 
+    <string name="param_disease_dialog">com.be_healthy_license_2014141300.be_healthy.DISEASE_DIALOG</string>
+    <string name="param_paid">com.be_healthy_license_2014141300.be_healthy.PAID</string>
+    <string name="param_need_rate">com.be_healthy_license_2014141300.be_healthy.NEED_RATE</string>
+    <string name="param_first_disease">com.be_healthy_license_2014141300.be_healthy.FIRST_DISEASE</string>
+    <string name="param_license_time">com.be_healthy_license_2014141300.be_healthy.LICENSE_TIME</string>
     <string name="param_state">com.be_healthy_license_2014141300.be_healthy.CURRENT_STATE</string>
     <string name="param_language">com.be_healthy_license_2014141300.be_healthy.LANGUAGE</string>
     <string name="param_symptoms_for_search">com.be_healthy_license_2014141300.be_healthy.SYMPTOMS_FOR_SEARCH</string>
@@ -17,6 +43,7 @@
     <string name="param_from_saved">com.be_healthy_license_2014141300.be_healthy.FROM_SAVED</string>
     <string name="param_first_diagnos">com.be_healthy_license_2014141300.be_healthy.FIRST_DIAGNOS</string>
     <string name="param_current_rate_time">com.be_healthy_license_2014141300.be_healthy.RATE_TIME</string>
+    <string name="param_train_number">com.be_healthy_license_2014141300.be_healthy.TRAIN_NUMBER</string>
     <string name="preferences">com.be_healthy_license_2014141300.be_healthy.PREFERENCES</string>
 
     <string name="action_read_ready">com.be_healthy_license_2014141300.be_healthy.READ_READY</string>
@@ -72,17 +99,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="main">Главная</string>
-    <string name="search">Поиск</string>
     <string name="heart">Измерить пульс</string>
-    <string name="eye">Тренировка для глаз</string>
-    <string name="save">Сохраненные</string>
     <string name="alarm">Будильник</string>
     <string name="share">Скопировать ссылку на приложение</string>
     <string name="settings">Настройки</string>
-    <string name="imb">Рассчитать ИМТ</string>
     <string name="addition">Меню</string>
     <string name="delete">Удалить</string>
-    <string name="accept">Принять</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="deleted">История удалена</string>
@@ -92,7 +114,6 @@
     <string name="imb_header">Индекс Массы Тела</string>
     <string name="symptoms_warning">Внимательно сверьте свои симптомы с симптомами возможного заболевания. Ваше заболевание по указанной вами симптоматике, первое в списке и выделено ленточкой: Результат. Остальные заболевания просто схожи некоторыми симптомами, поэтому мы вам их покажем. Не заостряйте на них внимание.\nBeHealthy</string>
 
-    <string name="symptoms">Симптомы</string>
     <string name="treatment">Лечение медпрепаратами</string>
     <string name="magic">Лечение народными средствами</string>
 
@@ -102,7 +123,7 @@
 
     <string name="repeat">Повторять</string>
 
-    <string name="ok">Ок</string>
+    <string name="ok">ОK</string>
     <string name="cancel">Отмена</string>
     <string name="add_alarm">Добавить будильник</string>
     <string name="switch_off">Выключить</string>
@@ -114,7 +135,7 @@
     <string name="text_size">Размер шрифта</string>
     <string name="age">Возраст</string>
     <string name="clear_history">Удалить историю измерения пульса</string>
-    <string name="user_terms">Пользовательское \n соглашение</string>
+    <string name="user_terms">Пользовательское соглашение</string>
     <string name="web">Перейти \nна сайт</string>
     <string name="sure_delete">Вы уверены, что хотите удалить историю измерения пульса?</string>
 
@@ -137,7 +158,6 @@
     <string name="instruction">Приложите палец к камере телефона и нажмите "старт".</string>
     <string name="instruction2">Плотно прижмите палец к камере. Старайтесь держать телефон ровно. Измерение займет несколько секунд.</string>
     <string name="instruction3">Для удаления какого-либо элемента в нашем приложении сдвиньте его влево</string>
-    <string name="start">Старт</string>
 
     <string name="law">\u00A9 2017 Все права защищены. Нарушение авторских прав преследуется по закону. Вся информация в приложении BeHealthy является достоверной и была взята из медицинских книг и справочников. </string>
     <string name="warning">Все лечение имеет рекомендательный характер.</string>
@@ -238,5 +258,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_start_java">StartActivityJava</string>
 
 </resources>

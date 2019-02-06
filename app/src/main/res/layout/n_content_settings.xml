@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        style="@style/n_menu_image"
+        android:layout_margin="@dimen/large"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/settings_heart" />
+
+    <TextView
+        android:id="@+id/textView15"
+        style="@style/n_accent_text"
+        android:layout_margin="@dimen/normal"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="@string/share"
+        android:onClick="share"/>
+
+    <TextView
+        android:id="@+id/textView14"
+        style="@style/n_standart_text"
+        android:layout_margin="@dimen/normal"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="@string/user_terms"
+        android:onClick="showUserTerms"/>
+</LinearLayout>

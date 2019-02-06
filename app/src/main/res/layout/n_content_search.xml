@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/tiny"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/background_corners">
+
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_margin="@dimen/tiny"
+            android:layout_gravity="center"
+            android:src="@mipmap/search_menu"/>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:focusable="true"
+            android:textCursorDrawable="@null"
+            android:focusableInTouchMode="true"
+            android:cursorVisible="false"
+            android:focusedByDefault="false"
+            android:hint="@string/choose_symptom"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/symptom_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/tiny"
+        android:background="@drawable/background_corners"/>
+
+</LinearLayout>

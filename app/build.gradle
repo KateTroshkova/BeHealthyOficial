@@ -4,7 +4,17 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
+
+    //lintOptions {
+    //    checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+     //   abortOnError false
+    //}
+
     signingConfigs {
         config {
             keyAlias 'BeHealthy'
@@ -22,13 +32,14 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "be_healthy_license_2014141300.be_healthy"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 26
-        versionCode 16
-        versionName "9.1.1"
+        versionCode 44
+        versionName "11.2.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
+        signingConfig signingConfigs.config1
     }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -46,6 +57,12 @@ android {
             jniDebuggable false
             renderscriptDebuggable false
         }
+        debug {
+            debuggable true
+            signingConfig signingConfigs.config1
+        }
+    }
+    productFlavors {
     }
 }
 
@@ -59,7 +76,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:support-v4:26.1.0'
-    implementation 'com.google.android.gms:play-services-ads:15.0.1'
     implementation 'com.android.support:design:26.0.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.0.5'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -68,6 +84,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:multidex:1.0.1'
     implementation 'io.github.kobakei:ratethisapp:1.2.0'
+    implementation 'com.github.medyo:fancybuttons:1.9.0'
+    implementation 'com.android.billingclient:billing:1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.1'
 }
 repositories {
     mavenCentral()

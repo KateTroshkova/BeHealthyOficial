@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent">
+
+    <ImageView
+        style="@style/n_menu_image"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@mipmap/sohranennie_kartochka_active" />
+
+    <TextView
+        style="@style/n_standart_text"
+        android:text="@string/save_instruction"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:gravity="right"
+        android:layout_gravity="right"
+        android:layout_marginEnd="@dimen/middle"
+        android:text="@string/ok"
+        android:layout_marginBottom="@dimen/normal"/>
+</LinearLayout>

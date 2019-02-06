@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "417760743614",
+    "firebase_url": "https://behealthy-1b1c0.firebaseio.com",
+    "project_id": "behealthy-1b1c0",
+    "storage_bucket": "behealthy-1b1c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417760743614:android:a2657c7da6e85b19",
+        "android_client_info": {
+          "package_name": "be_healthy_license_2014141300.be_healthy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417760743614-j6amr4a5g00l27rq9uev7q4hrlt194vq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIU-I1V2iw_miP017DKUt6V1JP5raTB20"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/lower"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_above="@+id/imageView9">
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/n_standart_text"
+            android:gravity="center"
+            android:text="Сядьте в удобное положение,снимите очки и расположите экран немного дальше,чем при чтении. Наш комплекс упражнений состоит из пяти небольших заданий, которые займут у вас чуть больше пяти минут." />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/separator"
+        android:layout_weight="1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/normal"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="@dimen/tiny"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_below="@+id/imageView9">
+    <TextView
+        android:id="@+id/textView6"
+        style="@style/n_standart_text"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+    </ScrollView>
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/large"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:layout_gravity="center"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="@color/colorPrimary"
+        fancy:fb_focusColor="@color/colorPrimaryDark"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="@string/start"
+        android:onClick="start"
+        fancy:fb_textColor="@color/colorWhite"
+        android:layout_weight="0"/>
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:layout_margin="@dimen/normal"
+        android:layout_above="@+id/button"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

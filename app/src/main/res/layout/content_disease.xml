@@ -1,29 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        android:id="@+id/description"
+        style="@style/StandartText"
+        android:layout_margin="@dimen/tiny"/>
+
+    <TextView
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:id="@+id/appBarLayout">
+        android:layout_width="match_parent"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/normal"
+        android:layout_marginLeft="@dimen/normal"
+        android:text="@string/symptoms"/>
 
-        <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
-            android:layout_height="?attr/actionBarSize"
-            android:layout_width="wrap_content"
-            android:id="@+id/name"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textColor="@color/colorWhite"
-            />
+    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+        style="@style/n_standart_text"
+        android:id="@+id/symptoms_list"
+        android:textSize="14sp"
+        android:gravity="left"/>
 
-    </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        style="@style/StandartText"
+        android:id="@+id/warningView">
+        <TextView
+            android:id="@+id/warning"
+            style="@style/StandartText"
+            android:gravity="start"
+            android:layout_margin="@dimen/tiny" />
 
-    <include layout="@layout/disease_fragment"
+    </ScrollView>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appBarLayout" />
+        android:id="@+id/long_layout"
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:onClick="showTreatment"
+            android:layout_marginLeft="@dimen/normal">
+
+            <TextView
+                android:id="@+id/treatment"
+                style="@style/n_standart_text"
+                android:gravity="left"
+                android:text="@string/treatment"
+                android:layout_margin="@dimen/tiny"
+                android:layout_weight="1"
+                android:onClick="showTreatment"
+                android:layout_gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/treatment_arrow"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_margin="@dimen/tiny"
+                android:onClick="showTreatment"
+                android:button="@drawable/icon_on_off_arrow"
+                android:layout_weight="0"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/t_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small">
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:onClick="showMagic"
+            android:layout_marginLeft="@dimen/normal">
+
+            <TextView
+                android:id="@+id/magic"
+                style="@style/n_standart_text"
+                android:gravity="left"
+                android:text="@string/magic"
+                android:layout_margin="@dimen/tiny"
+                android:layout_weight="1"
+                android:onClick="showMagic"
+                android:layout_gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/magic_arrow"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_margin="@dimen/tiny"
+                android:button="@drawable/icon_on_off_arrow"
+                android:layout_weight="0"
+                android:onClick="showMagic"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/m_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small">
+        </FrameLayout>
+
+    </LinearLayout>
+</LinearLayout>

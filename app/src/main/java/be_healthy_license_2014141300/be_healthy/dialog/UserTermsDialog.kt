@@ -6,6 +6,8 @@ import android.app.DialogFragment
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
 
@@ -17,21 +19,14 @@ class UserTermsDialog:DialogFragment(){
         this.data=data
     }
 
-    interface OnInstructionListener{
-        fun onShowInstruction()
-    }
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog=AlertDialog.Builder(activity)
         val inflater=LayoutInflater.from(activity)
-        val view=inflater.inflate(R.layout.user_terms_item, null)
-        (view.findViewById<CustomSizeTextView>(R.id.userterms)).text=data
+        val view=inflater.inflate(R.layout.n_dialog_user_terms, null)
+        (view.findViewById<TextView>(R.id.textView)).text=data
+        val ok=view.findViewById<TextView>(R.id.ok)
+        ok.setOnClickListener { dismiss() }
         dialog.setView(view)
-        dialog.setPositiveButton(activity.resources.getString(R.string.accept), object : DialogInterface.OnClickListener{
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                (activity as OnInstructionListener).onShowInstruction()
-            }
-        })
         return dialog.create()
     }
 }

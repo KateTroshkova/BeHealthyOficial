@@ -13,8 +13,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.*
+import android.widget.ArrayAdapter
 
 import android.widget.ImageView
+import android.widget.ListView
+import be_healthy_license_2014141300.be_healthy.adapter.SavedAdapter
 import com.be_healthy_license_2014141300.be_healthy.listener.ClickListener
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.listener.RecyclerTouchListener
@@ -22,37 +25,24 @@ import com.be_healthy_license_2014141300.be_healthy.activity.DiseaseActivity
 import com.be_healthy_license_2014141300.be_healthy.slide_helper.ListHelper
 import com.be_healthy_license_2014141300.be_healthy.adapter.SavedDiseaseAdapter
 import be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.disease.StaticDiseaseData
+import com.be_healthy_license_2014141300.be_healthy.disease.Disease
 import com.be_healthy_license_2014141300.be_healthy.slide_helper.SavedListHelper
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
 import java.lang.NullPointerException
 
-class SavedFragment : Fragment(), ListHelper.OnSwipeListener {
+class SavedFragment : Fragment(){
 
     private var data:ArrayList<String>?=ArrayList()
-    private lateinit var adapter: SavedDiseaseAdapter
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var image: ImageView
-
-    companion object {
-        private var fragment:SavedFragment?=null
-
-        fun getInstance(): SavedFragment {
-            if (fragment==null){
-                fragment=SavedFragment()
-            }
-            return fragment as SavedFragment
-        }
-    }
+    private lateinit var adapter: SavedAdapter
+    private lateinit var list:ListView
 
     private var receiver=object: BroadcastReceiver(){
         override fun onReceive(context: Context?, intent: Intent?) {
             try {
                 data = intent?.getStringArrayListExtra(activity.resources.getString(R.string.param_saved_list))
                 if (data != null && !data?.isEmpty()!!) {
-                    adapter = SavedDiseaseAdapter(activity, data)
-                    recyclerView.adapter = adapter
-                    image.visibility = View.INVISIBLE
+                    adapter= SavedAdapter(context!!, data!!)
+                    list.adapter=adapter
                 }
             }
             catch(e:NullPointerException){
@@ -72,50 +62,21 @@ class SavedFragment : Fragment(), ListHelper.OnSwipeListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        DB_Operation(activity).readDisease()
         val view = inflater!!.inflate(R.layout.fragment_saved, container, false)
-        recyclerView = view?.findViewById<RecyclerView>(R.id.disease_list)!!
-        val mLayoutManager = LinearLayoutManager(activity)
-        recyclerView.layoutManager = mLayoutManager
-        recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
-        adapter = SavedDiseaseAdapter(activity, data)
-        recyclerView.adapter = adapter
-        recyclerView.addOnItemTouchListener(RecyclerTouchListener(activity, recyclerView, object : ClickListener {
-
-            override fun onClick(view: View, position: Int) {
-                val intent= Intent(activity, DiseaseActivity::class.java)
-                intent.putExtra(activity.resources.getString(R.string.param_disease), adapter.getItem(position))
-                intent.putExtra(activity.resources.getString(R.string.param_from_saved), true)
-                startActivity(intent)
-            }
-
-            override fun onLongClick(view: View, position: Int) {
-            }
-
-        }))
-        val itemTouchHelperCallback = SavedListHelper(0, ItemTouchHelper.LEFT, this)
-        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView)
-
-        image=view.findViewById<ImageView>(R.id.empty_icon)
-        var mAdView = view.findViewById<AdView>(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
-
+        list=view.findViewById<ListView>(R.id.disease_list)
+        adapter = SavedAdapter(activity, this.data!!)
+        list.adapter = adapter
+        list.setOnItemClickListener { p0, p1, p2, p3 ->
+            val intent= Intent(activity, DiseaseActivity::class.java)
+            intent.putExtra(activity.resources.getString(R.string.param_disease), StaticDiseaseData().getDisease(adapter.getItem(p2) as String?))
+            intent.putExtra(activity.resources.getString(R.string.param_from_saved), true)
+            startActivity(intent)
+        }
+        DB_Operation(activity).readDisease()
         return view
     }
 
     fun stop(){
         data?.clear()
-    }
-
-    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int) {
-        if (viewHolder is SavedDiseaseAdapter.MyViewHolder) {
-            adapter.removeItem(viewHolder.getAdapterPosition())
-            adapter.notifyDataSetChanged()
-            if (adapter.itemCount ==0){
-                image.visibility = View.VISIBLE
-            }
-        }
     }
 }
