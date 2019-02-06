@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
 
-    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+    <TextView
         android:id="@+id/description"
         style="@style/StandartText"
         android:layout_margin="@dimen/tiny"/>
@@ -22,7 +22,7 @@
         android:layout_marginLeft="@dimen/normal"
         android:text="@string/symptoms"/>
 
-    <com.be_healthy_license_2014141300.be_healthy.view.CustomSizeTextView
+    <TextView
         style="@style/n_standart_text"
         android:id="@+id/symptoms_list"
         android:textSize="14sp"

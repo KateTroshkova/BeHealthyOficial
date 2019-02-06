@@ -26,7 +26,7 @@ class IMBFragment:Fragment() {
     private lateinit var weightText:EditText
     private lateinit var heightText:EditText
     private lateinit var infoText: TextView
-    private lateinit var imb:IMBView
+   // private lateinit var imb:IMBView
 
      override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                                savedInstanceState: Bundle?): View? {
@@ -35,9 +35,9 @@ class IMBFragment:Fragment() {
          weightText=view.findViewById<EditText>(R.id.editText4)
          heightText=view.findViewById<EditText>(R.id.editText5)
          infoText=view.findViewById<EditText>(R.id.textView7)
-         imb=view.findViewById<IMBView>(R.id.imageView)
+         //imb=view.findViewById<IMBView>(R.id.imageView)
          var button=view.findViewById<AppCompatButton>(R.id.start)
-         button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(activity.application as CustomApplication).size_coef*0.6f)
+        // button.setTextSize(TypedValue.COMPLEX_UNIT_PX, button.textSize*(activity.application as CustomApplication).size_coef*0.6f)
          button.setOnClickListener {
              if (!ageText.text.isEmpty() && !weightText.text.isEmpty() && !heightText.text.isEmpty()){
                  age=ageText.text.toString().toInt()
@@ -64,7 +64,7 @@ class IMBFragment:Fragment() {
                          /**"Риск для здоровья: "+resources.getStringArray(R.array.risk_info)[index]+"\n"+*/
                          resources.getStringArray(R.array.fat_advice)[index])
                  dialog.show(fragmentManager, "")
-                 imb.setSteps(result.toInt())
+                 //imb.setSteps(result.toInt())
                  //if ((activity as MainActivity).mInterstitialAd.isLoaded()) {
                  //    (activity as MainActivity).mInterstitialAd.show()
                 // }

@@ -3,26 +3,20 @@ package be_healthy_license_2014141300.be_healthy.database
 import android.content.Context
 import android.os.AsyncTask
 import android.util.Log
-import be_healthy_license_2014141300.be_healthy.disease.IncurableDisease
 import be_healthy_license_2014141300.be_healthy.disease.StaticDiseaseData
 import com.be_healthy_license_2014141300.be_healthy.disease.Disease
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.Observer
-import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import java.io.InputStream
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import org.apache.poi.openxml4j.opc.OPCPackage
 import org.apache.poi.xssf.usermodel.XSSFCell
 import org.apache.poi.xssf.usermodel.XSSFRow
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import java.io.InputStream
 
 class XLSReader private constructor(){
-
-    private var observer:Observer<Int>? =null
-
-    private var observable = Observable.create(ObservableOnSubscribe<Int> { e ->
-        e.onComplete()
-    }
-    )
 
     companion object {
         private var INSTANCE:XLSReader?=null
@@ -35,33 +29,21 @@ class XLSReader private constructor(){
         }
     }
 
-    fun register(observer:Observer<Int>){
-        this.observer=observer
-    }
-
-    private inner class ReadTask(var context:Context): AsyncTask<Void, Void, Void>() {
-        override fun doInBackground(vararg p0: Void?): Void? {
-            var data= arrayListOf<Disease>()
+    fun read(context: Context):Observable<Int>{
+        return Observable.create<Int>{o->
+            val data= arrayListOf<Disease>()
             try {
-                val myInput: InputStream
-                // initialize asset manager
-                val assetManager = context.getAssets()
-                //  open excel sheet
-                myInput = assetManager.open("desease_data.xlsx")
-                // Create a POI File System object
+                val assetManager = context.assets
+                val myInput:InputStream = assetManager.open("desease_data.xlsx")
                 val myFileSystem = OPCPackage.open(myInput)
-                // Create a workbook using the File System
                 val myWorkBook = XSSFWorkbook(myFileSystem)
-                // Get the first sheet from workbook
                 val mySheet = myWorkBook.getSheetAt(0)
-                // We now need something to iterate through the cells.
-                val rowIter = mySheet.rowIterator()
+                val iterator = mySheet.rowIterator()
                 var rowno = 0
-                while (rowIter.hasNext()) {
-                    val myRow = rowIter.next() as XSSFRow
+                while (iterator.hasNext()) {
+                    val myRow = iterator.next() as XSSFRow
                     val cellIter = myRow.cellIterator()
                     var colno = 0
-                    var id=0;
                     var name = ""
                     var status = ""
                     var description = ""
@@ -100,32 +82,22 @@ class XLSReader private constructor(){
                             }
                             colno++
                         }
-                        if (status.toFloat()<1){
-                            var disease=IncurableDisease()
-                            disease.name=name
-                            disease.description=description
-                            disease.warning=warning
-                            for(symptom in symptoms){
-                                disease.symptoms.add(symptom.trim())
-                            }
-                            data.add(disease)
+                        val disease=Disease()
+                        disease.name=name
+                        disease.description=description
+                        disease.warning=warning
+                        for(symptom in symptoms){
+                            disease.symptoms.add(symptom.trim())
                         }
-                        else{
-                            var disease=IncurableDisease()
-                            disease.name=name
-                            disease.description=description
-                            disease.warning=warning
-                            for(symptom in symptoms){
-                                disease.symptoms.add(symptom.trim())
-                            }
+                        if (status.toFloat()>0){
                             for(treat in treatment){
                                 disease.treatment.add(treat.trim())
                             }
                             for(mag in magic){
                                 disease.magic.add(mag.trim())
                             }
-                            data.add(disease)
                         }
+                        data.add(disease)
                     }
                     rowno++
                 }
@@ -133,11 +105,9 @@ class XLSReader private constructor(){
             } catch (e: Exception) {
                 Log.e("XLS_READER", "error " + e.toString())
             }
-            observable.subscribe(observer)
-            return null
+            o.onComplete()
         }
-    }
-    fun read(context: Context) {
-        ReadTask(context).execute()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
     }
 }

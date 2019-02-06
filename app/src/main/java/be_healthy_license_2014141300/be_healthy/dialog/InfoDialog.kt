@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.app.DialogFragment
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.TextView
 import com.be_healthy_license_2014141300.be_healthy.R
 
 class InfoDialog: DialogFragment(){
@@ -20,7 +21,7 @@ class InfoDialog: DialogFragment(){
         val dialog= AlertDialog.Builder(activity)
         val inflater= LayoutInflater.from(activity)
         val view=inflater.inflate(R.layout.user_terms_item, null)
-        (view.findViewById<CustomSizeTextView>(R.id.userterms)).text=data
+        (view.findViewById<TextView>(R.id.userterms)).text=data
         dialog.setTitle(header)
         dialog.setView(view)
         dialog.setPositiveButton(activity.resources.getString(R.string.ok), null)

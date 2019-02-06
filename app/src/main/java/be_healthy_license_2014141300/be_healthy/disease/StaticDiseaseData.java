@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public class StaticDiseaseData {
 
+    private StaticDiseaseData(){
+
+    }
+
     public static ArrayList<Disease> diseases= new ArrayList<>();
 
     public Disease getDisease(String name){
@@ -15,9 +19,5 @@ public class StaticDiseaseData {
                 }
             }
             return null;
-        }
-
-        public void fill(ArrayList<Disease> data){
-            diseases=data;
         }
 }

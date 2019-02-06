@@ -1,19 +1,15 @@
 package com.be_healthy_license_2014141300.be_healthy.fragment
 
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.os.Bundle
 import android.app.Fragment
-import android.support.v4.content.LocalBroadcastManager
 import android.view.*
 
 import android.widget.ListView
 import be_healthy_license_2014141300.be_healthy.adapter.SavedAdapter
 import com.be_healthy_license_2014141300.be_healthy.R
 import com.be_healthy_license_2014141300.be_healthy.activity.DiseaseActivity
-import be_healthy_license_2014141300.be_healthy.database.DB_Operation
+import be_healthy_license_2014141300.be_healthy.database.DBOperation
 import be_healthy_license_2014141300.be_healthy.disease.StaticDiseaseData
 import java.lang.NullPointerException
 
@@ -23,7 +19,7 @@ class SavedFragment : Fragment(){
     private lateinit var adapter: SavedAdapter
     private lateinit var list:ListView
 
-    private var receiver=object: BroadcastReceiver(){
+    /**private var receiver=object: BroadcastReceiver(){
         override fun onReceive(context: Context?, intent: Intent?) {
             try {
                 data = intent?.getStringArrayListExtra(activity.resources.getString(R.string.param_saved_list))
@@ -36,16 +32,16 @@ class SavedFragment : Fragment(){
 
             }
         }
-    }
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, IntentFilter(activity.resources.getString(R.string.action_save)))
+       // LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, IntentFilter(activity.resources.getString(R.string.action_save)))
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        LocalBroadcastManager.getInstance(activity).unregisterReceiver(receiver)
+        //LocalBroadcastManager.getInstance(activity).unregisterReceiver(receiver)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -59,7 +55,16 @@ class SavedFragment : Fragment(){
             intent.putExtra(activity.resources.getString(R.string.param_from_saved), true)
             startActivity(intent)
         }
-        DB_Operation(activity).readDisease()
+        var disposable = DBOperation(activity).readDisease().subscribe { data->
+            try {
+                if (data != null && data.isNotEmpty()) {
+                    adapter= SavedAdapter(activity.applicationContext, data)
+                    list.adapter=adapter
+                }
+            }
+            catch(e:NullPointerException){
+            }
+        }
         return view
     }
 

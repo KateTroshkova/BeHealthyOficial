@@ -15,7 +15,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".activity.OptionActivity"
             android:screenOrientation="portrait"
@@ -25,9 +24,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="be_healthy_license_2014141300.be_healthy.activity.StartActivityJava"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name="be_healthy_license_2014141300.be_healthy.activity.StartActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,40 +46,41 @@
 
         <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.MenuActivity"
-            android:screenOrientation="portrait"
             android:label=""
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.SearchActivity"
-            android:screenOrientation="portrait"
             android:label=""
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.IMBActivity"
-            android:screenOrientation="portrait"
             android:label=""
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.TrainActivity"
-            android:screenOrientation="portrait"
             android:label=""
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.Train2Activity"
-            android:screenOrientation="portrait"
             android:label=""
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="be_healthy_license_2014141300.be_healthy.activity.SettingsActivity"
-            android:screenOrientation="portrait"
             android:label=""
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="be_healthy_license_2014141300.be_healthy.activity.DiseaseSearchActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"
+        <activity
+            android:name="be_healthy_license_2014141300.be_healthy.activity.DiseaseSearchActivity"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
     </application>
 
 </manifest>
