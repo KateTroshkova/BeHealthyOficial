@@ -20,10 +20,7 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import java.util.ArrayList
 import android.view.inputmethod.InputMethodManager
 
-class SearchActivity : AppCompatActivity(),
-        SearchAdapter.OnChosenSymptomsChangeListener,
-        RateAppDialog.OnRateListener,
-        RateAppDialog.OnLaterListener{
+class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChangeListener, RateAppDialog.OnRateListener, RateAppDialog.OnLaterListener{
 
     private var diseases= mutableListOf<Disease>()
     private var symptoms= mutableListOf<String>()
@@ -46,7 +43,7 @@ class SearchActivity : AppCompatActivity(),
         list.adapter=adapter
         val userInputText=findViewById<EditText>(R.id.editText)
 
-        userInputText.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+        userInputText.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 userInputText.hint = ""
                 userInputText.isCursorVisible=true
@@ -68,6 +65,10 @@ class SearchActivity : AppCompatActivity(),
         header=findViewById(R.id.header)
         searchButton=findViewById(R.id.button)
         hideKeyboard()
+        userInputText.isFocusableInTouchMode = false
+        userInputText.isFocusable = false
+        userInputText.isFocusableInTouchMode = true
+        userInputText.isFocusable = true
         showInfoDialog()
         showRateDialog()
     }
@@ -147,7 +148,9 @@ class SearchActivity : AppCompatActivity(),
         editor.apply()
     }
 
-    override fun onLater() {}
+    override fun onLater() {
+
+    }
 
     override fun onRate() {
         val preferences=getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)

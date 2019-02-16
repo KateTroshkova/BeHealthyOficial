@@ -20,6 +20,7 @@
     <string name="start">Начать</string>
     <string name="get_result">Рассчитать</string>
     <string name="ok">OK</string>
+    <string name="doctor">Лечащий врач</string>
 
     <string name="app_name">BeHealthy</string>
 

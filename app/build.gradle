@@ -27,8 +27,8 @@ android {
         applicationId "be_healthy_license_2014141300.be_healthy"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 48
-        versionName "11.2.7"
+        versionCode 49
+        versionName "11.2.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true

@@ -69,5 +69,42 @@
             android:layout_marginLeft="@dimen/small">
 
         </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:onClick="showDoctor"
+            android:layout_marginLeft="@dimen/normal">
+
+            <TextView
+                android:id="@+id/doctor"
+                style="@style/n_standart_text"
+                android:gravity="left"
+                android:text="@string/doctor"
+                android:layout_margin="@dimen/tiny"
+                android:layout_weight="1"
+                android:onClick="showDoctor"
+                android:layout_gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/doctor_arrow"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_margin="@dimen/tiny"
+                android:onClick="showDoctor"
+                android:button="@drawable/icon_on_off_arrow"
+                android:layout_weight="0"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/d_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small">
+
+        </FrameLayout>
+
     </LinearLayout>
 </LinearLayout>

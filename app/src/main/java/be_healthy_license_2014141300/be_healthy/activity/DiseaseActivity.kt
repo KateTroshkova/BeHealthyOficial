@@ -24,36 +24,42 @@ import com.be_healthy_license_2014141300.be_healthy.R
 class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener{
 
     private lateinit var treatment: Fragment
+    private lateinit var doctor:Fragment
     @JvmField var disease: Disease?=null
+    private lateinit var checkBox:CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_disease)
         val toolBar=findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolBar)
-
         val navigationView = findViewById<BottomNavigationView>(R.id.nav_view)
         navigationView.setOnNavigationItemSelectedListener(this)
         navigationView.menu.setGroupCheckable(0, false, true)
-        navigationView.menu.getItem(1).isChecked = true
+        checkBox=findViewById(R.id.checkBoxFavor)
+        checkBox.setOnCheckedChangeListener { _, checked ->
+            if (!checked){
+                var disposable = DBOperation(this@DiseaseActivity)
+                        .deleteDisease(disease?.name!!)
+                        .subscribe({Log.e("LOG", "next")},
+                        { Log.e("LOG", "error")},
+                        {Toast.makeText(this@DiseaseActivity,
+                                "Заболевание удалено из сохраненных", Toast.LENGTH_SHORT).show()})
+            } else{
+                var disposable = DBOperation(this@DiseaseActivity)
+                        .saveDisease(disease!!)
+                        .subscribe({Log.e("LOG", "next")},
+                        { Log.e("LOG", "error")},
+                        {Toast.makeText(this@DiseaseActivity,
+                                "Заболевание добавлено в сохраненные", Toast.LENGTH_SHORT).show()})
+            }
+        }
 
+        navigationView.menu.getItem(1).isChecked = true
         if (intent.hasExtra(resources.getString(R.string.param_disease))) {
             disease = intent.getParcelableExtra(resources.getString(R.string.param_disease)) as Disease
         }
-        fillData()
 
-        (findViewById<View>(R.id.back_button)).setOnClickListener { this@DiseaseActivity.onBackPressed() }
-
-        val treatment = TreatmentFragment()
-        findViewById<LinearLayout>(R.id.long_layout).visibility=View.VISIBLE
-        treatment.setData(disease?.treatment!!)
-        showTreatment(null)
-
-        initFavorites()
-        showFirstTimeInformation()
-    }
-
-    private fun fillData(){
         val name=findViewById<TextView>(R.id.name)
         name.text=disease?.name
 
@@ -68,27 +74,19 @@ class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIt
         symptoms.replaceFirst(symptoms[0], symptoms[0].toUpperCase())
         val symptomsText=findViewById<TextView>(R.id.symptoms_list)
         symptomsText.text=symptoms
-    }
 
-    private fun initFavorites(){
-        val checkBox=findViewById<CheckBox>(R.id.checkBoxFavor)
-        checkBox.setOnCheckedChangeListener { _, checked ->
-            if (checked){
-                var disposable = DBOperation(this@DiseaseActivity)
-                        .saveDisease(disease!!)
-                        .subscribe({Log.e("LOG", "next")},
-                                { Log.e("LOG", "error")},
-                                {Toast.makeText(this@DiseaseActivity,
-                                        "Заболевание добавлено в сохраненные", Toast.LENGTH_SHORT).show()})
-            } else{
-                var disposable = DBOperation(this@DiseaseActivity)
-                        .deleteDisease(disease?.name!!)
-                        .subscribe({Log.e("LOG", "next")},
-                                { Log.e("LOG", "error")},
-                                {Toast.makeText(this@DiseaseActivity,
-                                        "Заболевание удалено из сохраненных", Toast.LENGTH_SHORT).show()})
-            }
-        }
+        (findViewById<View>(R.id.back_button)).setOnClickListener { this@DiseaseActivity.onBackPressed() }
+
+        treatment = TreatmentFragment()
+        doctor=TreatmentFragment()
+            findViewById<LinearLayout>(R.id.long_layout).visibility=View.VISIBLE
+            (treatment as TreatmentFragment).setData(disease?.treatment!!)
+        (doctor as TreatmentFragment).setData(mutableListOf(disease?.doctor!!))
+
+        val fragmentTranslation = fragmentManager.beginTransaction()
+        fragmentTranslation.hide(treatment)
+        fragmentTranslation.hide(doctor)
+        fragmentTranslation.commit()
         var disposable = DBOperation(this).readDisease().subscribe { data->
             try {
                 if (disease?.name in data!!){
@@ -96,11 +94,12 @@ class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIt
                 }
             }
             catch(e: NullPointerException){
+
             }
         }
-    }
 
-    private fun showFirstTimeInformation(){
+        showTreatment(null)
+
         val preferences=getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
         if (!preferences.getBoolean(resources.getString(R.string.param_first_disease), false)) {
             val dialog = InfoDialog()
@@ -131,6 +130,10 @@ class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIt
 
     fun showTreatment(view: View?){
         show((view==null), R.id.treatment, R.id.t_frame, R.id.treatment_arrow, treatment)
+    }
+
+    fun showDoctor(view:View?){
+        show((view==null), R.id.doctor, R.id.d_frame, R.id.doctor_arrow, doctor)
     }
 
     private fun show(firstTime:Boolean, textId:Int, backgroundId:Int, arrowId:Int, fragment:Fragment){
