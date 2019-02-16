@@ -1,4 +1,4 @@
-package com.be_healthy_license_2014141300.be_healthy.activity
+package be_healthy_license_2014141300.be_healthy.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,16 +10,14 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
-import be_healthy_license_2014141300.be_healthy.activity.MenuActivity
-import be_healthy_license_2014141300.be_healthy.activity.SearchActivity
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.adapter.OptionAdapter
-import com.be_healthy_license_2014141300.be_healthy.disease.Disease
+import be_healthy_license_2014141300.be_healthy.adapter.OptionAdapter
+import be_healthy_license_2014141300.be_healthy.disease.Disease
 
 class OptionActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener{
 
-    var options = mutableListOf<Disease>()
-    var symptoms= arrayListOf<String>()
+    private var options = mutableListOf<Disease>()
+    private var symptoms= arrayListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +40,6 @@ class OptionActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIte
             startActivity(intent)
         }
         (findViewById<View>(R.id.back_button)).setOnClickListener { this.onBackPressed() }
-//        (findViewById<View>(R.id.back_button)).setOnClickListener { this@OptionActivity.onBackPressed() }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

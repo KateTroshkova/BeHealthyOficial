@@ -8,13 +8,6 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
 
-    //lintOptions {
-    //    checkReleaseBuilds false
-    // Or, if you prefer, you can continue to check for errors in release builds,
-    // but continue the build even when errors are found:
-    //   abortOnError false
-    //}
-
     signingConfigs {
         config {
             keyAlias 'BeHealthy'
@@ -34,8 +27,8 @@ android {
         applicationId "be_healthy_license_2014141300.be_healthy"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 44
-        versionName "11.2.3"
+        versionCode 48
+        versionName "11.2.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true

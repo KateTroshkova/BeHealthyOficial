@@ -7,16 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.be_healthy_license_2014141300.be_healthy.Advice
+import be_healthy_license_2014141300.be_healthy.Advice
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.jakewharton.rxbinding2.view.RxView
-import io.reactivex.android.schedulers.AndroidSchedulers
 
 class AdviceFragment : Fragment() {
 
-    private var advice1:Advice?=null
-    private var advice2:Advice?=null
-    private var advice3:Advice?=null
+    private var advice1: Advice?=null
+    private var advice2: Advice?=null
+    private var advice3: Advice?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -27,24 +25,24 @@ class AdviceFragment : Fragment() {
         val button1=view.findViewById<ImageView>(R.id.update_image1)
         val button2=view.findViewById<ImageView>(R.id.update_image2)
         val button3=view.findViewById<ImageView>(R.id.update_image3)
-        text1.text=getUniqueData().advice
-        text2.text=getUniqueData().advice
-        text3.text=getUniqueData().advice
-        RxView.clicks(button1)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { _ ->
-                    text1.text=getUniqueData().advice
-                }
-        RxView.clicks(button2)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { _ ->
-                    text2.text=getUniqueData().advice
-                }
-        RxView.clicks(button3)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { _ ->
-                    text3.text=getUniqueData().advice
-                }
+        advice1=getUniqueData()
+        advice2=getUniqueData()
+        advice3=getUniqueData()
+        text1.text = advice1!!.advice
+        text2.text = advice2!!.advice
+        text3.text = advice3!!.advice
+        button1.setOnClickListener {
+            advice1 = getUniqueData()
+            text1.text = advice1!!.advice
+        }
+        button2.setOnClickListener {
+            advice2 = getUniqueData()
+            text2.text = advice2!!.advice
+        }
+        button3.setOnClickListener {
+            advice3 = getUniqueData()
+            text3.text = advice3!!.advice
+        }
         return view
     }
 

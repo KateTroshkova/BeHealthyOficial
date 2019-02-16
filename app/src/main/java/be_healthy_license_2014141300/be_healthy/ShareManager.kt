@@ -1,4 +1,4 @@
-package com.be_healthy_license_2014141300.be_healthy
+package be_healthy_license_2014141300.be_healthy
 
 import android.content.ClipData
 import android.content.ClipboardManager

@@ -1,4 +1,4 @@
-package com.be_healthy_license_2014141300.be_healthy.view
+package be_healthy_license_2014141300.be_healthy.view
 
 import android.content.Context
 import android.content.Intent
@@ -26,13 +26,13 @@ class AnimationPathView: View {
     private var currentY: Float = 0.toFloat()
     private var bottomBorder:Int=0
 
-    private var listener:OnStepListener? = null
+    private var listener: OnStepListener? = null
 
     interface OnStepListener{
         fun onStep(step: Float, max: Float)
     }
 
-    fun setListener(listener:OnStepListener){
+    fun setListener(listener: OnStepListener){
         this.listener=listener
     }
 
@@ -75,12 +75,6 @@ class AnimationPathView: View {
             drawVerticalLine(metrics.widthPixels.toFloat(), metrics.heightPixels.toFloat())
             toCenter(metrics.widthPixels.toFloat(), metrics.heightPixels.toFloat())
         }
-        /**for(i in 0..2) {
-            horizontalInfinity(metrics.widthPixels.toFloat(), metrics.heightPixels.toFloat())
-        }
-        for(i in 0..2) {
-            verticalInfinity(metrics.widthPixels.toFloat(), metrics.heightPixels.toFloat())
-        }*/
         val mCornerPathEffect = CornerPathEffect(200f)
         paint.pathEffect = mCornerPathEffect
         pathMeasure = PathMeasure(path, false)
@@ -89,7 +83,7 @@ class AnimationPathView: View {
     }
 
     private fun initBottomBorder(){
-        val resourceId = resources.getIdentifier("design_bottom_navigation_height", "dimen", context.getPackageName())
+        val resourceId = resources.getIdentifier("design_bottom_navigation_height", "dimen", context.packageName)
         if (resourceId > 0) {
             bottomBorder = 3*resources.getDimensionPixelSize(resourceId)
         }
@@ -123,28 +117,6 @@ class AnimationPathView: View {
 
     private fun toCenter(width:Float, height:Float){
         path.lineTo(width/2, height/2)
-    }
-
-    private fun horizontalInfinity(width:Float, height:Float){
-        path.lineTo(width/2, height/2)
-        path.lineTo(3*width/4, height/4)
-        path.lineTo(width-50, height/2)
-        path.lineTo(3*width/4, 3*height/4)
-        path.lineTo(width/2, height/2)
-        path.lineTo(width/4, height/4)
-        path.lineTo(50f, height/2)
-        path.lineTo(width/4, 3*height/4)
-    }
-
-    private fun verticalInfinity(width:Float, height:Float){
-        path.lineTo(width/2, height/2)
-        path.lineTo(3*width/4, height/4)
-        path.lineTo(width/2, 50f)
-        path.lineTo(width/4, height/4)
-        path.lineTo(width/2, height/2)
-        path.lineTo(3*width/4, 3*height/4)
-        path.lineTo(width/2, height-bottomBorder)
-        path.lineTo(width/4, 3*height/4)
     }
 
     override fun onDraw(canvas: Canvas) {

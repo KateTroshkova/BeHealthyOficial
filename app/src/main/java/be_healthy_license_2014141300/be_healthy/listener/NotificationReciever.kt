@@ -1,7 +1,6 @@
 package be_healthy_license_2014141300.be_healthy.listener
 
 import android.app.AlarmManager
-import android.app.Notification
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -12,18 +11,15 @@ import android.content.Context.NOTIFICATION_SERVICE
 import android.app.NotificationManager
 import android.graphics.BitmapFactory
 import android.support.v7.app.NotificationCompat
-import org.apache.xmlbeans.impl.schema.SchemaTypeLoaderImpl.build
-
-
 
 class NotificationReciever : BroadcastReceiver() {
 
     private val TIME:Long=777600000
 
     override fun onReceive(context: Context, intent: Intent) {
-        var preferences=context.getSharedPreferences(context.resources.getString(R.string.preferences), Context.MODE_PRIVATE)
+        val preferences=context.getSharedPreferences(context.resources.getString(R.string.preferences), Context.MODE_PRIVATE)
         if (preferences.contains(context.resources.getString(R.string.preferences))){
-            var time=preferences.getInt(context.resources.getString(R.string.preferences), 0)
+            val time=preferences.getInt(context.resources.getString(R.string.preferences), 0)
             var text=""
             when(time%9){
                 8->{
@@ -54,12 +50,12 @@ class NotificationReciever : BroadcastReceiver() {
                     text="Рекомендуем провести тренировку для глаз после рабочего дня"
                 }
             }
-            var editor=preferences.edit()
+            val editor=preferences.edit()
             editor.putInt(context.resources.getString(R.string.preferences), time+1)
             editor.apply()
-            var intent = Intent(context, NotificationReciever::class.java)
-            var pIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
-            var am = context.getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(context, NotificationReciever::class.java)
+            val pIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+            val am = context.getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
             am.set(AlarmManager.RTC, System.currentTimeMillis()+TIME, pIntent)
             val builder = NotificationCompat.Builder(context)
                     .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))

@@ -164,7 +164,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="6dp"
-        android:name="com.be_healthy_license_2014141300.be_healthy.fragment.SavedFragment"/>
+        android:name="be_healthy_license_2014141300.be_healthy.fragment.SavedFragment"/>
     </ScrollView>
 
     <LinearLayout

@@ -15,16 +15,8 @@ import mehdi.sakout.fancybuttons.FancyButton
 
 class IMBActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private var age=0
-    private var weight=0
-    private var height=0
-
     private var minArray=arrayOf<String>()
     private var maxArray=arrayOf<String>()
-
-    private lateinit var ageText: AppCompatEditText
-    private lateinit var weightText: AppCompatEditText
-    private lateinit var heightText: AppCompatEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,41 +28,54 @@ class IMBActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSe
         navigationView.menu.setGroupCheckable(0, false, true)
         (findViewById<View>(R.id.back_button)).setOnClickListener { this.onBackPressed() }
 
-        ageText=findViewById(R.id.editText3)
-        weightText=findViewById<AppCompatEditText>(R.id.editText4)
-        heightText=findViewById<AppCompatEditText>(R.id.editText5)
-        var button=findViewById<FancyButton>(R.id.start)
+        val ageText=findViewById<AppCompatEditText>(R.id.editText3)
+        val weightText=findViewById<AppCompatEditText>(R.id.editText4)
+        val heightText=findViewById<AppCompatEditText>(R.id.editText5)
+        val button=findViewById<FancyButton>(R.id.start)
         button.setOnClickListener {
             if (!ageText.text.isEmpty() && !weightText.text.isEmpty() && !heightText.text.isEmpty()){
-                age=ageText.text.toString().toInt()
-                weight=weightText.text.toString().toInt()
-                height=heightText.text.toString().toInt()
-                var result=weight.toFloat()/(height.toFloat()*height.toFloat())*100*100
-                if (age<=25){
-                    minArray=resources.getStringArray(R.array.young_min_range)
-                    maxArray=resources.getStringArray(R.array.young_max_range)
-                }
-                else{
-                    minArray=resources.getStringArray(R.array.old_min_range)
-                    maxArray=resources.getStringArray(R.array.old_max_range)
-                }
-                var index=0
-                for(i in 0.. minArray.size-1){
-                    if (result>minArray[i].toFloat() && result<=maxArray[i].toFloat()){
-                        index=i
-                    }
-                }
-                result= (Math.round(result * 10.0) / 10.0).toFloat()
-                var dialog = IMBDialog()
-                dialog.setData("Индекс массы тела: "+result,
-                        (resources.getStringArray(R.array.fatty_diagnosis)[index]),
-                        resources.getStringArray(R.array.fat_advice)[index])
-                dialog.show(fragmentManager, "")
+                val age=ageText.text.toString().toInt()
+                val weight=weightText.text.toString().toInt()
+                val height=heightText.text.toString().toInt()
+                val result=calculateIMB(weight, height)
+                val index=findIndex(age, result)
+                showDialog(result, index)
             }
             else{
                 Toast.makeText(this, resources.getString(R.string.empty_fields_error), Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun findIndex(age:Int, result:Float):Int{
+        var index=0
+        if (age<=25){
+            minArray=resources.getStringArray(R.array.young_min_range)
+            maxArray=resources.getStringArray(R.array.young_max_range)
+        }
+        else{
+            minArray=resources.getStringArray(R.array.old_min_range)
+            maxArray=resources.getStringArray(R.array.old_max_range)
+        }
+        for(i in 0 until minArray.size){
+            if (result>minArray[i].toFloat() && result<=maxArray[i].toFloat()){
+                index=i
+            }
+        }
+        return index
+    }
+
+    private fun calculateIMB(weight:Int, height:Int):Float{
+        val result=weight.toFloat()/(height.toFloat()*height.toFloat())*100*100
+        return (Math.round(result * 10.0) / 10.0).toFloat()
+    }
+
+    private fun showDialog(result:Float, index:Int){
+        val dialog = IMBDialog()
+        dialog.setData("Индекс массы тела: $result",
+                (resources.getStringArray(R.array.fatty_diagnosis)[index]),
+                resources.getStringArray(R.array.fat_advice)[index])
+        dialog.show(fragmentManager, "")
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

@@ -1,33 +1,24 @@
 package be_healthy_license_2014141300.be_healthy.activity
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
-import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.ListView
-import android.widget.TextView
-import be_healthy_license_2014141300.be_healthy.InfoDialog
-import be_healthy_license_2014141300.be_healthy.adapter.DiseaseAdapter
-import be_healthy_license_2014141300.be_healthy.adapter.SearchAdapter
-import be_healthy_license_2014141300.be_healthy.dialog.RateAppDialog
+import be_healthy_license_2014141300.be_healthy.dialog.InfoDialog
+import be_healthy_license_2014141300.be_healthy.adapter.AppAdapter
 import be_healthy_license_2014141300.be_healthy.disease.StaticDiseaseData
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.activity.DiseaseActivity
-import com.be_healthy_license_2014141300.be_healthy.activity.OptionActivity
-import com.be_healthy_license_2014141300.be_healthy.disease.Disease
+import be_healthy_license_2014141300.be_healthy.disease.Disease
 import com.jakewharton.rxbinding2.widget.RxTextView
-import java.util.ArrayList
 
 class DiseaseSearchActivity : AppCompatActivity(){
 
     private var diseases= mutableListOf<Disease>()
     private var availableDiseases= mutableListOf<Disease>()
-    private var adapter: DiseaseAdapter?=null
+    private var adapter: AppAdapter<Disease>?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +26,10 @@ class DiseaseSearchActivity : AppCompatActivity(){
         (findViewById<View>(R.id.back_button)).setOnClickListener { this.onBackPressed() }
         initData()
         val list=findViewById<ListView>(R.id.symptom_list)
-        adapter= DiseaseAdapter(this, availableDiseases)
+        adapter= AppAdapter(this, R.layout.n_item_simple, availableDiseases)
         list.adapter=adapter
         val userInputText=findViewById<EditText>(R.id.editText)
-        userInputText.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+        userInputText.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 userInputText.hint = ""
                 userInputText.isCursorVisible = true
@@ -48,14 +39,14 @@ class DiseaseSearchActivity : AppCompatActivity(){
                 userInputText.isCursorVisible = false
             }
         }
-        RxTextView.textChanges(userInputText).subscribe{ string->
+        val disposable = RxTextView.textChanges(userInputText).subscribe{ string->
             val subtext=userInputText.text.toString().toLowerCase()
             updateSymptoms(subtext)
             adapter!!.notifyDataSetChanged()
         }
-        list.setOnItemClickListener { p0, p1, p2, p3 ->
+        list.setOnItemClickListener { _, _, position, _ ->
             val intent = android.content.Intent(this@DiseaseSearchActivity, DiseaseActivity::class.java)
-            intent.putExtra(resources.getString(R.string.param_disease), adapter!!.getItem(p2) as Disease)
+            intent.putExtra(resources.getString(R.string.param_disease), adapter!!.getItem(position) as Disease)
             initData()
             adapter?.notifyDataSetChanged()
             findViewById<EditText>(R.id.editText).setText("")
@@ -86,7 +77,8 @@ class DiseaseSearchActivity : AppCompatActivity(){
 
     private fun showInfoDialog(){
         if (getUseTimes()<=0) {
-            val dialog = InfoDialog(R.layout.n_dialog_disease_search)
+            val dialog = InfoDialog()
+            dialog.setData(R.layout.n_dialog_disease_search)
             dialog.show(fragmentManager, "")
             val preferences = getSharedPreferences(getString(R.string.preferences), Context.MODE_PRIVATE)
             val editor = preferences.edit()

@@ -10,21 +10,20 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
-import be_healthy_license_2014141300.be_healthy.InfoDialog
+import be_healthy_license_2014141300.be_healthy.dialog.InfoDialog
 import be_healthy_license_2014141300.be_healthy.adapter.SearchAdapter
 import be_healthy_license_2014141300.be_healthy.dialog.RateAppDialog
 import be_healthy_license_2014141300.be_healthy.disease.StaticDiseaseData
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.activity.OptionActivity
-import com.be_healthy_license_2014141300.be_healthy.disease.Disease
+import be_healthy_license_2014141300.be_healthy.disease.Disease
 import com.jakewharton.rxbinding2.widget.RxTextView
-import com.kobakei.ratethisapp.RateThisApp
 import java.util.ArrayList
-import android.app.Activity
 import android.view.inputmethod.InputMethodManager
 
-
-class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChangeListener, RateAppDialog.OnRateListener, RateAppDialog.OnLaterListener{
+class SearchActivity : AppCompatActivity(),
+        SearchAdapter.OnChosenSymptomsChangeListener,
+        RateAppDialog.OnRateListener,
+        RateAppDialog.OnLaterListener{
 
     private var diseases= mutableListOf<Disease>()
     private var symptoms= mutableListOf<String>()
@@ -47,7 +46,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
         list.adapter=adapter
         val userInputText=findViewById<EditText>(R.id.editText)
 
-        userInputText.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+        userInputText.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 userInputText.hint = ""
                 userInputText.isCursorVisible=true
@@ -58,21 +57,17 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
             }
         }
         userInputText.isFocusable=false
-        RxTextView.textChanges(userInputText).subscribe{ string->
+        val disposable = RxTextView.textChanges(userInputText).subscribe{ string->
             val subtext=userInputText.text.toString().toLowerCase()
             updateSymptoms(subtext)
-            adapter?.currentSubstring=subtext
+            adapter!!.updateCurrentSubstring(subtext)
             adapter!!.notifyDataSetChanged()
         }
         val toolBar=findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolBar)
         header=findViewById(R.id.header)
         searchButton=findViewById(R.id.button)
-        hideKeyboard(this)
-        userInputText.setFocusableInTouchMode(false);
-        userInputText.setFocusable(false);
-        userInputText.setFocusableInTouchMode(true);
-        userInputText.setFocusable(true);
+        hideKeyboard()
         showInfoDialog()
         showRateDialog()
     }
@@ -96,14 +91,6 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
         val intent = Intent(this, OptionActivity::class.java)
         intent.putExtra(resources.getString(R.string.param_disease_list), prepareList(sort()))
         intent.putExtra(resources.getString(R.string.param_symptoms_for_search), prepareSymptomList(chosen))
-        //diseases.clear()
-        //symptoms.clear()
-        //availableSymptoms.clear()
-      //  initData()
-      //  adapter?.clear()
-      //  adapter?.notifyDataSetChanged()
-      //  searchButton.visibility=View.INVISIBLE
-      //  header.visibility=View.VISIBLE
         findViewById<EditText>(R.id.editText).setText("")
         startActivity(intent)
     }
@@ -113,7 +100,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
         for(symptom in chosen){
             availableSymptoms.add(symptom)
         }
-        var temp= mutableListOf<String>()
+        val temp= mutableListOf<String>()
         for(symptom in symptoms){
             if (!chosen.contains(symptom) && symptom.contains(subtext) && !temp.contains(symptom)){
                 temp.add(symptom)
@@ -132,7 +119,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
             disease.symptoms
                     .filter { it !in symptoms }
                     .forEach {
-                        if (it.length>0) {
+                        if (it.isNotEmpty()) {
                             symptoms.add(it)
                             availableSymptoms.add(it)
                         }
@@ -143,14 +130,16 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
     }
 
     private fun showRateDialog(){
-        var preferences=getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
-        var editor=preferences.edit()
+        val preferences=getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
+        val editor=preferences.edit()
         var rate_time=getUseTimes()
         rate_time++
-        var alarmTimes=resources.getIntArray(R.array.rate_times_array)
-        var needToShow=preferences.getBoolean(getString(R.string.param_need_rate), true)
+        val alarmTimes=resources.getIntArray(R.array.rate_times_array)
+        val needToShow=preferences.getBoolean(getString(R.string.param_need_rate), true)
         if (rate_time in alarmTimes && needToShow){
-            var dialog=RateAppDialog(this, this)
+            val dialog=RateAppDialog()
+            dialog.setLaterListener(this)
+            dialog.setRateListener(this)
             dialog.isCancelable=false
             dialog.show(fragmentManager, "")
         }
@@ -158,13 +147,11 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
         editor.apply()
     }
 
-    override fun onLater() {
-
-    }
+    override fun onLater() {}
 
     override fun onRate() {
-        var preferences=getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
-        var editor=preferences.edit()
+        val preferences=getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
+        val editor=preferences.edit()
         editor.putBoolean(resources.getString(R.string.param_need_rate), false)
         editor.apply()
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
@@ -172,7 +159,8 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
 
     private fun showInfoDialog(){
         if (getUseTimes()<=0) {
-            val dialog = InfoDialog(R.layout.n_dialog_search)
+            val dialog = InfoDialog()
+            dialog.setData(R.layout.n_dialog_search)
             dialog.show(fragmentManager, "")
         }
     }
@@ -198,10 +186,10 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
         return result
     }
 
-    private fun hideKeyboard(activity: Activity) {
+    private fun hideKeyboard() {
         if(currentFocus !=null) {
-            var inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(currentFocus.windowToken, 0)
         }
     }
 
@@ -214,12 +202,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.OnChosenSymptomsChange
                 res=res.plus(mapOf(disease to count))
             }
         }
-        //if (res.size>3){
         res=res.toList().sortedBy { (_, value) -> value }.toMap()
-        //}
-        //else{
-         //   res=res.toList().sortedBy { (_, value) -> value }.toMap()
-        //}
         return res.keys.toMutableList()
     }
 }

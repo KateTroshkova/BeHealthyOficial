@@ -7,9 +7,7 @@ import android.support.design.widget.BottomNavigationView
 import android.view.MenuItem
 import android.view.View
 import com.be_healthy_license_2014141300.be_healthy.R
-import android.view.ViewGroup
 import android.widget.*
-
 
 class TrainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -38,12 +36,12 @@ class TrainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItem
     }
 
     fun start(view: View){
-        var intent= Intent(this, Train2Activity::class.java)
+        val intent= Intent(this, Train2Activity::class.java)
         intent.putExtra(resources.getString(R.string.param_train_number), trainNumber)
         startActivity(intent)
     }
 
-    fun nextInstruction(){
+    private fun nextInstruction(){
         trainNumber++
         if (trainNumber<instructions.size) {
             (findViewById<TextView>(R.id.textView6)).text = instructions[trainNumber]

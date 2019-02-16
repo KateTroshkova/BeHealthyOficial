@@ -1,11 +1,10 @@
-package com.be_healthy_license_2014141300.be_healthy
+package be_healthy_license_2014141300.be_healthy
 
 import android.app.Activity
-import android.os.Parcel
-import android.os.Parcelable
+import com.be_healthy_license_2014141300.be_healthy.R
 import java.util.*
 
-class Advice():Parcelable {
+class Advice(){
 
     var advice:String=""
 
@@ -15,29 +14,11 @@ class Advice():Parcelable {
         advice=advices[random.nextInt(advices.size)]
     }
 
-    protected constructor(parcel: Parcel) : this() {
-        advice=parcel.readString()
-    }
-
-    companion object {
-        @JvmField val CREATOR = object : android.os.Parcelable.Creator<Advice> {
-            override fun createFromParcel(`in`: android.os.Parcel): Advice {
-                return Advice(`in`)
-            }
-
-            override fun newArray(size: Int): Array<Advice?> {
-                return arrayOfNulls(size)
-            }
-        }
-    }
-
-    override fun writeToParcel(parcel: Parcel?, p1: Int) {
-        parcel?.writeString(advice)
-    }
-
-    override fun describeContents(): Int=0
-
     override fun equals(other: Any?): Boolean =
             if (other !is Advice) false
             else other.advice==advice
+
+    override fun hashCode(): Int {
+        return advice.hashCode()
+    }
 }

@@ -2,7 +2,7 @@ package be_healthy_license_2014141300.be_healthy.database
 
 import android.content.ContentValues
 import android.content.Context
-import com.be_healthy_license_2014141300.be_healthy.disease.Disease
+import be_healthy_license_2014141300.be_healthy.disease.Disease
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

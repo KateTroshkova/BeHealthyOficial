@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
 
-    <com.be_healthy_license_2014141300.be_healthy.view.AnimationPathView
+    <be_healthy_license_2014141300.be_healthy.view.AnimationPathView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/path"/>
@@ -33,7 +33,7 @@
         android:layout_margin="@dimen/small"
         android:text="TextView" />
 
-    <com.be_healthy_license_2014141300.be_healthy.view.Circle
+    <be_healthy_license_2014141300.be_healthy.view.Circle
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/circle"

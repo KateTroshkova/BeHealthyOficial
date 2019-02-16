@@ -7,17 +7,20 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
-import android.widget.TextView
 import com.be_healthy_license_2014141300.be_healthy.R
 import mehdi.sakout.fancybuttons.FancyButton
 
-class BuyDialog(var listener:OnAcceptListener):DialogFragment(){
+class BuyDialog:DialogFragment(){
+
+    private var listener:OnAcceptListener? = null
 
     interface OnAcceptListener {
-        fun OnAcceptMonth()
-        fun OnAcceptYear()
+        fun onAcceptMonth()
+        fun onAcceptForever()
+    }
+
+    fun setListener(listener:OnAcceptListener){
+        this.listener=listener
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -25,26 +28,24 @@ class BuyDialog(var listener:OnAcceptListener):DialogFragment(){
         dialog.setCancelable(false)
         val inflater= LayoutInflater.from(activity)
         val view=inflater.inflate(R.layout.n_dialog_buy, null)
-        val ok=view.findViewById<FancyButton>(R.id.start)
-        ok.setOnClickListener {
-            listener.OnAcceptMonth()
+        val monthBuyButton=view.findViewById<FancyButton>(R.id.start)
+        monthBuyButton.setOnClickListener {
+            listener?.onAcceptMonth()
             dismiss()
         }
-        val year=view.findViewById<FancyButton>(R.id.year)
-        year.setOnClickListener {
-            listener.OnAcceptYear()
+        val foreverBuyButton=view.findViewById<FancyButton>(R.id.year)
+        foreverBuyButton.setOnClickListener {
+            listener?.onAcceptForever()
             dismiss()
         }
         dialog.setView(view)
-        var realDialog = dialog.create()
+        val realDialog = dialog.create()
         realDialog.setCanceledOnTouchOutside(false)
         realDialog.setOnKeyListener(object : DialogInterface.OnKeyListener {
             override fun onKey(dialog: DialogInterface, keyCode: Int, event: KeyEvent): Boolean {
-                // Prevent dialog close on back press button
                 return keyCode == KeyEvent.KEYCODE_BACK
             }
-        });
+        })
         return realDialog
     }
-
 }

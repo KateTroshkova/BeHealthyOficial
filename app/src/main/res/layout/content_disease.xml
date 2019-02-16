@@ -28,17 +28,6 @@
         android:textSize="14sp"
         android:gravity="left"/>
 
-    <ScrollView
-        style="@style/StandartText"
-        android:id="@+id/warningView">
-        <TextView
-            android:id="@+id/warning"
-            style="@style/StandartText"
-            android:gravity="start"
-            android:layout_margin="@dimen/tiny" />
-
-    </ScrollView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -80,41 +69,5 @@
             android:layout_marginLeft="@dimen/small">
 
         </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:onClick="showMagic"
-            android:layout_marginLeft="@dimen/normal">
-
-            <TextView
-                android:id="@+id/magic"
-                style="@style/n_standart_text"
-                android:gravity="left"
-                android:text="@string/magic"
-                android:layout_margin="@dimen/tiny"
-                android:layout_weight="1"
-                android:onClick="showMagic"
-                android:layout_gravity="center"/>
-
-            <CheckBox
-                android:id="@+id/magic_arrow"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_margin="@dimen/tiny"
-                android:button="@drawable/icon_on_off_arrow"
-                android:layout_weight="0"
-                android:onClick="showMagic"/>
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:id="@+id/m_frame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/small">
-        </FrameLayout>
-
     </LinearLayout>
 </LinearLayout>

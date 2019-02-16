@@ -1,9 +1,6 @@
-package com.be_healthy_license_2014141300.be_healthy.disease
+package be_healthy_license_2014141300.be_healthy.disease
 
-import android.app.Activity
 import android.os.Parcelable
-import be_healthy_license_2014141300.be_healthy.disease.*
-import com.be_healthy_license_2014141300.be_healthy.R
 
 open class Disease(): Parcelable, Comparable<Disease> {
     override fun compareTo(other: Disease): Int {
@@ -15,17 +12,13 @@ open class Disease(): Parcelable, Comparable<Disease> {
     var name:String = ""
     var description:String=""
     var symptoms = mutableListOf<String>()
-    var warning=""
     var treatment = mutableListOf<String>()
-    var magic = mutableListOf<String>()
 
     protected constructor(dest: android.os.Parcel) : this() {
         name=dest.readString()
         description=dest.readString()
         symptoms=decodeList(dest.readString())
-        warning=dest.readString()
         treatment=decodeList(dest.readString())
-        magic=decodeList(dest.readString())
         symptoms.sort()
     }
 
@@ -45,9 +38,7 @@ open class Disease(): Parcelable, Comparable<Disease> {
         dest?.writeString(name)
         dest?.writeString(description)
         dest?.writeString(codeList(symptoms))
-        dest?.writeString(warning)
         dest?.writeString(codeList(treatment))
-        dest?.writeString(codeList(magic))
     }
 
     override fun describeContents(): Int {
@@ -57,7 +48,7 @@ open class Disease(): Parcelable, Comparable<Disease> {
     private fun codeList(data:MutableList<String>):String{
         var result=""
         for(element in data){
-            result+=element+"#"
+            result+= "$element#"
         }
         result=result.removeSuffix("#")
         return result
@@ -68,5 +59,9 @@ open class Disease(): Parcelable, Comparable<Disease> {
         val array=data.split("#")
         result += array
         return result
+    }
+
+    override fun toString(): String {
+        return name
     }
 }

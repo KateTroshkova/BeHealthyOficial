@@ -1,22 +1,16 @@
-package com.be_healthy_license_2014141300.be_healthy.adapter
+package be_healthy_license_2014141300.be_healthy.adapter
 
 import android.content.Context
-import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
 import com.be_healthy_license_2014141300.be_healthy.R
-import com.be_healthy_license_2014141300.be_healthy.disease.Disease
+import be_healthy_license_2014141300.be_healthy.disease.Disease
 import android.text.Html
-import com.be_healthy_license_2014141300.be_healthy.R.id.textView
 
-
-
-class OptionAdapter(var context: Context, var data:MutableList<Disease>, var symptoms:ArrayList<String>): BaseAdapter() {
+class OptionAdapter(var context: Context, var data:MutableList<Disease>, private var symptoms:ArrayList<String>): BaseAdapter() {
 
     override fun getView(position: Int, view: View?, parents: ViewGroup?): View {
         val inflater= LayoutInflater.from(context)
@@ -34,7 +28,7 @@ class OptionAdapter(var context: Context, var data:MutableList<Disease>, var sym
             }
         }
         for(symptom in data[position].symptoms){
-            if (!(symptom in this.symptoms))
+            if (symptom !in this.symptoms)
             blackSymptoms+= "$symptom, "
         }
         blackSymptoms.dropLast(2)

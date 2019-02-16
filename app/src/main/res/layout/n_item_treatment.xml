@@ -12,7 +12,7 @@
         android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/item"
         android:layout_gravity="center"
         style="@style/n_standart_text"/>
 

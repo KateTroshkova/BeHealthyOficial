@@ -16,11 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.OptionActivity"
+            android:name="be_healthy_license_2014141300.be_healthy.activity.OptionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.DiseaseActivity"
+            android:name="be_healthy_license_2014141300.be_healthy.activity.DiseaseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
