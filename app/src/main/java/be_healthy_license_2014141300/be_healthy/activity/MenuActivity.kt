@@ -19,7 +19,7 @@ import be_healthy_license_2014141300.be_healthy.dialog.ConnectionDialog
 import be_healthy_license_2014141300.be_healthy.dialog.FirstBuyDialog
 import be_healthy_license_2014141300.be_healthy.dialog.UserTermsDialog
 import be_healthy_license_2014141300.be_healthy.listener.NotificationReciever
-import com.android.vending.billing.IInAppBillingService
+//import com.android.vending.billing.IInAppBillingService
 import com.be_healthy_license_2014141300.be_healthy.R
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,15 +28,15 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-class MenuActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
-        BuyDialog.OnAcceptListener, FirstBuyDialog.OnNewAcceptListener {
+class MenuActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener
+        /**BuyDialog.OnAcceptListener, FirstBuyDialog.OnNewAcceptListener */{
 
     private val TIME:Long=777600000
-    private val RESPONSE_CODE = 1001
-    private var mService: IInAppBillingService? = null
-    private var hasSub=false
+   // private val RESPONSE_CODE = 1001
+   // private var mService: IInAppBillingService? = null
+   // private var hasSub=false
 
-    private var receiver=object: BroadcastReceiver() {
+   /** private var receiver=object: BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetwork = cm.activeNetworkInfo
@@ -46,7 +46,7 @@ class MenuActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 dialog.show(fragmentManager, "")
             }
         }
-    }
+    }*/
 
     private var userTermObservable= Observable.create<String> { o->
         var termsOfUse=""
@@ -73,17 +73,17 @@ class MenuActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         o.onComplete()
     }
 
-    override fun onStart() {
-        super.onStart()
-        registerReceiver(receiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
-    }
+   // override fun onStart() {
+    //    super.onStart()
+       // registerReceiver(receiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+   // }
 
-    override fun onStop() {
-        super.onStop()
-        unregisterReceiver(receiver)
-    }
+   // override fun onStop() {
+    //    super.onStop()
+       // unregisterReceiver(receiver)
+    //}
 
-    private var mServiceConn: ServiceConnection = object : ServiceConnection {
+    /**private var mServiceConn: ServiceConnection = object : ServiceConnection {
         override fun onServiceDisconnected(name: ComponentName) {
             mService = null
         }
@@ -99,7 +99,7 @@ class MenuActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                getPurchase()
             }
         }
-    }
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,9 +107,9 @@ class MenuActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val navigationView = findViewById<BottomNavigationView>(R.id.navigation_view)
         navigationView.setOnNavigationItemSelectedListener(this)
         hideFragment(R.id.save_fragment)
-        val serviceIntent = Intent("com.android.vending.billing.InAppBillingService.BIND")
-        serviceIntent.setPackage("com.android.vending")
-        bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE)
+        //val serviceIntent = Intent("com.android.vending.billing.InAppBillingService.BIND")
+        //serviceIntent.setPackage("com.android.vending")
+        //bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE)
         val adviceCheckBox=findViewById<CheckBox>(R.id.advice_arrow)
         adviceCheckBox.isChecked=true
         showUserTerms()
@@ -227,7 +227,7 @@ class MenuActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
     }
 
-    private fun getPurchase(){
+    /**private fun getPurchase(){
         val purchase=Purchase()
         if (purchase.isBillingSupported(mService!!, packageName, "subs") ||
                 purchase.isBillingSupported(mService!!, packageName, "inapp")) {
@@ -251,17 +251,17 @@ class MenuActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 }
             }
         }
-    }
+    }*/
 
-    public override fun onDestroy() {
-        super.onDestroy()
-        if (mService != null) {
-            unbindService(mServiceConn)
-        }
-    }
+    //public override fun onDestroy() {
+    //    super.onDestroy()
+        //if (mService != null) {
+        //    unbindService(mServiceConn)
+        //}
+    //}
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        if (requestCode == RESPONSE_CODE) {
+    //override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        /**if (requestCode == RESPONSE_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 val preferences = getSharedPreferences(getString(R.string.preferences), Context.MODE_PRIVATE)
                 val editor = preferences.edit()
@@ -271,30 +271,30 @@ class MenuActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             else{
                 startActivity(Intent(this, StartActivity::class.java))
             }
-        }
-    }
+        }*/
+    //}
 
-    override fun onAcceptMonth() {
-        try {
+    //override fun onAcceptMonth() {
+        /**try {
             Purchase().purchaseItem(this, mService!!, packageName, "2014141300_be_healthy_month", "subs")
         } catch (e: Exception) {
             e.printStackTrace()
-        }
-    }
+        }*/
+    //}
 
-    override fun onAcceptForever() {
-        try {
+    //override fun onAcceptForever() {
+        /**try {
             Purchase().purchaseItem(this, mService!!, packageName, "2014141300_full_access", "inapp")
         } catch (e: Exception) {
             e.printStackTrace()
-        }
-    }
+        }*/
+    //}
 
-    override fun onNewAccept() {
-        val preferences = getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
+    //override fun onNewAccept() {
+        /**val preferences = getSharedPreferences(resources.getString(R.string.preferences), Context.MODE_PRIVATE)
         val licenseTime = 7L * 24L * 60L * 60L * 1000L + System.currentTimeMillis()
         val editor = preferences.edit()
         editor.putLong(resources.getString(R.string.param_license_time), licenseTime)
-        editor.apply()
-    }
+        editor.apply()*/
+    //}
 }

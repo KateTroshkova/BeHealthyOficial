@@ -6,11 +6,11 @@ import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
 import android.os.RemoteException
-import com.android.vending.billing.IInAppBillingService
+//import com.android.vending.billing.IInAppBillingService
 
 class Purchase {
 
-    private val RESPONSE_CODE = 1001
+    /**private val RESPONSE_CODE = 1001
 
     fun getAllUserPurchase(service: IInAppBillingService, packageName:String, type:String): Bundle? {
         var ownedItems: Bundle? = null
@@ -60,5 +60,5 @@ class Purchase {
         } catch (e: RemoteException) {
             e.printStackTrace()
         }
-    }
+    }*/
 }

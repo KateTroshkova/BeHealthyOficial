@@ -15,14 +15,10 @@ import java.lang.NullPointerException
 
 class SavedFragment : Fragment(){
 
-    private var data:ArrayList<String>?=ArrayList()
-    private lateinit var adapter: AppAdapter<String>
-    private lateinit var list:ListView
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_saved, container, false)
-        list=view.findViewById(R.id.disease_list)
-        adapter = AppAdapter(activity, R.layout.simple_separated_item, this.data!!)
+        val list=view.findViewById<ListView>(R.id.disease_list)
+        var adapter = AppAdapter(activity, R.layout.simple_separated_item, arrayListOf<String>())
         list.adapter = adapter
         list.setOnItemClickListener { _, _, position, _ ->
             val intent= Intent(activity, DiseaseActivity::class.java)

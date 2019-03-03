@@ -3,6 +3,7 @@ package be_healthy_license_2014141300.be_healthy.disease
 import android.os.Parcelable
 
 open class Disease(): Parcelable, Comparable<Disease> {
+
     override fun compareTo(other: Disease): Int {
         if (name>other.name) return -1
         if (name<other.name) return 1

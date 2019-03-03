@@ -16,9 +16,6 @@ import be_healthy_license_2014141300.be_healthy.disease.Disease
 
 class OptionActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener{
 
-    private var options = mutableListOf<Disease>()
-    private var symptoms= arrayListOf<String>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_option)
@@ -28,16 +25,16 @@ class OptionActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIte
         navigationView.setOnNavigationItemSelectedListener(this)
         navigationView.menu.getItem(1).isChecked = true
         if (intent.hasExtra(resources.getString(R.string.param_disease_list))) {
-            options = intent.getParcelableArrayListExtra<Disease>(resources.getString(R.string.param_disease_list))
-            symptoms = intent.getStringArrayListExtra(resources.getString(R.string.param_symptoms_for_search))!!
-        }
-        val list=findViewById<ListView>(R.id.preview_list)
-        val adapter = OptionAdapter(this, options, symptoms)
-        list.adapter=adapter
-        list.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val intent = android.content.Intent(this@OptionActivity, DiseaseActivity::class.java)
-            intent.putExtra(resources.getString(R.string.param_disease), adapter.getItem(position) as Disease)
-            startActivity(intent)
+            val options = intent.getParcelableArrayListExtra<Disease>(resources.getString(R.string.param_disease_list))
+            val symptoms = intent.getStringArrayListExtra(resources.getString(R.string.param_symptoms_for_search))!!
+            val list=findViewById<ListView>(R.id.preview_list)
+            val adapter = OptionAdapter(this, options, symptoms)
+            list.adapter=adapter
+            list.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+                val intent = android.content.Intent(this@OptionActivity, DiseaseActivity::class.java)
+                intent.putExtra(resources.getString(R.string.param_disease), adapter.getItem(position) as Disease)
+                startActivity(intent)
+            }
         }
         (findViewById<View>(R.id.back_button)).setOnClickListener { this.onBackPressed() }
     }
