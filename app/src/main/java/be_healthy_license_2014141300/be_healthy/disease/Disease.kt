@@ -15,6 +15,7 @@ open class Disease(): Parcelable, Comparable<Disease> {
     var symptoms = mutableListOf<String>()
     var treatment = mutableListOf<String>()
     var doctor:String=""
+    var link:String=""
 
     protected constructor(dest: android.os.Parcel) : this() {
         name=dest.readString()
@@ -22,6 +23,7 @@ open class Disease(): Parcelable, Comparable<Disease> {
         symptoms=decodeList(dest.readString())
         treatment=decodeList(dest.readString())
         doctor=dest.readString()
+        link=dest.readString()
         symptoms.sort()
     }
 
@@ -43,6 +45,7 @@ open class Disease(): Parcelable, Comparable<Disease> {
         dest?.writeString(codeList(symptoms))
         dest?.writeString(codeList(treatment))
         dest?.writeString(doctor)
+        dest?.writeString(link)
     }
 
     override fun describeContents(): Int {

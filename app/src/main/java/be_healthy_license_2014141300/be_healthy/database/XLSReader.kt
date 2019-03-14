@@ -46,6 +46,7 @@ class XLSReader private constructor(){
                     var symptoms= listOf<String>()
                     var treatment= listOf<String>()
                     var doctor=""
+                    var link=""
                     if (rowno != 0) {
                         while (cellIter.hasNext()) {
                             val myCell = cellIter.next() as XSSFCell
@@ -65,6 +66,9 @@ class XLSReader private constructor(){
                                 5->{
                                     doctor=myCell.toString()
                                 }
+                                6->{
+                                    link=myCell.toString()
+                                }
                             }
                             colno++
                         }
@@ -78,6 +82,7 @@ class XLSReader private constructor(){
                             disease.treatment.add(treat.trim())
                         }
                         disease.doctor=doctor
+                        disease.link=link
                         data.add(disease)
                     }
                     rowno++

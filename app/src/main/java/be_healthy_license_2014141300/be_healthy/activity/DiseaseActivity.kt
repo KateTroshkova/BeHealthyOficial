@@ -18,7 +18,10 @@ import be_healthy_license_2014141300.be_healthy.database.DBOperation
 import be_healthy_license_2014141300.be_healthy.dialog.InfoDialog
 import be_healthy_license_2014141300.be_healthy.disease.Disease
 import be_healthy_license_2014141300.be_healthy.fragment.TreatmentFragment
+import android.net.Uri
 import com.be_healthy_license_2014141300.be_healthy.R
+import mehdi.sakout.fancybuttons.FancyButton
+
 
 class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -37,6 +40,9 @@ class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIt
         navigationView.menu.getItem(1).isChecked = true
 
         disease=getDisease()
+        //if (disease?.link=="null"){
+        (findViewById<FancyButton>(R.id.start)).visibility=View.INVISIBLE
+        //}
 
         fillConstantInfo()
         fillCheckBox()
@@ -153,6 +159,22 @@ class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIt
         changeState(R.id.doctor, R.id.d_frame, R.id.doctor_arrow, doctor)
     }
 
+    fun showChina(view:View){
+        val nextButton=findViewById<FancyButton>(R.id.start)
+        if (nextButton.visibility==View.VISIBLE){
+            nextButton.visibility=View.INVISIBLE
+            findViewById<CheckBox>(R.id.doctor_arrow_n).isChecked = false
+            findViewById<TextView>(R.id.doctor_n).setTypeface(null, Typeface.NORMAL)
+        }
+        else{
+            if (disease?.link!="null") {
+                nextButton.visibility = View.VISIBLE
+            }
+            findViewById<CheckBox>(R.id.doctor_arrow_n).isChecked = true
+            findViewById<TextView>(R.id.doctor_n).setTypeface(null, Typeface.BOLD)
+        }
+    }
+
     private fun changeState(textId:Int, backgroundId:Int, arrowId:Int, fragment:Fragment){
         val text=findViewById<TextView>(textId)
         val fragmentTranslation=fragmentManager.beginTransaction()
@@ -168,5 +190,11 @@ class DiseaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIt
             findViewById<CheckBox>(arrowId).isChecked=false
         }
         fragmentTranslation.commit()
+    }
+
+    fun goToWeb(view:View){
+        val i = Intent(Intent.ACTION_VIEW)
+        i.data = Uri.parse(disease?.link)
+        startActivity(i)
     }
 }
